@@ -13,14 +13,11 @@ contactSection:
   body: >-
     Jess is accepting freelance design and motion projects, as well as public
     speaking opportunities. Please contact Jess for further info.
-
-
-
-
-    phone: 734.558.5785
-
-
-    email: jessicakshn93@gmail.com
+  contactOptions:
+    - label: phone
+      value: 734.558.5785
+    - label: email
+      value: jessicakshn93@gmail.com
   heading: contact
 ---
 
