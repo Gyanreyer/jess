@@ -11,15 +11,18 @@ collections:
         name: "home"
         file: "content/home.md"
         fields:
-          - { label: "Title", name: "title", widget: "string" }
-          - { label: "Publish Date", name: "date", widget: "datetime" }
-          - { label: "Body", name: "body", widget: "markdown" }
-          - label: "Cats"
-            name: "cats"
-            widget: list
-            fields:
-              - { label: "Name", name: "name", widget: "string" }
-              - { label: "Description", name: "description", widget: "text" }
+          - { label: "Page Title", name: "pageTitle", widget: "string" }
+          - { label: "Reel Video File", name: "reel", widget: "file" }
+          - {
+              label: "About Section Contents",
+              name: "about",
+              widget: "markdown",
+            }
+          - {
+              label: "Contact Section Contents",
+              name: "contact",
+              widget: "markdown",
+            }
   - name: "work"
     label: "Work"
     files:
