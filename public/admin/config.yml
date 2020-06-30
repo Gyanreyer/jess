@@ -13,16 +13,18 @@ collections:
         fields:
           - { label: "Page Title", name: "pageTitle", widget: "string" }
           - { label: "Reel Video File", name: "reel", widget: "file" }
-          - {
-              label: "About Section Contents",
-              name: "about",
-              widget: "markdown",
-            }
-          - {
-              label: "Contact Section Contents",
-              name: "contact",
-              widget: "markdown",
-            }
+          - label: "About Section"
+            name: "about"
+            widget: "object"
+            fields:
+              - { label: "Heading", name: "heading", widget: "string" }
+              - { label: "Body", name: "body", widget: "markdown" }
+          - label: "Contact Section"
+            name: "contact"
+            widget: "object"
+            fields:
+              - { label: "Heading", name: "heading", widget: "string" }
+              - { label: "Body", name: "body", widget: "markdown" }
   - name: "work"
     label: "Work"
     files:
