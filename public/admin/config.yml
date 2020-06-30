@@ -14,17 +14,23 @@ collections:
           - { label: "Page Title", name: "pageTitle", widget: "string" }
           - { label: "Reel Video File", name: "reel", widget: "file" }
           - label: "About Section"
-            name: "about"
+            name: "aboutSection"
             widget: "object"
             fields:
               - { label: "Heading", name: "heading", widget: "string" }
               - { label: "Body", name: "body", widget: "markdown" }
           - label: "Contact Section"
-            name: "contact"
+            name: "contactSection"
             widget: "object"
             fields:
               - { label: "Heading", name: "heading", widget: "string" }
               - { label: "Body", name: "body", widget: "markdown" }
+              - label: "Contact Options"
+                name: "contactOptions"
+                widget: "list"
+                fields:
+                  - { label: "Label", name: "label", widget: "string" }
+                  - { label: "Contact Value", name: "value", widget: "string" }
   - name: "work"
     label: "Work"
     files:

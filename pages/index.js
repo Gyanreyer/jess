@@ -1,24 +1,30 @@
 import Head from "next/head";
 import { Component } from "react";
-import homeContent from "../content/home.md";
+import ReactMarkdown from "react-markdown";
+
+import { attributes as homeContents } from "../content/home.md";
 
 export default class Home extends Component {
   render() {
-    // const { heading: aboutHeading } = aboutSectionContent.attributes;
-    // const AboutContent = aboutSectionContent.react;
+    const { pageTitle, reel, aboutSection, contactSection } = homeContents;
 
-    return <div>Hello</div>;
-    // (
-    //   <>
-    //     <Head>
-    //       <title>Home</title>
-    //     </Head>
-    //     <article>
-    //       {/* <video src={reel} muted autoPlay loop /> */}
-    //       <h1>{aboutHeading}</h1>
-    //       <AboutContent />
-    //     </article>
-    //   </>
-    // );
+    return (
+      <>
+        <Head>
+          <title>{pageTitle}</title>
+        </Head>
+        <article>
+          <video src={reel} muted autoPlay loop />
+          <section>
+            <h1>{aboutSection.heading}</h1>
+            <ReactMarkdown source={aboutSection.body} />
+          </section>
+          <section>
+            <h1>{contactSection.heading}</h1>
+            <ReactMarkdown source={contactSection.body} />
+          </section>
+        </article>
+      </>
+    );
   }
 }
