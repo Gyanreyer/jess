@@ -1,5 +1,0 @@
----
-title: Dog
----
-
-Hello

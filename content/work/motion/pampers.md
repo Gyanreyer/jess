@@ -1,5 +1,0 @@
----
-title: Pampers
----
-
-Hello

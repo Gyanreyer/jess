@@ -20,12 +20,23 @@ collections:
             fields:
               - { label: "Name", name: "name", widget: "string" }
               - { label: "Description", name: "description", widget: "text" }
-  - name: "motion"
-    label: "Motion Work"
-    folder: "content/work/motion"
-    create: true
-    fields:
-      - { label: "Title", name: "title", widget: "string" }
-      - { label: "Thumbnail Image", name: "thumbnail", widget: "image" }
-      - { label: "Video", name: "video", widget: "file" }
-      - { label: "Description", name: "description", widget: "markdown" }
+  - name: "work"
+    label: "Work"
+    files:
+      - label: "Motion"
+        name: "motion"
+        file: "content/work/motion.md"
+        fields:
+          - { label: "Page Title", name: "pageTitle", widget: "string" }
+          - label: "Projects"
+            name: "projects"
+            widget: list
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Thumbnail Image", name: "thumbnail", widget: "image" }
+              - { label: "Video", name: "video", widget: "file" }
+              - {
+                  label: "Description",
+                  name: "description",
+                  widget: "markdown",
+                }
