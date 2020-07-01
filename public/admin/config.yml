@@ -4,6 +4,12 @@ backend:
 media_folder: public/media
 public_folder: media
 collections:
+  - name: "layout"
+    label: "Layout"
+    file: "content/layout.md"
+    fields:
+      - { label: "Logo Image", name: "logo", widget: "image" }
+      - { label: "Footer Text", name: "footer", widget: "markdown" }
   - name: "pages"
     label: "Pages"
     files:
