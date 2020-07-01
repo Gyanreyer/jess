@@ -30,7 +30,7 @@ collections:
                 widget: "list"
                 fields:
                   - { label: "Label", name: "label", widget: "string" }
-                  - { label: "Contact Value", name: "value", widget: "string" }
+                  - { label: "Contact Info", name: "value", widget: "string" }
   - name: "work"
     label: "Work"
     files:
