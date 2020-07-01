@@ -9,6 +9,7 @@ aboutSection:
     only in the advertising presentation space, but in experiences that span
     over topics of mental health stigmas and coping methods.
   heading: about
+  backgroundImage: media/About-Section-Image.png
 contactSection:
   body: >-
     Jess is accepting freelance design and motion projects, as well as public

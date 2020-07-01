@@ -38,8 +38,10 @@ export default class Home extends Component {
             </ul>
           </section>
           <section id="about">
-            <h1>{aboutSection.heading}</h1>
-            <ReactMarkdown source={aboutSection.body} />
+            <div className="section-content">
+              <h1>{aboutSection.heading}</h1>
+              <ReactMarkdown source={aboutSection.body} />
+            </div>
           </section>
           <section id="contact">
             <h1>{contactSection.heading}</h1>
@@ -57,6 +59,44 @@ export default class Home extends Component {
           .banner-video {
             width: 100%;
             height: 100%;
+          }
+
+          section {
+            position: relative;
+          }
+
+          .section-background-image {
+            width: 100%;
+          }
+
+          #about {
+            background-image: url(${aboutSection.backgroundImage});
+            background-size: cover;
+            background-position: center top;
+          }
+
+          #about .section-content {
+            z-index: 1;
+            color: white;
+            padding: 25% 10% 15%;
+
+            background-color: rgba(54, 54, 54, 0.5);
+          }
+
+          section h1 {
+            font-size: 3em;
+            font-weight: normal;
+            margin: 0 0 0.75em;
+          }
+
+          #contact {
+            padding: 15% 10%;
+          }
+
+          #contact ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
           }
         `}</style>
       </Layout>

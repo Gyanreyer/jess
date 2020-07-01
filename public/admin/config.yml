@@ -25,6 +25,11 @@ collections:
             fields:
               - { label: "Heading", name: "heading", widget: "string" }
               - { label: "Body", name: "body", widget: "markdown" }
+              - {
+                  label: "Section Background Image",
+                  name: "backgroundImage",
+                  widget: "image",
+                }
           - label: "Contact Section"
             name: "contactSection"
             widget: "object"

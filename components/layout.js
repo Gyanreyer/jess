@@ -37,7 +37,7 @@ export default function Layout({ children }) {
           left: 0;
           z-index: 1;
 
-          padding: 64px 92px;
+          padding: 5%;
           box-sizing: border-box;
 
           display: flex;
@@ -50,6 +50,8 @@ export default function Layout({ children }) {
 
         #nav-links {
           list-style-type: none;
+          margin: 0;
+          padding: 0;
         }
 
         #nav-links li {
@@ -60,7 +62,7 @@ export default function Layout({ children }) {
         #nav-links a {
           color: white;
           text-decoration: none;
-          font-size: 1.4em;
+          font-size: 1.2em;
         }
       `}</style>
     </>
