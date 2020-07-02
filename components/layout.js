@@ -10,11 +10,7 @@ export default function Layout({ children }) {
         <nav>
           <Link href="/">
             <a>
-              <img
-                src={`${layoutContents.logo}?lqip`}
-                alt="Jess"
-                id="home-logo"
-              />
+              <img src={layoutContents.logo} alt="Jess" id="home-logo" />
             </a>
           </Link>
           <ul id="nav-links">

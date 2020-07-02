@@ -4,15 +4,15 @@ backend:
 media_folder: public/media
 public_folder: media
 collections:
-  - name: "layout"
-    label: "Layout"
-    file: "content/layout.md"
-    fields:
-      - { label: "Logo Image", name: "logo", widget: "image" }
-      - { label: "Footer Text", name: "footer", widget: "markdown" }
   - name: "pages"
     label: "Pages"
     files:
+      - name: "layout"
+        label: "Layout"
+        file: "content/layout.md"
+        fields:
+          - { label: "Logo Image", name: "logo", widget: "image" }
+          - { label: "Footer Text", name: "footer", widget: "markdown" }
       - label: "Home"
         name: "home"
         file: "content/home.md"
@@ -36,12 +36,8 @@ collections:
             fields:
               - { label: "Heading", name: "heading", widget: "string" }
               - { label: "Body", name: "body", widget: "markdown" }
-              - label: "Contact Options"
-                name: "contactOptions"
-                widget: "list"
-                fields:
-                  - { label: "Label", name: "label", widget: "string" }
-                  - { label: "Contact Info", name: "value", widget: "string" }
+              - { label: "Phone Number", name: "phone", widget: "string" }
+              - { label: "Email", name: "email", widget: "string" }
   - name: "work"
     label: "Work"
     files:
