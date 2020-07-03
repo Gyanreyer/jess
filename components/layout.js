@@ -3,37 +3,51 @@ import Link from "next/link";
 
 import { attributes as layoutContents } from "../content/layout.md";
 
-export default function Layout({ children }) {
+export default function Layout({
+  theme = "light",
+  isHeaderOverlaid = false,
+  children,
+}) {
   return (
-    <>
-      <main>
-        <nav>
-          <Link href="/">
-            <a>
-              <img src={layoutContents.logo} alt="Jess" id="home-logo" />
-            </a>
-          </Link>
-          <ul id="nav-links">
-            <li>
-              <a href="/#work">work</a>
-            </li>
-            <li>
-              <a href="/#contact">contact</a>
-            </li>
-          </ul>
-        </nav>
-        {children}
-        <footer>{layoutContents.footer}</footer>
-      </main>
+    <main>
+      <nav>
+        <Link href="/">
+          <a>
+            <img
+              src={
+                theme === "light"
+                  ? layoutContents.header.darkLogo
+                  : layoutContents.header.lightLogo
+              }
+              alt="Jess"
+              id="home-logo"
+            />
+          </a>
+        </Link>
+        <ul id="nav-links">
+          <li>
+            <Link href="/#work">
+              <a>work</a>
+            </Link>
+          </li>
+          <li>
+            <Link href="/#contact">
+              <a>contact</a>
+            </Link>
+          </li>
+        </ul>
+      </nav>
+      {children}
+      <footer>{layoutContents.footer.textContent}</footer>
       <style jsx>{`
         nav {
-          position: absolute;
+          position: ${isHeaderOverlaid ? `absolute` : `relative`};
           width: 100%;
           top: 0;
           left: 0;
           z-index: 1;
 
-          padding: 5%;
+          padding: 48px 5%;
           box-sizing: border-box;
 
           display: flex;
@@ -56,11 +70,17 @@ export default function Layout({ children }) {
         }
 
         #nav-links a {
-          color: white;
+          color: ${theme === "light" ? "#2e2e2e" : "#fff"};
           text-decoration: none;
           font-size: 1.2em;
         }
+
+        footer {
+          margin-bottom: 32px;
+          font-size: 0.8em;
+          text-align: center;
+        }
       `}</style>
-    </>
+    </main>
   );
 }

@@ -11,12 +11,37 @@ collections:
       - name: "layout"
         label: "Layout"
         file: "content/layout.md"
+        delete: false
         fields:
-          - { label: "Logo Image", name: "logo", widget: "image" }
-          - { label: "Footer Text", name: "footer", widget: "markdown" }
+          - label: "Header"
+            name: "header"
+            widget: "object"
+            fields:
+              - {
+                  label: "Light Logo Image",
+                  name: "lightLogo",
+                  widget: "image",
+                  comment: "The lighter variant of the logo to display against dark backgrounds",
+                }
+              - {
+                  label: "Dark Logo Image",
+                  name: "darkLogo",
+                  widget: "image",
+                  comment: "The darker variant of the logo to display against light backgrounds",
+                }
+          - label: "Footer"
+            name: "footer"
+            widget: "object"
+            fields:
+              - {
+                  label: "Footer Text",
+                  name: "textContent",
+                  widget: "markdown",
+                }
       - label: "Home"
         name: "home"
         file: "content/home.md"
+        delete: false
         fields:
           - { label: "Page Title", name: "pageTitle", widget: "string" }
           - { label: "Reel Video File", name: "reel", widget: "file" }
@@ -45,6 +70,7 @@ collections:
       - label: "Motion"
         name: "motion"
         file: "content/work/motion.md"
+        delete: false
         fields:
           - { label: "Page Title", name: "pageTitle", widget: "string" }
           - label: "Projects"

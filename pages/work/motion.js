@@ -1,15 +1,26 @@
 import React from "react";
 
-import motionMarkdown from "../../content/work/motion.md";
+import Layout from "../../components/layout.js";
+import LazyImage from "../../components/lazyImage.js";
+import { attributes as motionContents } from "../../content/work/motion.md";
 
 export default function MotionPage() {
-  const { projects } = motionMarkdown.attributes;
+  const { projects } = motionContents;
 
   return (
-    <ul>
-      {projects.map(({ title }) => (
-        <li key={title}>{title}</li>
-      ))}
-    </ul>
+    <Layout theme="light">
+      <ul>
+        {projects.map(({ title, thumbnail }) => (
+          <li key={title}>
+            <LazyImage
+              className="background-image"
+              placeholderSrc={require(`../../public${thumbnail}?resize&size=24`)}
+              src={require(`../../public${thumbnail}`)}
+              style={{ width: "100px" }}
+            />
+          </li>
+        ))}
+      </ul>
+    </Layout>
   );
 }
