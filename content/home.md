@@ -1,5 +1,6 @@
 ---
-pageTitle: Home
+seo:
+  pageTitle: Home
 reel: /media/conner_omalley_beckoning.mp4
 aboutSection:
   backgroundImage: /media/About-Section-Image.jpg

@@ -43,7 +43,21 @@ collections:
         file: "content/home.md"
         delete: false
         fields:
-          - { label: "Page Title", name: "pageTitle", widget: "string" }
+          - label: "SEO"
+            name: "seo"
+            widget: "object"
+            fields:
+              - { label: "Page Title", name: "pageTitle", widget: "string" }
+              - {
+                  label: "Page Description",
+                  name: "pageDescription",
+                  widget: "string",
+                }
+              - {
+                  label: "OpenGraph Preview Image",
+                  name: "ogImage",
+                  widget: "image",
+                }
           - { label: "Reel Video File", name: "reel", widget: "file" }
           - label: "About Section"
             name: "aboutSection"

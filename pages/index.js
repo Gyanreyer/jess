@@ -1,7 +1,6 @@
-import Head from "next/head";
 import Link from "next/link";
-import dynamic from "next/dynamic";
 import ReactMarkdown from "react-markdown";
+import { NextSeo } from "next-seo";
 
 import Layout from "../components/layout.js";
 import LazyImage from "../components/lazyImage.js";
@@ -142,13 +141,33 @@ function ContactSection() {
 }
 
 export default function Home() {
-  const { pageTitle } = homeContents;
-
   return (
     <Layout theme="dark" isHeaderOverlaid>
-      <Head>
-        <title>{pageTitle}</title>
-      </Head>
+      <NextSeo
+        title={homeContents.seo.pageTitle}
+        description={homeContents.seo.description}
+        openGraph={{
+          type: "website",
+          title: homeContents.seo.pageTitle,
+          description: homeContents.seo.description,
+          images: homeContents.seo.ogImage
+            ? [
+                {
+                  url: require(`../public${homeContents.seo.ogImage}&resize&size=1200`),
+                  width: 1200,
+                },
+                {
+                  url: require(`../public${homeContents.seo.ogImage}&resize&size=400`),
+                  width: 400,
+                },
+                {
+                  url: require(`../public${homeContents.seo.ogImage}&resize&size=100`),
+                  width: 100,
+                },
+              ]
+            : [],
+        }}
+      />
       <article>
         <BannerSection />
         <WorkSection />
