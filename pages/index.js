@@ -12,6 +12,7 @@ const HomePageSection = React.forwardRef((props, ref) => (
     <style jsx>{`
       section {
         position: relative;
+        background-color: white;
         font-size: 1.2rem;
 
         :global(h1) {
@@ -32,12 +33,15 @@ function BannerSection() {
       <video src={reel} muted autoPlay loop />
       <style jsx>{`
         :global(#banner) {
-          height: 100vh;
+          height: 90vh;
           background-color: #363636;
 
           video {
+            position: fixed;
             width: 100%;
-            height: 100%;
+            height: 90vh;
+            top: 0;
+            left: 0;
             object-fit: cover;
             opacity: 0.5;
           }
@@ -67,6 +71,12 @@ function WorkSection() {
           </Link>
         </li>
       </ul>
+      <style jsx>{`
+        ul {
+          margin: 0;
+          padding: 0;
+        }
+      `}</style>
     </HomePageSection>
   );
 }
@@ -156,6 +166,31 @@ function ContactSection() {
 }
 
 export default function Home() {
+  React.useEffect(() => {
+    function onScroll() {
+      const navElement = document.querySelector("nav");
+
+      if (!navElement) return;
+
+      const scrollMin = window.innerHeight * 0.55;
+      const scrollMax = window.innerHeight * 0.75;
+
+      const scrollPos = window.scrollY;
+
+      const scrollRangePosition = Math.min(
+        Math.max((scrollPos - scrollMin) / (scrollMax - scrollMin), 0),
+        1
+      );
+
+      navElement.style.opacity = 1 - scrollRangePosition;
+      navElement.style.transform = `translateY(-${scrollRangePosition * 15}%)`;
+    }
+
+    window.addEventListener("scroll", onScroll);
+
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
   return (
     <Layout theme="dark" isHeaderOverlaid>
       <NextSeo
@@ -183,12 +218,27 @@ export default function Home() {
             : [],
         }}
       />
+      <BannerSection />
       <article>
-        <BannerSection />
         <WorkSection />
         <AboutSection />
         <ContactSection />
       </article>
+      <style jsx>{`
+        :global(nav) {
+          position: fixed !important;
+        }
+
+        :global(footer) {
+          background-color: white;
+          transform: translate3d(0, 0, 0);
+        }
+
+        article {
+          z-index: 1;
+          transform: translate3d(0, 0, 0);
+        }
+      `}</style>
     </Layout>
   );
 }

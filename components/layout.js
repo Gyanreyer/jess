@@ -76,7 +76,7 @@ export default function Layout({
         }
 
         footer {
-          margin-bottom: 32px;
+          padding-bottom: 32px;
           font-size: 0.8rem;
           text-align: center;
         }
