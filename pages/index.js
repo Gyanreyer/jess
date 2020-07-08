@@ -72,9 +72,12 @@ function WorkSection() {
         </li>
       </ul>
       <style jsx>{`
-        ul {
-          margin: 0;
-          padding: 0;
+        :global(#work) {
+          padding: 5% 10%;
+
+          ul {
+            margin: 0;
+          }
         }
       `}</style>
     </HomePageSection>
