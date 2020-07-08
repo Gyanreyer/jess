@@ -11,27 +11,54 @@ export default function LazyImage({
 }) {
   const [imageContainerRef, inView] = useInView({
     triggerOnce: true,
+    rootMargin: "10%",
   });
   const [hasImageLoaded, setHasImageLoaded] = React.useState(false);
+  const [isImageCached, setIsImageCached] = React.useState(false);
+
+  React.useEffect(() => {
+    // Check if the main image src is already loaded because it's cached
+    const img = new Image();
+    img.src = src;
+    const isCached = img.complete || img.width + img.height > 0;
+
+    // Clear the image's source so it doesn't keep loading
+    img.src = "";
+
+    setIsImageCached(isCached);
+
+    if (isCached) {
+      // If the image is cached, manually mark it as loaded because the image's
+      // onLoad event won't be fired
+      setHasImageLoaded(true);
+    }
+  }, [src]);
 
   return (
     <div ref={imageContainerRef} className={className} style={style}>
-      <img
-        src={placeholderSrc}
-        alt=""
-        className={`placeholder ${
-          shouldCoverContainer || hasImageLoaded ? "cover" : ""
-        }`}
-      />
-      <img
-        src={inView ? src : null}
-        alt={alt}
-        className={`main ${shouldCoverContainer ? "cover" : ""}`}
-        style={{
-          opacity: hasImageLoaded ? 1 : 0,
-        }}
-        onLoad={() => setHasImageLoaded(true)}
-      />
+      {!isImageCached && (
+        <img
+          src={placeholderSrc}
+          alt=""
+          className={`placeholder ${
+            shouldCoverContainer || hasImageLoaded ? "cover" : ""
+          }`}
+        />
+      )}
+      {/* Only start displaying/loading the main image when it enters the viewport or if it's already cached  */}
+      {(inView || isImageCached) && (
+        <img
+          src={src}
+          alt={alt}
+          className={`main ${shouldCoverContainer ? "cover" : ""}`}
+          style={{
+            opacity: hasImageLoaded ? 1 : 0,
+            // If the image is cached, disable the fade transition
+            transition: isImageCached ? "" : "opacity 1s",
+          }}
+          onLoad={() => setHasImageLoaded(true)}
+        />
+      )}
       <style jsx>{`
         div {
           position: relative;
@@ -51,7 +78,6 @@ export default function LazyImage({
           width: 100%;
           z-index: 1;
           transform: translate3d(0, 0, 0);
-          transition: opacity 1s;
         }
 
         .cover {
