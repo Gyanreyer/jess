@@ -33,13 +33,13 @@ function BannerSection() {
       <video src={reel} muted autoPlay loop />
       <style jsx>{`
         :global(#banner) {
-          height: 90vh;
+          height: 95vh;
           background-color: #363636;
 
           video {
             position: fixed;
             width: 100%;
-            height: 90vh;
+            height: 95vh;
             top: 0;
             left: 0;
             object-fit: cover;
