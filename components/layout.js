@@ -1,7 +1,7 @@
 import React from "react";
 import Link from "next/link";
 
-import { attributes as layoutContents } from "../content/layout.md";
+import layoutContents from "../content/layout.yml";
 
 export default function Layout({
   theme = "light",
@@ -55,7 +55,7 @@ export default function Layout({
         }
 
         #home-logo {
-          width: 8em;
+          width: 8rem;
         }
 
         #nav-links {
@@ -72,12 +72,12 @@ export default function Layout({
         #nav-links a {
           color: ${theme === "light" ? "#2e2e2e" : "#fff"};
           text-decoration: none;
-          font-size: 1.2em;
+          font-size: 1.4rem;
         }
 
         footer {
           margin-bottom: 32px;
-          font-size: 0.8em;
+          font-size: 0.8rem;
           text-align: center;
         }
       `}</style>

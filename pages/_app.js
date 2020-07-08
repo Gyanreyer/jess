@@ -35,11 +35,14 @@ export default function App({ Component, pageProps }) {
 
         html,
         body {
+          font-family: "Avenir", sans-serif;
+          font-size: 100%;
+          color: #2e2e2e;
+        }
+
+        body {
           margin: 0;
           padding: 0;
-
-          font-family: "Avenir", sans-serif;
-          color: #2e2e2e;
         }
       `}</style>
     </>

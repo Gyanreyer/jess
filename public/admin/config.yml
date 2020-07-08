@@ -10,7 +10,7 @@ collections:
     files:
       - name: "layout"
         label: "Layout"
-        file: "content/layout.md"
+        file: "content/layout.yml"
         delete: false
         fields:
           - label: "Header"
@@ -40,7 +40,7 @@ collections:
                 }
       - label: "Home"
         name: "home"
-        file: "content/home.md"
+        file: "content/home.yml"
         delete: false
         fields:
           - label: "SEO"
@@ -83,7 +83,7 @@ collections:
     files:
       - label: "Motion"
         name: "motion"
-        file: "content/work/motion.md"
+        file: "content/work/motion.yml"
         delete: false
         fields:
           - { label: "Page Title", name: "pageTitle", widget: "string" }

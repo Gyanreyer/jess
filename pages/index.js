@@ -4,7 +4,7 @@ import { NextSeo } from "next-seo";
 
 import Layout from "../components/layout.js";
 import LazyImage from "../components/lazyImage.js";
-import { attributes as homeContents } from "../content/home.md";
+import homeContents from "../content/home.yml";
 
 const HomePageSection = React.forwardRef((props, ref) => (
   <>
@@ -12,11 +12,12 @@ const HomePageSection = React.forwardRef((props, ref) => (
     <style jsx>{`
       section {
         position: relative;
+        font-size: 1.2rem;
 
         :global(h1) {
-          font-size: 3em;
+          font-size: 3rem;
           font-weight: normal;
-          margin: 0 0 0.75em;
+          margin: 0 0 0.75rem;
         }
       }
     `}</style>
@@ -81,9 +82,11 @@ function AboutSection() {
         src={require(`../public${aboutSection.backgroundImage}`)}
         shouldCoverContainer
       />
-      <div className="section-content">
-        <h1>{aboutSection.heading}</h1>
-        <ReactMarkdown source={aboutSection.body} />
+      <div className="section-content-wrapper">
+        <div className="content">
+          <h1>{aboutSection.heading}</h1>
+          <ReactMarkdown source={aboutSection.body} />
+        </div>
       </div>
       <style jsx>
         {`
@@ -99,13 +102,18 @@ function AboutSection() {
               height: 100%;
             }
 
-            .section-content {
+            .section-content-wrapper {
               position: relative;
               z-index: 1;
               color: white;
               padding: 25% 10% 15%;
 
               background-color: rgba(54, 54, 54, 0.5);
+
+              .content {
+                margin: 0 auto;
+                max-width: 1080px;
+              }
             }
           }
         `}
@@ -119,20 +127,27 @@ function ContactSection() {
 
   return (
     <HomePageSection id="contact">
-      <h1>{contactSection.heading}</h1>
-      <ReactMarkdown source={contactSection.body} />
-      <ul>
-        <li>phone: {contactSection.phone}</li>
-        <li>email: {contactSection.email}</li>
-      </ul>
+      <div className="content">
+        <h1>{contactSection.heading}</h1>
+        <ReactMarkdown source={contactSection.body} />
+        <ul>
+          <li>phone: {contactSection.phone}</li>
+          <li>email: {contactSection.email}</li>
+        </ul>
+      </div>
       <style jsx>{`
         :global(#contact) {
           padding: 15% 10%;
 
-          ul {
-            list-style-type: none;
-            margin: 0;
-            padding: 0;
+          .content {
+            margin: 0 auto;
+            max-width: 1080px;
+
+            ul {
+              list-style-type: none;
+              margin: 0;
+              padding: 0;
+            }
           }
         }
       `}</style>
