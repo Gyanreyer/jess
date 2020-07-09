@@ -1,7 +1,5 @@
-import React from "react";
-
-import Layout from "../../components/layout.js";
-import LazyImage from "../../components/lazyImage.js";
+import Layout from "../../components/layout";
+import LazyImage from "../../components/lazyImage";
 import motionContents from "../../content/work/motion.yml";
 
 export default function MotionPage() {

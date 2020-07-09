@@ -1,12 +1,13 @@
+import { useEffect, useRef, forwardRef } from "react";
 import Link from "next/link";
 import ReactMarkdown from "react-markdown";
 import { NextSeo } from "next-seo";
 
-import Layout from "../components/layout.js";
-import LazyImage from "../components/lazyImage.js";
+import Layout from "../components/layout";
+import LazyImage from "../components/lazyImage";
 import homeContents from "../content/home.yml";
 
-const HomePageSection = React.forwardRef((props, ref) => (
+const HomePageSection = forwardRef((props, ref) => (
   <>
     <section {...props} ref={ref} />
     <style jsx>{`
@@ -168,25 +169,27 @@ function ContactSection() {
   );
 }
 
-export default function Home() {
-  React.useEffect(() => {
-    function onScroll() {
-      const navElement = document.querySelector("nav");
+function HomeHeaderWrapper({ children }) {
+  const headerRef = useRef();
 
-      if (!navElement) return;
+  useEffect(() => {
+    const headerElement = headerRef.current;
+
+    function onScroll() {
+      if (!headerElement) return;
 
       const scrollMin = window.innerHeight * 0.55;
       const scrollMax = window.innerHeight * 0.75;
 
-      const scrollPos = window.scrollY;
-
       const scrollRangePosition = Math.min(
-        Math.max((scrollPos - scrollMin) / (scrollMax - scrollMin), 0),
+        Math.max((window.scrollY - scrollMin) / (scrollMax - scrollMin), 0),
         1
       );
 
-      navElement.style.opacity = 1 - scrollRangePosition;
-      navElement.style.transform = `translateY(-${scrollRangePosition * 15}%)`;
+      headerElement.style.opacity = 1 - scrollRangePosition;
+      headerElement.style.transform = `translateY(-${
+        scrollRangePosition * 15
+      }%)`;
     }
 
     window.addEventListener("scroll", onScroll);
@@ -195,7 +198,30 @@ export default function Home() {
   }, []);
 
   return (
-    <Layout theme="dark" isHeaderOverlaid>
+    <header ref={headerRef}>
+      {children}
+      <style jsx>{`
+        header {
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
+          z-index: 1;
+
+          color: #fff;
+        }
+      `}</style>
+    </header>
+  );
+}
+
+export default function Home() {
+  return (
+    <Layout
+      headerContentsWrapper={HomeHeaderWrapper}
+      // logoImageSrc={require(`../public${homeContents.logoImage}&resize&size=256`)}
+      logoImageSrc={homeContents.logoImage}
+    >
       <NextSeo
         title={homeContents.seo.pageTitle}
         description={homeContents.seo.description}
@@ -228,17 +254,13 @@ export default function Home() {
         <ContactSection />
       </article>
       <style jsx>{`
-        :global(nav) {
-          position: fixed !important;
-        }
-
         :global(footer) {
           background-color: white;
           transform: translate3d(0, 0, 0);
         }
 
         article {
-          z-index: 1;
+          z-index: 2;
           transform: translate3d(0, 0, 0);
         }
       `}</style>

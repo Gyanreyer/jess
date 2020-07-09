@@ -1,4 +1,4 @@
-import React from "react";
+import { useState, useEffect } from "react";
 import { useInView } from "react-intersection-observer";
 
 export default function LazyImage({
@@ -13,10 +13,10 @@ export default function LazyImage({
     triggerOnce: true,
     rootMargin: "10%",
   });
-  const [hasImageLoaded, setHasImageLoaded] = React.useState(false);
-  const [isImageCached, setIsImageCached] = React.useState(false);
+  const [hasImageLoaded, setHasImageLoaded] = useState(false);
+  const [isImageCached, setIsImageCached] = useState(false);
 
-  React.useEffect(() => {
+  useEffect(() => {
     // Check if the main image src is already loaded because it's cached
     const img = new Image();
     img.src = src;
