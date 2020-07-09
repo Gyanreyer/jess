@@ -1,4 +1,4 @@
-import { useEffect, useRef, forwardRef } from "react";
+import { useEffect, forwardRef, useState } from "react";
 import Link from "next/link";
 import ReactMarkdown from "react-markdown";
 import { NextSeo } from "next-seo";
@@ -25,32 +25,6 @@ const HomePageSection = forwardRef((props, ref) => (
     `}</style>
   </>
 ));
-
-function BannerSection() {
-  const { reel } = homeContents;
-
-  return (
-    <HomePageSection id="banner">
-      <video src={reel} muted autoPlay loop />
-      <style jsx>{`
-        :global(#banner) {
-          height: 95vh;
-          background-color: #363636;
-
-          video {
-            position: fixed;
-            width: 100%;
-            height: 95vh;
-            top: 0;
-            left: 0;
-            object-fit: cover;
-            opacity: 0.5;
-          }
-        }
-      `}</style>
-    </HomePageSection>
-  );
-}
 
 function WorkSection() {
   return (
@@ -169,27 +143,22 @@ function ContactSection() {
   );
 }
 
-function HomeHeaderWrapper({ children }) {
-  const headerRef = useRef();
+function getScrollRangePosition() {
+  const scrollMin = window.innerHeight * 0.55;
+  const scrollMax = window.innerHeight * 0.75;
+
+  return Math.min(
+    Math.max((window.scrollY - scrollMin) / (scrollMax - scrollMin), 0),
+    1
+  );
+}
+
+export default function Home() {
+  const [scrollRangePosition, setScrollRangePosition] = useState(0);
 
   useEffect(() => {
-    const headerElement = headerRef.current;
-
     function onScroll() {
-      if (!headerElement) return;
-
-      const scrollMin = window.innerHeight * 0.55;
-      const scrollMax = window.innerHeight * 0.75;
-
-      const scrollRangePosition = Math.min(
-        Math.max((window.scrollY - scrollMin) / (scrollMax - scrollMin), 0),
-        1
-      );
-
-      headerElement.style.opacity = 1 - scrollRangePosition;
-      headerElement.style.transform = `translateY(-${
-        scrollRangePosition * 15
-      }%)`;
+      setScrollRangePosition(getScrollRangePosition());
     }
 
     window.addEventListener("scroll", onScroll);
@@ -197,11 +166,49 @@ function HomeHeaderWrapper({ children }) {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  const { logoImage, reel, seo } = homeContents;
+
   return (
-    <header ref={headerRef}>
-      {children}
+    <Layout logoImageSrc={require(`../public${logoImage}?resize&size=256`)}>
+      <NextSeo
+        title={seo.pageTitle}
+        description={seo.description}
+        openGraph={{
+          type: "website",
+          title: seo.pageTitle,
+          description: seo.description,
+          images: seo.ogImage
+            ? [
+                {
+                  url: require(`../public${seo.ogImage}?resize&size=1200`),
+                  width: 1200,
+                },
+                {
+                  url: require(`../public${seo.ogImage}?resize&size=400`),
+                  width: 400,
+                },
+                {
+                  url: require(`../public${seo.ogImage}?resize&size=100`),
+                  width: 100,
+                },
+              ]
+            : [],
+        }}
+      />
+      <div className="banner-video-wrapper">
+        <video src={reel} muted autoPlay loop className="banner-video" />
+      </div>
+      <article>
+        <WorkSection />
+        <AboutSection />
+        <ContactSection />
+      </article>
       <style jsx>{`
-        header {
+        :global(header) {
+          opacity: ${1 - scrollRangePosition};
+
+          transform: translateY(-${scrollRangePosition * 15}\%);
+
           position: fixed;
           top: 0;
           left: 0;
@@ -210,50 +217,22 @@ function HomeHeaderWrapper({ children }) {
 
           color: #fff;
         }
-      `}</style>
-    </header>
-  );
-}
 
-export default function Home() {
-  return (
-    <Layout
-      headerContentsWrapper={HomeHeaderWrapper}
-      // logoImageSrc={require(`../public${homeContents.logoImage}&resize&size=256`)}
-      logoImageSrc={homeContents.logoImage}
-    >
-      <NextSeo
-        title={homeContents.seo.pageTitle}
-        description={homeContents.seo.description}
-        openGraph={{
-          type: "website",
-          title: homeContents.seo.pageTitle,
-          description: homeContents.seo.description,
-          images: homeContents.seo.ogImage
-            ? [
-                {
-                  url: require(`../public${homeContents.seo.ogImage}&resize&size=1200`),
-                  width: 1200,
-                },
-                {
-                  url: require(`../public${homeContents.seo.ogImage}&resize&size=400`),
-                  width: 400,
-                },
-                {
-                  url: require(`../public${homeContents.seo.ogImage}&resize&size=100`),
-                  width: 100,
-                },
-              ]
-            : [],
-        }}
-      />
-      <BannerSection />
-      <article>
-        <WorkSection />
-        <AboutSection />
-        <ContactSection />
-      </article>
-      <style jsx>{`
+        .banner-video-wrapper {
+          height: 95vh;
+          background-color: #363636;
+
+          video {
+            position: fixed;
+            width: 100%;
+            height: 95vh;
+            top: 0;
+            left: 0;
+            object-fit: cover;
+            opacity: ${0.5 - scrollRangePosition * 0.25};
+          }
+        }
+
         :global(footer) {
           background-color: white;
           transform: translate3d(0, 0, 0);

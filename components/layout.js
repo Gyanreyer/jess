@@ -4,17 +4,25 @@ import layoutContents from "../content/layout.yml";
 
 export default function Layout({
   headerContentsWrapper: HeaderContentsWrapper = "header",
-  // logoImageSrc = require(`../public${layoutContents.header.baseLogo}&resize&size=256`),
-  logoImageSrc = layoutContents.header.baseLogo,
+  logoImageSrc,
   children,
 }) {
+  const { header, footer } = layoutContents;
+
   return (
     <main>
       <HeaderContentsWrapper>
         <nav>
           <Link href="/">
             <a>
-              <img src={logoImageSrc} alt="Jess" className="home-logo" />
+              <img
+                src={
+                  logoImageSrc ||
+                  require(`../public${header.baseLogo}?resize&size=256`)
+                }
+                alt="Jess"
+                className="home-logo"
+              />
             </a>
           </Link>
           <ul className="nav-links">
@@ -32,7 +40,7 @@ export default function Layout({
         </nav>
       </HeaderContentsWrapper>
       {children}
-      <footer>{layoutContents.footer.textContent}</footer>
+      <footer>{footer.textContent}</footer>
       <style jsx>{`
         nav {
           position: relative;
