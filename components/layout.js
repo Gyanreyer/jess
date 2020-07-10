@@ -5,6 +5,21 @@ import layoutContents from "../content/layout.yml";
 export default function Layout({ logoImageSrc, headerStyle, children }) {
   const { header, footer } = layoutContents;
 
+  function onClickNavAnchorLink(event) {
+    const linkId = event.target.href.split("#")[1];
+
+    const linkTarget = document.getElementById(linkId);
+
+    if (linkTarget) {
+      event.preventDefault();
+
+      window.scroll({
+        top: window.scrollY + linkTarget.getBoundingClientRect().top,
+        behavior: "smooth",
+      });
+    }
+  }
+
   return (
     <main>
       <header style={headerStyle}>
@@ -13,8 +28,7 @@ export default function Layout({ logoImageSrc, headerStyle, children }) {
             <a>
               <img
                 src={
-                  logoImageSrc ||
-                  require(`../public${header.baseLogo}?resize&size=256`)
+                  logoImageSrc || require(`${header.baseLogo}?resize&size=256`)
                 }
                 alt="Jess"
                 className="home-logo"
@@ -24,12 +38,16 @@ export default function Layout({ logoImageSrc, headerStyle, children }) {
           <ul className="nav-links">
             <li>
               <Link href="/#work">
-                <a>work</a>
+                <a href="/#work" onClick={onClickNavAnchorLink}>
+                  work
+                </a>
               </Link>
             </li>
             <li>
               <Link href="/#contact">
-                <a>contact</a>
+                <a href="/#contact" onClick={onClickNavAnchorLink}>
+                  contact
+                </a>
               </Link>
             </li>
           </ul>
