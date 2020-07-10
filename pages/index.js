@@ -169,7 +169,13 @@ export default function Home() {
   const { logoImage, reel, seo } = homeContents;
 
   return (
-    <Layout logoImageSrc={require(`../public${logoImage}?resize&size=256`)}>
+    <Layout
+      logoImageSrc={require(`../public${logoImage}?resize&size=256`)}
+      headerStyle={{
+        opacity: 1 - scrollRangePosition,
+        transform: `translateY(${scrollRangePosition * -15}%)`,
+      }}
+    >
       <NextSeo
         title={seo.pageTitle}
         description={seo.description}
@@ -197,6 +203,10 @@ export default function Home() {
       />
       <div className="banner-video-wrapper">
         <video src={reel} muted autoPlay loop className="banner-video" />
+        <div
+          className="banner-video-overlay"
+          style={{ opacity: 0.5 + scrollRangePosition * 0.4 }}
+        />
       </div>
       <article>
         <WorkSection />
@@ -205,10 +215,6 @@ export default function Home() {
       </article>
       <style jsx>{`
         :global(header) {
-          opacity: ${1 - scrollRangePosition};
-
-          transform: translateY(-${scrollRangePosition * 15}\%);
-
           position: fixed;
           top: 0;
           left: 0;
@@ -220,7 +226,6 @@ export default function Home() {
 
         .banner-video-wrapper {
           height: 95vh;
-          background-color: #363636;
 
           video {
             position: fixed;
@@ -229,7 +234,15 @@ export default function Home() {
             top: 0;
             left: 0;
             object-fit: cover;
-            opacity: ${0.5 - scrollRangePosition * 0.25};
+          }
+
+          .banner-video-overlay {
+            background-color: #363636;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
           }
         }
 

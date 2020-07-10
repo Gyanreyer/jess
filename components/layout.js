@@ -2,16 +2,12 @@ import Link from "next/link";
 
 import layoutContents from "../content/layout.yml";
 
-export default function Layout({
-  headerContentsWrapper: HeaderContentsWrapper = "header",
-  logoImageSrc,
-  children,
-}) {
+export default function Layout({ logoImageSrc, headerStyle, children }) {
   const { header, footer } = layoutContents;
 
   return (
     <main>
-      <HeaderContentsWrapper>
+      <header style={headerStyle}>
         <nav>
           <Link href="/">
             <a>
@@ -38,7 +34,7 @@ export default function Layout({
             </li>
           </ul>
         </nav>
-      </HeaderContentsWrapper>
+      </header>
       {children}
       <footer>{footer.textContent}</footer>
       <style jsx>{`
