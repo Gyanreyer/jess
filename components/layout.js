@@ -28,7 +28,8 @@ export default function Layout({ logoImageSrc, headerStyle, children }) {
             <a>
               <img
                 src={
-                  logoImageSrc || require(`${header.baseLogo}?resize&size=256`)
+                  logoImageSrc ||
+                  require(`../public${header.baseLogo}?resize&size=256`)
                 }
                 alt="Jess"
                 className="home-logo"
