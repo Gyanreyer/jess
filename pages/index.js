@@ -173,7 +173,7 @@ export default function Home() {
       logoImageSrc={require(`../public${logoImage}?resize&size=256`)}
       headerStyle={{
         opacity: 1 - scrollRangePosition,
-        transform: `translateY(${scrollRangePosition * -15}%)`,
+        top: scrollRangePosition * -32,
       }}
     >
       <NextSeo
