@@ -1,4 +1,4 @@
-import { useEffect, forwardRef, useState } from "react";
+import { useEffect, forwardRef } from "react";
 import Link from "next/link";
 import ReactMarkdown from "react-markdown";
 import { NextSeo } from "next-seo";
@@ -144,38 +144,41 @@ function ContactSection() {
 }
 
 function getScrollRangePosition() {
-  const scrollMin = window.innerHeight * 0.55;
-  const scrollMax = window.innerHeight * 0.75;
+  const scrollMin = window.innerHeight * 0.1;
+  const scrollMax = window.innerHeight * 0.8;
 
-  return Math.min(
-    Math.max((window.scrollY - scrollMin) / (scrollMax - scrollMin), 0),
-    1
+  return (
+    Math.min(
+      Math.max((window.scrollY - scrollMin) / (scrollMax - scrollMin), 0),
+      1
+      // Apply a quadratic ease in
+    ) ** 2
   );
 }
 
 export default function Home() {
-  const [scrollRangePosition, setScrollRangePosition] = useState(0);
-
   useEffect(() => {
     function onScroll() {
-      setScrollRangePosition(getScrollRangePosition());
+      document.body.style.setProperty(
+        "--scroll-range-position",
+        getScrollRangePosition()
+      );
     }
 
-    window.addEventListener("scroll", onScroll);
+    // Call onScroll once on mount to get our styles initialized correctly
+    onScroll();
 
-    return () => window.removeEventListener("scroll", onScroll);
+    const eventOptions = { passive: true };
+
+    window.addEventListener("scroll", onScroll, eventOptions);
+
+    return () => window.removeEventListener("scroll", onScroll, eventOptions);
   }, []);
 
   const { logoImage, reel, seo } = homeContents;
 
   return (
-    <Layout
-      logoImageSrc={require(`../public${logoImage}?resize&size=256`)}
-      headerStyle={{
-        opacity: 1 - scrollRangePosition,
-        top: scrollRangePosition * -32,
-      }}
-    >
+    <Layout logoImageSrc={require(`../public${logoImage}?resize&size=256`)}>
       <NextSeo
         title={seo.pageTitle}
         description={seo.description}
@@ -203,10 +206,7 @@ export default function Home() {
       />
       <div className="banner-video-wrapper">
         <video src={reel} muted autoPlay loop className="banner-video" />
-        <div
-          className="banner-video-overlay"
-          style={{ opacity: 0.5 + scrollRangePosition * 0.4 }}
-        />
+        <div className="banner-video-overlay" />
       </div>
       <article>
         <WorkSection />
@@ -214,6 +214,10 @@ export default function Home() {
         <ContactSection />
       </article>
       <style jsx>{`
+        body {
+          --scroll-range-position: 0;
+        }
+
         :global(header) {
           position: fixed;
           top: 0;
@@ -222,6 +226,12 @@ export default function Home() {
           z-index: 1;
 
           color: #fff;
+
+          opacity: calc(1 - var(--scroll-range-position));
+
+          --translate-offset: calc(var(--scroll-range-position) * -32px);
+          --scale: calc(1 + var(--scroll-range-position) / 20);
+          transform: scale(var(--scale)) translateY(var(--translate-offset));
         }
 
         .banner-video-wrapper {
@@ -234,6 +244,9 @@ export default function Home() {
             top: 0;
             left: 0;
             object-fit: cover;
+            --scale: calc(1 + var(--scroll-range-position) / 3);
+            transform: scale(var(--scale));
+            transform-origin: center bottom;
           }
 
           .banner-video-overlay {
@@ -243,6 +256,8 @@ export default function Home() {
             height: 100%;
             top: 0;
             left: 0;
+
+            opacity: calc(0.5 + var(--scroll-range-position) * 0.4);
           }
         }
 

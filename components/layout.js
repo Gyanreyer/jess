@@ -85,6 +85,7 @@ export default function Layout({ logoImageSrc, headerStyle, children }) {
             margin-left: 2em;
 
             a {
+              display: inline-block;
               color: inherit;
               text-decoration: none;
               font-size: 1.4rem;
