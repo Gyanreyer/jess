@@ -1,6 +1,11 @@
 import { useState, useEffect } from "react";
 import { useInView } from "react-intersection-observer";
 
+const lazyImageIntersectionObserverConfig = {
+  triggerOnce: true,
+  rootMargin: "10%",
+};
+
 export default function LazyImage({
   src,
   placeholderSrc,
@@ -9,10 +14,9 @@ export default function LazyImage({
   className = "",
   style = null,
 }) {
-  const [imageContainerRef, inView] = useInView({
-    triggerOnce: true,
-    rootMargin: "10%",
-  });
+  const [imageContainerRef, inView] = useInView(
+    lazyImageIntersectionObserverConfig
+  );
   const [hasImageLoaded, setHasImageLoaded] = useState(false);
   const [isImageCached, setIsImageCached] = useState(false);
 

@@ -1,7 +1,8 @@
-import { useEffect, forwardRef } from "react";
+import { useEffect, forwardRef, useState } from "react";
 import Link from "next/link";
 import ReactMarkdown from "react-markdown";
 import { NextSeo } from "next-seo";
+import { useInView } from "react-intersection-observer";
 
 import Layout from "../components/layout";
 import LazyImage from "../components/lazyImage";
@@ -25,6 +26,42 @@ const HomePageSection = forwardRef((props, ref) => (
     `}</style>
   </>
 ));
+
+const fadeInContentsObserverConfig = {
+  triggerOnce: true,
+  threshold: 0.2,
+};
+
+const FadeInContentWrapper = ({ children }) => {
+  const [contentsRef, isInView] = useInView(fadeInContentsObserverConfig);
+
+  const [shouldShowContents, setShouldShowContents] = useState(isInView);
+
+  useEffect(() => {
+    if (!shouldShowContents) setShouldShowContents(isInView);
+  }, [isInView, shouldShowContents]);
+
+  return (
+    <>
+      <div
+        style={{
+          opacity: shouldShowContents ? 1 : 0,
+          transform: `translateY(${shouldShowContents ? "0" : "20%"})`,
+        }}
+        ref={contentsRef}
+      >
+        {children}
+      </div>
+      <style jsx>{`
+        div {
+          transition: opacity, transform;
+          transition-duration: 1s;
+          transition-timing-function: ease-out;
+        }
+      `}</style>
+    </>
+  );
+};
 
 function WorkSection() {
   return (
@@ -71,10 +108,12 @@ function AboutSection() {
         shouldCoverContainer
       />
       <div className="section-content-wrapper">
-        <div className="content">
-          <h1>{aboutSection.heading}</h1>
-          <ReactMarkdown source={aboutSection.body} />
-        </div>
+        <FadeInContentWrapper>
+          <div className="content">
+            <h1>{aboutSection.heading}</h1>
+            <ReactMarkdown source={aboutSection.body} />
+          </div>
+        </FadeInContentWrapper>
       </div>
       <style jsx>
         {`
@@ -115,14 +154,16 @@ function ContactSection() {
 
   return (
     <HomePageSection id="contact">
-      <div className="content">
-        <h1>{contactSection.heading}</h1>
-        <ReactMarkdown source={contactSection.body} />
-        <ul>
-          <li>phone: {contactSection.phone}</li>
-          <li>email: {contactSection.email}</li>
-        </ul>
-      </div>
+      <FadeInContentWrapper>
+        <div className="content">
+          <h1>{contactSection.heading}</h1>
+          <ReactMarkdown source={contactSection.body} />
+          <ul>
+            <li>phone: {contactSection.phone}</li>
+            <li>email: {contactSection.email}</li>
+          </ul>
+        </div>
+      </FadeInContentWrapper>
       <style jsx>{`
         :global(#contact) {
           padding: 15% 10%;
@@ -145,7 +186,7 @@ function ContactSection() {
 
 function getScrollRangePosition() {
   const scrollMin = window.innerHeight * 0.1;
-  const scrollMax = window.innerHeight * 0.8;
+  const scrollMax = window.innerHeight * 0.95;
 
   return (
     Math.min(
@@ -227,11 +268,10 @@ export default function Home() {
 
           color: #fff;
 
-          opacity: calc(1 - var(--scroll-range-position));
+          opacity: calc(1 - calc(var(--scroll-range-position) * 1.2));
 
           --translate-offset: calc(var(--scroll-range-position) * -32px);
-          --scale: calc(1 + var(--scroll-range-position) / 20);
-          transform: scale(var(--scale)) translateY(var(--translate-offset));
+          transform: translateY(var(--translate-offset));
         }
 
         .banner-video-wrapper {
@@ -244,20 +284,21 @@ export default function Home() {
             top: 0;
             left: 0;
             object-fit: cover;
+            --translate-offset: calc(var(--scroll-range-position) * -25%);
             --scale: calc(1 + var(--scroll-range-position) / 3);
-            transform: scale(var(--scale));
+            transform: scale(var(--scale)) translateY(var(--translate-offset));
             transform-origin: center bottom;
           }
 
           .banner-video-overlay {
-            background-color: #363636;
+            background-color: #000;
             position: absolute;
             width: 100%;
             height: 100%;
             top: 0;
             left: 0;
 
-            opacity: calc(0.5 + var(--scroll-range-position) * 0.4);
+            opacity: calc(0.25 + var(--scroll-range-position) * 0.4);
           }
         }
 
@@ -267,6 +308,7 @@ export default function Home() {
         }
 
         article {
+          position: relative;
           z-index: 2;
           transform: translate3d(0, 0, 0);
         }
