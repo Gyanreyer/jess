@@ -18,7 +18,13 @@ const ContactSection = () => (
         <li>phone: {phone}</li>
         <li>email: {email}</li>
       </ul>
-      <form name="contact" method="post" data-netlify>
+      <form
+        name="contact"
+        method="POST"
+        action="/#contact?contact-success=true"
+        data-netlify
+        data-netlify-recaptcha
+      >
         <label htmlFor="name">
           name
           <input type="text" id="name" name="name" />
@@ -31,6 +37,7 @@ const ContactSection = () => (
           message
           <textarea id="message" name="message" />
         </label>
+        <div data-netlify-recaptcha />
         <button type="submit">submit</button>
       </form>
     </div>
