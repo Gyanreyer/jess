@@ -1,5 +1,7 @@
 import smoothscroll from "smoothscroll-polyfill";
 
+import { backgroundColor, grayColor } from "../constants/colors";
+
 if (process.browser) {
   // If this is running on the browser rather than when nextjs is pre-rendering,
   // apply our smoothscroll polyfill
@@ -43,7 +45,8 @@ export default function App({ Component, pageProps }) {
         body {
           font-family: "Avenir", sans-serif;
           font-size: 100%;
-          color: #2e2e2e;
+          color: ${grayColor};
+          background-color: ${backgroundColor};
         }
 
         body {

@@ -1,8 +1,8 @@
 import HoverVideoPlayer from "react-hover-video-player";
 import ReactMarkdown from "react-markdown";
 
-import Layout from "../../components/layout";
-import LazyImage from "../../components/lazyImage";
+import Layout from "../../components/shared/layout";
+import LazyImage from "../../components/shared/lazyImage";
 import motionContents from "../../content/work/motion.yml";
 
 export default function MotionPage() {

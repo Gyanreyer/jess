@@ -65,6 +65,7 @@ collections:
                   name: "backgroundImage",
                   widget: "image",
                 }
+              - { label: "Resume File", name: "resumeFile", widget: "file" }
           - label: "Contact Section"
             name: "contactSection"
             widget: "object"

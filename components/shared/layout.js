@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-import layoutContents from "../content/layout.yml";
+import layoutContents from "../../content/layout.yml";
 
 export default function Layout({ logoImageSrc, headerStyle, children }) {
   const { header, footer } = layoutContents;
@@ -29,7 +29,7 @@ export default function Layout({ logoImageSrc, headerStyle, children }) {
               <img
                 src={
                   logoImageSrc ||
-                  require(`../public${header.baseLogo}?resize&size=256`)
+                  require(`../../public${header.baseLogo}?resize&size=256`)
                 }
                 alt="Jess"
                 className="home-logo"
@@ -59,16 +59,15 @@ export default function Layout({ logoImageSrc, headerStyle, children }) {
       <style jsx>{`
         nav {
           position: relative;
-          width: 100%;
           top: 0;
           left: 0;
           z-index: 1;
 
-          padding: 48px 5%;
-          box-sizing: border-box;
+          padding: 16px 5%;
 
           display: flex;
           justify-content: space-between;
+          align-items: center;
         }
 
         .home-logo {
