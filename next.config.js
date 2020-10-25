@@ -14,11 +14,12 @@ module.exports = withPlugins([optimizedImages, withTM], {
     });
     return cfg;
   },
-  async rewrites() {
+  async redirects() {
     return [
       {
         source: "/contact-success",
-        destination: "/#contact?contact=success",
+        destination: "/#contact-success",
+        permanent: true,
       },
     ];
   },
