@@ -14,13 +14,4 @@ module.exports = withPlugins([optimizedImages, withTM], {
     });
     return cfg;
   },
-  async redirects() {
-    return [
-      {
-        source: "/contact-success",
-        destination: "/#contact-success",
-        permanent: true,
-      },
-    ];
-  },
 });
