@@ -19,6 +19,9 @@ const ContactSection = () => {
 
   return (
     <HomePageSection id="contact">
+      <div id="contact-success">
+        Thank you! Your message has been submitted.
+      </div>
       <div className="content">
         <h1>{heading}</h1>
         <ReactMarkdown source={body} className="body-text" />
@@ -28,17 +31,6 @@ const ContactSection = () => {
           data-netlify-recaptcha
           method="POST"
           action="/contact-success"
-          // onSubmit={(event) => {
-          //   event.preventDefault();
-
-          //   // If we have a request currently loading, don't do anything
-          //   if (loading) return;
-
-          //   const serializedFormData = new FormData(event.target);
-
-          //   // Post the form's serialized data
-          //   post(serializedFormData);
-          // }}
         >
           <label htmlFor="name">
             name
@@ -69,6 +61,13 @@ const ContactSection = () => {
 
           p {
             margin: 0;
+          }
+        }
+
+        #contact-success {
+          display: none;
+          :target {
+            display: block;
           }
         }
 
