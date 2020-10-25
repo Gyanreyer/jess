@@ -1,5 +1,4 @@
 // Vendor
-import Link from "next/link";
 import ReactMarkdown from "react-markdown";
 
 // Components
@@ -70,12 +69,14 @@ const AboutSection = () => (
           }
 
           .resume-link {
-            display: inline-block;
+            display: block;
+            width: 12rem;
             padding: 6px;
             /* Text styling */
             text-decoration: none;
             font-weight: bold;
             font-size: 1.6rem;
+            text-align: center;
             /* Colors */
             background-color: ${orangeAccentColor};
             color: ${backgroundColor};
@@ -84,6 +85,8 @@ const AboutSection = () => (
               display: inline-block;
               border: 4px solid ${backgroundColor};
               padding: 4px 8px;
+              width: 100%;
+              box-sizing: border-box;
             }
           }
         }

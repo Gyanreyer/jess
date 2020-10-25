@@ -72,8 +72,6 @@ collections:
             fields:
               - { label: "Heading", name: "heading", widget: "string" }
               - { label: "Body", name: "body", widget: "markdown" }
-              - { label: "Phone Number", name: "phone", widget: "string" }
-              - { label: "Email", name: "email", widget: "string" }
   - name: "work"
     label: "Work"
     files:
