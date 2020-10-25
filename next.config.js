@@ -14,4 +14,12 @@ module.exports = withPlugins([optimizedImages, withTM], {
     });
     return cfg;
   },
+  async rewrites() {
+    return [
+      {
+        source: "/contact-success",
+        destination: "/#contact?contact=success",
+      },
+    ];
+  },
 });

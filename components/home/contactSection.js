@@ -14,9 +14,8 @@ import homepageConfig from "../../content/home.yml";
 const { heading, body } = homepageConfig.contactSection;
 
 const ContactSection = () => {
-  const { post, response, loading, error } = useFetch("/");
-
-  console.log(response);
+  // const { post, response, loading, error } = useFetch();
+  // console.log(response);
 
   return (
     <HomePageSection id="contact">
@@ -27,15 +26,19 @@ const ContactSection = () => {
           name="contact"
           data-netlify
           data-netlify-recaptcha
-          onSubmit={(event) => {
-            event.preventDefault();
+          method="POST"
+          action="/contact-success"
+          // onSubmit={(event) => {
+          //   event.preventDefault();
 
-            // If we have a request currently loading, don't do anything
-            if (loading) return;
+          //   // If we have a request currently loading, don't do anything
+          //   if (loading) return;
 
-            // Post the form's serialized data
-            post(FormData(event.target));
-          }}
+          //   const serializedFormData = new FormData(event.target);
+
+          //   // Post the form's serialized data
+          //   post(serializedFormData);
+          // }}
         >
           <label htmlFor="name">
             name
