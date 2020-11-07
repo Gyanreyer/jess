@@ -26,15 +26,15 @@ const ContactSection = () => (
         <input type="hidden" name="form-name" value="contact" />
         <label htmlFor="name">
           name
-          <input type="text" id="name" name="name" />
+          <input type="text" id="name" name="name" required />
         </label>
         <label htmlFor="email">
           email
-          <input type="text" id="email" name="email" />
+          <input type="email" id="email" name="email" required />
         </label>
         <label htmlFor="message">
           message
-          <textarea id="message" name="message" rows={4} />
+          <textarea id="message" name="message" rows={4} required />
         </label>
         <button type="submit">
           <span>submit</span>
