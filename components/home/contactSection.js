@@ -43,7 +43,7 @@ const ContactSection = () => (
     </div>
     <style jsx>{`
       :global(#contact) {
-        padding: 7% 9% 9%;
+        padding: 7% 9% 0;
         max-width: 50rem;
       }
 

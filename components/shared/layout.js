@@ -1,5 +1,7 @@
 import Link from "next/link";
 
+import { orangeAccentColor } from "../../constants/colors";
+
 import layoutContents from "../../content/layout.yml";
 
 export default function Layout({ logoImageSrc, headerStyle, children }) {
@@ -63,7 +65,7 @@ export default function Layout({ logoImageSrc, headerStyle, children }) {
           left: 0;
           z-index: 1;
 
-          padding: 16px 5%;
+          padding: 1.5rem 4%;
 
           display: flex;
           justify-content: space-between;
@@ -85,7 +87,7 @@ export default function Layout({ logoImageSrc, headerStyle, children }) {
 
             a {
               display: inline-block;
-              color: inherit;
+              color: ${orangeAccentColor};
               text-decoration: none;
               font-size: 1.4rem;
             }
@@ -93,7 +95,7 @@ export default function Layout({ logoImageSrc, headerStyle, children }) {
         }
 
         footer {
-          padding-bottom: 32px;
+          padding: 9% 2rem 2rem;
           font-size: 0.8rem;
           text-align: center;
         }

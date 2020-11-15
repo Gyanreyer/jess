@@ -39,14 +39,16 @@ export default function LazyImage({
   }, [src]);
 
   return (
-    <div ref={imageContainerRef} className={className} style={style}>
+    <div
+      ref={imageContainerRef}
+      className={`${shouldCoverContainer ? "cover " : ""}${className}`}
+      style={style}
+    >
       {!isImageCached && (
         <img
           src={placeholderSrc}
           alt=""
-          className={`placeholder ${
-            shouldCoverContainer || hasImageLoaded ? "cover" : ""
-          }`}
+          className={`placeholder ${hasImageLoaded ? "loaded" : ""}`}
         />
       )}
       {/* Only start displaying/loading the main image when it enters the viewport or if it's already cached  */}
@@ -54,7 +56,7 @@ export default function LazyImage({
         <img
           src={src}
           alt={alt}
-          className={`main ${shouldCoverContainer ? "cover" : ""}`}
+          className="main"
           style={{
             opacity: hasImageLoaded ? 1 : 0,
             // If the image is cached, disable the fade transition
@@ -67,10 +69,28 @@ export default function LazyImage({
         div {
           position: relative;
           overflow: hidden;
+
+          &.cover {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+          }
         }
 
         img {
           display: block;
+        }
+
+        .cover img,
+        .placeholder.loaded {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
         }
 
         .placeholder {
@@ -82,15 +102,6 @@ export default function LazyImage({
           width: 100%;
           z-index: 1;
           transform: translate3d(0, 0, 0);
-        }
-
-        .cover {
-          position: absolute;
-          top: 0;
-          left: 0;
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
         }
       `}</style>
     </div>

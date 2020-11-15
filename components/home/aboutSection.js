@@ -33,7 +33,6 @@ export default function AboutSection() {
   return (
     <HomePageSection id="about">
       <LazyImage
-        className="background-image"
         placeholderSrc={require(`../../public${backgroundImage}?resize&size=24`)}
         src={require(`../../public${backgroundImage}`)}
         shouldCoverContainer
@@ -58,15 +57,6 @@ export default function AboutSection() {
         {`
           :global(#about) {
             background-color: #363636;
-
-            :global(.background-image) {
-              object-fit: cover;
-              position: absolute;
-              top: 0;
-              left: 0;
-              width: 100%;
-              height: 100%;
-            }
           }
 
           .section-content-wrapper {
