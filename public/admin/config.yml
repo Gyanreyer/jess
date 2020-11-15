@@ -80,7 +80,27 @@ collections:
         file: "content/work/motion.yml"
         delete: false
         fields:
+          - label: "SEO"
+            name: "seo"
+            widget: "object"
+            fields:
+              - { label: "Page Title", name: "pageTitle", widget: "string" }
+              - {
+                  label: "Page Description",
+                  name: "pageDescription",
+                  widget: "string",
+                }
+              - {
+                  label: "OpenGraph Preview Image",
+                  name: "ogImage",
+                  widget: "image",
+                }
           - { label: "Page Title", name: "pageTitle", widget: "string" }
+          - {
+              label: "Page Description",
+              name: "pageDescription",
+              widget: "markdown",
+            }
           - label: "Projects"
             name: "projects"
             widget: list
