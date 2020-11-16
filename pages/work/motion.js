@@ -44,9 +44,10 @@ export default function MotionPage() {
         subtext={motionContents.pageDescription}
       />
       <ul>
-        {projects.map(({ title, description, thumbnail, video }) => (
+        {projects.map(({ title, description, video }) => (
           <li key={title}>
-            <HoverVideoPlayer
+            <video src={video} autoPlay playsInline muted loop />
+            {/* <HoverVideoPlayer
               videoSrc={video}
               pausedOverlay={
                 <LazyImage
@@ -59,15 +60,17 @@ export default function MotionPage() {
               className="hover-video-player"
               sizingMode="container"
               preload="metadata"
-            />
-            <div className="overlay">
-              <div className="overlay-border">
-                <div className="overlay-contents">
-                  <h3>{title}</h3>
-                  <ReactMarkdown source={description} />
+            /> */}
+            {description ? (
+              <div className="overlay">
+                <div className="overlay-border">
+                  <div className="overlay-contents">
+                    <h3>{title}</h3>
+                    <ReactMarkdown source={description} />
+                  </div>
                 </div>
               </div>
-            </div>
+            ) : null}
           </li>
         ))}
       </ul>
@@ -83,29 +86,29 @@ export default function MotionPage() {
 
           li {
             position: relative;
-
-            :global(.hover-video-player) {
-              padding-top: 100%;
-            }
+            padding-top: 100%;
 
             &:nth-child(3n) {
               grid-column: 1 / 3;
 
-              :global(.hover-video-player) {
-                padding-top: 56.25%;
-              }
+              padding-top: 56.25%;
             }
 
-            :global(.background-image) {
-              pointer-events: none;
-            }
-
+            video,
             .overlay {
+              display: block;
               position: absolute;
               top: 0;
               left: 0;
               width: 100%;
               height: 100%;
+            }
+
+            video {
+              object-fit: cover;
+            }
+
+            .overlay {
               padding: 1.5rem 1rem;
               box-sizing: border-box;
               z-index: 1;
