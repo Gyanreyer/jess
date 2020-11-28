@@ -1,11 +1,10 @@
-import HoverVideoPlayer from "react-hover-video-player";
 import ReactMarkdown from "react-markdown";
 import { NextSeo } from "next-seo";
 
 import Layout from "../../components/shared/layout";
-import LazyImage from "../../components/shared/lazyImage";
 import WorkPageHeading from "../../components/work/workPageHeading";
-import { blueAccentColor, backgroundColor } from "../../constants/colors";
+import AnimatedBorder from "../../components/shared/animatedBorder";
+import { blueAccentColor } from "../../constants/colors";
 
 import motionContents from "../../content/work/motion.yml";
 
@@ -47,28 +46,19 @@ export default function MotionPage() {
         {projects.map(({ title, description, video }) => (
           <li key={title}>
             <video src={video} autoPlay playsInline muted loop />
-            {/* <HoverVideoPlayer
-              videoSrc={video}
-              pausedOverlay={
-                <LazyImage
-                  className="background-image"
-                  placeholderSrc={require(`../../public${thumbnail}?resize&size=24`)}
-                  src={require(`../../public${thumbnail}`)}
-                  shouldCoverContainer
-                />
-              }
-              className="hover-video-player"
-              sizingMode="container"
-              preload="metadata"
-            /> */}
             {description ? (
               <div className="overlay">
-                <div className="overlay-border">
+                <AnimatedBorder
+                  animationTriggerMode="hover"
+                  shouldRunOnce={false}
+                  className="overlay-border"
+                  // transitionDuration={400}
+                >
                   <div className="overlay-contents">
                     <h3>{title}</h3>
                     <ReactMarkdown source={description} />
                   </div>
-                </div>
+                </AnimatedBorder>
               </div>
             ) : null}
           </li>
@@ -87,6 +77,8 @@ export default function MotionPage() {
           li {
             position: relative;
             padding-top: 100%;
+
+            padding-top: 80%;
 
             &:nth-child(3n) {
               grid-column: 1 / 3;
@@ -112,24 +104,16 @@ export default function MotionPage() {
               padding: 1.5rem 1rem;
               box-sizing: border-box;
               z-index: 1;
-              background-color: ${blueAccentColor}99;
               color: white;
-
-              pointer-events: none;
-
-              opacity: 0;
-              transition: opacity 0.4s;
+              /* Background color is transpareent until hovered */
+              background-color: ${blueAccentColor}00;
+              transition: background-color 0.4s;
+              transition-delay: 0.4s;
             }
 
-            &:hover .overlay {
-              opacity: 1;
-            }
-
-            .overlay-border {
-              border: 0.5rem solid ${backgroundColor};
+            :global(.overlay-border) {
               width: 100%;
               height: 100%;
-              padding: 1rem;
               box-sizing: border-box;
             }
 
@@ -137,6 +121,14 @@ export default function MotionPage() {
               position: relative;
               top: 50%;
               height: 50%;
+              padding: 1rem;
+
+              opacity: 0;
+              transform: translateY(1rem);
+              transition: opacity, transform;
+              transition-duration: 0.2s;
+              transition-timing-function: ease-in-out;
+              transition-delay: 0.4s;
 
               h3 {
                 margin: 0;
@@ -146,6 +138,18 @@ export default function MotionPage() {
 
               :global(p) {
                 margin: 1.2rem 0;
+              }
+            }
+
+            &:hover {
+              .overlay {
+                background-color: ${blueAccentColor}99;
+                transition-delay: 0;
+              }
+              .overlay-contents {
+                opacity: 1;
+                transform: translateY(0);
+                transition-delay: 0;
               }
             }
           }

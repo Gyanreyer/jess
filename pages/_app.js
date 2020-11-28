@@ -46,7 +46,7 @@ export default function App({ Component, pageProps }) {
           font-family: "Avenir", sans-serif;
           font-size: 100%;
           color: ${grayColor};
-          background-color: ${backgroundColor};
+          background-color: white;
         }
 
         body {

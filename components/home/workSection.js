@@ -37,7 +37,7 @@ const WorkSectionLink = ({ sectionName, url }) => (
             align-items: center;
             position: relative;
 
-            padding: 18px 18px 18px 18px;
+            padding: 2rem 1rem 2rem 1.5rem;
             border: 8px solid ${backgroundColor};
             color: ${backgroundColor};
             font-size: 2.2rem;
@@ -48,7 +48,7 @@ const WorkSectionLink = ({ sectionName, url }) => (
               --arrow-icon-width: 1.2em;
               width: 0;
               height: var(--arrow-icon-width);
-              padding-left: 16px;
+              padding-left: 1rem;
               transition: width 0.2s ease-in-out;
             }
 
