@@ -7,7 +7,7 @@ import LazyImage from "../shared/lazyImage";
 import AnimatedBorder from "../shared/animatedBorder";
 
 // Constants
-import { backgroundColor, orangeAccentColor } from "../../constants/colors";
+import { primaryColor, primaryAccentColor } from "../../constants/colors";
 
 // Content
 import homepageConfig from "../../content/home.yml";
@@ -49,7 +49,7 @@ export default function AboutSection() {
             z-index: 1;
             padding: 2% 4%;
 
-            color: ${backgroundColor};
+            color: ${primaryColor};
             background-color: rgba(95, 120, 144, 0.4);
           }
 
@@ -74,12 +74,12 @@ export default function AboutSection() {
             font-size: 1.6rem;
             text-align: center;
             /* Colors */
-            background-color: ${orangeAccentColor};
-            color: ${backgroundColor};
+            background-color: ${primaryAccentColor};
+            color: ${primaryColor};
 
             span {
               display: inline-block;
-              border: 4px solid ${backgroundColor};
+              border: 4px solid ${primaryColor};
               padding: 4px 8px;
               width: 100%;
               box-sizing: border-box;

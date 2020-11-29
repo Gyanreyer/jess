@@ -4,7 +4,7 @@ import { NextSeo } from "next-seo";
 import Layout from "../../components/shared/layout";
 import WorkPageHeading from "../../components/work/workPageHeading";
 import AnimatedBorder from "../../components/shared/animatedBorder";
-import { blueAccentColor } from "../../constants/colors";
+import { secondaryAccentColor } from "../../constants/colors";
 
 import motionContents from "../../content/work/motion.yml";
 
@@ -106,7 +106,7 @@ export default function MotionPage() {
               z-index: 1;
               color: white;
               /* Background color is transparent until hovered */
-              background-color: ${blueAccentColor}00;
+              background-color: ${secondaryAccentColor}00;
               /* Transition is delayed by 400ms when fading out so it will fade out as the animated border finishes.
                   When hovering, we override this transition delay to 0ms so the background will fade in immediately */
               transition: background-color 400ms 400ms;
@@ -141,7 +141,7 @@ export default function MotionPage() {
 
             &:hover {
               .overlay {
-                background-color: ${blueAccentColor}99;
+                background-color: ${secondaryAccentColor}99;
                 /* When the user hovers on the overlay, override the transition delay so the background fades in immediately */
                 transition-delay: 0ms;
               }

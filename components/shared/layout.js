@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-import { orangeAccentColor } from "../../constants/colors";
+import { primaryAccentColor } from "../../constants/colors";
 
 import layoutContents from "../../content/layout.yml";
 
@@ -87,7 +87,7 @@ export default function Layout({ logoImageSrc, headerStyle, children }) {
 
             a {
               display: inline-block;
-              color: ${orangeAccentColor};
+              color: ${primaryAccentColor};
               text-decoration: none;
               font-size: 1.4rem;
             }

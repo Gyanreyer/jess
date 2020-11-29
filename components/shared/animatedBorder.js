@@ -1,7 +1,7 @@
 import { useMemo, useCallback, useRef, useEffect, useState } from "react";
 import { useInView } from "react-intersection-observer";
 
-import { backgroundColor } from "../../constants/colors";
+import { primaryColor } from "../../constants/colors";
 
 const ANIMATION_TRIGGER_MODES = {
   hover: "hover",
@@ -11,7 +11,7 @@ const ANIMATION_TRIGGER_MODES = {
 export default function AnimatedBorder({
   animationTriggerMode = ANIMATION_TRIGGER_MODES.scroll,
   shouldRunOnce = true,
-  borderColor = backgroundColor,
+  borderColor = primaryColor,
   transitionDuration = 800,
   borderWidth = "8px",
   hoverTargetOverrideRef = null,

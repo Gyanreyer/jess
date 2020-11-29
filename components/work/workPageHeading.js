@@ -1,4 +1,4 @@
-import { blueAccentColor, orangeAccentColor } from "../../constants/colors";
+import { secondaryAccentColor, primaryAccentColor } from "../../constants/colors";
 
 export default function WorkPageHeading({ title, subtext }) {
   return (
@@ -7,7 +7,7 @@ export default function WorkPageHeading({ title, subtext }) {
       <p>{subtext}</p>
       <style jsx>{`
         .heading-box {
-          border: 0.5rem solid ${blueAccentColor};
+          border: 0.5rem solid ${secondaryAccentColor};
           margin: 1rem 4% 3rem;
           padding: 2rem;
           display: flex;
@@ -16,7 +16,7 @@ export default function WorkPageHeading({ title, subtext }) {
           align-items: center;
 
           h1 {
-            color: ${orangeAccentColor};
+            color: ${primaryAccentColor};
             font-size: 3rem;
             margin: 0 0 1rem;
           }

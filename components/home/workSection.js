@@ -7,9 +7,9 @@ import { RightArrowIcon } from "../shared/icons";
 
 // Constants
 import {
-  backgroundColor,
-  blueAccentColor,
-  orangeAccentColor,
+  primaryColor,
+  secondaryAccentColor,
+  primaryAccentColor,
 } from "../../constants/colors";
 
 const WorkSectionLink = ({ sectionName, url }) => (
@@ -38,8 +38,8 @@ const WorkSectionLink = ({ sectionName, url }) => (
             position: relative;
 
             padding: 2rem 1rem 2rem 1.5rem;
-            border: 8px solid ${backgroundColor};
-            color: ${backgroundColor};
+            border: 8px solid ${primaryColor};
+            color: ${primaryColor};
             font-size: 2.2rem;
             font-weight: bold;
             line-height: 1;
@@ -113,11 +113,11 @@ const WorkSection = () => (
 
       .motion,
       .public-speaking {
-        background-color: ${blueAccentColor};
+        background-color: ${secondaryAccentColor};
       }
 
       .design {
-        background-color: ${orangeAccentColor};
+        background-color: ${primaryAccentColor};
       }
     `}</style>
   </HomePageSection>

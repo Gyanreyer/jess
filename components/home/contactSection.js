@@ -5,7 +5,7 @@ import ReactMarkdown from "react-markdown";
 import HomePageSection from "./homePageSection";
 
 // Constants
-import { backgroundColor, orangeAccentColor } from "../../constants/colors";
+import { primaryColor, primaryAccentColor } from "../../constants/colors";
 
 // Content config
 import homepageConfig from "../../content/home.yml";
@@ -71,7 +71,7 @@ const ContactSection = () => (
         border: none;
         border-radius: 0;
         font-family: "Avenir";
-        background-color: ${backgroundColor};
+        background-color: ${primaryColor};
       }
 
       button {
@@ -82,8 +82,8 @@ const ContactSection = () => (
         font-size: 1.6rem;
         text-align: center;
         /* Colors */
-        background-color: ${orangeAccentColor};
-        color: ${backgroundColor};
+        background-color: ${primaryAccentColor};
+        color: ${primaryColor};
 
         appearance: none;
         border: none;
@@ -94,7 +94,7 @@ const ContactSection = () => (
 
         span {
           display: inline-block;
-          border: 4px solid ${backgroundColor};
+          border: 4px solid ${primaryColor};
           padding: 4px 8px;
           width: 100%;
           box-sizing: border-box;

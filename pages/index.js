@@ -3,7 +3,6 @@ import { useState, useRef, useEffect } from "react";
 import { NextSeo } from "next-seo";
 
 import Layout from "../components/shared/layout";
-import { grayColor } from "../constants/colors";
 
 // Homepage content components
 import WorkSection from "../components/home/workSection";
@@ -89,8 +88,6 @@ const Home = () => {
           width: 100%;
           max-height: 100vh;
           object-fit: cover;
-
-          box-shadow: 0 0 4px ${grayColor};
         }
       `}</style>
     </Layout>
