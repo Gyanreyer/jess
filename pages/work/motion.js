@@ -105,10 +105,11 @@ export default function MotionPage() {
               box-sizing: border-box;
               z-index: 1;
               color: white;
-              /* Background color is transpareent until hovered */
+              /* Background color is transparent until hovered */
               background-color: ${blueAccentColor}00;
-              transition: background-color 0.4s;
-              transition-delay: 0.4s;
+              /* Transition is delayed by 400ms when fading out so it will fade out as the animated border finishes.
+                  When hovering, we override this transition delay to 0ms so the background will fade in immediately */
+              transition: background-color 400ms 400ms;
             }
 
             :global(.overlay-border) {
@@ -125,10 +126,7 @@ export default function MotionPage() {
 
               opacity: 0;
               transform: translateY(1rem);
-              transition: opacity, transform;
-              transition-duration: 0.2s;
-              transition-timing-function: ease-in-out;
-              transition-delay: 0.4s;
+              transition: opacity 200ms ease-in-out, transform 200ms ease-in-out;
 
               h3 {
                 margin: 0;
@@ -144,12 +142,12 @@ export default function MotionPage() {
             &:hover {
               .overlay {
                 background-color: ${blueAccentColor}99;
-                transition-delay: 0;
+                /* When the user hovers on the overlay, override the transition delay so the background fades in immediately */
+                transition-delay: 0ms;
               }
               .overlay-contents {
                 opacity: 1;
                 transform: translateY(0);
-                transition-delay: 0;
               }
             }
           }

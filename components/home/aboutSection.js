@@ -28,12 +28,14 @@ export default function AboutSection() {
         shouldCoverContainer
       />
       <div className="section-content-wrapper">
-        <AnimatedBorder className="content">
-          <h1>{heading}</h1>
-          <ReactMarkdown source={body} />
-          <a href={resumeFile} download className="resume-link">
-            <span>view resume</span>
-          </a>
+        <AnimatedBorder>
+          <div className="content">
+            <h1>{heading}</h1>
+            <ReactMarkdown source={body} />
+            <a href={resumeFile} download className="resume-link">
+              <span>view resume</span>
+            </a>
+          </div>
         </AnimatedBorder>
       </div>
       <style jsx>
