@@ -73,44 +73,64 @@ collections:
               - { label: "Heading", name: "heading", widget: "string" }
               - { label: "Body", name: "body", widget: "markdown" }
   - name: "work"
-    label: "Work"
-    files:
-      - label: "Motion"
-        name: "motion"
-        file: "content/work/motion.yml"
-        delete: false
+    label: "Work Pages"
+    label_singular: "Work Page"
+    folder: "content/work"
+    identifier_field: slug
+    create: true
+    fields:
+      - {
+          label: "Link Text",
+          name: "linkText",
+          widget: "string",
+          hint: "The text to use in links to this work page",
+        }
+      - {
+          label: "URL Slug",
+          name: "slug",
+          widget: "string",
+          hint: "The URL slug (ie, jessicakeoshian.com/work/{slug}) to represent where this work page should live on the site",
+          pattern:
+            [
+              "^[a-z0-9-_]+$",
+              "Slugs may only use lowercase letters (a-z), numbers (0-9), underscores (_), and dashes (-)",
+            ],
+        }
+      - {
+          label: "List Order",
+          name: "order",
+          widget: "number",
+          default: 1,
+          min: 1,
+          value_type: "int",
+        }
+      - label: "SEO"
+        name: "seo"
+        widget: "object"
         fields:
-          - label: "SEO"
-            name: "seo"
-            widget: "object"
-            fields:
-              - { label: "Page Title", name: "pageTitle", widget: "string" }
-              - {
-                  label: "Page Description",
-                  name: "pageDescription",
-                  widget: "string",
-                }
-              - {
-                  label: "OpenGraph Preview Image",
-                  name: "ogImage",
-                  widget: "image",
-                }
           - { label: "Page Title", name: "pageTitle", widget: "string" }
           - {
               label: "Page Description",
               name: "pageDescription",
-              widget: "markdown",
+              widget: "string",
             }
-          - label: "Projects"
-            name: "projects"
-            widget: list
-            fields:
-              - { label: "Title", name: "title", widget: "string" }
-              - { label: "Thumbnail Image", name: "thumbnail", widget: "image" }
-              - { label: "Video", name: "video", widget: "file" }
-              - {
-                  label: "Description",
-                  name: "description",
-                  widget: "markdown",
-                  required: false,
-                }
+          - {
+              label: "OpenGraph Preview Image",
+              name: "ogImage",
+              widget: "image",
+            }
+      - { label: "Heading", name: "heading", widget: "string" }
+      - { label: "Subheading", name: "subHeading", widget: "string" }
+      - label: "Assets"
+        name: "assets"
+        widget: list
+        fields:
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Image", name: "image", widget: "image", required: false }
+          - { label: "Video", name: "video", widget: "file", required: false }
+          - {
+              label: "Description",
+              name: "description",
+              widget: "markdown",
+              required: false,
+            }

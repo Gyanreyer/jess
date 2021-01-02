@@ -2,10 +2,15 @@
 import { useState, useRef, useEffect } from "react";
 import { NextSeo } from "next-seo";
 
+// Static file loading/parsing
+import fs from "fs";
+import path from "path";
+import YAML from "yaml";
+
 import Layout from "../components/shared/layout";
 
 // Homepage content components
-import WorkSection from "../components/home/workSection";
+import WorkLinksSection from "../components/home/workLinksSection";
 import AboutSection from "../components/home/aboutSection";
 import ContactSection from "../components/home/contactSection";
 
@@ -16,7 +21,27 @@ const { logoImage, reel, seo } = homepageConfig;
 
 const VIDEO_ELEMENT_BOTTOM_SPACE_HEIGHT = 16;
 
-const Home = () => {
+export async function getStaticProps() {
+  const workPageDirectory = path.join(process.cwd(), "content/work");
+  const fileNames = fs.readdirSync(workPageDirectory);
+
+  const workPages = fileNames.map((fileName) => {
+    const filePath = path.join(workPageDirectory, fileName);
+    const fileContents = fs.readFileSync(filePath, "utf8");
+
+    // Parse the yaml file as a JavaScript object
+    return YAML.parse(fileContents);
+  });
+
+  return {
+    props: {
+      // Sort the work pages by their order field
+      workPages: workPages.sort((work1, work2) => work1.order - work2.order),
+    },
+  };
+}
+
+const Home = ({ workPages }) => {
   const videoElementRef = useRef();
   const [videoHeight, setVideoHeight] = useState("auto");
 
@@ -78,7 +103,7 @@ const Home = () => {
         ref={videoElementRef}
       />
       <article>
-        <WorkSection />
+        <WorkLinksSection workPages={workPages} />
         <AboutSection />
         <ContactSection />
       </article>

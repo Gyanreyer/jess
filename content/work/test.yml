@@ -1,0 +1,10 @@
+seo:
+  ogImage: /media/asset-2-4x.png
+  pageDescription: Jess Keoshian is an awesome designer.
+  pageTitle: Home
+linkText: "Test"
+slug: "test"
+heading: "Test Page"
+subHeading: "This is a test page!"
+order: 1
+assets: []

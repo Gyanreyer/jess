@@ -12,11 +12,11 @@ import {
   primaryAccentColor,
 } from "../../constants/colors";
 
-const WorkSectionLink = ({ sectionName, url }) => (
+const WorkLink = ({ sectionName, url }) => (
   <>
     <Link href={url}>
       <a>
-        <div className="work-section-name">
+        <div className="work-name">
           {sectionName}
           <div className="arrow-icon-wrapper">
             <RightArrowIcon />
@@ -32,7 +32,7 @@ const WorkSectionLink = ({ sectionName, url }) => (
           padding: 5% 4% 6%;
           text-decoration: none;
 
-          .work-section-name {
+          .work-name {
             display: inline-flex;
             align-items: center;
             position: relative;
@@ -65,7 +65,7 @@ const WorkSectionLink = ({ sectionName, url }) => (
           }
 
           :hover {
-            .work-section-name {
+            .work-name {
               .arrow-icon-wrapper {
                 width: var(--arrow-icon-width);
               }
@@ -82,27 +82,17 @@ const WorkSectionLink = ({ sectionName, url }) => (
   </>
 );
 
-const WorkSection = () => (
+const WorkLinksSection = ({ workPages }) => (
   <HomePageSection id="work">
     <ul>
-      <li className="motion">
-        <WorkSectionLink sectionName="motion" url="/work/motion" />
-      </li>
-      <li className="design">
-        <WorkSectionLink sectionName="design" url="/work/design" />
-      </li>
-      <li className="public-speaking">
-        <WorkSectionLink
-          sectionName={
-            <>
-              public
-              <br />
-              speaking
-            </>
-          }
-          url="/work/public-speaking"
-        />
-      </li>
+      {workPages.map((workPage) => (
+        <li key={workPage.slug}>
+          <WorkLink
+            sectionName={workPage.linkText}
+            url={`/work/${workPage.slug}`}
+          />
+        </li>
+      ))}
     </ul>
     <style jsx>{`
       ul {
@@ -111,16 +101,15 @@ const WorkSection = () => (
         list-style: none;
       }
 
-      .motion,
-      .public-speaking {
+      li {
         background-color: ${secondaryAccentColor};
       }
 
-      .design {
+      li:nth-child(2n) {
         background-color: ${primaryAccentColor};
       }
     `}</style>
   </HomePageSection>
 );
 
-export default WorkSection;
+export default WorkLinksSection;

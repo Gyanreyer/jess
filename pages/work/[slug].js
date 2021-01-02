@@ -1,37 +1,74 @@
 import ReactMarkdown from "react-markdown";
 import { NextSeo } from "next-seo";
 
+// Static file loading/parsing
+import fs from "fs";
+import path from "path";
+import YAML from "yaml";
+
 import Layout from "../../components/shared/layout";
 import WorkPageHeading from "../../components/work/workPageHeading";
 import AnimatedBorder from "../../components/shared/animatedBorder";
 import { secondaryAccentColor } from "../../constants/colors";
 
-import motionContents from "../../content/work/motion.yml";
+export async function getStaticPaths() {
+  const workPageDirectory = path.join(process.cwd(), "content/work");
+  const fileNames = fs.readdirSync(workPageDirectory);
 
-const { projects, seo } = motionContents;
+  const paths = fileNames.map((fileName) => {
+    const filePath = path.join(workPageDirectory, fileName);
+    const fileContents = fs.readFileSync(filePath, "utf8");
 
-export default function MotionPage() {
+    const parsedFileContents = YAML.parse(fileContents);
+
+    return {
+      params: { slug: parsedFileContents.slug },
+    };
+  });
+
+  return {
+    paths,
+    fallback: false,
+  };
+}
+
+export async function getStaticProps(context) {
+  const { slug } = context.params;
+
+  const filePath = path.join(process.cwd(), `content/work/${slug}.yml`);
+  const fileContents = fs.readFileSync(filePath, "utf8");
+
+  const parsedFileContents = YAML.parse(fileContents);
+
+  return {
+    props: {
+      workPageContents: parsedFileContents,
+    },
+  };
+}
+
+export default function WorkPage({ workPageContents }) {
   return (
-    <Layout theme="light" pageTitle={motionContents.pageTitle}>
+    <Layout theme="light" pageTitle={workPageContents.seo.pageTitle}>
       <NextSeo
-        title={seo.pageTitle}
-        description={seo.description}
+        title={workPageContents.seo.pageTitle}
+        description={workPageContents.seo.pageDescription}
         openGraph={{
           type: "website",
-          title: seo.pageTitle,
-          description: seo.description,
-          images: seo.ogImage
+          title: workPageContents.seo.pageTitle,
+          description: workPageContents.seo.pageDescription,
+          images: workPageContents.seo.ogImage
             ? [
                 {
-                  url: require(`../../public${seo.ogImage}?resize&size=1200`),
+                  url: require(`../../public${workPageContents.seo.ogImage}?resize&size=1200`),
                   width: 1200,
                 },
                 {
-                  url: require(`../../public${seo.ogImage}?resize&size=400`),
+                  url: require(`../../public${workPageContents.seo.ogImage}?resize&size=400`),
                   width: 400,
                 },
                 {
-                  url: require(`../../public${seo.ogImage}?resize&size=100`),
+                  url: require(`../../public${workPageContents.seo.ogImage}?resize&size=100`),
                   width: 100,
                 },
               ]
@@ -39,11 +76,11 @@ export default function MotionPage() {
         }}
       />
       <WorkPageHeading
-        title={motionContents.pageTitle}
-        subtext={motionContents.pageDescription}
+        title={workPageContents.heading}
+        subtext={workPageContents.subheading}
       />
       <ul>
-        {projects.map(({ title, description, video }) => (
+        {workPageContents.assets.map(({ title, description, video }) => (
           <li key={title}>
             <video src={video} autoPlay playsInline muted loop />
             {description ? (
