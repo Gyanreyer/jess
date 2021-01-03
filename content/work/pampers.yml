@@ -1,0 +1,51 @@
+linkText: pampers
+slug: pampers
+linkImage: /media/headerimage.jpg
+order: 1
+seo:
+  ogImage: /media/headerimage.jpg
+  pageDescription: >-
+    Dads are finally being thought of in the space of parenting,  and the
+    products that come along with the job.
+  pageTitle: Pampers
+heading: Pampers
+subHeading: >-
+  Dads are finally being thought of in the space of parenting,  and the products
+  that come along with the job.
+contentRows:
+  - columnCount: 1
+    contents:
+      - columnWidth: 1
+        text: >-
+          If dads are being included in the parenting space, where can they
+          change their babies when out in public? Public restrooms still lack
+          inclusivity when it comes to having accessible changing tables in
+          men’s rooms.
+        textAlignment: center
+        type: copy
+  - columnCount: 2
+    contents:
+      - columnWidth: 1
+        imageFile: /media/dad365a_w18_keoshiannowelsobrien_pampers_table1.png
+        type: image
+      - columnWidth: 1
+        imageFile: /media/dad365a_w18_keoshiannowelsobrien_pampers_table2.png
+        type: image
+  - columnCount: 1
+    contents:
+      - columnWidth: 1
+        text: >-
+          We redesigned the dreaded old school changing table and brought it
+          into the tech-first century. The smart table integrates with the
+          revamped Pampers’ app to allow easy shopping for those ‘oops’ moments,
+          moms and dads know too well.
+        textAlignment: center
+        type: copy
+  - columnCount: 2
+    contents:
+      - columnWidth: 1
+        imageFile: /media/dadwelcomepage_incomputer.png
+        type: image
+      - columnWidth: 1
+        imageFile: /media/pampersphones.png
+        type: image
