@@ -98,6 +98,12 @@ collections:
             ],
         }
       - {
+          label: "Link Image",
+          name: "linkImage",
+          widget: "image",
+          hint: "The image to fade in when hovering over the link to this work page",
+        }
+      - {
           label: "List Order",
           name: "order",
           widget: "number",
