@@ -99,13 +99,21 @@ const WorkLinksSection = ({ workPages }) => (
         margin: 0;
         padding: 0;
         list-style: none;
+
+        display: grid;
+        grid-template-columns: 1fr 1fr;
       }
 
       li {
         background-color: ${secondaryAccentColor};
       }
 
-      li:nth-child(2n) {
+      /* Alternate background colors every 2 items starting from the 2nd
+          in order to achieve a checkerboard pattern in the grid
+          (ie, 1: base color, 2+3: secondary color, 4+5: base color again, 6+7:..., etc )
+          */
+      li:nth-child(4n-2),
+      li:nth-child(4n-1) {
         background-color: ${primaryAccentColor};
       }
     `}</style>

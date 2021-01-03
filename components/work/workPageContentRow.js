@@ -7,10 +7,16 @@ function CopyContent({ contentConfig: { text, textAlignment, columnWidth } }) {
     <div
       style={{
         gridColumnStart: `span ${columnWidth}`,
-        textAlign: textAlignment,
+        marginRight: textAlignment === "right" ? 0 : "auto",
+        marginLeft: textAlignment === "left" ? 0 : "auto",
       }}
     >
       <ReactMarkdown source={text} />
+      <style jsx>{`
+        div {
+          max-width: 50%;
+        }
+      `}</style>
     </div>
   );
 }
@@ -50,6 +56,7 @@ export default function WorkPageContentRow({
         {`
           div {
             display: grid;
+            grid-gap: 72px 48px;
           }
         `}
       </style>
