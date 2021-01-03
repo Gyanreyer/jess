@@ -95,6 +95,12 @@ export default function LazyImage({
 
         .placeholder {
           filter: blur(20px);
+          transition: opacity 1s, visibility 0s 1s;
+
+          &.loaded {
+            opacity: 0;
+            visibility: hidden;
+          }
         }
 
         .main {
