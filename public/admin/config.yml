@@ -122,16 +122,55 @@ collections:
             }
       - { label: "Heading", name: "heading", widget: "string" }
       - { label: "Subheading", name: "subHeading", widget: "string" }
-      - label: "Assets"
-        name: "assets"
+      - label: "Content Rows"
+        name: "contentRows"
         widget: list
         fields:
-          - { label: "Title", name: "title", widget: "string" }
-          - { label: "Image", name: "image", widget: "image", required: false }
-          - { label: "Video", name: "video", widget: "file", required: false }
-          - {
-              label: "Description",
-              name: "description",
-              widget: "markdown",
-              required: false,
-            }
+          - label: "Number of Columns"
+            name: "columnCount"
+            widget: "number"
+            default: 1
+            min: 1
+            hint: "The number of columns that this row should be divided into"
+          - label: "Contents"
+            name: "contents"
+            widget: "list"
+            min: 1
+            fields:
+              - {
+                  label: "Content Type",
+                  name: "type",
+                  widget: "select",
+                  options: ["copy", "image", "video", "audio"],
+                }
+              - {
+                  label: "Text Contents",
+                  name: "text",
+                  widget: "markdown",
+                  required: false,
+                }
+              - {
+                  label: "Image File",
+                  name: "imageFile",
+                  widget: "image",
+                  required: false,
+                }
+              - {
+                  label: "Video File",
+                  name: "videoFile",
+                  widget: "file",
+                  required: false,
+                }
+              - {
+                  label: "Audio File",
+                  name: "audioFile",
+                  widget: "file",
+                  required: false,
+                }
+              - {
+                  label: "Column Width",
+                  name: "columnWidth",
+                  hint: "The number of columns in the row that this content should fill",
+                  widget: "number",
+                  default: 1,
+                }
