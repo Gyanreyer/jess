@@ -17,13 +17,15 @@ export default function WorkPageHeading({ title, subtext }) {
 
           h1 {
             color: ${primaryAccentColor};
-            font-size: 3rem;
+            font-size: 6rem;
             margin: 0 0 1rem;
+            text-transform: lowercase;
           }
 
           p {
             max-width: 40rem;
             margin: 0;
+            text-align: center;
           }
         }
       `}</style>

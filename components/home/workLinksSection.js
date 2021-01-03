@@ -36,6 +36,7 @@ const WorkLink = ({ sectionName, url }) => (
             display: inline-flex;
             align-items: center;
             position: relative;
+            text-transform: lowercase;
 
             padding: 2rem 1rem 2rem 1.5rem;
             border: 8px solid ${primaryColor};
