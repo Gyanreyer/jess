@@ -35,14 +35,22 @@ export async function getStaticPaths() {
 export async function getStaticProps(context) {
   const { slug } = context.params;
 
-  const filePath = path.join(process.cwd(), `content/work/${slug}.yml`);
-  const fileContents = fs.readFileSync(filePath, "utf8");
+  const workPageDirectory = path.join(process.cwd(), "content/work");
+  const fileNames = fs.readdirSync(workPageDirectory);
 
-  const parsedFileContents = YAML.parse(fileContents);
+  const workPages = fileNames.map((fileName) => {
+    const filePath = path.join(workPageDirectory, fileName);
+    const fileContents = fs.readFileSync(filePath, "utf8");
+
+    // Parse the yaml file as a JavaScript object
+    return YAML.parse(fileContents);
+  });
+
+  const workPageContents = workPages.find((workPage) => workPage.slug === slug);
 
   return {
     props: {
-      workPageContents: parsedFileContents,
+      workPageContents,
     },
   };
 }
@@ -80,26 +88,27 @@ export default function WorkPage({ workPageContents }) {
         subtext={workPageContents.subheading}
       />
       <ul>
-        {workPageContents.assets.map(({ title, description, video }) => (
-          <li key={title}>
-            <video src={video} autoPlay playsInline muted loop />
-            {description ? (
-              <div className="overlay">
-                <AnimatedBorder
-                  animationTriggerMode="hover"
-                  shouldRunOnce={false}
-                  className="overlay-border"
-                  // transitionDuration={400}
-                >
-                  <div className="overlay-contents">
-                    <h3>{title}</h3>
-                    <ReactMarkdown source={description} />
-                  </div>
-                </AnimatedBorder>
-              </div>
-            ) : null}
-          </li>
-        ))}
+        {workPageContents.assets &&
+          workPageContents.assets.map(({ title, description, video }) => (
+            <li key={title}>
+              <video src={video} autoPlay playsInline muted loop />
+              {description ? (
+                <div className="overlay">
+                  <AnimatedBorder
+                    animationTriggerMode="hover"
+                    shouldRunOnce={false}
+                    className="overlay-border"
+                    // transitionDuration={400}
+                  >
+                    <div className="overlay-contents">
+                      <h3>{title}</h3>
+                      <ReactMarkdown source={description} />
+                    </div>
+                  </AnimatedBorder>
+                </div>
+              ) : null}
+            </li>
+          ))}
       </ul>
       <style jsx>{`
         ul {
