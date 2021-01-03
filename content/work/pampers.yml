@@ -48,5 +48,4 @@ contentRows:
         type: image
       - columnWidth: 1
         imageFile: /media/pampersphones.png
-        textAlignment: center
         type: image
