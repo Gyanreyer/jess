@@ -142,11 +142,20 @@ collections:
                   name: "type",
                   widget: "select",
                   options: ["copy", "image", "video", "audio"],
+                  default: "copy",
                 }
               - {
                   label: "Text Contents",
                   name: "text",
                   widget: "markdown",
+                  required: false,
+                }
+              - {
+                  label: "Text Alignment",
+                  name: "textAlignment",
+                  widget: "select",
+                  options: ["left", "center", "right"],
+                  default: "left",
                   required: false,
                 }
               - {

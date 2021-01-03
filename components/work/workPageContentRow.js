@@ -2,14 +2,16 @@
 import ReactMarkdown from "react-markdown";
 import LazyImage from "../shared/lazyImage";
 
-function CopyContent({ contentConfig: { text, columnWidth } }) {
+function CopyContent({ contentConfig: { text, textAlignment, columnWidth } }) {
   return (
-    <ReactMarkdown
-      source={text}
+    <div
       style={{
         gridColumnStart: `span ${columnWidth}`,
+        textAlign: textAlignment,
       }}
-    />
+    >
+      <ReactMarkdown source={text} />
+    </div>
   );
 }
 
