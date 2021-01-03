@@ -76,7 +76,8 @@ collections:
     label: "Work Pages"
     label_singular: "Work Page"
     folder: "content/work"
-    identifier_field: slug
+    format: "yml"
+    identifier_field: "slug"
     create: true
     fields:
       - {
