@@ -22,7 +22,7 @@ contentRows:
       - columnWidth: 1
         imageFile: /media/puppy.jpg
         type: image
-      - columnWidth: 5
+      - columnWidth: 2
         text: Here is some copy in the same row as an image. Pretty sweet right?
         textAlignment: right
         type: copy
