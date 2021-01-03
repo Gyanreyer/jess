@@ -11,8 +11,9 @@ import {
   secondaryAccentColor,
   primaryAccentColor,
 } from "../../constants/colors";
+import LazyImage from "../shared/lazyImage";
 
-const WorkLink = ({ sectionName, url }) => (
+const WorkLink = ({ sectionName, url, linkImageURL }) => (
   <>
     <Link href={url}>
       <a>
@@ -22,6 +23,11 @@ const WorkLink = ({ sectionName, url }) => (
             <RightArrowIcon />
           </div>
         </div>
+        <LazyImage
+          src={linkImageURL}
+          shouldCoverContainer
+          className="background-image"
+        />
       </a>
     </Link>
     <style jsx>
@@ -31,12 +37,14 @@ const WorkLink = ({ sectionName, url }) => (
           margin: 0;
           padding: 5% 4% 6%;
           text-decoration: none;
+          position: relative;
 
           .work-name {
             display: inline-flex;
             align-items: center;
             position: relative;
             text-transform: lowercase;
+            z-index: 1;
 
             padding: 2rem 1rem 2rem 1.5rem;
             border: 8px solid ${primaryColor};
@@ -65,6 +73,12 @@ const WorkLink = ({ sectionName, url }) => (
             }
           }
 
+          :global(.background-image) {
+            z-index: 0;
+            opacity: 0;
+            transition: opacity 0.2s ease-in-out;
+          }
+
           :hover {
             .work-name {
               .arrow-icon-wrapper {
@@ -75,6 +89,10 @@ const WorkLink = ({ sectionName, url }) => (
                 opacity: 1;
                 transform: translateX(0);
               }
+            }
+
+            :global(.background-image) {
+              opacity: 0.5;
             }
           }
         }
@@ -91,6 +109,7 @@ const WorkLinksSection = ({ workPages }) => (
           <WorkLink
             sectionName={workPage.linkText}
             url={`/work/${workPage.slug}`}
+            linkImageURL={require(`../../public${workPage.linkImage}`)}
           />
         </li>
       ))}
