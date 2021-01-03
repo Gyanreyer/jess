@@ -7,3 +7,20 @@ seo:
   pageTitle: Mowers
 heading: My Mowers Page
 subHeading: Some more text about mowers
+contentRows:
+  - columnCount: 1
+    contents:
+      - columnWidth: 1
+        text: |-
+          # This is some text
+
+          Check it out it takes up a full row
+        type: copy
+  - columnCount: 3
+    contents:
+      - columnWidth: 1
+        imageFile: /media/puppy.jpg
+        type: image
+      - columnWidth: 5
+        text: Here is some copy in the same row as an image. Pretty sweet right?
+        type: copy
