@@ -49,3 +49,8 @@ contentRows:
       - columnWidth: 1
         imageFile: /media/pampersphones.png
         type: image
+  - columnCount: 1
+    contents:
+      - columnWidth: 1
+        videoFile: /media/PampersCaseStudy.mp4
+        type: video

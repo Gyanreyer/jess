@@ -33,6 +33,18 @@ function ImageContent({ contentConfig: { imageFile, columnWidth } }) {
   );
 }
 
+function VideoContent({ contentConfig: { videoFile, columnWidth } }) {
+  return (
+    // eslint-disable-next-line jsx-a11y/media-has-caption
+    <video
+      src={videoFile}
+      style={{
+        gridColumnStart: `span ${columnWidth}`,
+      }}
+    />
+  );
+}
+
 export default function WorkPageContentRow({
   contentRow: { contents, columnCount },
 }) {
@@ -48,6 +60,8 @@ export default function WorkPageContentRow({
             return <CopyContent key={index} contentConfig={contentConfig} />;
           case "image":
             return <ImageContent key={index} contentConfig={contentConfig} />;
+          case "video":
+            return <VideoContent key={index} contentConfig={contentConfig} />;
           default:
             return null;
         }
