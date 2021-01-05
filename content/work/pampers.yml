@@ -26,10 +26,10 @@ contentRows:
   - columnCount: 2
     contents:
       - columnWidth: 1
-        imageFile: /media/dad365a_w18_keoshiannowelsobrien_pampers_table1.png
+        imageFile: /media/dad365a_w18_keoshiannowelsobrien_pampers_table1.jpg
         type: image
       - columnWidth: 1
-        imageFile: /media/dad365a_w18_keoshiannowelsobrien_pampers_table2.png
+        imageFile: /media/dad365a_w18_keoshiannowelsobrien_pampers_table2.jpg
         type: image
   - columnCount: 1
     contents:
