@@ -66,16 +66,7 @@ export default function WorkPage({ workPageContents }) {
           images: workPageContents.seo.ogImage
             ? [
                 {
-                  url: require(`../../public${workPageContents.seo.ogImage}?resize&size=1200`),
-                  width: 1200,
-                },
-                {
-                  url: require(`../../public${workPageContents.seo.ogImage}?resize&size=400`),
-                  width: 400,
-                },
-                {
-                  url: require(`../../public${workPageContents.seo.ogImage}?resize&size=100`),
-                  width: 100,
+                  url: workPageContents.seo.ogImage,
                 },
               ]
             : [],

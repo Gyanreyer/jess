@@ -1,5 +1,6 @@
 // Vendor
 import Link from "next/link";
+import Image from "next/image";
 
 // Components
 import HomePageSection from "./homePageSection";
@@ -11,7 +12,6 @@ import {
   secondaryAccentColor,
   primaryAccentColor,
 } from "../../constants/colors";
-import LazyImage from "../shared/lazyImage";
 
 const WorkLink = ({ sectionName, url, linkImageURL }) => (
   <>
@@ -23,9 +23,10 @@ const WorkLink = ({ sectionName, url, linkImageURL }) => (
             <RightArrowIcon />
           </div>
         </div>
-        <LazyImage
+        <Image
           src={linkImageURL}
-          shouldCoverContainer
+          layout="fill"
+          objectFit="cover"
           className="background-image"
         />
       </a>
@@ -109,7 +110,7 @@ const WorkLinksSection = ({ workPages }) => (
           <WorkLink
             sectionName={workPage.linkText}
             url={`/work/${workPage.slug}`}
-            linkImageURL={require(`../../public${workPage.linkImage}`)}
+            linkImageURL={workPage.linkImage}
           />
         </li>
       ))}

@@ -53,4 +53,5 @@ contentRows:
     contents:
       - columnWidth: 1
         videoFile: /media/PampersCaseStudy.mp4
+        imageFile: /media/pampersphones.png
         type: video

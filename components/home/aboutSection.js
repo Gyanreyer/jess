@@ -1,9 +1,9 @@
 // Vendor
 import ReactMarkdown from "react-markdown";
+import Image from "next/image";
 
 // Components
 import HomePageSection from "./homePageSection";
-import LazyImage from "../shared/lazyImage";
 import AnimatedBorder from "../shared/animatedBorder";
 
 // Constants
@@ -22,11 +22,7 @@ const {
 export default function AboutSection() {
   return (
     <HomePageSection id="about">
-      <LazyImage
-        placeholderSrc={require(`../../public${backgroundImage}?resize&size=24`)}
-        src={require(`../../public${backgroundImage}`)}
-        shouldCoverContainer
-      />
+      <Image src={backgroundImage} alt="" layout="fill" objectFit="cover" />
       <div className="section-content-wrapper">
         <AnimatedBorder>
           <div className="content">

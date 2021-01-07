@@ -65,7 +65,7 @@ const Home = ({ workPages }) => {
   }, []);
 
   return (
-    <Layout logoImageSrc={require(`../public${logoImage}?resize&size=256`)}>
+    <Layout logoImageSrc={logoImage}>
       <NextSeo
         title={seo.pageTitle}
         description={seo.description}
@@ -76,16 +76,7 @@ const Home = ({ workPages }) => {
           images: seo.ogImage
             ? [
                 {
-                  url: require(`../public${seo.ogImage}?resize&size=1200`),
-                  width: 1200,
-                },
-                {
-                  url: require(`../public${seo.ogImage}?resize&size=400`),
-                  width: 400,
-                },
-                {
-                  url: require(`../public${seo.ogImage}?resize&size=100`),
-                  width: 100,
+                  url: seo.ogImage,
                 },
               ]
             : [],
