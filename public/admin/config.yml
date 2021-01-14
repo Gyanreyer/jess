@@ -161,7 +161,6 @@ collections:
                   name: "textAlignment",
                   widget: "select",
                   options: ["left", "center", "right"],
-                  default: "center",
                   required: false,
                 }
               - {
