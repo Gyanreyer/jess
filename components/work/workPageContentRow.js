@@ -10,6 +10,7 @@ function CopyContent({ contentConfig: { text, textAlignment, columnWidth } }) {
         gridColumnStart: `span ${columnWidth}`,
         marginRight: textAlignment === "right" ? 0 : "auto",
         marginLeft: textAlignment === "left" ? 0 : "auto",
+        textAlign: textAlignment,
       }}
     >
       <ReactMarkdown source={text} />
