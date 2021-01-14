@@ -52,6 +52,20 @@ contentRows:
   - columnCount: 1
     contents:
       - columnWidth: 1
-        videoFile: /media/PampersCaseStudy.mp4
         imageFile: /media/pampersphones.png
         type: video
+        videoFile: /media/PampersCaseStudy.mp4
+  - columnCount: 1
+    contents:
+      - columnWidth: 1
+        text: >-
+          D Show Student Award, 2018.
+
+
+          Case study script, animation, copywriting, and strategy created by me.
+
+
+          Credits: Casey O'Brien for live footage, social media, and strategy |
+          Reed Nowels for character design, app design, and web design.
+        textAlignment: center
+        type: copy
