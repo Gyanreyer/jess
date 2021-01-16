@@ -1,6 +1,7 @@
 backend:
   name: git-gateway
   branch: master
+local_backend: true
 publish_mode: editorial_workflow
 media_folder: public/media
 public_folder: media
@@ -164,10 +165,6 @@ collections:
                   required: false,
                 }
               - {
-                  label: "Image File",
-                  name: "imageFile",
-                  widget: "image",
-                  required: false,
                 }
               - {
                   label: "Video File",
