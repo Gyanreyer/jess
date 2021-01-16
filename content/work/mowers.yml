@@ -4,40 +4,40 @@ linkImage: /media/mowers-headerimage.jpg
 order: 1
 seo:
   ogImage: /media/mowers-headerimage.jpg
-  pageDescription: >-
-    A solution for some of the top ‘big iron’ brands gave a refreshed look of
-    what it looked like to get mail. The top brands include Scag mowers, Ferris
-    mowers, and Wright mowers. 
+  pageDescription: "A solution for some of the top ‘big iron’ brands gave a
+    refreshed look of what it looked like to get mail. The top brands include
+    Scag mowers, Ferris mowers, and Wright mowers. "
   pageTitle: Mowers
 heading: Mowers
-subHeading: >-
-  A solution for some of the top ‘big iron’ brands gave a refreshed look of what
-  it looked like to get mail. The top brands include Scag mowers, Ferris mowers,
-  and Wright mowers. 
+subHeading: "A solution for some of the top ‘big iron’ brands gave a refreshed
+  look of what it looked like to get mail. The top brands include Scag mowers,
+  Ferris mowers, and Wright mowers. "
 contentRows:
   - columnCount: 1
     contents:
       - columnWidth: 1
-        text: >-
-          Ferris mowers are known for their suspension. You can rely on a mower
-          that gives you support and comfort with the smoothest ride- all with
-          the enhanced large forefront suspension springs. This direct mail
-          piece featured the suspension springs in the design, and read
-          “Experience Suspension” along the bottom of the tube.
+        text:
+          Ferris mowers are known for their suspension. You can rely on a mower that
+          gives you support and comfort with the smoothest ride- all with the
+          enhanced large forefront suspension springs. This direct mail piece
+          featured the suspension springs in the design, and read “Experience
+          Suspension” along the bottom of the tube.
         textAlignment: center
         type: copy
   - columnCount: 2
     contents:
       - columnWidth: 1
-        imageFile: /media/ferristube1.jpg
         type: image
+        imageFiles:
+          - /media/ferristube1.jpg
       - columnWidth: 1
-        imageFile: /media/ferristube2.jpg
         type: image
+        imageFiles:
+          - /media/ferristube2.jpg
   - columnCount: 1
     contents:
       - columnWidth: 1
-        text: >-
+        text:
           Wright mowers are the original stand-on mower. With the standard of
           innovation, Wright mowers are safer and more efficient than riding
           mowers, allowing users to jump on and off. These mowers also take up
@@ -48,16 +48,17 @@ contentRows:
   - columnCount: 2
     contents:
       - columnWidth: 1
-        imageFile: /media/wrightbox_closed.jpg
         type: image
+        imageFiles:
+          - /media/wrightbox_closed.jpg
       - columnWidth: 1
-        imageFile: /media/wtightbox_open.jpg
         type: image
+        imageFiles:
+          - /media/wtightbox_open.jpg
   - columnCount: 1
     contents:
       - columnWidth: 1
-        text: >-
-          Scag mowers are the fastest and most durable mowers made right in
+        text: Scag mowers are the fastest and most durable mowers made right in
           Wisconsin. These machines are some of the fastest on the market
           topping out at speeds of 16 mph, and feature one of the best cutting
           decks for any terrain. From the Marbain blades to the solid steel
@@ -68,11 +69,13 @@ contentRows:
   - columnCount: 2
     contents:
       - columnWidth: 1
-        imageFile: /media/scagboxallelement-s.jpg
         type: image
+        imageFiles:
+          - /media/scagboxallelement-s.jpg
       - columnWidth: 1
-        imageFile: /media/scagboxclosed.jpg
         type: image
+        imageFiles:
+          - /media/scagboxclosed.jpg
   - columnCount: 1
     contents:
       - columnWidth: 1

@@ -4,7 +4,7 @@ backend:
 local_backend: true
 publish_mode: editorial_workflow
 media_folder: public/media
-public_folder: media
+public_folder: /media
 collections:
   - name: "pages"
     label: "Pages"
@@ -165,6 +165,12 @@ collections:
                   required: false,
                 }
               - {
+                  label: "Image Files",
+                  label_singular: "Image File",
+                  name: "imageFiles",
+                  widget: "list",
+                  summary: "{{fields.image}}",
+                  field: { label: "Image", name: "image", widget: "image" },
                 }
               - {
                   label: "Video File",

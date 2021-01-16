@@ -4,21 +4,19 @@ linkImage: /media/pampers-headerimage.jpg
 order: 1
 seo:
   ogImage: /media/pampers-headerimage.jpg
-  pageDescription: >-
-    Dads are finally being thought of in the space of parenting,  and the
-    products that come along with the job.
+  pageDescription: Dads are finally being thought of in the space of
+    parenting,  and the products that come along with the job.
   pageTitle: Pampers
 heading: Pampers
-subHeading: >-
-  Dads are finally being thought of in the space of parenting,  and the products
-  that come along with the job.
+subHeading: Dads are finally being thought of in the space of parenting,  and
+  the products that come along with the job.
 contentRows:
   - columnCount: 1
     contents:
       - columnWidth: 1
-        text: >-
-          If dads are being included in the parenting space, where can they
-          change their babies when out in public? Public restrooms still lack
+        text:
+          If dads are being included in the parenting space, where can they change
+          their babies when out in public? Public restrooms still lack
           inclusivity when it comes to having accessible changing tables in
           men’s rooms.
         textAlignment: center
@@ -26,33 +24,36 @@ contentRows:
   - columnCount: 2
     contents:
       - columnWidth: 1
-        imageFile: /media/dad365a_w18_keoshiannowelsobrien_pampers_table1.jpg
         type: image
+        imageFiles:
+          - /media/dad365a_w18_keoshiannowelsobrien_pampers_table1.jpg
       - columnWidth: 1
-        imageFile: /media/dad365a_w18_keoshiannowelsobrien_pampers_table2.jpg
         type: image
+        imageFiles:
+          - /media/dad365a_w18_keoshiannowelsobrien_pampers_table2.jpg
   - columnCount: 1
     contents:
       - columnWidth: 1
-        text: >-
-          We redesigned the dreaded old school changing table and brought it
-          into the tech-first century. The smart table integrates with the
-          revamped Pampers’ app to allow easy shopping for those ‘oops’ moments,
-          moms and dads know too well.
+        text:
+          We redesigned the dreaded old school changing table and brought it into
+          the tech-first century. The smart table integrates with the revamped
+          Pampers’ app to allow easy shopping for those ‘oops’ moments, moms and
+          dads know too well.
         textAlignment: center
         type: copy
   - columnCount: 2
     contents:
       - columnWidth: 1
-        imageFile: /media/dadwelcomepage_incomputer.png
         type: image
+        imageFiles:
+          - /media/dadwelcomepage_incomputer.png
       - columnWidth: 1
-        imageFile: /media/pampersphones.png
         type: image
+        imageFiles:
+          - /media/pampersphones.png
   - columnCount: 1
     contents:
       - columnWidth: 1
-        imageFile: /media/pampersphones.png
         type: video
         videoFile: /media/PampersCaseStudy.mp4
   - columnCount: 1
@@ -65,7 +66,6 @@ contentRows:
           Case study script, animation, copywriting, and strategy created by me.
 
 
-          Credits: Casey O'Brien for live footage, social media, and strategy |
-          Reed Nowels for character design, app design, and web design.
+          Credits: Casey O'Brien for live footage, social media, and strategy | Reed Nowels for character design, app design, and web design.
         textAlignment: center
         type: copy

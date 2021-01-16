@@ -1,14 +1,10 @@
-import { useRef } from "react";
 import Link from "next/link";
-import Image from "next/image";
 
 import { primaryAccentColor } from "../../constants/colors";
 
 import layoutContents from "../../content/layout.yml";
 
 export default function Layout({ logoImageSrc, headerStyle, children }) {
-  const logoImageWrapperRef = useRef();
-
   const { header, footer } = layoutContents;
 
   function onClickNavAnchorLink(event) {
@@ -31,21 +27,12 @@ export default function Layout({ logoImageSrc, headerStyle, children }) {
       <header style={headerStyle}>
         <nav>
           <Link href="/">
-            <a className="home-link">
-              <div className="logo-image-wrapper" ref={logoImageWrapperRef}>
-                <Image
-                  src={logoImageSrc || header.baseLogo}
-                  layout="fill"
-                  objectFit="contain"
-                  objectPosition="left"
-                  alt="Jess"
-                  onLoad={(e) => {
-                    logoImageWrapperRef.current.style.paddingTop = `${
-                      100 * (e.target.naturalHeight / e.target.naturalWidth)
-                    }%`;
-                  }}
-                />
-              </div>
+            <a>
+              <img
+                src={`${logoImageSrc || header.baseLogo}?nf_resize=fit&w=240`}
+                alt="Jess"
+                className="logo-image"
+              />
             </a>
           </Link>
           <ul className="nav-links">
@@ -82,14 +69,9 @@ export default function Layout({ logoImageSrc, headerStyle, children }) {
           align-items: center;
         }
 
-        .home-link {
+        .logo-image {
           display: block;
-          position: relative;
           width: 8rem;
-        }
-
-        .logo-image-wrapper {
-          width: 100%;
         }
 
         .nav-links {

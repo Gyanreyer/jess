@@ -1,7 +1,6 @@
 /* eslint-disable react/no-array-index-key */
 import ReactMarkdown from "react-markdown";
-import Image from "next/image";
-import { useRef } from "react";
+import ImageGallery from "react-image-gallery";
 
 function CopyContent({ contentConfig: { text, textAlignment, columnWidth } }) {
   return (
@@ -23,33 +22,47 @@ function CopyContent({ contentConfig: { text, textAlignment, columnWidth } }) {
   );
 }
 
-function ImageContent({ contentConfig: { imageFile, columnWidth } }) {
-  const imageWrapperRef = useRef();
-
+function SingleImageContent({ contentConfig: { imageFiles, columnWidth } }) {
   return (
     <div
       style={{
         gridColumnStart: `span ${columnWidth}`,
       }}
       className="image-wrapper"
-      ref={imageWrapperRef}
     >
-      <Image
-        src={imageFile}
-        layout="fill"
-        objectFit="cover"
-        onLoad={(e) => {
-          imageWrapperRef.current.style.paddingTop = `${
-            100 * (e.target.naturalHeight / e.target.naturalWidth)
-          }%`;
-        }}
-      />
+      {/* Resize images to fit within a 1080x1080 box */}
+      <img src={`${imageFiles[0]}?nf_resize=fit&w=1080&h=1080`} alt="" />
       <style jsx>{`
         .image-wrapper {
           position: relative;
           padding-top: 80%;
         }
+
+        img {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          object-fit: contain;
+        }
       `}</style>
+    </div>
+  );
+}
+
+function ImageGalleryContent({ contentConfig: { imageFiles, columnWidth } }) {
+  return (
+    <div
+      style={{
+        gridColumnStart: `span ${columnWidth}`,
+      }}
+    >
+      <ImageGallery
+        items={imageFiles.map((imageFile) => ({
+          original: `${imageFile}?nf_resize=fit&w=1080&h=1080`,
+        }))}
+      />
     </div>
   );
 }
@@ -97,7 +110,17 @@ export default function WorkPageContentRow({
           case "copy":
             return <CopyContent key={index} contentConfig={contentConfig} />;
           case "image":
-            return <ImageContent key={index} contentConfig={contentConfig} />;
+            if (contentConfig.imageFiles.length > 1) {
+              return (
+                <ImageGalleryContent
+                  key={index}
+                  contentConfig={contentConfig}
+                />
+              );
+            }
+            return (
+              <SingleImageContent key={index} contentConfig={contentConfig} />
+            );
           case "video":
             return <VideoContent key={index} contentConfig={contentConfig} />;
           default:

@@ -1,6 +1,5 @@
 // Vendor
 import ReactMarkdown from "react-markdown";
-import Image from "next/image";
 
 // Components
 import HomePageSection from "./homePageSection";
@@ -22,7 +21,7 @@ const {
 export default function AboutSection() {
   return (
     <HomePageSection id="about">
-      <Image src={backgroundImage} alt="" layout="fill" objectFit="cover" />
+      <img src={backgroundImage} alt="" className="background-image" />
       <div className="section-content-wrapper">
         <AnimatedBorder>
           <div className="content">
@@ -38,6 +37,15 @@ export default function AboutSection() {
         {`
           :global(#about) {
             background-color: #363636;
+          }
+
+          .background-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
           }
 
           .section-content-wrapper {

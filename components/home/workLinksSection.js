@@ -1,6 +1,5 @@
 // Vendor
 import Link from "next/link";
-import Image from "next/image";
 
 // Components
 import HomePageSection from "./homePageSection";
@@ -23,10 +22,9 @@ const WorkLink = ({ sectionName, url, linkImageURL }) => (
             <RightArrowIcon />
           </div>
         </div>
-        <Image
-          src={linkImageURL}
-          layout="fill"
-          objectFit="cover"
+        <img
+          src={`${linkImageURL}?nf_resize=fit&w=960`}
+          alt=""
           className="background-image"
         />
       </a>
@@ -74,7 +72,14 @@ const WorkLink = ({ sectionName, url, linkImageURL }) => (
             }
           }
 
-          :global(.background-image) {
+          .background-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+
             z-index: 0;
             opacity: 0;
             transition: opacity 0.2s ease-in-out;
@@ -92,7 +97,7 @@ const WorkLink = ({ sectionName, url, linkImageURL }) => (
               }
             }
 
-            :global(.background-image) {
+            .background-image {
               opacity: 0.5;
             }
           }
