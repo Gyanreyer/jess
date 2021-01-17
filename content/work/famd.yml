@@ -1,0 +1,92 @@
+linkText: famd
+slug: famd
+linkImage: /media/famd-headerimage.jpg
+order: 1
+seo:
+  pageTitle: FAMD
+  pageDescription: Friends for Animals of Metro Detroit was in need of content
+    capture and a campaign that could not only raise money, but keep their brand
+    cohesive.
+  ogImage: /media/famd-headerimage.jpg
+heading: FAMD
+subHeading: Friends for Animals of Metro Detroit was in need of content capture
+  and a campaign that could not only raise money, but keep their brand cohesive.
+contentRows:
+  - columnCount: 1
+    contents:
+      - type: textContent
+        textAlignment: center
+        columnWidth: 1
+        text: For their annual gala event, we captured original content and told the
+          stories of featured animals and their most in need shelter.
+  - columnCount: 1
+    contents:
+      - type: videoContent
+        shouldAutoplay: false
+        columnWidth: 1
+        videoFile: /media/FAMD_08_GREENFIELD_2_11.mp4
+  - columnCount: 1
+    contents:
+      - type: imageContent
+        columnWidth: 1
+        imageFiles:
+          - /media/FAMD_MG_2351.jpg
+          - /media/FAMD_MG_2463.jpg
+          - /media/FAMD_MG_2549.jpg
+          - /media/FAMD_MG_2517.jpg
+  - columnCount: 1
+    contents:
+      - type: videoContent
+        shouldAutoplay: false
+        columnWidth: 1
+        videoFile: /media/FAMD_13_DOG_1_17.mp4
+  - columnCount: 1
+    contents:
+      - type: textContent
+        textAlignment: center
+        columnWidth: 1
+        text: >-
+          For the holiday season, we leveraged social assets to create a 12 days
+          of Christmas campaign to share the love.
+
+
+          Each day highlights a part of the shelter in need of donations, and how that money can be applied.
+
+
+          The campaign kicked off on giving Tuesday, and continued through the end of the year.
+  - columnCount: 2
+    contents:
+      - type: videoContent
+        shouldAutoplay: true
+        columnWidth: 1
+        videoFile: /media/FAMD_M1032_DAY_1.mp4
+      - type: videoContent
+        shouldAutoplay: true
+        columnWidth: 1
+        videoFile: /media/FAMD_M1032_DAY_6.mp4
+  - columnCount: 2
+    contents:
+      - type: videoContent
+        shouldAutoplay: true
+        columnWidth: 1
+        videoFile: /media/FAMD_M1032_DAY_7.mp4
+      - type: videoContent
+        shouldAutoplay: true
+        columnWidth: 1
+        videoFile: /media/FAMD_M1032_DAY_9.mp4
+  - columnCount: 1
+    contents:
+      - type: textContent
+        textAlignment: center
+        columnWidth: 1
+        text: >-
+          Design Director: Alec Peterhans
+
+
+          Copywriter: Jack Redmond
+
+
+          Videographer and Editor: Mark Preston
+
+
+          Animator, Graphic Designer, Photographer, and Video Edit Assistance: Jessica Keoshian

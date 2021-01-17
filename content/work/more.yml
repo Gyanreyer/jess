@@ -1,0 +1,47 @@
+linkText: And then some
+slug: more
+linkImage: /media/more-headerimage.jpg
+order: 6
+seo:
+  pageTitle: The more the merrier
+  pageDescription: If you’ve made it here, you deserve a little extra.
+  ogImage: /media/more-headerimage.jpg
+heading: The more the merrier
+subHeading: If you’ve made it here, you deserve a little extra.
+contentRows:
+  - columnCount: 2
+    contents:
+      - type: imageContent
+        columnWidth: 1
+        imageFiles:
+          - /media/more-AnimaladsSeatbelts2.jpg
+      - type: imageContent
+        columnWidth: 1
+        imageFiles:
+          - /media/more-AnimaladsSeatbelts.jpg
+  - columnCount: 1
+    contents:
+      - type: imageContent
+        columnWidth: 1
+        imageFiles:
+          - /media/more-M1018 AAM END CARD 3.gif
+  - columnCount: 2
+    contents:
+      - type: imageContent
+        columnWidth: 1
+        imageFiles:
+          - /media/more-Cinemagraph.gif
+      - type: imageContent
+        columnWidth: 1
+        imageFiles:
+          - /media/more-GrillinV2_1.gif
+  - columnCount: 2
+    contents:
+      - type: imageContent
+        columnWidth: 1
+        imageFiles:
+          - /media/more-Apiculturelogo_V1.gif
+      - type: imageContent
+        columnWidth: 1
+        imageFiles:
+          - /media/more-apiculturecard_mockup.jpg

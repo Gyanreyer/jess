@@ -1,0 +1,74 @@
+linkText: Kohler
+slug: kohler
+linkImage: /media/kohler-headerimage.jpg
+order: 1
+seo:
+  pageTitle: Kohler
+  pageDescription: Working with the Kohler hospitality team consisted of
+    assistance on design and learning from the ACD on the team.  All work was
+    overseen by the direction of ACD Chris Szolwinski.
+  ogImage: /media/kohler-headerimage.jpg
+heading: Kohler
+subHeading: Working with the Kohler hospitality team consisted of assistance on
+  design and learning from the ACD on the team.  All work was overseen by the
+  direction of ACD Chris Szolwinski.
+contentRows:
+  - columnCount: 1
+    contents:
+      - type: textContent
+        textAlignment: center
+        columnWidth: 1
+        text: An annual event for the city of Kohler, the Food and Wine event features
+          famous chefs and demonstrations throughout Kohler’s finest restaurants
+          and hotels. This billboard design was concept created, photographed,
+          and edited with the help of the art directors, photographers, and
+          producers on the in-house Kohler team.
+  - columnCount: 2
+    contents:
+      - type: imageContent
+        columnWidth: 1
+        imageFiles:
+          - /media/KohlerFood&WineBillboard.jpg
+      - type: imageContent
+        columnWidth: 1
+        imageFiles:
+          - /media/WineladyonBillboard.png
+  - columnCount: 2
+    contents:
+      - type: imageContent
+        columnWidth: 1
+        imageFiles:
+          - /media/kohler_IMG_3072.png
+      - type: imageContent
+        columnWidth: 1
+        imageFiles:
+          - /media/kohler_IMG_3075.png
+  - columnCount: 1
+    contents:
+      - type: textContent
+        textAlignment: center
+        columnWidth: 1
+        text: Other design projects include a hand-illustrated children’s menu, coupons,
+          and flyer collateral.
+  - columnCount: 1
+    contents:
+      - type: imageContent
+        columnWidth: 1
+        imageFiles:
+          - /media/kohler_IMG_1820_1.jpg
+          - /media/kohler_IMG_1835.jpg
+  - columnCount: 1
+    contents:
+      - type: textContent
+        textAlignment: center
+        columnWidth: 1
+        text: |-
+          ACD: Chris Szolwinski
+
+          Graphic Design Intern: Jessica Keoshian
+  - columnCount: 1
+    contents:
+      - type: videoContent
+        shouldAutoplay: false
+        columnWidth: 1
+        videoFile: /media/Kohler-BTS.mp4
