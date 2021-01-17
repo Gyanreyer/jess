@@ -1,8 +1,11 @@
 /* eslint-disable react/no-array-index-key */
 import ReactMarkdown from "react-markdown";
 import ImageGallery from "react-image-gallery";
+import "react-image-gallery/styles/css/image-gallery.css";
 
-function CopyContent({ contentConfig: { text, textAlignment, columnWidth } }) {
+import { secondaryAccentColor } from "../../constants/colors";
+
+function TextContent({ contentConfig: { text, textAlignment, columnWidth } }) {
   return (
     <div
       style={{
@@ -62,13 +65,47 @@ function ImageGalleryContent({ contentConfig: { imageFiles, columnWidth } }) {
         items={imageFiles.map((imageFile) => ({
           original: `${imageFile}?nf_resize=fit&w=1080&h=1080`,
         }))}
+        showFullscreenButton={false}
+        showThumbnails={false}
+        showNav={false}
+        showPlayButton={false}
+        showBullets
       />
+      <style jsx>{`
+        img {
+          display: block;
+          width: 100%;
+        }
+
+        :global(.image-gallery-bullets) {
+          bottom: -2rem;
+
+          :global(.image-gallery-bullet) {
+            background-color: ${secondaryAccentColor};
+            opacity: 0.6;
+            box-shadow: none;
+            border: none;
+            transition: opacity 0.2s;
+
+            &:hover,
+            &:focus {
+              background-color: ${secondaryAccentColor};
+              opacity: 0.8;
+            }
+          }
+
+          :global(.image-gallery-bullet.active) {
+            background-color: ${secondaryAccentColor};
+            opacity: 1;
+          }
+        }
+      `}</style>
     </div>
   );
 }
 
 function VideoContent({
-  contentConfig: { videoFile, imageFile, shouldAutoplay, columnWidth },
+  contentConfig: { videoFile, posterImageFile, shouldAutoplay, columnWidth },
 }) {
   const playbackProps = shouldAutoplay
     ? { muted: true, autoPlay: true, loop: true }
@@ -79,7 +116,7 @@ function VideoContent({
       {/* eslint-disable-next-line jsx-a11y/media-has-caption */}
       <video
         src={videoFile}
-        poster={imageFile}
+        poster={posterImageFile}
         style={{
           gridColumnStart: `span ${columnWidth}`,
         }}
@@ -107,9 +144,9 @@ export default function WorkPageContentRow({
     >
       {contents.map((contentConfig, index) => {
         switch (contentConfig.type) {
-          case "copy":
-            return <CopyContent key={index} contentConfig={contentConfig} />;
-          case "image":
+          case "textContent":
+            return <TextContent key={index} contentConfig={contentConfig} />;
+          case "imageContent":
             if (contentConfig.imageFiles.length > 1) {
               return (
                 <ImageGalleryContent
@@ -121,7 +158,7 @@ export default function WorkPageContentRow({
             return (
               <SingleImageContent key={index} contentConfig={contentConfig} />
             );
-          case "video":
+          case "videoContent":
             return <VideoContent key={index} contentConfig={contentConfig} />;
           default:
             return null;

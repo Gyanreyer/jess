@@ -80,6 +80,7 @@ collections:
     format: "yml"
     identifier_field: "slug"
     create: true
+    sortable_fields: ["order"]
     fields:
       - {
           label: "Link Text",
@@ -133,61 +134,89 @@ collections:
         name: "contentRows"
         widget: list
         fields:
+          - label: "Contents"
+            name: "contents"
+            widget: "list"
+            types:
+              - label: "Text Content"
+                name: "textContent"
+                widget: "object"
+                fields:
+                  - { label: "Text", name: "text", widget: "markdown" }
+                  - {
+                      label: "Text Alignment",
+                      name: "textAlignment",
+                      widget: "select",
+                      options: ["left", "center", "right"],
+                      default: "center",
+                    }
+                  - {
+                      label: "Column Width",
+                      name: "columnWidth",
+                      hint: "The number of columns in the row that this text should fill",
+                      widget: "number",
+                      default: 1,
+                    }
+              - label: "Image Content"
+                name: "imageContent"
+                widget: "object"
+                fields:
+                  - {
+                      label: "Image Files",
+                      label_singular: "Image File",
+                      name: "imageFiles",
+                      widget: "list",
+                      summary: "{{fields.image}}",
+                      field: { label: "Image", name: "image", widget: "image" },
+                    }
+                  - {
+                      label: "Column Width",
+                      name: "columnWidth",
+                      hint: "The number of columns in the row that this image should fill",
+                      widget: "number",
+                      default: 1,
+                    }
+              - label: "Video Content"
+                name: "videoContent"
+                widget: "object"
+                fields:
+                  - { label: "Video File", name: "videoFile", widget: "file" }
+                  - {
+                      label: "Poster Image File",
+                      name: "posterImageFile",
+                      widget: "image",
+                      required: false,
+                    }
+                  - {
+                      label: "Should Video Autoplay",
+                      name: "shouldAutoplay",
+                      widget: "boolean",
+                      default: false,
+                    }
+                  - {
+                      label: "Column Width",
+                      name: "columnWidth",
+                      hint: "The number of columns in the row that this video should fill",
+                      widget: "number",
+                      default: 1,
+                    }
+              - label: "Audio Content"
+                name: "audioContent"
+                widget: "object"
+                fields:
+                  - label: "Audio File"
+                    name: "audioFile"
+                    widget: "file"
+                  - {
+                      label: "Column Width",
+                      name: "columnWidth",
+                      hint: "The number of columns in the row that the audio player should fill",
+                      widget: "number",
+                      default: 1,
+                    }
           - label: "Number of Columns"
             name: "columnCount"
             widget: "number"
             default: 1
             min: 1
             hint: "The number of columns that this row should be divided into"
-          - label: "Contents"
-            name: "contents"
-            widget: "list"
-            min: 1
-            fields:
-              - {
-                  label: "Content Type",
-                  name: "type",
-                  widget: "select",
-                  options: ["copy", "image", "video", "audio"],
-                  default: "copy",
-                }
-              - {
-                  label: "Text Contents",
-                  name: "text",
-                  widget: "markdown",
-                  required: false,
-                }
-              - {
-                  label: "Text Alignment",
-                  name: "textAlignment",
-                  widget: "select",
-                  options: ["left", "center", "right"],
-                  required: false,
-                }
-              - {
-                  label: "Image Files",
-                  label_singular: "Image File",
-                  name: "imageFiles",
-                  widget: "list",
-                  summary: "{{fields.image}}",
-                  field: { label: "Image", name: "image", widget: "image" },
-                }
-              - {
-                  label: "Video File",
-                  name: "videoFile",
-                  widget: "file",
-                  required: false,
-                }
-              - {
-                  label: "Audio File",
-                  name: "audioFile",
-                  widget: "file",
-                  required: false,
-                }
-              - {
-                  label: "Column Width",
-                  name: "columnWidth",
-                  hint: "The number of columns in the row that this content should fill",
-                  widget: "number",
-                  default: 1,
-                }
