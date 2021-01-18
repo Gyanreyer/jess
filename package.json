@@ -17,6 +17,7 @@
     "next-transpile-modules": "^4.1.0",
     "react": "^16.13.0",
     "react-dom": "^16.13.0",
+    "react-h5-audio-player": "^3.5.0",
     "react-hover-video-player": "^6.6.3",
     "react-image-gallery": "^1.0.8",
     "react-intersection-observer": "^8.29.1",

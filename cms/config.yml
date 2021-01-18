@@ -134,7 +134,8 @@ collections:
         name: "contentRows"
         widget: list
         fields:
-          - label: "Contents"
+          - label: "Content Items"
+            label_singular: "Content item"
             name: "contents"
             widget: "list"
             types:
@@ -166,6 +167,7 @@ collections:
                       label_singular: "Image File",
                       name: "imageFiles",
                       widget: "list",
+                      min: 1,
                       summary: "{{fields.image}}",
                       field: { label: "Image", name: "image", widget: "image" },
                     }
@@ -204,9 +206,7 @@ collections:
                 name: "audioContent"
                 widget: "object"
                 fields:
-                  - label: "Audio File"
-                    name: "audioFile"
-                    widget: "file"
+                  - { label: "Audio File", name: "audioFile", widget: "file" }
                   - {
                       label: "Column Width",
                       name: "columnWidth",
