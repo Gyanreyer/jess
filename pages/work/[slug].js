@@ -86,7 +86,6 @@ export default function WorkPage({ workPageContents }) {
       <style jsx>{`
         section {
           margin: 0;
-          padding: 0 4%;
         }
       `}</style>
     </Layout>

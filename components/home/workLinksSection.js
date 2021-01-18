@@ -11,6 +11,10 @@ import {
   secondaryAccentColor,
   primaryAccentColor,
 } from "../../constants/colors";
+import {
+  breakpointMobile,
+  breakpointDesktop,
+} from "../../constants/breakpoints";
 
 const WorkLink = ({ sectionName, url, linkImageURL }) => (
   <>
@@ -134,7 +138,7 @@ const WorkLinksSection = ({ workPages }) => (
         background-color: ${secondaryAccentColor};
       }
 
-      @media (min-width: 769px) {
+      @media ${breakpointDesktop} {
         /* Alternate background colors every 2 items starting from the 2nd
           in order to achieve a checkerboard pattern in the grid
           (ie, 1: base color, 2+3: secondary color, 4+5: base color again, 6+7:..., etc )
@@ -145,7 +149,7 @@ const WorkLinksSection = ({ workPages }) => (
         }
       }
 
-      @media (max-width: 768px) {
+      @media ${breakpointMobile} {
         ul {
           grid-template-columns: 1fr;
         }

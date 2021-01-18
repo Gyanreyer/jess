@@ -1,7 +1,7 @@
 linkText: Kohler
 slug: kohler
 linkImage: /media/kohler-headerimage.jpg
-order: 1
+order: 2
 seo:
   pageTitle: Kohler
   pageDescription: Working with the Kohler hospitality team consisted of
@@ -69,6 +69,6 @@ contentRows:
   - columnCount: 1
     contents:
       - type: videoContent
-        shouldAutoplay: false
+        shouldAutoplay: true
         columnWidth: 1
         videoFile: /media/Kohler-BTS.mp4

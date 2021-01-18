@@ -18,6 +18,8 @@ export default function WorkPageHeading({ title, subtext }) {
           h1 {
             color: ${primaryAccentColor};
             font-size: 6rem;
+            line-height: 1;
+            letter-spacing: -2px;
             margin: 0 0 1rem;
             text-transform: lowercase;
           }

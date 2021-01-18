@@ -4,10 +4,12 @@ import ImageGallery from "react-image-gallery";
 import "react-image-gallery/styles/css/image-gallery.css";
 
 import { secondaryAccentColor } from "../../constants/colors";
+import { breakpointMobile } from "../../constants/breakpoints";
 
 function TextContent({ contentConfig: { text, textAlignment, columnWidth } }) {
   return (
     <div
+      className="text-content"
       style={{
         gridColumnStart: `span ${columnWidth}`,
         marginRight: textAlignment === "right" ? 0 : "auto",
@@ -17,8 +19,15 @@ function TextContent({ contentConfig: { text, textAlignment, columnWidth } }) {
     >
       <ReactMarkdown source={text} />
       <style jsx>{`
-        div {
-          max-width: 50%;
+        .text-content {
+          max-width: 42rem;
+        }
+
+        .text-content > :global(*:first-child) {
+          margin-top: 0;
+        }
+        .text-content > :global(*:last-child) {
+          margin-bottom: 0;
         }
       `}</style>
     </div>
@@ -27,30 +36,22 @@ function TextContent({ contentConfig: { text, textAlignment, columnWidth } }) {
 
 function SingleImageContent({ contentConfig: { imageFiles, columnWidth } }) {
   return (
-    <div
-      style={{
-        gridColumnStart: `span ${columnWidth}`,
-      }}
-      className="image-wrapper"
-    >
-      {/* Resize images to fit within a 1080x1080 box */}
-      <img src={`${imageFiles[0]}?nf_resize=fit&w=1080&h=1080`} alt="" />
+    <>
+      <img
+        //  Resize images to fit within a 1080x1080 box
+        src={`${imageFiles[0]}?nf_resize=fit&w=1080&h=1080`}
+        alt=""
+        style={{
+          gridColumnStart: `span ${columnWidth}`,
+        }}
+      />
       <style jsx>{`
-        .image-wrapper {
-          position: relative;
-          padding-top: 80%;
-        }
-
         img {
-          position: absolute;
-          top: 0;
-          left: 0;
-          width: 100%;
-          height: 100%;
-          object-fit: contain;
+          max-width: 100%;
+          max-height: 36rem;
         }
       `}</style>
-    </div>
+    </>
   );
 }
 
@@ -67,18 +68,23 @@ function ImageGalleryContent({ contentConfig: { imageFiles, columnWidth } }) {
         }))}
         showFullscreenButton={false}
         showThumbnails={false}
-        showNav={false}
         showPlayButton={false}
         showBullets
+        disableKeyDown
       />
       <style jsx>{`
         img {
           display: block;
           width: 100%;
+          max-width: 80vw;
+        }
+
+        :global(.image-gallery) {
+          padding-bottom: 2rem;
         }
 
         :global(.image-gallery-bullets) {
-          bottom: -2rem;
+          bottom: -1.5rem;
 
           :global(.image-gallery-bullet) {
             background-color: ${secondaryAccentColor};
@@ -90,6 +96,7 @@ function ImageGalleryContent({ contentConfig: { imageFiles, columnWidth } }) {
             &:hover,
             &:focus {
               background-color: ${secondaryAccentColor};
+              transform: none;
               opacity: 0.8;
             }
           }
@@ -138,6 +145,7 @@ export default function WorkPageContentRow({
 }) {
   return (
     <div
+      className="content-row"
       style={{
         gridTemplateColumns: `repeat(${columnCount}, 1fr)`,
       }}
@@ -166,9 +174,21 @@ export default function WorkPageContentRow({
       })}
       <style jsx>
         {`
-          div {
+          .content-row {
             display: grid;
-            grid-gap: 72px 48px;
+            grid-column-gap: 3rem;
+            justify-content: center;
+            align-items: center;
+
+            width: 66%;
+            margin: 0 auto 2.5rem;
+
+            @media ${breakpointMobile} {
+              width: 92%;
+
+              grid-column-gap: 1rem;
+              margin: 0 auto 1rem;
+            }
           }
         `}
       </style>
