@@ -16,30 +16,24 @@ import {
   breakpointDesktop,
 } from "../../constants/breakpoints";
 
-const WorkLink = ({ sectionName, url, linkImageURL }) => (
-  <>
-    <Link href={url}>
-      <a>
-        <div className="work-name">
-          {sectionName}
-          <div className="arrow-icon-wrapper">
-            <RightArrowIcon />
-          </div>
-        </div>
-        <img
-          src={`${linkImageURL}?nf_resize=fit&w=960`}
-          alt=""
-          className="background-image"
-        />
-      </a>
-    </Link>
+export const WorkLinkContents = ({ sectionName, linkImageURL }) => (
+  <div className="work-link-content">
+    <div className="work-name">
+      {sectionName}
+      <div className="arrow-icon-wrapper">
+        <RightArrowIcon />
+      </div>
+    </div>
+    <img
+      src={`${linkImageURL}?nf_resize=fit&w=960`}
+      alt=""
+      className="background-image"
+    />
     <style jsx>
       {`
-        a {
-          display: block;
+        .work-link-content {
           margin: 0;
           padding: 5% 4% 6%;
-          text-decoration: none;
           position: relative;
 
           .work-name {
@@ -108,7 +102,7 @@ const WorkLink = ({ sectionName, url, linkImageURL }) => (
         }
       `}
     </style>
-  </>
+  </div>
 );
 
 const WorkLinksSection = ({ workPages }) => (
@@ -116,11 +110,14 @@ const WorkLinksSection = ({ workPages }) => (
     <ul>
       {workPages.map((workPage) => (
         <li key={workPage.slug}>
-          <WorkLink
-            sectionName={workPage.linkText}
-            url={`/work/${workPage.slug}`}
-            linkImageURL={workPage.linkImage}
-          />
+          <Link href={`/work/${workPage.slug}`}>
+            <a>
+              <WorkLinkContents
+                sectionName={workPage.linkText}
+                linkImageURL={workPage.linkImage}
+              />
+            </a>
+          </Link>
         </li>
       ))}
     </ul>
@@ -136,6 +133,10 @@ const WorkLinksSection = ({ workPages }) => (
 
       li {
         background-color: ${secondaryAccentColor};
+
+        a {
+          text-decoration: none;
+        }
       }
 
       @media ${breakpointDesktop} {

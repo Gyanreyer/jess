@@ -83,12 +83,6 @@ collections:
     sortable_fields: ["order"]
     fields:
       - {
-          label: "Link Text",
-          name: "linkText",
-          widget: "string",
-          hint: "The text to use in links to this work page",
-        }
-      - {
           label: "URL Slug",
           name: "slug",
           widget: "string",
@@ -100,15 +94,22 @@ collections:
             ],
         }
       - {
+          label: "Homepage Link Text",
+          name: "linkText",
+          widget: "string",
+          hint: "The text to use in links to this work page",
+        }
+      - {
           label: "Link Image",
           name: "linkImage",
           widget: "image",
           hint: "The image to fade in when hovering over the link to this work page",
         }
       - {
-          label: "List Order",
+          label: "Link Order",
           name: "order",
           widget: "number",
+          hint: "The position where this page's link should be displayed in the home page's list of links (ordered from lowest to highest)",
           default: 1,
           min: 1,
           value_type: "int",
@@ -117,7 +118,12 @@ collections:
         name: "seo"
         widget: "object"
         fields:
-          - { label: "Page Title", name: "pageTitle", widget: "string" }
+          - {
+              label: "Page Title",
+              name: "pageTitle",
+              widget: "string",
+              hint: "The text to display in the browser tab for this page.",
+            }
           - {
               label: "Page Description",
               name: "pageDescription",

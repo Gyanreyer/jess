@@ -73,8 +73,8 @@ export default function WorkPage({ workPageContents }) {
         }}
       />
       <WorkPageHeading
-        title={workPageContents.heading}
-        subtext={workPageContents.subHeading}
+        heading={workPageContents.heading}
+        subHeading={workPageContents.subHeading}
       />
       <section>
         {workPageContents.contentRows &&

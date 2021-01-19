@@ -1,10 +1,13 @@
-import { secondaryAccentColor, primaryAccentColor } from "../../constants/colors";
+import {
+  secondaryAccentColor,
+  primaryAccentColor,
+} from "../../constants/colors";
 
-export default function WorkPageHeading({ title, subtext }) {
+export default function WorkPageHeading({ heading, subHeading }) {
   return (
     <div className="heading-box">
-      <h1>{title}</h1>
-      <p>{subtext}</p>
+      <h1>{heading}</h1>
+      <p>{subHeading}</p>
       <style jsx>{`
         .heading-box {
           border: 0.5rem solid ${secondaryAccentColor};

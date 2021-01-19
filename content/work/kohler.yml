@@ -1,5 +1,5 @@
-linkText: Kohler
 slug: kohler
+linkText: Kohler
 linkImage: /media/kohler-headerimage.jpg
 order: 2
 seo:
@@ -57,6 +57,8 @@ contentRows:
         imageFiles:
           - /media/kohler_IMG_1820_1.jpg
           - /media/kohler_IMG_1835.jpg
+          - /media/kohler_IMG_1923.jpg
+          - /media/kohler_IMG_1964_1.JPG
   - columnCount: 1
     contents:
       - type: textContent
