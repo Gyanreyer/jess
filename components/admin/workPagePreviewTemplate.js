@@ -78,7 +78,9 @@ export default function WorkPagePreviewTemplate({ entry }) {
     // Copy all <style> tags from the parent window into the preview iframe to ensure all of the CSS
     // will get applied correctly
     // Since they're both from the same origin there shouldn't be any CORS issues
-    const styleElements = document.querySelectorAll("style");
+    const styleElements = document.querySelectorAll(
+      "style, link[rel='stylesheet']"
+    );
 
     const iframe = document.getElementById("preview-pane");
     const iframeHeadElem = iframe.contentDocument.head;
