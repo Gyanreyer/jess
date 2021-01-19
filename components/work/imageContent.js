@@ -4,11 +4,15 @@ import "react-image-gallery/styles/css/image-gallery.css";
 import { secondaryAccentColor } from "../../constants/colors";
 
 function SingleImageContent({ contentConfig: { imageFiles, columnWidth } }) {
+  const imageFile = imageFiles[0];
+
   return (
     <>
       <img
         //  Resize images to fit within a 1080x1080 box
-        src={`${imageFiles[0]}?nf_resize=fit&w=1080&h=1080`}
+        src={`${imageFile}${
+          imageFile.endsWith(".gif") ? "" : "?nf_resize=fit&w=1080&h=1080"
+        }`}
         alt=""
         style={{
           gridColumnStart: `span ${columnWidth}`,
@@ -33,7 +37,9 @@ function ImageGalleryContent({ contentConfig: { imageFiles, columnWidth } }) {
     >
       <ImageGallery
         items={imageFiles.map((imageFile) => ({
-          original: `${imageFile}?nf_resize=fit&w=1080&h=1080`,
+          original: `${imageFile}${
+            imageFile.endsWith(".gif") ? "" : "?nf_resize=fit&w=1080&h=1080"
+          }`,
         }))}
         showFullscreenButton={false}
         showThumbnails={false}
