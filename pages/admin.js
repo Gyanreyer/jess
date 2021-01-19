@@ -9,7 +9,7 @@ const CMS = dynamic(
       cms.registerPreviewTemplate("work", WorkPagePreviewTemplate);
       cms.init({ config });
     }),
-  { ssr: false, loading: () => <p>Loading...</p> }
+  { ssr: false }
 );
 
 export default function AdminPage() {
