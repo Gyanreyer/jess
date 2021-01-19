@@ -1,18 +1,7 @@
-const HomePageSection = (props) => (
-  <>
-    <section {...props} />
-    <style jsx>{`
-      section {
-        position: relative;
-        font-size: 1.2rem;
+import styles from "./homePageSection.module.scss";
 
-        :global(h1) {
-          font-size: 3rem;
-          margin: 0 0 0.75rem;
-        }
-      }
-    `}</style>
-  </>
+const HomePageSection = ({ className, ...props }) => (
+  <section className={`${styles.homePageSection} ${className}`} {...props} />
 );
 
 export default HomePageSection;

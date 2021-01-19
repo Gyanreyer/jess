@@ -83,11 +83,6 @@ export default function WorkPage({ workPageContents }) {
             <WorkPageContentRow key={index} contentRow={contentRow} />
           ))}
       </section>
-      <style jsx>{`
-        section {
-          margin: 0;
-        }
-      `}</style>
     </Layout>
   );
 }

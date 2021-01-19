@@ -1,0 +1,45 @@
+@import '../../constants/colors.scss';
+
+.pageHeader {
+  nav {
+    position: relative;
+    top: 0;
+    left: 0;
+    z-index: 1;
+  
+    padding: 1.5rem 4%;
+  
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .logoImage {
+    display: block;
+    width: 8rem;
+  }
+  
+  .navLinks {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  
+    li {
+      display: inline;
+      margin-left: 2em;
+  
+      a {
+        display: inline-block;
+        color: $primary-accent-color;
+        text-decoration: none;
+        font-size: 1.4rem;
+      }
+    }
+  }
+}
+
+.pageFooter {
+  padding: 9% 2rem 2rem;
+  font-size: 0.8rem;
+  text-align: center;
+}

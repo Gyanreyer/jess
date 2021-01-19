@@ -1,11 +1,13 @@
 import ReactMarkdown from "react-markdown";
 
+import styles from "./textContent.module.scss";
+
 export default function TextContent({
   contentConfig: { text, textAlignment, columnWidth },
 }) {
   return (
     <div
-      className="text-content"
+      className={styles.textContent}
       style={{
         gridColumnStart: `span ${columnWidth}`,
         marginRight: textAlignment === "right" ? 0 : "auto",
@@ -14,18 +16,6 @@ export default function TextContent({
       }}
     >
       <ReactMarkdown source={text} />
-      <style jsx>{`
-        .text-content {
-          max-width: 42rem;
-        }
-
-        .text-content > :global(*:first-child) {
-          margin-top: 0;
-        }
-        .text-content > :global(*:last-child) {
-          margin-bottom: 0;
-        }
-      `}</style>
     </div>
   );
 }

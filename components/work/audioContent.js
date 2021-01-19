@@ -1,7 +1,7 @@
 import AudioPlayer from "react-h5-audio-player";
 import "react-h5-audio-player/lib/styles.css";
 
-import { primaryColor, secondaryAccentColor } from "../../constants/colors";
+import styles from "./audioContent.module.scss";
 
 export default function AudioContent({
   contentConfig: { audioFile, columnWidth },
@@ -15,26 +15,8 @@ export default function AudioContent({
       <AudioPlayer
         src={audioFile}
         customAdditionalControls={[]}
-        className="audio-player"
+        className={styles.audioPlayer}
       />
-      <style jsx>{`
-        div {
-          :global(.audio-player) {
-            max-width: 32rem;
-            margin: 0 auto;
-            border-radius: 4px;
-            background-color: ${primaryColor};
-
-            :global(.rhap_progress-indicator, .rhap_volume-indicator) {
-              background-color: ${secondaryAccentColor};
-            }
-
-            :global(.rhap_main-controls-button, .rhap_volume-button) {
-              color: ${secondaryAccentColor};
-            }
-          }
-        }
-      `}</style>
     </div>
   );
 }

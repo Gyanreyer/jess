@@ -1,0 +1,60 @@
+@import '../../constants/colors.scss';
+
+.contactSection {
+  padding: 7% 9% 0;
+  max-width: 50rem;
+
+  .bodyText {
+    margin: 1.2rem 0 1.8rem;
+
+    p {
+      margin: 0;
+    }
+  }
+
+  label {
+    font-size: 1.6rem;
+    font-weight: bold;
+  }
+
+  input,
+  textarea {
+    display: block;
+    margin: 0.6rem 0 1.2rem;
+    padding: 0.5rem;
+    font-size: 1rem;
+    width: 100%;
+    box-sizing: border-box;
+    border: none;
+    border-radius: 0;
+    font-family: "Avenir";
+    background-color: $primary-color;
+  }
+
+  button {
+    display: block;
+    padding: 6px;
+    /* Text styling */
+    font-weight: bold;
+    font-size: 1.6rem;
+    text-align: center;
+    /* Colors */
+    background-color: $primary-accent-color;
+    color: $primary-color;
+
+    appearance: none;
+    border: none;
+
+    width: 10rem;
+    cursor: pointer;
+    margin-top: 1.8em;
+
+    span {
+      display: inline-block;
+      border: 4px solid $primary-color;
+      padding: 4px 8px;
+      width: 100%;
+      box-sizing: border-box;
+    }
+  }
+}

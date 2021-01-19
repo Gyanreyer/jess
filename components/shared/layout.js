@@ -1,8 +1,8 @@
 import Link from "next/link";
 
-import { primaryAccentColor } from "../../constants/colors";
-
 import layoutContents from "../../content/layout.yml";
+
+import styles from "./layout.module.scss";
 
 export default function Layout({ logoImageSrc, headerStyle, children }) {
   const { header, footer } = layoutContents;
@@ -24,18 +24,18 @@ export default function Layout({ logoImageSrc, headerStyle, children }) {
 
   return (
     <main>
-      <header style={headerStyle}>
+      <header style={headerStyle} className={styles.pageHeader}>
         <nav>
           <Link href="/">
             <a>
               <img
                 src={`${logoImageSrc || header.baseLogo}?nf_resize=fit&w=240`}
                 alt="Jess"
-                className="logo-image"
+                className={styles.logoImage}
               />
             </a>
           </Link>
-          <ul className="nav-links">
+          <ul className={styles.navLinks}>
             <li>
               <Link href="/#work">
                 <a href="/#work" onClick={onClickNavAnchorLink}>
@@ -54,50 +54,7 @@ export default function Layout({ logoImageSrc, headerStyle, children }) {
         </nav>
       </header>
       {children}
-      <footer>{footer.textContent}</footer>
-      <style jsx>{`
-        nav {
-          position: relative;
-          top: 0;
-          left: 0;
-          z-index: 1;
-
-          padding: 1.5rem 4%;
-
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-        }
-
-        .logo-image {
-          display: block;
-          width: 8rem;
-        }
-
-        .nav-links {
-          list-style-type: none;
-          margin: 0;
-          padding: 0;
-
-          li {
-            display: inline;
-            margin-left: 2em;
-
-            a {
-              display: inline-block;
-              color: ${primaryAccentColor};
-              text-decoration: none;
-              font-size: 1.4rem;
-            }
-          }
-        }
-
-        footer {
-          padding: 9% 2rem 2rem;
-          font-size: 0.8rem;
-          text-align: center;
-        }
-      `}</style>
+      <footer className={styles.pageFooter}>{footer.textContent}</footer>
     </main>
   );
 }

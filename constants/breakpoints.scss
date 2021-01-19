@@ -1,0 +1,5 @@
+$mobile-max: 768px;
+$desktop-min: 769px;
+
+$breakpoint-mobile: "screen and (max-width: #{$mobile-max})";
+$breakpoint-desktop: "screen and (min-width: #{$desktop-min})";

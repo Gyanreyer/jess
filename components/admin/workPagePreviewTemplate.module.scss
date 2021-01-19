@@ -1,0 +1,41 @@
+@import "../../constants/colors.scss";
+
+.homeLinkPreviewWrapper {
+  margin: 0 2rem;
+  background-color: $secondary-accent-color;
+}
+
+.seoLinkPreviewWrapper {
+  background-color: lightgray;
+  margin: 0 2rem;
+  border: solid 2px black;
+  border-radius: 12px;
+  overflow: hidden;
+
+  img {
+    width: 100%;
+  }
+
+  .seoTextContents {
+    width: 100%;
+    padding: 4px 12px 8px;
+    box-sizing: border-box;
+    color: black;
+
+    p {
+      margin: 0 0 4px;
+    }
+
+    .pageOrigin {
+      text-transform: uppercase;
+      font-size: 0.8em;
+    }
+
+    .pageTitle {
+      font-weight: bold;
+      color: cornflowerblue;
+      text-decoration: underline;
+      font-size: 1.2em;
+    }
+  }
+}

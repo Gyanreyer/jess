@@ -14,6 +14,8 @@ import WorkLinksSection from "../components/home/workLinksSection";
 import AboutSection from "../components/home/aboutSection";
 import ContactSection from "../components/home/contactSection";
 
+import styles from "./home.module.scss";
+
 // Homepage config
 import homepageConfig from "../content/home.yml";
 
@@ -87,7 +89,7 @@ const Home = ({ workPages }) => {
         muted
         autoPlay
         loop
-        className="banner-video"
+        className={styles.heroVideo}
         style={{
           height: videoHeight,
         }}
@@ -98,14 +100,6 @@ const Home = ({ workPages }) => {
         <AboutSection />
         <ContactSection />
       </article>
-      <style jsx>{`
-        video {
-          display: block;
-          width: 100%;
-          max-height: 100vh;
-          object-fit: cover;
-        }
-      `}</style>
     </Layout>
   );
 };
