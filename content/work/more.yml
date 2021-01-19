@@ -1,11 +1,11 @@
-linkText: And then some
 slug: more
-linkImage: /media/more-headerimage.jpg
+linkText: And then some
+linkImage: /media/animalheader.jpg
 order: 6
 seo:
   pageTitle: The more the merrier
   pageDescription: If you’ve made it here, you deserve a little extra.
-  ogImage: /media/more-headerimage.jpg
+  ogImage: /media/animalheader.jpg
 heading: The more the merrier
 subHeading: If you’ve made it here, you deserve a little extra.
 contentRows:
