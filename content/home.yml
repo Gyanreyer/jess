@@ -5,9 +5,8 @@ seo:
 logoImage: /media/asset-2-4x.png
 reel: /media/jess_2020_newreel.mp4
 aboutSection:
-  backgroundImage: /media/About-Section-Image.jpg
-  body: >-
-    Jess Keoshian is a designer and art director located in the metro area of
+  backgroundImage: /media/jess_keoshian.jpg
+  body: Jess Keoshian is a designer and art director located in the metro area of
     Detroit. Specializing in design concepts and motion, Jess brings a strategic
     edge to every project. Jess public speaks not only in the advertising
     presentation space, but in experiences that span over topics of mental
@@ -15,7 +14,6 @@ aboutSection:
   heading: about
   resumeFile: /media/JKEOSHIAN_RESUME.pdf
 contactSection:
-  body: >-
-    Jess is accepting freelance design and motion projects, as well as public
+  body: Jess is accepting freelance design and motion projects, as well as public
     speaking opportunities. Please contact Jess for further info.
   heading: contact
