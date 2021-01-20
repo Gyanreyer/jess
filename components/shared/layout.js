@@ -1,5 +1,7 @@
 import Link from "next/link";
 
+import Image from "./image";
+
 import layoutContents from "../../content/layout.yml";
 
 import styles from "./layout.module.scss";
@@ -28,8 +30,8 @@ export default function Layout({ logoImageSrc, headerStyle, children }) {
         <nav>
           <Link href="/">
             <a>
-              <img
-                src={`${logoImageSrc || header.baseLogo}?nf_resize=fit&w=240`}
+              <Image
+                src={logoImageSrc || header.baseLogo}
                 alt="Jess"
                 className={styles.logoImage}
               />

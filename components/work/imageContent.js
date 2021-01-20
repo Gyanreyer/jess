@@ -1,18 +1,16 @@
 import ImageGallery from "react-image-gallery";
 import "react-image-gallery/styles/css/image-gallery.css";
 
+import Image from "../shared/image";
+
 import styles from "./imageContent.module.scss";
 
 function SingleImageContent({ contentConfig: { imageFiles, columnWidth } }) {
   const imageFile = imageFiles[0];
 
   return (
-    <img
-      src={`${imageFile}${
-        //  Resize jpg and png images to fit within a 1080x1080 box
-        imageFile.endsWith(".gif") ? "" : "?nf_resize=fit&w=1080&h=1080"
-      }`}
-      alt=""
+    <Image
+      src={imageFile}
       style={{
         gridColumnStart: `span ${columnWidth}`,
       }}

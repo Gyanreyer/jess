@@ -4,6 +4,7 @@ import ReactMarkdown from "react-markdown";
 // Components
 import HomePageSection from "./homePageSection";
 import AnimatedBorder from "../shared/animatedBorder";
+import Image from "../shared/image";
 
 // Content
 import homepageConfig from "../../content/home.yml";
@@ -20,7 +21,7 @@ const {
 export default function AboutSection() {
   return (
     <HomePageSection id="about">
-      <img src={backgroundImage} alt="" className={styles.backgroundImage} />
+      <Image src={backgroundImage} className={styles.backgroundImage} />
       <div className={styles.sectionContentWrapper}>
         <AnimatedBorder>
           <div className={styles.content}>
