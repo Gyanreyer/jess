@@ -88,6 +88,7 @@ const Home = ({ workPages }) => {
         src={reel}
         muted
         autoPlay
+        playsInline
         loop
         className={styles.heroVideo}
         style={{

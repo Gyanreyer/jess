@@ -4,7 +4,7 @@ export default function VideoContent({
   contentConfig: { videoFile, posterImageFile, shouldAutoplay, columnWidth },
 }) {
   const playbackProps = shouldAutoplay
-    ? { muted: true, autoPlay: true, loop: true }
+    ? { muted: true, autoPlay: true, loop: true, playsInline: true }
     : { controls: true };
 
   return (
