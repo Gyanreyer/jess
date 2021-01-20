@@ -13,6 +13,9 @@ collections:
         file: "content/layout.yml"
         delete: false
         fields:
+          - label: "Favicon"
+            name: "favicon"
+            widget: "file"
           - label: "Header"
             name: "header"
             widget: "object"

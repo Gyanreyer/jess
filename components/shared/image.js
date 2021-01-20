@@ -1,11 +1,11 @@
-import { useRef, useLayoutEffect } from "react";
+import { useRef, useEffect } from "react";
 
 const sizes = [256, 512, 768, 1024, 1280, 1536, 1920];
 
 export default function Image({ src, alt = "", ...props }) {
   const imageRef = useRef();
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     const imageElement = imageRef.current;
     const displayWidth = imageElement.offsetWidth;
 
