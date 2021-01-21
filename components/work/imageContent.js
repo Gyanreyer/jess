@@ -1,7 +1,7 @@
 import ImageGallery from "react-image-gallery";
 import "react-image-gallery/styles/css/image-gallery.css";
 
-import Image from "../shared/image";
+import Image, { getImageSrcSet } from "../shared/image";
 import { RightArrowIcon } from "../shared/icons";
 
 import styles from "./imageContent.module.scss";
@@ -29,9 +29,9 @@ function ImageGalleryContent({ contentConfig: { imageFiles, columnWidth } }) {
     >
       <ImageGallery
         items={imageFiles.map((imageFile) => ({
-          original: `${imageFile}${
-            imageFile.endsWith(".gif") ? "" : "?nf_resize=fit&w=1080&h=1080"
-          }`,
+          original: imageFile,
+          srcSet: getImageSrcSet(imageFile),
+          sizes: `(max-width: 768px) 92vw, 58vw`,
         }))}
         showFullscreenButton={false}
         showThumbnails={false}
