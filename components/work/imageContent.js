@@ -2,6 +2,7 @@ import ImageGallery from "react-image-gallery";
 import "react-image-gallery/styles/css/image-gallery.css";
 
 import Image from "../shared/image";
+import { RightArrowIcon } from "../shared/icons";
 
 import styles from "./imageContent.module.scss";
 
@@ -38,6 +39,26 @@ function ImageGalleryContent({ contentConfig: { imageFiles, columnWidth } }) {
         showBullets
         disableKeyDown
         additionalClass={styles.imageGallery}
+        renderLeftNav={(onClick, disabled) => (
+          <button
+            className={styles.leftArrowButton}
+            disabled={disabled}
+            onClick={onClick}
+            type="button"
+          >
+            <RightArrowIcon />
+          </button>
+        )}
+        renderRightNav={(onClick, disabled) => (
+          <button
+            className={styles.rightArrowButton}
+            disabled={disabled}
+            onClick={onClick}
+            type="button"
+          >
+            <RightArrowIcon />
+          </button>
+        )}
       />
     </div>
   );

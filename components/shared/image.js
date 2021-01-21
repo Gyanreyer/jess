@@ -19,7 +19,7 @@ export default function Image({ src, alt = "", ...props }) {
       imageElement.setAttribute(
         "srcset",
         sizes
-          .map((size) => `${src}?nf_resize=fit&w=${size}&h=${size} ${size}w`)
+          .map((size) => `${src}?nf_resize=fit&w=${size} ${size}w`)
           .join(", ")
       );
     }
