@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "frontmatter-markdown-loader": "^3.6.0",
+    "lazysizes": "^5.3.0",
     "netlify-cms-app": "^2.14.12",
     "next": "^10.0.4",
     "next-compose-plugins": "^2.2.0",
@@ -36,8 +37,6 @@
     "eslint-plugin-prettier": "^3.1.4",
     "eslint-plugin-react": "^7.20.3",
     "eslint-plugin-react-hooks": "^4.0.6",
-    "node-sass": "^4.14.1",
-    "smoothscroll-polyfill": "^0.4.4",
-    "styled-jsx-plugin-sass": "^1.0.0"
+    "smoothscroll-polyfill": "^0.4.4"
   }
 }

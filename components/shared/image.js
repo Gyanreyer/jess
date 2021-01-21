@@ -1,31 +1,22 @@
-import { useRef, useEffect } from "react";
+import "lazysizes";
+import "lazysizes/plugins/parent-fit/ls.parent-fit";
 
 const sizes = [256, 512, 768, 1024, 1280, 1536, 1920];
 
-export default function Image({ src, alt = "", ...props }) {
-  const imageRef = useRef();
-
-  useEffect(() => {
-    const imageElement = imageRef.current;
-    const displayWidth = imageElement.offsetWidth;
-
-    if (displayWidth) {
-      imageElement.setAttribute("sizes", `${displayWidth}px`);
-    }
-  }, []);
-
+export default function Image({ src, alt = "", className, ...props }) {
   return (
     <img
-      src={src}
-      srcSet={
+      data-src={src}
+      data-srcset={
         !src.endsWith(".gif")
           ? sizes
               .map((size) => `${src}?nf_resize=fit&w=${size} ${size}w`)
               .join(", ")
           : null
       }
-      ref={imageRef}
+      data-sizes="auto"
       alt={alt}
+      className={`lazyload ${className}`}
       {...props}
     />
   );

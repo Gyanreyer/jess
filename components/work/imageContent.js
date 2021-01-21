@@ -33,6 +33,9 @@ function ImageGalleryContent({ contentConfig: { imageFiles, columnWidth } }) {
             imageFile.endsWith(".gif") ? "" : "?nf_resize=fit&w=1080&h=1080"
           }`,
         }))}
+        renderItem={({ original }) => (
+          <Image className="image-gallery-image" src={original} />
+        )}
         showFullscreenButton={false}
         showThumbnails={false}
         showPlayButton={false}
