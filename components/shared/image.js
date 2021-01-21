@@ -12,18 +12,21 @@ export default function Image({ src, alt = "", ...props }) {
     if (displayWidth) {
       imageElement.setAttribute("sizes", `${displayWidth}px`);
     }
+  }, []);
 
-    imageElement.setAttribute("src", src);
-
-    if (!src.endsWith(".gif")) {
-      imageElement.setAttribute(
-        "srcset",
-        sizes
-          .map((size) => `${src}?nf_resize=fit&w=${size} ${size}w`)
-          .join(", ")
-      );
-    }
-  }, [src]);
-
-  return <img ref={imageRef} alt={alt} {...props} />;
+  return (
+    <img
+      src={src}
+      srcSet={
+        !src.endsWith(".gif")
+          ? sizes
+              .map((size) => `${src}?nf_resize=fit&w=${size} ${size}w`)
+              .join(", ")
+          : null
+      }
+      ref={imageRef}
+      alt={alt}
+      {...props}
+    />
+  );
 }
