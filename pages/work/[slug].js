@@ -8,6 +8,7 @@ import YAML from "yaml";
 import Layout from "../../components/shared/layout";
 import WorkPageHeading from "../../components/work/workPageHeading";
 import WorkPageContentRow from "../../components/work/workPageContentRow";
+import { useObserveLazyAutoplayVideos } from "../../components/work/videoContent";
 
 export async function getStaticPaths() {
   const workPageDirectory = path.join(process.cwd(), "content/work");
@@ -54,6 +55,9 @@ export async function getStaticProps(context) {
 }
 
 export default function WorkPage({ workPageContents }) {
+  // Hook up an IntersectionObserver to lazy-load any autoplaying videos on this work page
+  useObserveLazyAutoplayVideos();
+
   return (
     <Layout theme="light" pageTitle={workPageContents.seo.pageTitle}>
       <NextSeo
