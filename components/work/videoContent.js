@@ -12,46 +12,40 @@ export const useObserveLazyAutoplayVideos = () => {
   useEffect(() => {
     let lazyVideoObserver;
 
-    const onLoad = () => {
-      const lazyVideos = [].slice.call(
-        document.querySelectorAll(`video.${lazyAutoplayClass}`)
+    const lazyVideos = [].slice.call(
+      document.querySelectorAll(`video.${lazyAutoplayClass}`)
+    );
+
+    if ("IntersectionObserver" in window) {
+      lazyVideoObserver = new window.IntersectionObserver(
+        (entries) => {
+          entries.forEach((video) => {
+            if (video.isIntersecting) {
+              const videoElement = video.target;
+
+              videoElement.play();
+              videoElement.classList.remove(lazyAutoplayClass);
+              lazyVideoObserver.unobserve(videoElement);
+            }
+          });
+        },
+        {
+          // Consider the video to be intersecting if the user scrolls within 64px of any edge
+          rootMargin: "64px",
+        }
       );
 
-      if ("IntersectionObserver" in window) {
-        lazyVideoObserver = new window.IntersectionObserver(
-          (entries) => {
-            entries.forEach((video) => {
-              if (video.isIntersecting) {
-                const videoElement = video.target;
+      lazyVideos.forEach((lazyVideo) => lazyVideoObserver.observe(lazyVideo));
 
-                videoElement.play();
-                videoElement.classList.remove(lazyAutoplayClass);
-                lazyVideoObserver.unobserve(videoElement);
-              }
-            });
-          },
-          {
-            // Consider the video to be intersecting if the user scrolls within 64px of any edge
-            rootMargin: "64px",
-          }
-        );
+      return () => lazyVideoObserver.disconnect();
+    }
 
-        lazyVideos.forEach((lazyVideo) => lazyVideoObserver.observe(lazyVideo));
-      } else {
-        // If IntersectionObserver isn't supported, just set the videos to autoplay
-        lazyVideos.forEach((lazyVideo) => {
-          lazyVideo.setAttribute("autoplay", "");
-        });
-      }
-    };
+    // If IntersectionObserver isn't supported, just set the videos to autoplay
+    lazyVideos.forEach((lazyVideo) => {
+      lazyVideo.setAttribute("autoplay", "");
+    });
 
-    window.addEventListener("load", onLoad);
-
-    return () => {
-      if (lazyVideoObserver) lazyVideoObserver.disconnect();
-
-      window.removeEventListener("load", onLoad);
-    };
+    return undefined;
   }, []);
 };
 
