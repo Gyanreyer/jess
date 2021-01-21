@@ -143,7 +143,7 @@ collections:
         widget: list
         fields:
           - label: "Content Items"
-            label_singular: "Content item"
+            label_singular: "Content"
             name: "contents"
             widget: "list"
             types:

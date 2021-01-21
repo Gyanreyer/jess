@@ -64,23 +64,34 @@ export default function WorkPagePreviewTemplate({ entry }) {
         </strong>
       </p>
       <h2>Homepage Link Preview:</h2>
-      <HomepageLinkPreview
-        linkText={data.linkText}
-        linkImage={data.linkImage}
-      />
+      {data.linkText && data.linkImage ? (
+        <HomepageLinkPreview
+          linkText={data.linkText}
+          linkImage={data.linkImage}
+        />
+      ) : null}
       <h2>SEO Link Preview:</h2>
       <p>
         (approximately how links to this page will be previewed when shared on
         Facebook, messaging services, etc)
       </p>
-      <SEOLinkPreview slug={data.slug} seo={data.seo} />
+      {data.slug && data.seo ? (
+        <SEOLinkPreview slug={data.slug} seo={data.seo} />
+      ) : null}
       <h2>Page Contents Preview:</h2>
-      <PageHeadingPreview heading={data.heading} subHeading={data.subHeading} />
+      {data.heading && data.subHeading ? (
+        <PageHeadingPreview
+          heading={data.heading}
+          subHeading={data.subHeading}
+        />
+      ) : null}
       {data.contentRows &&
-        data.contentRows.map((contentRow, index) => (
-          // eslint-disable-next-line react/no-array-index-key
-          <WorkPageContentRow key={index} contentRow={contentRow} />
-        ))}
+        data.contentRows.map((contentRow, index) =>
+          contentRow.contents ? (
+            // eslint-disable-next-line react/no-array-index-key
+            <WorkPageContentRow key={index} contentRow={contentRow} />
+          ) : null
+        )}
     </div>
   );
 }
