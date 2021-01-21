@@ -1,5 +1,5 @@
-linkText: Pampers
 slug: pampers
+linkText: Pampers
 linkImage: /media/pampers-headerimage.jpg
 order: 1
 seo:
@@ -57,6 +57,16 @@ contentRows:
         text: The Pampers’ app and site are now more inclusive and dad-friendly. The app
           partners with target stores that have the smart changing table,
           allowing easy use of product pickup in-store.
+  - columnCount: 2
+    contents:
+      - type: imageContent
+        columnWidth: 1
+        imageFiles:
+          - /media/sb_pampers_1.png
+      - type: imageContent
+        columnWidth: 1
+        imageFiles:
+          - /media/sb_pampers_2.png
   - columnCount: 1
     contents:
       - type: textContent
