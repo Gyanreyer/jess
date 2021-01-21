@@ -62,11 +62,27 @@ contentRows:
       - type: imageContent
         columnWidth: 1
         imageFiles:
+          - /media/pampers-dadmoji_1.gif
+      - type: imageContent
+        columnWidth: 1
+        imageFiles:
+          - /media/dadmoji-keyboard.png
+  - columnCount: 2
+    contents:
+      - type: imageContent
+        columnWidth: 1
+        imageFiles:
           - /media/sb_pampers_1.png
       - type: imageContent
         columnWidth: 1
         imageFiles:
           - /media/sb_pampers_2.png
+  - columnCount: 1
+    contents:
+      - type: textContent
+        textAlignment: center
+        columnWidth: 1
+        text: Dadmojis were added to giphy as customizable and relatable icons.
   - columnCount: 1
     contents:
       - type: textContent
