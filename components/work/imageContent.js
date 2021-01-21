@@ -38,6 +38,7 @@ function ImageGalleryContent({ contentConfig: { imageFiles, columnWidth } }) {
         showPlayButton={false}
         showBullets
         disableKeyDown
+        lazyLoad
         additionalClass={styles.imageGallery}
         renderLeftNav={(onClick, disabled) => (
           <button
