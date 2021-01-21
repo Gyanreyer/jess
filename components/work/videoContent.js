@@ -30,8 +30,8 @@ export const useObserveLazyAutoplayVideos = () => {
           });
         },
         {
-          // Consider the video to be intersecting if the user scrolls within 64px of any edge
-          rootMargin: "64px",
+          // Consider the video to be intersecting if the user scrolls within 50% of the video's height
+          rootMargin: "50%",
         }
       );
 
