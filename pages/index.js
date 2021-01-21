@@ -70,11 +70,11 @@ const Home = ({ workPages }) => {
     <Layout logoImageSrc={logoImage}>
       <NextSeo
         title={seo.pageTitle}
-        description={seo.description}
+        description={seo.pageDescription}
         openGraph={{
           type: "website",
           title: seo.pageTitle,
-          description: seo.description,
+          description: seo.pageDescription,
           images: seo.ogImage
             ? [
                 {
