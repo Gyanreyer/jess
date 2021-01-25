@@ -12,7 +12,5 @@ module.exports = withPlugins([withTM], {
     });
     return cfg;
   },
-  images: {
-    imageSizes: [120, 240, 480, 720, 1080, 1920],
-  },
+  crossOrigin: "anonymous",
 });

@@ -8,7 +8,8 @@ $arrow-icon-width: 1.2em;
   padding: 5% 4% 6%;
   position: relative;
 
-  .workName {
+
+  .borderWrapper {
     display: inline-flex;
     align-items: center;
     position: relative;
@@ -21,6 +22,11 @@ $arrow-icon-width: 1.2em;
     font-size: 2.2rem;
     font-weight: bold;
     line-height: 1;
+
+    @media #{$breakpoint-mobile} {
+      width: 100%;
+      box-sizing: border-box;
+    }
   }
 
   .arrowIconWrapper {

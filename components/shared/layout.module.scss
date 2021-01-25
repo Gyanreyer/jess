@@ -1,4 +1,5 @@
 @import '../../constants/colors.scss';
+@import '../../constants/breakpoints.scss';
 
 .pageHeader {
   nav {
@@ -17,6 +18,10 @@
   .logoImage {
     display: block;
     width: 8rem;
+
+    @media #{$breakpoint-mobile} {
+      width: 6rem;
+    }
   }
   
   .navLinks {

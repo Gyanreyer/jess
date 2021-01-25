@@ -6,12 +6,12 @@ class MyDocument extends Document {
   render() {
     return (
       <Html lang="en">
-        <Head crossOrigin="anonymous">
+        <Head>
           <link rel="shortcut icon" href={layoutContents.favicon} />
         </Head>
         <body>
           <Main />
-          <NextScript crossOrigin="anonymous" />
+          <NextScript />
         </body>
       </Html>
     );
