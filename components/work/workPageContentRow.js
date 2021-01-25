@@ -1,11 +1,11 @@
 /* eslint-disable react/no-array-index-key */
-
-import TextContent from "./textContent";
-import ImageContent from "./imageContent";
-import VideoContent from "./videoContent";
-import AudioContent from "./audioContent";
-
+import dynamic from "next/dynamic";
 import styles from "./workPageContentRow.module.scss";
+
+const TextContent = dynamic(() => import("./textContent"));
+const ImageContent = dynamic(() => import("./imageContent"));
+const VideoContent = dynamic(() => import("./videoContent"));
+const AudioContent = dynamic(() => import("./audioContent"));
 
 const contentComponents = {
   textContent: TextContent,
