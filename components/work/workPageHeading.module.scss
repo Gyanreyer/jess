@@ -1,4 +1,5 @@
 @import "../../constants/colors.scss";
+@import "../../constants/breakpoints.scss";
 
 .headingBox {
   border: 0.5rem solid $secondary-accent-color;
@@ -12,10 +13,15 @@
   h1 {
     color: $primary-accent-color;
     font-size: 6rem;
+    hyphens: auto;
     line-height: 1;
     letter-spacing: -2px;
     margin: 0 0 1rem;
     text-transform: lowercase;
+
+    @media #{$breakpoint-mobile} {
+      font-size: 4rem;
+    }
   }
 
   p {

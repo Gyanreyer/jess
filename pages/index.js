@@ -9,15 +9,15 @@ import YAML from "yaml";
 
 import Layout from "../components/shared/layout";
 
-// Homepage content components
-import WorkLinksSection from "../components/home/workLinksSection";
-import AboutSection from "../components/home/aboutSection";
-import ContactSection from "../components/home/contactSection";
-
 import styles from "./home.module.scss";
 
 // Homepage config
 import homepageConfig from "../content/home.yml";
+
+// Homepage content components
+import WorkLinksSection from "../components/home/workLinksSection";
+import AboutSection from "../components/home/aboutSection";
+import ContactSection from "../components/home/contactSection";
 
 const { logoImage, reel, seo } = homepageConfig;
 

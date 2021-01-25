@@ -49,6 +49,23 @@ export default function WorkPagePreviewTemplate({ entry }) {
       // Make sure to clone each node before adding to ensure we don't steal them from the parent window
       iframeHeadElem.appendChild(styleElement.cloneNode(true))
     );
+
+    // Force all lazy-loaded contents in the preview iframe to load because
+    // lazysizes and IntersectionObserver won't behave correctly otherwise
+    const lazyVideos = [].slice.call(
+      iframe.contentDocument.querySelectorAll(`video.lazy-autoplay`)
+    );
+    lazyVideos.forEach((lazyVideo) => {
+      lazyVideo.setAttribute("autoplay", "");
+      lazyVideo.play();
+    });
+
+    const lazyImages = [].slice.call(
+      iframe.contentDocument.querySelectorAll("img.lazyload")
+    );
+    lazyImages.forEach((lazyImage) => {
+      lazyImage.setAttribute("src", lazyImage.dataset.src);
+    });
   }, []);
 
   return (

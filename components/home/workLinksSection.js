@@ -10,8 +10,8 @@ import styles from "./workLinksSection.module.scss";
 
 export const WorkLinkContents = ({ sectionName, linkImageURL }) => (
   <div className={styles.workLinkContent}>
-    <div className={styles.workName}>
-      {sectionName}
+    <div className={styles.borderWrapper}>
+      <span className={styles.workName}>{sectionName}</span>
       <div className={styles.arrowIconWrapper}>
         <RightArrowIcon />
       </div>
