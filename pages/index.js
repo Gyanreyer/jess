@@ -1,5 +1,5 @@
 // Vendor
-import { useState, useRef, useEffect } from "react";
+import { useRef, useLayoutEffect } from "react";
 import { NextSeo } from "next-seo";
 import dynamic from "next/dynamic";
 
@@ -55,17 +55,16 @@ export async function getStaticProps() {
 
 const Home = ({ workPages, homepageConfig }) => {
   const videoElementRef = useRef();
-  const [videoHeight, setVideoHeight] = useState("auto");
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     // Determines the height that we should display the video element at so that it will leave
     // VIDEO_ELEMENT_BOTTOM_SPACE_HEIGHT pixels of space of padding where the content below can peek in
     const onWindowResize = () => {
-      setVideoHeight(
+      videoElementRef.current.style.height = `${
         window.innerHeight -
-          videoElementRef.current.offsetTop -
-          VIDEO_ELEMENT_BOTTOM_SPACE_HEIGHT
-      );
+        videoElementRef.current.offsetTop -
+        VIDEO_ELEMENT_BOTTOM_SPACE_HEIGHT
+      }px`;
     };
 
     // Call our resize function once to get our initial height
@@ -103,9 +102,6 @@ const Home = ({ workPages, homepageConfig }) => {
         playsInline
         loop
         className={styles.heroVideo}
-        style={{
-          height: videoHeight,
-        }}
         ref={videoElementRef}
       />
       <article>
