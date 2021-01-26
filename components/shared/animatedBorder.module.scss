@@ -1,13 +1,13 @@
 @import '../../constants/colors.scss';
 
 .borderContainer {
-  --transition-duration: 800;
+  --transition-duration: 800ms;
   --border-color: #{$primary-color};
   --border-width: 8px;
 
   // Split the total transition duration so that the transition duration of all 4
   // border edges adds up to the total desired transition duration
-  --edge-transition-duration: calc(1ms * var(--transition-duration) / 4);
+  --edge-transition-duration: calc(var(--transition-duration) / 4);
 
   position: relative;
   padding: var(--border-width);

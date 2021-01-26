@@ -1,6 +1,3 @@
-import "lazysizes";
-import "lazysizes/plugins/parent-fit/ls.parent-fit";
-
 const sizes = [128, 256, 512, 768, 1024, 1280, 1536, 1920];
 
 export const getImageSrcSet = (src) =>

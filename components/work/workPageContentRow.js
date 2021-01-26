@@ -16,6 +16,7 @@ const contentComponents = {
 
 export default function WorkPageContentRow({
   contentRow: { contents, columnCount },
+  lazyVideoObserver,
 }) {
   return (
     <div
@@ -27,7 +28,13 @@ export default function WorkPageContentRow({
       {contents.map((contentConfig, index) => {
         const Component = contentComponents[contentConfig.type];
 
-        return <Component key={index} contentConfig={contentConfig} />;
+        return (
+          <Component
+            key={index}
+            contentConfig={contentConfig}
+            lazyVideoObserver={lazyVideoObserver}
+          />
+        );
       })}
     </div>
   );

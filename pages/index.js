@@ -1,6 +1,7 @@
 // Vendor
 import { useState, useRef, useEffect } from "react";
 import { NextSeo } from "next-seo";
+import dynamic from "next/dynamic";
 
 // Static file loading/parsing
 import fs from "fs";
@@ -15,9 +16,13 @@ import styles from "./home.module.scss";
 import homepageConfig from "../content/home.yml";
 
 // Homepage content components
-import WorkLinksSection from "../components/home/workLinksSection";
-import AboutSection from "../components/home/aboutSection";
-import ContactSection from "../components/home/contactSection";
+const WorkLinksSection = dynamic(() =>
+  import("../components/home/workLinksSection")
+);
+const AboutSection = dynamic(() => import("../components/home/aboutSection"));
+const ContactSection = dynamic(() =>
+  import("../components/home/contactSection")
+);
 
 const { logoImage, reel, seo } = homepageConfig;
 

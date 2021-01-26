@@ -1,7 +1,9 @@
-import AudioPlayer from "react-h5-audio-player";
-import "react-h5-audio-player/lib/styles.css";
+import dynamic from "next/dynamic";
 
+import "react-h5-audio-player/lib/styles.css";
 import styles from "./audioContent.module.scss";
+
+const AudioPlayer = dynamic(() => import("react-h5-audio-player"));
 
 export default function AudioContent({
   contentConfig: { audioFile, columnWidth },

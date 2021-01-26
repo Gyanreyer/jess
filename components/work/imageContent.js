@@ -1,10 +1,12 @@
-import ImageGallery from "react-image-gallery";
+import dynamic from "next/dynamic";
 import "react-image-gallery/styles/css/image-gallery.css";
 
 import Image, { getImageSrcSet } from "../shared/image";
 import { RightArrowIcon } from "../shared/icons";
 
 import styles from "./imageContent.module.scss";
+
+const ImageGallery = dynamic(() => import("react-image-gallery"));
 
 function SingleImageContent({ contentConfig: { imageFiles, columnWidth } }) {
   const imageFile = imageFiles[0];

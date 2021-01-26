@@ -9,21 +9,17 @@
     "export": "next export"
   },
   "dependencies": {
-    "frontmatter-markdown-loader": "^3.6.0",
     "lazysizes": "^5.3.0",
     "netlify-cms-app": "^2.14.12",
     "next": "^10.0.4",
-    "next-compose-plugins": "^2.2.0",
     "next-seo": "^4.14.0",
-    "next-transpile-modules": "^4.1.0",
     "react": "^16.13.0",
     "react-dom": "^16.13.0",
     "react-h5-audio-player": "^3.5.0",
-    "react-hover-video-player": "^6.6.3",
     "react-image-gallery": "^1.0.8",
-    "react-intersection-observer": "^8.29.1",
     "react-markdown": "^4.3.1",
     "sass": "^1.32.4",
+    "smoothscroll-polyfill": "^0.4.4",
     "yaml": "^1.10.0",
     "yaml-loader": "^0.6.0"
   },
@@ -36,7 +32,6 @@
     "eslint-plugin-jsx-a11y": "^6.3.1",
     "eslint-plugin-prettier": "^3.1.4",
     "eslint-plugin-react": "^7.20.3",
-    "eslint-plugin-react-hooks": "^4.0.6",
-    "smoothscroll-polyfill": "^0.4.4"
+    "eslint-plugin-react-hooks": "^4.0.6"
   }
 }

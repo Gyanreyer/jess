@@ -1,80 +1,46 @@
-import { useEffect } from "react";
-
+import { useEffect, useRef } from "react";
 import styles from "./videoContent.module.scss";
-
-const lazyAutoplayClass = "lazy-autoplay";
-
-/**
- * Creates an IntersectionObserver to observe all video elements with a
- * lazy-autoplay class and starts playing them when the user scrolls closer to them
- */
-export const useObserveLazyAutoplayVideos = () => {
-  useEffect(() => {
-    let lazyVideoObserver;
-
-    const lazyVideos = [].slice.call(
-      document.querySelectorAll(`video.${lazyAutoplayClass}`)
-    );
-
-    if ("IntersectionObserver" in window) {
-      lazyVideoObserver = new window.IntersectionObserver(
-        (entries) => {
-          entries.forEach((video) => {
-            if (video.isIntersecting) {
-              const videoElement = video.target;
-
-              videoElement.play();
-              videoElement.classList.remove(lazyAutoplayClass);
-              lazyVideoObserver.unobserve(videoElement);
-            }
-          });
-        },
-        {
-          // Consider the video to be intersecting if the user scrolls within 50% of the video's height
-          rootMargin: "50%",
-        }
-      );
-
-      lazyVideos.forEach((lazyVideo) => lazyVideoObserver.observe(lazyVideo));
-
-      return () => lazyVideoObserver.disconnect();
-    }
-
-    // If IntersectionObserver isn't supported, just set the videos to autoplay
-    lazyVideos.forEach((lazyVideo) => {
-      lazyVideo.setAttribute("autoplay", "");
-    });
-
-    return undefined;
-  }, []);
-};
 
 const autoplayVideoProps = {
   muted: true,
   loop: true,
   playsInline: true,
-  className: `${styles.videoPlayer} ${lazyAutoplayClass}`,
 };
 
 const regularVideoProps = {
   controls: true,
-  className: styles.videoPlayer,
 };
 
 export default function VideoContent({
   contentConfig: { videoFile, posterImageFile, shouldAutoplay, columnWidth },
+  lazyVideoObserver,
 }) {
+  const videoRef = useRef();
+
   const playbackProps = shouldAutoplay ? autoplayVideoProps : regularVideoProps;
+
+  useEffect(() => {
+    if (lazyVideoObserver && shouldAutoplay) {
+      const videoElement = videoRef.current;
+
+      lazyVideoObserver.observe(videoElement);
+      return () => lazyVideoObserver.unobserve(videoElement);
+    }
+
+    return undefined;
+  }, [lazyVideoObserver, shouldAutoplay]);
 
   return (
     // eslint-disable-next-line jsx-a11y/media-has-caption
     <video
+      ref={videoRef}
       src={videoFile}
       poster={posterImageFile}
       style={{
         gridColumnStart: `span ${columnWidth}`,
       }}
       preload="metadata"
+      className={styles.videoPlayer}
       {...playbackProps}
     />
   );
