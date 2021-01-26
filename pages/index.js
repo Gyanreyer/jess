@@ -12,9 +12,6 @@ import Layout from "../components/shared/layout";
 
 import styles from "./home.module.scss";
 
-// Homepage config
-import homepageConfig from "../content/home.yml";
-
 // Homepage content components
 const WorkLinksSection = dynamic(() =>
   import("../components/home/workLinksSection")
@@ -24,11 +21,18 @@ const ContactSection = dynamic(() =>
   import("../components/home/contactSection")
 );
 
-const { logoImage, reel, seo } = homepageConfig;
-
 const VIDEO_ELEMENT_BOTTOM_SPACE_HEIGHT = 16;
 
 export async function getStaticProps() {
+  const homepageConfigFilePath = path.join(process.cwd(), "content/home.yml");
+
+  const homepageConfigFileContents = fs.readFileSync(
+    homepageConfigFilePath,
+    "utf8"
+  );
+
+  const homepageConfig = YAML.parse(homepageConfigFileContents);
+
   const workPageDirectory = path.join(process.cwd(), "content/work");
   const fileNames = fs.readdirSync(workPageDirectory);
 
@@ -44,11 +48,12 @@ export async function getStaticProps() {
     props: {
       // Sort the work pages by their order field
       workPages: workPages.sort((work1, work2) => work1.order - work2.order),
+      homepageConfig,
     },
   };
 }
 
-const Home = ({ workPages }) => {
+const Home = ({ workPages, homepageConfig }) => {
   const videoElementRef = useRef();
   const [videoHeight, setVideoHeight] = useState("auto");
 
@@ -70,6 +75,8 @@ const Home = ({ workPages }) => {
 
     return () => window.removeEventListener("resize", onWindowResize);
   }, []);
+
+  const { logoImage, reel, seo } = homepageConfig;
 
   return (
     <Layout logoImageSrc={logoImage}>
@@ -103,8 +110,8 @@ const Home = ({ workPages }) => {
       />
       <article>
         <WorkLinksSection workPages={workPages} />
-        <AboutSection />
-        <ContactSection />
+        <AboutSection config={homepageConfig.aboutSection} />
+        <ContactSection config={homepageConfig.contactSection} />
       </article>
     </Layout>
   );

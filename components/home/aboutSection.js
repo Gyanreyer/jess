@@ -3,25 +3,15 @@ import { useEffect, useState } from "react";
 import ReactMarkdown from "react-markdown";
 import dynamic from "next/dynamic";
 
-// Content
-import homepageConfig from "../../content/home.yml";
-
-import styles from "./aboutSection.module.scss";
-
-// Components
 import HomePageSection from "./homePageSection";
+import styles from "./aboutSection.module.scss";
 
 const AnimatedBorder = dynamic(() => import("../shared/animatedBorder"));
 const Image = dynamic(() => import("../shared/image"));
 
-const {
-  backgroundImage,
-  heading,
-  body,
-  resumeFile,
-} = homepageConfig.aboutSection;
-
-export default function AboutSection() {
+export default function AboutSection({
+  config: { backgroundImage, heading, body, resumeFile },
+}) {
   const [
     shouldTriggerBorderAnimation,
     setShouldTriggerBorderAnimation,
