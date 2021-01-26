@@ -6,12 +6,14 @@
   src: url("/fonts/Avenir-Book.ttf");
   font-weight: normal;
   font-style: normal;
+  font-display: swap;
 }
 @font-face {
   font-family: "Avenir";
   src: url("/fonts/Avenir-BookOblique.ttf");
   font-weight: normal;
   font-style: oblique;
+  font-display: swap;
 }
 
 /* Bold font weight */
@@ -20,17 +22,19 @@
   src: url("/fonts/Avenir-Heavy.ttf");
   font-weight: bold;
   font-style: normal;
+  font-display: swap;
 }
 @font-face {
   font-family: "Avenir";
   src: url("/fonts/Avenir-HeavyOblique.ttf");
   font-weight: bold;
   font-style: oblique;
+  font-display: swap;
 }
 
 html,
 body {
-  font-family: "Avenir", sans-serif;
+  font-family: "Avenir", Helvetica, Arial, sans-serif;
   font-size: 100%;
 
   color: $secondary-color;

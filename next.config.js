@@ -7,5 +7,4 @@ module.exports = {
     });
     return cfg;
   },
-  crossOrigin: "anonymous",
 };
