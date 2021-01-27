@@ -1,5 +1,4 @@
 // Vendor
-import { useRef, useLayoutEffect } from "react";
 import { NextSeo } from "next-seo";
 import dynamic from "next/dynamic";
 
@@ -20,8 +19,6 @@ const AboutSection = dynamic(() => import("../components/home/aboutSection"));
 const ContactSection = dynamic(() =>
   import("../components/home/contactSection")
 );
-
-const VIDEO_ELEMENT_BOTTOM_SPACE_HEIGHT = 16;
 
 export async function getStaticProps() {
   const homepageConfigFilePath = path.join(process.cwd(), "content/home.yml");
@@ -54,27 +51,6 @@ export async function getStaticProps() {
 }
 
 const Home = ({ workPages, homepageConfig }) => {
-  const videoElementRef = useRef();
-
-  useLayoutEffect(() => {
-    // Determines the height that we should display the video element at so that it will leave
-    // VIDEO_ELEMENT_BOTTOM_SPACE_HEIGHT pixels of space of padding where the content below can peek in
-    const onWindowResize = () => {
-      videoElementRef.current.style.height = `${
-        window.innerHeight -
-        videoElementRef.current.offsetTop -
-        VIDEO_ELEMENT_BOTTOM_SPACE_HEIGHT
-      }px`;
-    };
-
-    // Call our resize function once to get our initial height
-    onWindowResize();
-
-    window.addEventListener("resize", onWindowResize);
-
-    return () => window.removeEventListener("resize", onWindowResize);
-  }, []);
-
   const { logoImage, reel, seo } = homepageConfig;
 
   return (
@@ -102,7 +78,6 @@ const Home = ({ workPages, homepageConfig }) => {
         playsInline
         loop
         className={styles.heroVideo}
-        ref={videoElementRef}
       />
       <article>
         <WorkLinksSection workPages={workPages} />
