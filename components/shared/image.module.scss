@@ -4,22 +4,18 @@
   img {
     width: 100%;
     display: block;
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.2s;
-  }
-  img:global(.lazyloaded) {
-    opacity: 1;
-    visibility: visible;
   }
 
   img:not([srcset]):not([src]) {
-    padding-top: 75%;
+    visibility: hidden;
   }
 
   :global(.ls-blur-up-img) {
     filter: blur(4px);
     z-index: 1;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.2s;
 
     &:global(.ls-inview) {
       opacity: 1;
