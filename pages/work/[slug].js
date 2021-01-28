@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import { NextSeo } from "next-seo";
 import dynamic from "next/dynamic";
 
@@ -61,34 +60,6 @@ export async function getStaticProps(context) {
 }
 
 export default function WorkPage({ workPageContents }) {
-  const [lazyVideoObserver, setLazyVideoObserver] = useState(null);
-
-  useEffect(() => {
-    if (!window.IntersectionObserver) return undefined;
-
-    const observer = new window.IntersectionObserver(
-      (entries) => {
-        entries.forEach((video) => {
-          if (video.isIntersecting) {
-            const videoElement = video.target;
-
-            videoElement.play();
-            videoElement.classList.remove("lazy-autoplay");
-            observer.unobserve(videoElement);
-          }
-        });
-      },
-      {
-        // Consider the video to be intersecting if the user scrolls within 50% of the video's height
-        rootMargin: "50%",
-      }
-    );
-
-    setLazyVideoObserver(observer);
-
-    return () => observer.disconnect();
-  }, []);
-
   return (
     <Layout theme="light" pageTitle={workPageContents.seo.pageTitle}>
       <NextSeo
@@ -118,7 +89,6 @@ export default function WorkPage({ workPageContents }) {
               // eslint-disable-next-line react/no-array-index-key
               key={index}
               contentRow={contentRow}
-              lazyVideoObserver={lazyVideoObserver}
             />
           ))}
       </section>

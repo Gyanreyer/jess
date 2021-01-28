@@ -1,4 +1,6 @@
 import { useEffect, useRef } from "react";
+
+import { useLazyVideoObvserver } from "../providers/lazyAutoplayVideoProvider";
 import styles from "./videoContent.module.scss";
 
 const autoplayVideoProps = {
@@ -13,21 +15,21 @@ const regularVideoProps = {
 
 export default function VideoContent({
   contentConfig: { videoFile, posterImageFile, shouldAutoplay, columnWidth },
-  lazyVideoObserver,
 }) {
   const videoRef = useRef();
 
   const playbackProps = shouldAutoplay ? autoplayVideoProps : regularVideoProps;
 
+  const lazyVideoObserver = useLazyVideoObvserver();
+
   useEffect(() => {
-    if (lazyVideoObserver && shouldAutoplay) {
-      const videoElement = videoRef.current;
+    if (!shouldAutoplay || !lazyVideoObserver) return undefined;
 
-      lazyVideoObserver.observe(videoElement);
-      return () => lazyVideoObserver.unobserve(videoElement);
-    }
+    const videoElement = videoRef.current;
 
-    return undefined;
+    lazyVideoObserver.observe(videoElement);
+
+    return () => lazyVideoObserver.unobserve(videoElement);
   }, [lazyVideoObserver, shouldAutoplay]);
 
   return (

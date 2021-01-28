@@ -1,4 +1,5 @@
 // Vendor
+import { useEffect, useRef } from "react";
 import { NextSeo } from "next-seo";
 import dynamic from "next/dynamic";
 
@@ -8,6 +9,7 @@ import path from "path";
 import YAML from "yaml";
 
 import Layout from "../components/shared/layout";
+import { useLazyVideoObvserver } from "../components/providers/lazyAutoplayVideoProvider";
 
 import styles from "./home.module.scss";
 
@@ -51,6 +53,20 @@ export async function getStaticProps() {
 }
 
 const Home = ({ workPages, homepageConfig }) => {
+  const videoRef = useRef();
+
+  const lazyVideoObserver = useLazyVideoObvserver();
+
+  useEffect(() => {
+    if (!lazyVideoObserver) return undefined;
+
+    const videoElement = videoRef.current;
+
+    lazyVideoObserver.observe(videoElement);
+
+    return () => lazyVideoObserver.unobserve(videoElement);
+  }, [lazyVideoObserver]);
+
   const { logoImage, reel, seo } = homepageConfig;
 
   return (
@@ -74,10 +90,11 @@ const Home = ({ workPages, homepageConfig }) => {
       <video
         src={reel}
         muted
-        autoPlay
+        preload="metadata"
         playsInline
         loop
         className={styles.heroVideo}
+        ref={videoRef}
       />
       <article>
         <WorkLinksSection workPages={workPages} />

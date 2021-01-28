@@ -2,7 +2,6 @@ import Link from "next/link";
 import dynamic from "next/dynamic";
 
 import layoutContents from "../../content/layout.yml";
-
 import styles from "./layout.module.scss";
 
 const Image = dynamic(() => import("../shared/image"));
