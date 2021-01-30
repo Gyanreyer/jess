@@ -1,4 +1,4 @@
-@import '../constants/colors.scss';
+@import "../constants/colors.scss";
 
 /* Normal font weight */
 @font-face {
@@ -6,14 +6,12 @@
   src: url("/fonts/Avenir-Book.ttf");
   font-weight: normal;
   font-style: normal;
-  font-display: swap;
 }
 @font-face {
   font-family: "Avenir";
   src: url("/fonts/Avenir-BookOblique.ttf");
   font-weight: normal;
   font-style: oblique;
-  font-display: swap;
 }
 
 /* Bold font weight */
@@ -22,14 +20,12 @@
   src: url("/fonts/Avenir-Heavy.ttf");
   font-weight: bold;
   font-style: normal;
-  font-display: swap;
 }
 @font-face {
   font-family: "Avenir";
   src: url("/fonts/Avenir-HeavyOblique.ttf");
   font-weight: bold;
   font-style: oblique;
-  font-display: swap;
 }
 
 html,

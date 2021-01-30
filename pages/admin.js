@@ -1,4 +1,5 @@
 import dynamic from "next/dynamic";
+import { NextSeo } from "next-seo";
 
 import config from "../cms/config.yml";
 
@@ -15,5 +16,10 @@ const CMS = dynamic(
 );
 
 export default function AdminPage() {
-  return <CMS />;
+  return (
+    <>
+      <NextSeo title="Admin Page" />
+      <CMS />
+    </>
+  );
 }
