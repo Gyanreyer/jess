@@ -1,3 +1,26 @@
 [build]
   command = "npm run build && npm run export"
   publish = "out"
+
+[[plugins]]
+  package = "netlify-plugin-subfont"
+
+  [plugins.inputs]
+  entryPoints = [
+    "*.html",
+    "**/*.html",
+  ]
+
+[[plugins]]
+  package = "netlify-plugin-inline-critical-css"
+
+[[plugins]]
+  package = "@netlify/plugin-sitemap"
+
+  [plugins.inputs]
+    exclude = [
+      '**/admin.html',
+    ]
+
+[[plugins]]
+  package = "@netlify/plugin-lighthouse"

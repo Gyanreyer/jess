@@ -1,26 +1,24 @@
 @import "../../constants/colors.scss";
-@import '../../constants/breakpoints.scss';
+@import "../../constants/breakpoints.scss";
 
-.singleImage {
-  display: block;
+.singleImage img {
   max-width: 100%;
   max-height: 36rem;
 }
-
 
 .imageGallery {
   padding-bottom: 2rem;
 
   :global(.image-gallery-bullets) {
     bottom: -1.5rem;
-  
+
     :global(.image-gallery-bullet) {
       background-color: $secondary-accent-color;
       opacity: 0.6;
       box-shadow: none;
       border: none;
       transition: opacity 0.2s;
-  
+
       &:hover,
       &:focus {
         background-color: $secondary-accent-color;
@@ -36,7 +34,15 @@
   }
 }
 
-.leftArrowButton, .rightArrowButton {
+.galleryItem {
+  img {
+    height: 75vh;
+    object-fit: contain;
+  }
+}
+
+.leftArrowButton,
+.rightArrowButton {
   appearance: none;
   border: none;
   padding: 0;
@@ -83,7 +89,8 @@
 }
 
 @media #{$breakpoint-mobile} {
-  .leftArrowButton, .rightArrowButton {
+  .leftArrowButton,
+  .rightArrowButton {
     display: none;
   }
 }

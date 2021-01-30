@@ -1,11 +1,11 @@
 /* eslint-disable react/no-array-index-key */
-
-import TextContent from "./textContent";
-import ImageContent from "./imageContent";
-import VideoContent from "./videoContent";
-import AudioContent from "./audioContent";
-
+import dynamic from "next/dynamic";
 import styles from "./workPageContentRow.module.scss";
+
+const TextContent = dynamic(() => import("./textContent"));
+const ImageContent = dynamic(() => import("./imageContent"));
+const VideoContent = dynamic(() => import("./videoContent"));
+const AudioContent = dynamic(() => import("./audioContent"));
 
 const contentComponents = {
   textContent: TextContent,
@@ -16,6 +16,7 @@ const contentComponents = {
 
 export default function WorkPageContentRow({
   contentRow: { contents, columnCount },
+  lazyVideoObserver,
 }) {
   return (
     <div
@@ -27,7 +28,13 @@ export default function WorkPageContentRow({
       {contents.map((contentConfig, index) => {
         const Component = contentComponents[contentConfig.type];
 
-        return <Component key={index} contentConfig={contentConfig} />;
+        return (
+          <Component
+            key={index}
+            contentConfig={contentConfig}
+            lazyVideoObserver={lazyVideoObserver}
+          />
+        );
       })}
     </div>
   );

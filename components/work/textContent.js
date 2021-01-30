@@ -1,6 +1,8 @@
-import ReactMarkdown from "react-markdown";
+import dynamic from "next/dynamic";
 
 import styles from "./textContent.module.scss";
+
+const ReactMarkdown = dynamic(() => import("react-markdown"));
 
 export default function TextContent({
   contentConfig: { text, textAlignment, columnWidth },

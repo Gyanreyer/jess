@@ -13,14 +13,13 @@
   h1 {
     color: $primary-accent-color;
     font-size: 6rem;
-    hyphens: auto;
     line-height: 1;
     letter-spacing: -2px;
     margin: 0 0 1rem;
     text-transform: lowercase;
 
     @media #{$breakpoint-mobile} {
-      font-size: 4rem;
+      font-size: 3.5rem;
     }
   }
 

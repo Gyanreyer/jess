@@ -1,4 +1,4 @@
-@import '../constants/colors.scss';
+@import "../constants/colors.scss";
 
 /* Normal font weight */
 @font-face {
@@ -30,7 +30,7 @@
 
 html,
 body {
-  font-family: "Avenir", sans-serif;
+  font-family: "Avenir", Helvetica, Arial, sans-serif;
   font-size: 100%;
 
   color: $secondary-color;

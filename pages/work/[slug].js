@@ -1,4 +1,5 @@
 import { NextSeo } from "next-seo";
+import dynamic from "next/dynamic";
 
 // Static file loading/parsing
 import fs from "fs";
@@ -6,9 +7,13 @@ import path from "path";
 import YAML from "yaml";
 
 import Layout from "../../components/shared/layout";
-import WorkPageHeading from "../../components/work/workPageHeading";
-import WorkPageContentRow from "../../components/work/workPageContentRow";
-import { useObserveLazyAutoplayVideos } from "../../components/work/videoContent";
+
+const WorkPageHeading = dynamic(() =>
+  import("../../components/work/workPageHeading")
+);
+const WorkPageContentRow = dynamic(() =>
+  import("../../components/work/workPageContentRow")
+);
 
 export async function getStaticPaths() {
   const workPageDirectory = path.join(process.cwd(), "content/work");
@@ -55,9 +60,6 @@ export async function getStaticProps(context) {
 }
 
 export default function WorkPage({ workPageContents }) {
-  // Hook up an IntersectionObserver to lazy-load any autoplaying videos on this work page
-  useObserveLazyAutoplayVideos();
-
   return (
     <Layout theme="light" pageTitle={workPageContents.seo.pageTitle}>
       <NextSeo
@@ -83,8 +85,11 @@ export default function WorkPage({ workPageContents }) {
       <section>
         {workPageContents.contentRows &&
           workPageContents.contentRows.map((contentRow, index) => (
-            // eslint-disable-next-line react/no-array-index-key
-            <WorkPageContentRow key={index} contentRow={contentRow} />
+            <WorkPageContentRow
+              // eslint-disable-next-line react/no-array-index-key
+              key={index}
+              contentRow={contentRow}
+            />
           ))}
       </section>
     </Layout>

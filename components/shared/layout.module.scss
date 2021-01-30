@@ -1,5 +1,5 @@
-@import '../../constants/colors.scss';
-@import '../../constants/breakpoints.scss';
+@import "../../constants/colors.scss";
+@import "../../constants/breakpoints.scss";
 
 .pageHeader {
   nav {
@@ -7,14 +7,18 @@
     top: 0;
     left: 0;
     z-index: 1;
-  
+
     padding: 1.5rem 4%;
-  
+
     display: flex;
     justify-content: space-between;
     align-items: center;
+
+    @media #{$breakpoint-mobile} {
+      padding: 1rem 4%;
+    }
   }
-  
+
   .logoImage {
     display: block;
     width: 8rem;
@@ -23,21 +27,29 @@
       width: 6rem;
     }
   }
-  
+
   .navLinks {
     list-style-type: none;
     margin: 0;
-    padding: 0;
-  
+    padding: 2rem 0;
+
     li {
       display: inline;
-      margin-left: 2em;
-  
+      margin-left: 2rem;
+
       a {
         display: inline-block;
         color: $primary-accent-color;
         text-decoration: none;
         font-size: 1.4rem;
+      }
+    }
+
+    @media #{$breakpoint-mobile} {
+      padding: 1rem 0;
+
+      li {
+        margin-left: 1rem;
       }
     }
   }

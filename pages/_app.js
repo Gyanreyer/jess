@@ -1,6 +1,13 @@
+import lazysizes from "lazysizes";
+import "lazysizes/plugins/parent-fit/ls.parent-fit";
+import "lazysizes/plugins/blur-up/ls.blur-up";
+
 import smoothscroll from "smoothscroll-polyfill";
 
 import "./global.scss";
+import LazyAutoplayVideoProvider from "../components/providers/lazyAutoplayVideoProvider";
+
+lazysizes.cfg.blurupMode = "auto";
 
 if (process.browser) {
   // If this is running on the browser rather than when nextjs is pre-rendering,
@@ -9,5 +16,9 @@ if (process.browser) {
 }
 
 export default function App({ Component, pageProps }) {
-  return <Component {...pageProps} />;
+  return (
+    <LazyAutoplayVideoProvider>
+      <Component {...pageProps} />
+    </LazyAutoplayVideoProvider>
+  );
 }

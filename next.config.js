@@ -1,9 +1,4 @@
-const withPlugins = require("next-compose-plugins");
-/* Plugins */
-// Transpile npm modules
-const withTM = require("next-transpile-modules")(["react-hover-video-player"]);
-
-module.exports = withPlugins([withTM], {
+module.exports = {
   webpack: (cfg) => {
     cfg.module.rules.push({
       test: /\.yml$/,
@@ -12,5 +7,4 @@ module.exports = withPlugins([withTM], {
     });
     return cfg;
   },
-  crossOrigin: "anonymous",
-});
+};
