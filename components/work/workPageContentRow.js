@@ -2,8 +2,12 @@
 import dynamic from "next/dynamic";
 import styles from "./workPageContentRow.module.scss";
 
-const TextContent = dynamic(() => import("./textContent"));
-const ImageContent = dynamic(() => import("./imageContent"));
+// Import text and image content up front to reduce layout shifts
+import TextContent from "./textContent";
+import ImageContent from "./imageContent";
+
+// Video and audio content is used less frequently on work pages, so dynamically import them
+// when needed
 const VideoContent = dynamic(() => import("./videoContent"));
 const AudioContent = dynamic(() => import("./audioContent"));
 

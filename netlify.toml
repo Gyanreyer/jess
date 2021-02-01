@@ -12,9 +12,6 @@
   ]
 
 [[plugins]]
-  package = "netlify-plugin-inline-critical-css"
-
-[[plugins]]
   package = "@netlify/plugin-sitemap"
 
   [plugins.inputs]

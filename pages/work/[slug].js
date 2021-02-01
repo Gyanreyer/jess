@@ -1,5 +1,4 @@
 import { NextSeo } from "next-seo";
-import dynamic from "next/dynamic";
 
 // Static file loading/parsing
 import fs from "fs";
@@ -8,12 +7,8 @@ import YAML from "yaml";
 
 import Layout from "../../components/shared/layout";
 
-const WorkPageHeading = dynamic(() =>
-  import("../../components/work/workPageHeading")
-);
-const WorkPageContentRow = dynamic(() =>
-  import("../../components/work/workPageContentRow")
-);
+import WorkPageHeading from "../../components/work/workPageHeading";
+import WorkPageContentRow from "../../components/work/workPageContentRow";
 
 export async function getStaticPaths() {
   const workPageDirectory = path.join(process.cwd(), "content/work");

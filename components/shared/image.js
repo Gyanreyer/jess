@@ -5,7 +5,7 @@ const sizes = [128, 256, 512, 1024, 1536, 1920];
 export const getImageSrcSet = (src) =>
   sizes.map((size) => `${src}?nf_resize=fit&w=${size} ${size}w`).join(", ");
 
-export default function Image({ src, alt = "", className, ...props }) {
+export default function Image({ src, alt = "", className = "", ...props }) {
   const isGif = src.endsWith(".gif");
 
   return (
