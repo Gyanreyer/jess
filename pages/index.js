@@ -10,13 +10,11 @@ import YAML from "yaml";
 
 import Layout from "../components/shared/layout";
 import { useLazyVideoObvserver } from "../components/providers/lazyAutoplayVideoProvider";
+import WorkLinksSection from "../components/home/workLinksSection";
 
 import styles from "./home.module.scss";
 
 // Homepage content components
-const WorkLinksSection = dynamic(() =>
-  import("../components/home/workLinksSection")
-);
 const AboutSection = dynamic(() => import("../components/home/aboutSection"));
 const ContactSection = dynamic(() =>
   import("../components/home/contactSection")

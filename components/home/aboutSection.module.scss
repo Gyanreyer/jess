@@ -1,4 +1,8 @@
-@import '../../constants/colors.scss';
+@import "../../constants/colors.scss";
+
+.aboutSection {
+  background-color: $secondary-color;
+}
 
 .backgroundImage {
   position: absolute !important;

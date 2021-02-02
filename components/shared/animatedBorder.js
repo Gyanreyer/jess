@@ -6,7 +6,7 @@ export default function AnimatedBorder({
   borderColor,
   transitionDuration,
   borderWidth,
-  className,
+  className = "",
   children,
 }) {
   const borderContainerRef = useRef();

@@ -1,14 +1,12 @@
 // Vendor
 import Link from "next/link";
-import dynamic from "next/dynamic";
 
 // Components
 import HomePageSection from "./homePageSection";
 import { RightArrowIcon } from "../shared/icons";
+import Image from "../shared/image";
 
 import styles from "./workLinksSection.module.scss";
-
-const Image = dynamic(() => import("../shared/image"));
 
 export const WorkLinkContents = ({ sectionName, linkImageURL }) => (
   <div className={styles.workLinkContent}>
