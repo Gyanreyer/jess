@@ -1,7 +1,7 @@
 import dynamic from "next/dynamic";
 import "react-image-gallery/styles/css/image-gallery.css";
 
-import Image from "../shared/image";
+import Image, { getImageSrcSet } from "../shared/image";
 import { RightArrowIcon } from "../shared/icons";
 
 import styles from "./imageContent.module.scss";
@@ -32,6 +32,8 @@ function ImageGalleryContent({ contentConfig: { imageFiles, columnWidth } }) {
       <ImageGallery
         items={imageFiles.map((imageFile) => ({
           original: imageFile,
+          srcSet: getImageSrcSet(imageFile),
+          sizes: `(max-width: 768px) 92vw, 58vw`,
         }))}
         showFullscreenButton={false}
         showThumbnails={false}
@@ -40,9 +42,6 @@ function ImageGalleryContent({ contentConfig: { imageFiles, columnWidth } }) {
         disableKeyDown
         lazyLoad
         additionalClass={styles.imageGallery}
-        renderItem={({ original }) => (
-          <Image src={original} className={styles.galleryItem} />
-        )}
         renderLeftNav={(onClick, disabled) => (
           <button
             className={styles.leftArrowButton}
