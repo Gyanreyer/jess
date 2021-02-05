@@ -1,30 +1,17 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/zeit/next.js/tree/canary/packages/create-next-app).
+## Personal portfolio site for Jessica Keoshian
 
-## Getting Started
+The live production version of the site can be viewed at [https://jessicakeoshian.com](https://jessicakeoshian.com)
 
-First, run the development server:
+This project is built with [Next.js](https://nextjs.org/) and hosted on [Netlify](https://www.netlify.com/).
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+It uses [Netlify CMS](https://www.netlifycms.org/) to provide a helpful CMS admin interface for editing the site's contents.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Development
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+Run `npm run dev` and open [http://localhost:3000](http://localhost:3000). The site will auto-update as you edit files.
 
-## Learn More
+## Deploying
 
-To learn more about Next.js, take a look at the following resources:
+Netlify automatically kicks off a new production deploy each time changes are pushed to the `master` branch.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/zeit/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/import?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Opening a pull request for a branch will trigger a preview build in Netlify, allowing you to preview your changes in a production-like environment before merging.
