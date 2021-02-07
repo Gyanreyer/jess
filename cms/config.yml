@@ -180,6 +180,13 @@ collections:
                       field: { label: "Image", name: "image", widget: "image" },
                     }
                   - {
+                      label: "Hover Text",
+                      name: "hoverText",
+                      hint: "Optional text contents to display when hovering over the image. NOTE: this only works for single images, not image galleries.",
+                      widget: "markdown",
+                      required: false,
+                    }
+                  - {
                       label: "Column Width",
                       name: "columnWidth",
                       hint: "The number of columns in the row that this image should fill",

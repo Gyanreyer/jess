@@ -39,6 +39,11 @@ contentRows:
         columnWidth: 1
         imageFiles:
           - /media/kohler_IMG_3072.png
+        hoverText: >-
+          # sketches
+
+
+          My ideas usually start on paper. It’s always good to get the silly ideas out of the way first.
       - type: imageContent
         columnWidth: 1
         imageFiles:

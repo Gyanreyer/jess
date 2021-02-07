@@ -19,6 +19,11 @@ contentRows:
         columnWidth: 1
         imageFiles:
           - /media/more-AnimaladsSeatbelts.jpg
+        hoverText: >-
+          # harveys
+
+
+          Harvey’s vegan bags are made of seat belts, saving the lives of animals and repurposing the life saving material. These animals are hand-crafted from seat belts and photographed.
   - columnCount: 1
     contents:
       - type: imageContent
@@ -41,6 +46,11 @@ contentRows:
         columnWidth: 1
         imageFiles:
           - /media/more-Apiculturelogo_V1.gif
+        hoverText: >-
+          # apiculture hr
+
+
+          Apiculture HR gives a fresh perspective to the world of human resources.
       - type: imageContent
         columnWidth: 1
         imageFiles:

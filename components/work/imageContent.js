@@ -1,10 +1,14 @@
+import { useState } from "react";
 import dynamic from "next/dynamic";
 import "react-image-gallery/styles/css/image-gallery.css";
 
 import Image, { getImageSrcSet } from "../shared/image";
 import { RightArrowIcon } from "../shared/icons";
+import AnimatedBorder from "../shared/animatedBorder";
 
 import styles from "./imageContent.module.scss";
+
+const ReactMarkdown = dynamic(() => import("react-markdown"));
 
 const ImageGallery = dynamic(() => import("react-image-gallery"));
 
@@ -19,6 +23,47 @@ function SingleImageContent({ contentConfig: { imageFiles, columnWidth } }) {
       }}
       className={styles.singleImage}
     />
+  );
+}
+
+function ImageWithHoverTextContent({
+  contentConfig: { imageFiles, hoverText, columnWidth },
+}) {
+  const imageFile = imageFiles[0];
+
+  const [isHovering, setIsHovering] = useState(false);
+
+  return (
+    <div
+      style={{
+        gridColumnStart: `span ${columnWidth}`,
+      }}
+      className={`${styles.imageWithHoverTextContainer} ${
+        isHovering ? styles.hovered : ""
+      }`}
+      onMouseEnter={() => setIsHovering(true)}
+      onMouseLeave={() => setIsHovering(false)}
+      onFocus={() => setIsHovering(true)}
+      onBlur={() => setIsHovering(false)}
+    >
+      <AnimatedBorder
+        isActive={isHovering}
+        className={styles.hoverTextBorderWrapper}
+        startingEdge="bottom"
+        transitionDuration={600}
+      >
+        <div className={styles.hoverTextScrollableContainer}>
+          <div className={styles.hoverTextContainer}>
+            <ReactMarkdown source={hoverText} />
+          </div>
+        </div>
+      </AnimatedBorder>
+      <Image src={imageFile} className={styles.singleImage} />
+      <div className={styles.hoverTextOverlayBackground} />
+      <div className={styles.hoverIndicatorDots}>
+        <div className={styles.dot} />
+      </div>
+    </div>
   );
 }
 
@@ -68,7 +113,11 @@ function ImageGalleryContent({ contentConfig: { imageFiles, columnWidth } }) {
 }
 
 export default function ImageContent({ contentConfig }) {
-  const { imageFiles } = contentConfig;
+  const { imageFiles, hoverText } = contentConfig;
+
+  if (hoverText) {
+    return <ImageWithHoverTextContent contentConfig={contentConfig} />;
+  }
 
   return imageFiles.length > 1 ? (
     <ImageGalleryContent contentConfig={contentConfig} />
