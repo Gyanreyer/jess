@@ -4,6 +4,11 @@
 .singleImage img {
   max-width: 100%;
   max-height: 36rem;
+  object-fit: contain;
+
+  @media #{$breakpoint-mobile} {
+    max-height: 60vh;
+  }
 }
 
 .imageGallery {
@@ -34,7 +39,7 @@
   }
 }
 
-.galleryItem {
+.galleryImage {
   img {
     max-height: 75vh;
     object-fit: contain;

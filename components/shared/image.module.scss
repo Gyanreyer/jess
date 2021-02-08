@@ -6,10 +6,17 @@
   img {
     width: 100%;
     display: block;
-    filter: blur(4px);
+    transition: opacity 0.1s, filter 0.1s;
 
-    &:global(.lazyloaded) {
-      filter: none;
+    &:global(.lazyload) {
+      // Hide the image entirely before any sort of lazy-loading has begun
+      opacity: 0;
+    }
+
+    &:global(.lazyloading) {
+      // Apply a blur filter over the low-quality placeholder image
+      // while we're waiting for the full-res image to load in
+      filter: blur(4px);
     }
   }
 }

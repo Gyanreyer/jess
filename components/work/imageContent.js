@@ -2,7 +2,7 @@ import { useState } from "react";
 import dynamic from "next/dynamic";
 import "react-image-gallery/styles/css/image-gallery.css";
 
-import Image, { getImageSrcSet } from "../shared/image";
+import Image from "../shared/image";
 import { RightArrowIcon } from "../shared/icons";
 import AnimatedBorder from "../shared/animatedBorder";
 
@@ -68,6 +68,18 @@ function ImageWithHoverTextContent({
 }
 
 function ImageGalleryContent({ contentConfig: { imageFiles, columnWidth } }) {
+  const [baseGalleryHeight, setBaseGalleryHeight] = useState(null);
+
+  const onGalleryImageLoaded = (event) => {
+    setBaseGalleryHeight((currentBaseGalleryHeight) => {
+      // If we don't have a base gallery height set yet, do it now! This initial loaded image's height will then be
+      // used as the base height for all other gallery images to prevent content jumps
+      if (!currentBaseGalleryHeight) return event.target.offsetHeight;
+
+      return currentBaseGalleryHeight;
+    });
+  };
+
   return (
     <div
       style={{
@@ -77,8 +89,6 @@ function ImageGalleryContent({ contentConfig: { imageFiles, columnWidth } }) {
       <ImageGallery
         items={imageFiles.map((imageFile) => ({
           original: imageFile,
-          srcSet: getImageSrcSet(imageFile),
-          sizes: `(max-width: 768px) 92vw, 58vw`,
         }))}
         showFullscreenButton={false}
         showThumbnails={false}
@@ -106,6 +116,16 @@ function ImageGalleryContent({ contentConfig: { imageFiles, columnWidth } }) {
           >
             <RightArrowIcon />
           </button>
+        )}
+        renderItem={({ original }) => (
+          <Image
+            src={original}
+            className={styles.galleryImage}
+            onLoad={onGalleryImageLoaded}
+            style={{
+              height: baseGalleryHeight,
+            }}
+          />
         )}
       />
     </div>
