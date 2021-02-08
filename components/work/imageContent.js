@@ -45,6 +45,9 @@ function ImageWithHoverTextContent({
       onMouseLeave={() => setIsHovering(false)}
       onFocus={() => setIsHovering(true)}
       onBlur={() => setIsHovering(false)}
+      // Enable revealing hover text with tab focus
+      // eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex
+      tabIndex={0}
     >
       <AnimatedBorder
         isActive={isHovering}

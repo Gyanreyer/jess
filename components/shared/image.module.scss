@@ -17,6 +17,7 @@
       // Apply a blur filter over the low-quality placeholder image
       // while we're waiting for the full-res image to load in
       filter: blur(4px);
+      opacity: 1;
     }
   }
 }
