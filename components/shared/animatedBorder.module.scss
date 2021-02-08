@@ -1,4 +1,4 @@
-@import '../../constants/colors.scss';
+@import "../../constants/colors.scss";
 
 .borderContainer {
   --transition-duration: 800ms;
@@ -17,6 +17,23 @@
   position: absolute;
   background-color: var(--border-color);
   transition: transform var(--edge-transition-duration);
+}
+
+// Base transition delays are set so the animation can correctly play in reverse
+// when the .active class is removed
+.first {
+  transition-timing-function: ease-out;
+  transition-delay: calc(3 * var(--edge-transition-duration));
+}
+.second {
+  transition-delay: calc(2 * var(--edge-transition-duration));
+}
+.third {
+  transition-delay: var(--edge-transition-duration);
+}
+.fourth {
+  transition-delay: 0ms;
+  transition-timing-function: ease-in;
 }
 
 .top,
@@ -45,48 +62,44 @@
 .top {
   top: 0;
   transform-origin: left;
-  transition-timing-function: ease-out;
-  transition-delay: calc(3 * var(--edge-transition-duration));
 }
 .right {
   right: 0;
   transform-origin: top;
-  transition-delay: calc(2 * var(--edge-transition-duration));
 }
 .bottom {
   bottom: 0;
   transform-origin: right;
-  transition-delay: var(--edge-transition-duration);
 }
 .left {
   left: 0;
   transform-origin: bottom;
-  transition-timing-function: ease-in;
-  transition-delay: 0ms;
 }
 
 .active {
-  .top, .bottom{
+  .top,
+  .bottom {
     transform: scaleX(1);
   }
-  .left, .right {
+  .left,
+  .right {
     transform: scaleY(1);
   }
 
-  .top {
+  .first {
     /* This will be the first edge to transition in so it should ease in to make the whole animation appear smoother */
     transition-timing-function: ease-in;
     transition-delay: 0ms;
   }
-  .right {
+  .second {
     /* This is the 2nd edge to transition in so apply a delay to wait until the top edge is done transitioning */
     transition-delay: var(--edge-transition-duration);
   }
-  .bottom {
+  .third {
     /* This is the 3rd edge to transition in so apply a delay to wait until the top and right edges are done transitioning */
     transition-delay: calc(2 * var(--edge-transition-duration));
   }
-  .left {
+  .fourth {
     /* This is the 4th edge to transition in so apply a delay to wait until all 3 other edges are done transitioning */
     transition-delay: calc(3 * var(--edge-transition-duration));
     /* Because this is the last edge, apply an ease out to make the whole animation appear smoother */

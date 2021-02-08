@@ -6,36 +6,18 @@
   img {
     width: 100%;
     display: block;
+    transition: opacity 0.1s, filter 0.1s;
 
-    // Hide images before lazysizes has set an src for them to start loading
-    &:not([srcset]):not([src]) {
-      visibility: hidden;
+    &:global(.lazyload) {
+      // Hide the image entirely before any sort of lazy-loading has begun
+      opacity: 0;
     }
 
-    // While the main image is still loading, make it expand to cover the container whose dimensions
-    // should be determined by the low quality placeholder image
-    &:global(.lazyload),
-    &:global(.lazyloading),
-    // Once the main image has been loaded, swap to make the blur-up image expand to cover the container
-    &:global(.ls-blur-up-img.ls-original-loaded) {
-      position: absolute;
-      left: 0;
-      top: 0;
-      height: 100%;
-    }
-
-    &:global(.ls-blur-up-img) {
-      // Placeholder image is displayed on top of the main image
-      z-index: 1;
-      // Apply blur filter to smooth out the low quality image
+    &:global(.lazyloading) {
+      // Apply a blur filter over the low-quality placeholder image
+      // while we're waiting for the full-res image to load in
       filter: blur(4px);
-
-      &:global(.ls-original-loaded) {
-        // Once the main image has been loaded, fade out/hide the placeholder image
-        opacity: 0;
-        visibility: hidden;
-        transition: opacity 0.2s, visibility 0s 0.2s;
-      }
+      opacity: 1;
     }
   }
 }

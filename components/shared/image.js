@@ -1,4 +1,9 @@
+import lazysizes from "lazysizes";
+import "lazysizes/plugins/parent-fit/ls.parent-fit";
+
 import styles from "./image.module.scss";
+
+lazysizes.cfg.blurupMode = "auto";
 
 const sizes = [128, 256, 512, 1024, 1536, 1920];
 
@@ -11,8 +16,9 @@ export default function Image({ src, alt = "", className = "", ...props }) {
   return (
     <div className={`${styles.imageWrapper} ${className}`}>
       <img
+        // Show a low quality placeholder until the data-src can be loaded
+        src={`${src}?nf_resize=fit&w=24`}
         data-src={isGif ? src : null}
-        data-lowsrc={!isGif ? `${src}?nf_resize=fit&w=48` : null}
         data-srcset={!isGif ? getImageSrcSet(src) : null}
         data-sizes="auto"
         alt={alt}

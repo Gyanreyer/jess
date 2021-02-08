@@ -1,5 +1,19 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useMemo, useRef } from "react";
 import styles from "./animatedBorder.module.scss";
+
+const animationOrderClasses = [
+  styles.first,
+  styles.second,
+  styles.third,
+  styles.fourth,
+];
+
+const borderEdgeClasses = [
+  styles.top,
+  styles.right,
+  styles.bottom,
+  styles.left,
+];
 
 export default function AnimatedBorder({
   isActive,
@@ -8,6 +22,7 @@ export default function AnimatedBorder({
   borderWidth,
   className = "",
   children,
+  startingEdge = "top",
 }) {
   const borderContainerRef = useRef();
 
@@ -29,6 +44,11 @@ export default function AnimatedBorder({
       );
   }, [borderColor, borderWidth, transitionDuration]);
 
+  const startingEdgeIndex = useMemo(
+    () => borderEdgeClasses.indexOf(styles[startingEdge]),
+    [startingEdge]
+  );
+
   return (
     <div
       className={`${styles.borderContainer} ${
@@ -38,10 +58,13 @@ export default function AnimatedBorder({
       ref={borderContainerRef}
     >
       {children}
-      <span className={`${styles.border} ${styles.top}`} />
-      <span className={`${styles.border} ${styles.right}`} />
-      <span className={`${styles.border} ${styles.bottom}`} />
-      <span className={`${styles.border} ${styles.left}`} />
+      {animationOrderClasses.map((orderClass, index) => (
+        <span
+          className={`${styles.border} ${orderClass} ${
+            borderEdgeClasses[(startingEdgeIndex + index) % 4]
+          }`}
+        />
+      ))}
     </div>
   );
 }

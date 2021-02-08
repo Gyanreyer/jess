@@ -64,7 +64,13 @@ export default function WorkPagePreviewTemplate({ entry }) {
       iframe.contentDocument.querySelectorAll("img.lazyload")
     );
     lazyImages.forEach((lazyImage) => {
-      lazyImage.setAttribute("src", lazyImage.dataset.src);
+      if (lazyImage.dataset.srcset) {
+        lazyImage.setAttribute("srcset", lazyImage.dataset.srcset);
+      }
+      if (lazyImage.dataset.src) {
+        lazyImage.setAttribute("src", lazyImage.dataset.src);
+      }
+      lazyImage.classList.add("lazyloaded");
     });
   }, []);
 
