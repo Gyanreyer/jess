@@ -1,10 +1,11 @@
-// Vendor
-import ReactMarkdown from "react-markdown";
+import dynamic from "next/dynamic";
 
 // Components
 import HomePageSection from "./homePageSection";
 
 import styles from "./contactSection.module.scss";
+
+const ReactMarkdown = dynamic(() => import("react-markdown"));
 
 export default function ContactSection({ config: { heading, body } }) {
   return (

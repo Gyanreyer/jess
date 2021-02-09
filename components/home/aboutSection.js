@@ -1,11 +1,13 @@
 // Vendor
 import { useEffect, useState } from "react";
-import ReactMarkdown from "react-markdown";
+import dynamic from "next/dynamic";
 
 import HomePageSection from "./homePageSection";
 import BackgroundImage from "../shared/backgroundImage";
 import AnimatedBorder from "../shared/animatedBorder";
 import styles from "./aboutSection.module.scss";
+
+const ReactMarkdown = dynamic(() => import("react-markdown"));
 
 export default function AboutSection({
   config: { backgroundImage, heading, body, resumeFile },

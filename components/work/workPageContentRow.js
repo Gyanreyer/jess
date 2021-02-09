@@ -1,16 +1,12 @@
 /* eslint-disable react/no-array-index-key */
-import dynamic from "next/dynamic";
 
 // Import text and image content up front to reduce layout shifts
 import TextContent from "./textContent";
 import ImageContent from "./imageContent";
+import VideoContent from "./videoContent";
+import AudioContent from "./audioContent";
 
 import styles from "./workPageContentRow.module.scss";
-
-// Video and audio content is used less frequently on work pages, so dynamically import them
-// when needed
-const VideoContent = dynamic(() => import("./videoContent"));
-const AudioContent = dynamic(() => import("./audioContent"));
 
 const contentComponents = {
   textContent: TextContent,

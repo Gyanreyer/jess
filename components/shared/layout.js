@@ -1,10 +1,8 @@
 import Link from "next/link";
-import dynamic from "next/dynamic";
 
+import Image from "./image";
 import layoutContents from "../../content/layout.yml";
 import styles from "./layout.module.scss";
-
-const Image = dynamic(() => import("../shared/image"));
 
 export default function Layout({ logoImageSrc, headerStyle, children }) {
   const { header, footer } = layoutContents;
