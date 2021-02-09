@@ -4,7 +4,7 @@ import Link from "next/link";
 // Components
 import HomePageSection from "./homePageSection";
 import { RightArrowIcon } from "../shared/icons";
-import Image from "../shared/image";
+import BackgroundImage from "../shared/backgroundImage";
 
 import styles from "./workLinksSection.module.scss";
 
@@ -16,7 +16,7 @@ export const WorkLinkContents = ({ sectionName, linkImageURL }) => (
         <RightArrowIcon />
       </div>
     </div>
-    <Image src={linkImageURL} className={styles.backgroundImage} />
+    <BackgroundImage src={linkImageURL} className={styles.backgroundImage} />
   </div>
 );
 

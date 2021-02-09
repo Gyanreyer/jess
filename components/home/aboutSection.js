@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import ReactMarkdown from "react-markdown";
 
 import HomePageSection from "./homePageSection";
-import Image from "../shared/image";
+import BackgroundImage from "../shared/backgroundImage";
 import AnimatedBorder from "../shared/animatedBorder";
 import styles from "./aboutSection.module.scss";
 
@@ -40,7 +40,7 @@ export default function AboutSection({
 
   return (
     <HomePageSection id="about" className={styles.aboutSection}>
-      <Image src={backgroundImage} className={styles.backgroundImage} />
+      <BackgroundImage src={backgroundImage} />
       <div className={styles.sectionContentWrapper}>
         <AnimatedBorder isActive={shouldTriggerBorderAnimation}>
           <div className={styles.content}>

@@ -1,9 +1,4 @@
-import lazysizes from "lazysizes";
-import "lazysizes/plugins/parent-fit/ls.parent-fit";
-
 import styles from "./image.module.scss";
-
-lazysizes.cfg.blurupMode = "auto";
 
 const sizes = [128, 256, 512, 1024, 1536, 1920];
 
