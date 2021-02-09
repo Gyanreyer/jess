@@ -34,7 +34,6 @@ export default function BackgroundImage({
     <div
       className={`${styles.imageWrapper} ${className}`}
       ref={imageWrapperRef}
-      {...props}
     >
       {wrapperAspectRatio && (
         <img
@@ -45,6 +44,7 @@ export default function BackgroundImage({
           data-sizes="auto"
           alt={alt}
           className="lazyload"
+          {...props}
         />
       )}
     </div>
