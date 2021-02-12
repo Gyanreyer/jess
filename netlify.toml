@@ -20,6 +20,3 @@
     exclude = [
       '**/admin.html',
     ]
-
-[[plugins]]
-  package = "@netlify/plugin-lighthouse"

@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import dynamic from "next/dynamic";
 
 import HomePageSection from "./homePageSection";
-import BackgroundImage from "../shared/backgroundImage";
+import Image from "../shared/image";
 import AnimatedBorder from "../shared/animatedBorder";
 import styles from "./aboutSection.module.scss";
 
@@ -42,7 +42,7 @@ export default function AboutSection({
 
   return (
     <HomePageSection id="about" className={styles.aboutSection}>
-      <BackgroundImage src={backgroundImage} />
+      <Image src={backgroundImage} shouldCoverContainer />
       <div className={styles.sectionContentWrapper}>
         <AnimatedBorder isActive={shouldTriggerBorderAnimation}>
           <div className={styles.content}>
