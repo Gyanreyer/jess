@@ -9,7 +9,6 @@ import AnimatedBorder from "../shared/animatedBorder";
 import styles from "./imageContent.module.scss";
 
 const ReactMarkdown = dynamic(() => import("react-markdown"));
-
 const ImageGallery = dynamic(() => import("react-image-gallery"));
 
 function SingleImageContent({ contentConfig: { imageFiles, columnWidth } }) {

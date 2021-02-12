@@ -1,23 +1,46 @@
 .imageWrapper {
   position: relative;
+
+  // Cut off any overflow (mainly needed to keep the low-quality placeholder's blur filter
+  // from spilling out
   overflow: hidden;
   transform: translate3d(0, 0, 0);
 
   img {
     width: 100%;
     display: block;
-    transition: opacity 0.1s, filter 0.1s;
+    transition: opacity 0.2s;
 
-    &:global(.lazyload) {
-      // Hide the image entirely before any sort of lazy-loading has begun
+    &:global(.lazyload),
+    &:global(.lazyloading) {
       opacity: 0;
     }
+  }
 
-    &:global(.lazyloading) {
-      // Apply a blur filter over the low-quality placeholder image
-      // while we're waiting for the full-res image to load in
-      filter: blur(4px);
-      opacity: 1;
+  &.showLQIP {
+    img {
+      &:global(.lazyloading) {
+        opacity: 1;
+        filter: blur(8px);
+      }
+
+      :global(.lazyloaded) {
+        transition: filter 0.2s, opacity 0.2s;
+      }
+    }
+  }
+
+  &.coverContainer {
+    // Expand to cover the container element
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+    img {
+      height: 100%;
+      object-fit: cover;
     }
   }
 }

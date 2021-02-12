@@ -60,6 +60,7 @@ export default function AnimatedBorder({
       {children}
       {animationOrderClasses.map((orderClass, index) => (
         <span
+          key={orderClass}
           className={`${styles.border} ${orderClass} ${
             borderEdgeClasses[(startingEdgeIndex + index) % 4]
           }`}

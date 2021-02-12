@@ -1,16 +1,16 @@
 import { NextSeo } from "next-seo";
 
-// Static file loading/parsing
-import fs from "fs";
-import path from "path";
-import YAML from "yaml";
-
 import Layout from "../../components/shared/layout";
 
 import WorkPageHeading from "../../components/work/workPageHeading";
 import WorkPageContentRow from "../../components/work/workPageContentRow";
 
 export async function getStaticPaths() {
+  // Static file loading/parsing modules
+  const fs = require("fs");
+  const path = require("path");
+  const YAML = require("yaml");
+
   const workPageDirectory = path.join(process.cwd(), "content/work");
   const fileNames = fs.readdirSync(workPageDirectory);
 
@@ -32,6 +32,11 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps(context) {
+  // Static file loading/parsing modules
+  const fs = require("fs");
+  const path = require("path");
+  const YAML = require("yaml");
+
   const { slug } = context.params;
 
   const workPageDirectory = path.join(process.cwd(), "content/work");

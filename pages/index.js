@@ -1,26 +1,21 @@
 // Vendor
 import { useEffect, useRef } from "react";
 import { NextSeo } from "next-seo";
-import dynamic from "next/dynamic";
-
-// Static file loading/parsing
-import fs from "fs";
-import path from "path";
-import YAML from "yaml";
 
 import Layout from "../components/shared/layout";
 import { useLazyVideoObvserver } from "../components/providers/lazyAutoplayVideoProvider";
 import WorkLinksSection from "../components/home/workLinksSection";
+import AboutSection from "../components/home/aboutSection";
+import ContactSection from "../components/home/contactSection";
 
 import styles from "./home.module.scss";
 
-// Homepage content components
-const AboutSection = dynamic(() => import("../components/home/aboutSection"));
-const ContactSection = dynamic(() =>
-  import("../components/home/contactSection")
-);
-
 export async function getStaticProps() {
+  // Static file loading/parsing modules
+  const fs = require("fs");
+  const path = require("path");
+  const YAML = require("yaml");
+
   const homepageConfigFilePath = path.join(process.cwd(), "content/home.yml");
 
   const homepageConfigFileContents = fs.readFileSync(

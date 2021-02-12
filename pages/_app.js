@@ -1,3 +1,4 @@
+import "lazysizes";
 import smoothscroll from "smoothscroll-polyfill";
 
 import "./global.scss";

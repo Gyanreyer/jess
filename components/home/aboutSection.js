@@ -1,11 +1,13 @@
 // Vendor
 import { useEffect, useState } from "react";
-import ReactMarkdown from "react-markdown";
+import dynamic from "next/dynamic";
 
 import HomePageSection from "./homePageSection";
 import Image from "../shared/image";
 import AnimatedBorder from "../shared/animatedBorder";
 import styles from "./aboutSection.module.scss";
+
+const ReactMarkdown = dynamic(() => import("react-markdown"));
 
 export default function AboutSection({
   config: { backgroundImage, heading, body, resumeFile },
@@ -40,7 +42,7 @@ export default function AboutSection({
 
   return (
     <HomePageSection id="about" className={styles.aboutSection}>
-      <Image src={backgroundImage} className={styles.backgroundImage} />
+      <Image src={backgroundImage} shouldCoverContainer />
       <div className={styles.sectionContentWrapper}>
         <AnimatedBorder isActive={shouldTriggerBorderAnimation}>
           <div className={styles.content}>

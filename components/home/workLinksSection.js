@@ -16,7 +16,11 @@ export const WorkLinkContents = ({ sectionName, linkImageURL }) => (
         <RightArrowIcon />
       </div>
     </div>
-    <Image src={linkImageURL} className={styles.backgroundImage} />
+    <Image
+      src={linkImageURL}
+      shouldCoverContainer
+      className={styles.backgroundImage}
+    />
   </div>
 );
 

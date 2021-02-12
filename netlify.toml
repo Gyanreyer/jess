@@ -10,6 +10,8 @@
     "*.html",
     "**/*.html",
   ]
+  inlineCss = true
+  inlineFonts = true
 
 [[plugins]]
   package = "@netlify/plugin-sitemap"
@@ -18,6 +20,3 @@
     exclude = [
       '**/admin.html',
     ]
-
-[[plugins]]
-  package = "@netlify/plugin-lighthouse"
