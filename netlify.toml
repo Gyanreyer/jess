@@ -10,6 +10,8 @@
     "*.html",
     "**/*.html",
   ]
+  inlineCss = true
+  inlineFonts = true
 
 [[plugins]]
   package = "@netlify/plugin-sitemap"
