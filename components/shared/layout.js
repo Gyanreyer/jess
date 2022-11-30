@@ -44,9 +44,9 @@ export default function Layout({ logoImageSrc, headerStyle, children }) {
               </Link>
             </li>
             <li>
-              <Link href="/#contact">
-                <a href="/#contact" onClick={onClickNavAnchorLink}>
-                  contact
+              <Link href="/#about">
+                <a href="/#about" onClick={onClickNavAnchorLink}>
+                  about
                 </a>
               </Link>
             </li>

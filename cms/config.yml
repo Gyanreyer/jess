@@ -69,12 +69,6 @@ collections:
                   widget: "image",
                 }
               - { label: "Resume File", name: "resumeFile", widget: "file" }
-          - label: "Contact Section"
-            name: "contactSection"
-            widget: "object"
-            fields:
-              - { label: "Heading", name: "heading", widget: "string" }
-              - { label: "Body", name: "body", widget: "markdown" }
   - name: "work"
     label: "Work Pages"
     label_singular: "Work Page"

@@ -6,7 +6,6 @@ import Layout from "../components/shared/layout";
 import { useLazyVideoObvserver } from "../components/providers/lazyAutoplayVideoProvider";
 import WorkLinksSection from "../components/home/workLinksSection";
 import AboutSection from "../components/home/aboutSection";
-import ContactSection from "../components/home/contactSection";
 
 import styles from "./home.module.scss";
 
@@ -92,7 +91,6 @@ const Home = ({ workPages, homepageConfig }) => {
       <article>
         <WorkLinksSection workPages={workPages} />
         <AboutSection config={homepageConfig.aboutSection} />
-        <ContactSection config={homepageConfig.contactSection} />
       </article>
     </Layout>
   );
