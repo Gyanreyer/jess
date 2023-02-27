@@ -50,3 +50,9 @@ contentRows:
         columnWidth: 1
         imageFiles:
           - /media/_mg_1820_1-copy.jpg
+  - columnCount: 1
+    contents:
+      - type: videoContent
+        shouldAutoplay: false
+        columnWidth: 1
+        videoFile: /media/Kohler-BTS.mp4
