@@ -40,10 +40,10 @@ contentRows:
         columnWidth: 1
         imageFiles:
           - /media/more-GrillinV2_1.gif
-  - columnCount: 1
+  - columnCount: 2
     contents:
       - type: videoContent
-        shouldAutoplay: false
+        shouldAutoplay: true
         columnWidth: 1
         videoFile: /media/date_anniesbunnyday_1x1_6.mp4
       - type: imageContent
