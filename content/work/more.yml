@@ -40,18 +40,13 @@ contentRows:
         columnWidth: 1
         imageFiles:
           - /media/more-GrillinV2_1.gif
-  - columnCount: 2
+  - columnCount: 1
     contents:
+      - type: videoContent
+        shouldAutoplay: false
+        columnWidth: 1
+        videoFile: /media/date_anniesbunnyday_1x1_6.mp4
       - type: imageContent
         columnWidth: 1
         imageFiles:
-          - /media/more-Apiculturelogo_V1.gif
-        hoverText: >-
-          # apiculture hr
-
-
-          Apiculture HR gives a fresh perspective to the world of human resources.
-      - type: imageContent
-        columnWidth: 1
-        imageFiles:
-          - /media/more-apiculturecard_mockup.jpg
+          - /media/_mg_1820_1-copy.jpg
