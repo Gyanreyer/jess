@@ -49,7 +49,7 @@ contentRows:
         imageFiles:
           - /media/cereal-bars-hero.png
           - /media/witchesfingers-hero.png
-          - /media/mummydogs_em_1.gif
+          - /media/oscar-meyer-partnership-emailmummydogs_em_header.png
   - columnCount: 2
     contents:
       - type: videoContent
