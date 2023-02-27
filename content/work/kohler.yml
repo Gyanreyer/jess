@@ -15,7 +15,7 @@ contentRows:
         textAlignment: center
         columnWidth: 1
         text: W﻿hile responsible for creating the social graphics and campaign themes, I
-          also able to capture content. This included the photography,
+          was also able to capture content. This included the photography,
           videography, and editing of the assets.
   - columnCount: 2
     contents:
@@ -42,13 +42,14 @@ contentRows:
         columnWidth: 1
         imageFiles:
           - /media/pumpkinday_hero.png
-  - columnCount: 2
+  - columnCount: 1
     contents:
       - type: imageContent
         columnWidth: 1
         imageFiles:
           - /media/cereal-bars-hero.png
           - /media/witchesfingers-hero.png
+          - /media/mummydogs_em_1.gif
   - columnCount: 2
     contents:
       - type: videoContent
@@ -65,13 +66,15 @@ contentRows:
         columnWidth: 1
         imageFiles:
           - /media/em_messfreehero.gif
-  - columnCount: 2
+  - columnCount: 1
     contents:
       - type: imageContent
         columnWidth: 1
         imageFiles:
           - /media/10_15_ig.png
           - /media/10_31_spicy-costume_2.png
+          - /media/10_31_spicy-costume_3.png
+          - /media/2_1_ig-copy.png
   - columnCount: 1
     contents:
       - type: textContent
