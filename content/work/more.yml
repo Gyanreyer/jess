@@ -53,6 +53,6 @@ contentRows:
   - columnCount: 1
     contents:
       - type: videoContent
-        shouldAutoplay: false
+        shouldAutoplay: true
         columnWidth: 1
         videoFile: /media/Kohler-BTS.mp4
