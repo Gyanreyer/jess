@@ -1,0 +1,44 @@
+---
+layout: "layouts/base.webc"
+meta:
+  title: "Jess Keoshian"
+  description: "art director/they/them"
+---
+
+<main>
+  <h1>jess</h1>
+  <p>art director/they/them</p>
+  <homepage-section class="secondary">
+    <h2>general mills</h2>
+    <p>where social media meets cinammon rolls</p>
+    <a class="button primary" href="/work/generalmills">view work</a>
+  </homepage-section>
+  <homepage-section class="primary">
+    <h2>famd</h2>
+    <p>a shelter with more heart than fur</p>
+    <a class="button secondary" href="/work/famd">view work</a>
+  </homepage-section>
+  <homepage-section class="secondary">
+    <h2>mowers</h2>
+    <p>a new spin on direct mail</p>
+    <a class="button primary" href="/work/mowers">view work</a>
+  </homepage-section>
+  <homepage-section class="primary">
+    <h2>pampers</h2>
+    <p>
+      dads are finally recognized...
+      <br />
+      but not without cool tech
+    </p>
+    <a class="button secondary" href="/work/pampers">view work</a>
+  </homepage-section>
+  <homepage-section class="secondary">
+    <h2>and then some</h2>
+    <p>
+      if you made it here,
+      <br />
+      you deserve a little extra
+    </p>
+    <a class="button primary" href="/work/more">view work</a>
+  </homepage-section>
+</main>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" :content="meta?.description" />
+    <meta name="generator" :content="eleventy.generator" />
+    <title @html="meta?.title"></title>
+
+    <!-- Critical CSS -->
+    <style @raw="getBundle('css', 'critical')" webc:keep></style>
+    <link rel="stylesheet" href="../../css/reset.css" webc:bucket="critical" />
+
+    <!-- Critical JS -->
+    <script @raw="getBundle('js', 'critical')" webc:keep></script>
+
+    <!-- Non-critical CSS/JS -->
+    <link rel="stylesheet" :href="getBundleFileUrl('css')" webc:keep />
+    <script :src="getBundleFileUrl('js')" defer webc:keep></script>
+  </head>
+  <body>
+    <template @raw="content" webc:nokeep></template>
+  </body>
+</html>

@@ -1,0 +1,31 @@
+:root {
+  --color-primary: #2aff60;
+  --color-secondary: #252f38;
+  --color-tertiary: #ffffff;
+}
+
+body,
+html {
+  margin: 0;
+  padding: 0;
+  line-height: 1.5;
+}
+
+.button {
+  display: inline-block;
+  font-size: 2rem;
+  padding: 1em;
+  border-radius: 1em;
+}
+
+.primary {
+  background-color: var(--color-primary);
+  color: var(--color-tertiary);
+}
+
+html,
+body,
+.secondary {
+  background-color: var(--color-secondary);
+  color: var(--color-tertiary);
+}

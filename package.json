@@ -1,37 +1,29 @@
 {
-  "name": "nextjs",
-  "version": "0.1.0",
-  "private": true,
-  "scripts": {
-    "dev": "npx netlify-cms-proxy-server & next dev",
-    "build": "next build",
-    "start": "next start",
-    "export": "next export"
-  },
-  "dependencies": {
-    "lazysizes": "^5.3.0",
-    "netlify-cms-app": "^2.14.12",
-    "next": "^10.0.4",
-    "next-seo": "^4.14.0",
-    "react": "^16.13.0",
-    "react-dom": "^16.13.0",
-    "react-h5-audio-player": "^3.5.0",
-    "react-image-gallery": "^1.0.8",
-    "react-markdown": "^4.3.1",
-    "sass": "^1.32.4",
-    "smoothscroll-polyfill": "^0.4.4",
-    "yaml": "^1.10.0",
-    "yaml-loader": "^0.6.0"
-  },
+  "name": "jess",
+  "version": "1.0.0",
+  "description": "Jess Keoshian's portfolio site",
+  "main": "index.js",
   "devDependencies": {
-    "babel-eslint": "^10.1.0",
-    "eslint": "^7.4.0",
-    "eslint-config-airbnb": "^18.2.0",
-    "eslint-config-prettier": "^6.11.0",
-    "eslint-plugin-import": "^2.22.0",
-    "eslint-plugin-jsx-a11y": "^6.3.1",
-    "eslint-plugin-prettier": "^3.1.4",
-    "eslint-plugin-react": "^7.20.3",
-    "eslint-plugin-react-hooks": "^4.0.6"
-  }
+    "@11ty/eleventy": "^2.0.1",
+    "@11ty/eleventy-img": "^3.1.0",
+    "@11ty/eleventy-plugin-bundle": "^1.0.4",
+    "@11ty/eleventy-plugin-webc": "^0.11.0",
+    "csso": "^5.0.5",
+    "esbuild": "^0.17.18",
+    "html-minifier-terser": "^7.2.0"
+  },
+  "scripts": {
+    "dev": "npx @11ty/eleventy --serve",
+    "build": "NODE_ENV=prod npx @11ty/eleventy"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Gyanreyer/jess.git"
+  },
+  "author": "Ryan Geyer, Jess Keoshian",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Gyanreyer/jess/issues"
+  },
+  "homepage": "https://github.com/Gyanreyer/jess#readme"
 }
