@@ -1,20 +1,25 @@
 <section webc:root="override" class="homepage-section">
   <div class="top-padding"></div>
-  <div class="section-content">
+  <article class="section-content">
     <slot></slot>
-  </div>
+  </article>
 </section>
 <style webc:scoped>
   :host {
     --bg: var(--color-primary);
     background: none !important;
 
+    /* Var to track how much the top padding should be tilted */
+    --top-tilt-pct: 1;
+
+    --scroll-pct: 0;
+    --top-tilt-pct: clamp(0, calc((0.7 - var(--scroll-pct)) / 0.4), 1);
+
+    --max-tilt-angle: 6deg;
+
     /* Calculate the amount of space we need to leave at the top of this section in order to be able to
         tilt the angled top padding by 5 degrees without cutting it off */
-    --angled-top-padding-height: calc(100vw * sin(5deg));
-
-    /* Var to track how much the top padding should be tilted */
-    --top-tilt-pct: 0;
+    --angled-top-padding-height: calc(100vw * sin(var(--max-tilt-angle)));
 
     padding: 15rem 0 calc(15rem - var(--angled-top-padding-height));
     position: relative;
@@ -58,13 +63,21 @@
     width: 140%;
     height: 200%;
     transform-origin: center;
-    transform: rotate(calc(-5deg + (var(--top-tilt-pct) * 5deg)));
+    transform: rotate(
+      calc(
+        (var(--top-tilt-pct) * var(--max-tilt-angle)) - var(--max-tilt-angle)
+      )
+    );
   }
 
   .section-content {
     padding: 0 10%;
     z-index: 2;
     position: relative;
+    display: flex;
+    gap: 2rem 4rem;
+    justify-content: center;
+    align-items: center;
   }
 
   h2 {
@@ -90,12 +103,28 @@
     text-decoration: none;
     cursor: pointer;
     transition: opacity 0.3s,
-      transform 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+      transform 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
   }
 
   .button:hover {
     opacity: 0.9;
     transform: scale(1.15);
+  }
+
+  .section-content .images img {
+    transform: translateY(calc(20% * calc(var(--scroll-pct) - 0.25)));
+  }
+
+  .section-content .images img {
+    display: block;
+    width: auto;
+    height: auto;
+    max-width: 30rem;
+    max-height: 30rem;
+  }
+
+  .section-content .text {
+    transform: translateY(calc(10% * calc(var(--scroll-pct) - 0.5)));
   }
 </style>
 <script>
@@ -105,45 +134,18 @@
     );
     const homePageSectionCount = homePageSections.length;
 
-    let upperScrollPctCutoff;
-    let lowerScrollPctCutoff;
-
     const onScroll = () => {
       for (let i = 0; i < homePageSectionCount; ++i) {
         const element = homePageSections[i];
         const boundingClientRect = element.getBoundingClientRect();
-        const top = boundingClientRect.top;
 
-        const positionBetweenBounds = Math.max(
-          Math.min(
-            (top - lowerScrollPctCutoff) /
-              (upperScrollPctCutoff - lowerScrollPctCutoff),
-            1
-          ),
-          0
-        );
+        const scrollPercent = boundingClientRect.top / window.innerHeight;
 
-        element.style.setProperty("--top-tilt-pct", positionBetweenBounds);
+        element.style.setProperty("--scroll-pct", scrollPercent);
       }
     };
 
-    const onResize = () => {
-      const windowHeight = window.innerHeight;
-      upperScrollPctCutoff = 0.3 * windowHeight;
-      lowerScrollPctCutoff = 0.7 * windowHeight;
-      const homepageSectionAngledPaddingHeight =
-        window.innerWidth * Math.sin((Math.PI * 5) / 180);
-      document.documentElement.style.setProperty(
-        "--hs-angled-padding-height",
-        `${homepageSectionAngledPaddingHeight}px`
-      );
-
-      onScroll();
-    };
-
-    onResize();
-
     window.addEventListener("scroll", onScroll, { passive: true });
-    window.addEventListener("resize", onResize, { passive: true });
+    window.addEventListener("resize", onScroll, { passive: true });
   })();
 </script>

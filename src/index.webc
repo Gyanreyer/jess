@@ -9,36 +9,144 @@ meta:
   <h1>jess</h1>
   <p>art director/they/them</p>
   <homepage-section class="secondary">
-    <h2>general mills</h2>
-    <p>where social media meets cinammon rolls</p>
-    <a class="button primary" href="/work/generalmills">view work</a>
+    <div class="text">
+      <h2>general mills</h2>
+      <p>where social media meets cinammon rolls</p>
+      <a class="button primary" href="/work/generalmills">view work</a>
+    </div>
+    <div class="images">
+      <eleventy-image
+        src="src/assets/img/home/generalmills-doughboy.png"
+        role="presentation"
+        alt=""
+        width="240, 320, 640"
+        sizes="(min-width: 768px) 80vw, 30vw"
+      ></eleventy-image>
+    </div>
   </homepage-section>
   <homepage-section class="primary">
-    <h2>famd</h2>
-    <p>a shelter with more heart than fur</p>
-    <a class="button secondary" href="/work/famd">view work</a>
+    <div class="text">
+      <h2>famd</h2>
+      <p>a shelter with more heart than fur</p>
+      <a class="button secondary" href="/work/famd">view work</a>
+    </div>
+    <div class="images">
+      <eleventy-image
+        src="src/assets/img/home/famd.jpg"
+        role="presentation"
+        alt=""
+        width="240, 320, 640"
+        sizes="(min-width: 768px) 80vw, 30vw"
+      ></eleventy-image>
+    </div>
+  </homepage-section>
+  <homepage-section class="secondary mowers">
+    <div class="text">
+      <h2>mowers</h2>
+      <p>a new spin on direct mail</p>
+      <a class="button primary" href="/work/mowers">view work</a>
+    </div>
+    <div class="images">
+      <eleventy-image
+        src="src/assets/img/home/mowers-scagboxopen.png"
+        role="presentation"
+        alt=""
+        width="240, 320, 640"
+        sizes="(min-width: 768px) 80vw, 30vw"
+        class="box"
+      ></eleventy-image>
+      <eleventy-image
+        src="src/assets/img/home/mowers-ferristube.png"
+        role="presentation"
+        alt=""
+        width="240, 320, 640"
+        sizes="(min-width: 768px) 80vw, 30vw"
+        class="tube"
+      ></eleventy-image>
+    </div>
+  </homepage-section>
+  <homepage-section class="primary pampers">
+    <div class="text">
+      <h2>pampers</h2>
+      <p>
+        dads are finally recognized...
+        <br />
+        but not without cool tech
+      </p>
+      <a class="button secondary" href="/work/pampers">view work</a>
+    </div>
+    <div class="images">
+      <eleventy-image
+        src="src/assets/img/home/pampers-appscreen1.png"
+        role="presentation"
+        alt=""
+        width="240, 320, 640"
+        sizes="(min-width: 768px) 80vw, 30vw"
+      ></eleventy-image>
+      <eleventy-image
+        src="src/assets/img/home/pampers-appscreen2.png"
+        role="presentation"
+        alt=""
+        width="240, 320, 640"
+        sizes="(min-width: 768px) 80vw, 30vw"
+        class="center"
+      ></eleventy-image>
+      <eleventy-image
+        src="src/assets/img/home/pampers-appscreen3.png"
+        role="presentation"
+        alt=""
+        width="240, 320, 640"
+        sizes="(min-width: 768px) 80vw, 30vw"
+      ></eleventy-image>
+    </div>
   </homepage-section>
   <homepage-section class="secondary">
-    <h2>mowers</h2>
-    <p>a new spin on direct mail</p>
-    <a class="button primary" href="/work/mowers">view work</a>
-  </homepage-section>
-  <homepage-section class="primary">
-    <h2>pampers</h2>
-    <p>
-      dads are finally recognized...
-      <br />
-      but not without cool tech
-    </p>
-    <a class="button secondary" href="/work/pampers">view work</a>
-  </homepage-section>
-  <homepage-section class="secondary">
-    <h2>and then some</h2>
-    <p>
-      if you made it here,
-      <br />
-      you deserve a little extra
-    </p>
-    <a class="button primary" href="/work/more">view work</a>
+    <div class="text">
+      <h2>and then some</h2>
+      <p>
+        if you made it here,
+        <br />
+        you deserve a little extra
+      </p>
+      <a class="button primary" href="/work/more">view work</a>
+    </div>
+    <div class="images">
+      <eleventy-image
+        src="src/assets/img/home/more-cinemagraph.gif"
+        role="presentation"
+        alt=""
+        formats="webp, auto"
+        width="240, 320, 640"
+        sizes="(min-width: 768px) 80vw, 30vw"
+      ></eleventy-image>
+    </div>
   </homepage-section>
 </main>
+<style>
+  .mowers .images,
+  .pampers .images {
+    display: flex;
+  }
+
+  .mowers .images img.box {
+    max-height: 25rem;
+    transform: translateY(calc(10% * calc(var(--scroll-pct) + 0.25)));
+  }
+
+  .mowers .images img.tube {
+    margin-left: -3.5rem;
+    transform: translateY(calc(25% * calc(var(--scroll-pct) - 0.5)));
+  }
+
+  .pampers .images img:not(.center) {
+    max-height: 26rem;
+    transform: translateY(calc(10% * calc(var(--scroll-pct) - 0.5)));
+  }
+
+  .pampers .images img.center {
+    margin: 0 -3rem;
+    position: relative;
+    z-index: 1;
+    transform: translateY(calc(20% * calc(var(--scroll-pct) - 0.5)));
+  }
+</style>
