@@ -21,13 +21,20 @@
         tilt the angled top padding by 5 degrees without cutting it off */
     --angled-top-padding-height: calc(100vw * sin(var(--max-tilt-angle)));
 
-    padding: 15rem 0 calc(15rem - var(--angled-top-padding-height));
+    padding: 20rem 0 calc(20rem - var(--angled-top-padding-height));
     position: relative;
   }
 
-  :host:last-of-type {
-    margin-bottom: 0;
-    padding-bottom: 12rem;
+  :host:first-of-type {
+    padding: 12rem 0;
+  }
+
+  :host:last-child {
+    padding: 16rem 0;
+  }
+
+  :host:last-of-type::after {
+    bottom: 0;
   }
 
   :host.secondary {
@@ -75,22 +82,21 @@
     z-index: 2;
     position: relative;
     display: flex;
-    gap: 2rem 4rem;
+    gap: 2rem 6rem;
     justify-content: center;
     align-items: center;
   }
 
   h2 {
-    font-size: 3rem;
+    font-size: 4rem;
     font-weight: bold;
-    margin-bottom: 1rem;
+    margin-bottom: 0.7rem;
     line-height: 1.2;
   }
 
   p {
-    font-size: 1.2rem;
-    font-weight: bold;
-    margin: 0 0 2rem 2rem;
+    font-size: 1.5rem;
+    margin: 0 0 1.1rem 3rem;
     line-height: 1.2;
   }
 
@@ -144,6 +150,8 @@
         element.style.setProperty("--scroll-pct", scrollPercent);
       }
     };
+
+    onScroll();
 
     window.addEventListener("scroll", onScroll, { passive: true });
     window.addEventListener("resize", onScroll, { passive: true });

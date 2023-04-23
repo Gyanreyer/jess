@@ -6,12 +6,11 @@ meta:
 ---
 
 <main>
-  <h1>jess</h1>
-  <p>art director/they/them</p>
+  <homepage-nav></homepage-nav>
   <homepage-section class="secondary">
     <div class="text">
       <h2>general mills</h2>
-      <p>where social media meets cinammon rolls</p>
+      <p>where social meets cinnamon rolls</p>
       <a class="button primary" href="/work/generalmills">view work</a>
     </div>
     <div class="images">
@@ -121,6 +120,28 @@ meta:
       ></eleventy-image>
     </div>
   </homepage-section>
+  <homepage-section class="primary" id="about">
+    <div class="text">
+      <h2>about</h2>
+      <p>
+        Jess Keoshian is a designer and art director located in the metro area
+        of Detroit. Specializing in design concepts and motion, Jess brings a
+        strategic edge to every project. When not designing, Jess can be found
+        baking or snuggling up with their rescue dog Harrison.
+      </p>
+      <a class="button secondary" href="/resume.pdf">view resume</a>
+    </div>
+    <div class="images">
+      <eleventy-image
+        src="src/assets/img/home/jess-headshot.jpg"
+        role="presentation"
+        alt=""
+        formats="webp, auto"
+        width="240, 320, 640"
+        sizes="(min-width: 768px) 80vw, 30vw"
+      ></eleventy-image>
+    </div>
+  </homepage-section>
 </main>
 <style>
   .mowers .images,
@@ -148,5 +169,10 @@ meta:
     position: relative;
     z-index: 1;
     transform: translateY(calc(20% * calc(var(--scroll-pct) - 0.5)));
+  }
+
+  #about p {
+    font-size: 1.2rem;
+    margin: 1.5rem 0 2rem;
   }
 </style>

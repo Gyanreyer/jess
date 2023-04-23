@@ -1,34 +1,22 @@
 /* Normal font weight */
 @font-face {
-  font-family: "Avenir";
-  src: url("/fonts/Avenir-Book.ttf");
+  font-family: "Avenir Next";
+  src: url("/fonts/AvenirNext-DemiBold.ttf");
   font-weight: normal;
   font-style: normal;
-}
-@font-face {
-  font-family: "Avenir";
-  src: url("/fonts/Avenir-BookOblique.ttf");
-  font-weight: normal;
-  font-style: oblique;
 }
 
 /* Bold font weight */
 @font-face {
-  font-family: "Avenir";
-  src: url("/fonts/Avenir-Heavy.ttf");
+  font-family: "Avenir Next";
+  src: url("/fonts/AvenirNext-Bold.woff2");
   font-weight: bold;
   font-style: normal;
 }
-@font-face {
-  font-family: "Avenir";
-  src: url("/fonts/Avenir-HeavyOblique.ttf");
-  font-weight: bold;
-  font-style: oblique;
-}
 
 :root {
-  --color-primary: #00ff4b;
-  --color-secondary: #223039;
+  --color-primary: #2afd73;
+  --color-secondary: #323e48;
   --color-tertiary: #ffffff;
 }
 
@@ -37,7 +25,7 @@ html {
   margin: 0;
   padding: 0;
   line-height: 1.5;
-  font-family: "Avenir", sans-serif;
+  font-family: "Avenir Next", sans-serif;
 }
 
 .primary {

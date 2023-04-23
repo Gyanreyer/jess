@@ -1,0 +1,68 @@
+<nav webc:root="override">
+  <a href="/">
+    <eleventy-image
+      src="src/assets/img/nav/jess-logo.png"
+      role="presentation"
+      alt="Jess"
+      width="240, 320, 640"
+      sizes="(min-width: 768px) 40vw, 20vw"
+    ></eleventy-image>
+  </a>
+  <p>art director/they/them</p>
+  <a href="/#about">
+    <eleventy-image
+      src="src/assets/img/nav/about-icon.png"
+      role="presentation"
+      alt="About"
+      width="240, 320, 640"
+      sizes="(min-width: 768px) 40vw, 20vw"
+    ></eleventy-image>
+    <div class="hover-color"></div>
+  </a>
+  <div class="menu-btn"></div>
+</nav>
+<style webc:scoped>
+  :host {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    padding: 2rem 4rem;
+    align-items: center;
+  }
+
+  p {
+    font-size: 1.5rem;
+    text-align: center;
+  }
+
+  img[alt="Jess"] {
+    height: 5rem;
+    width: auto;
+  }
+
+  img[alt="About"] {
+    height: 2rem;
+    width: auto;
+  }
+
+  a[href="/#about"] {
+    position: relative;
+  }
+
+  a .hover-color {
+    background: var(--color-primary);
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    mix-blend-mode: darken;
+    opacity: 0;
+    transform: translateY(100%);
+    transition-property: opacity, transform;
+    transition-duration: 0.6s;
+    pointer-events: none;
+  }
+
+  a:hover .hover-color {
+    opacity: 1;
+    transform: translateY(0%);
+  }
+</style>
