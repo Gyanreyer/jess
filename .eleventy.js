@@ -27,6 +27,8 @@ module.exports = function (eleventyConfig) {
   // Trigger a hot reload when a JS/CSS file changes
   eleventyConfig.addWatchTarget("src/**/*.{js,mjs,css}");
 
+  eleventyConfig.addPassthroughCopy({ "src/assets/fonts": "fonts" });
+
   // Image plugin
   eleventyConfig.addPlugin(eleventyImagePlugin, {
     formats: ["avif", "webp", "auto"],
