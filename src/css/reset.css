@@ -27,8 +27,8 @@
 }
 
 :root {
-  --color-primary: #2aff60;
-  --color-secondary: #252f38;
+  --color-primary: #00ff4b;
+  --color-secondary: #223039;
   --color-tertiary: #ffffff;
 }
 
@@ -40,16 +40,9 @@ html {
   font-family: "Avenir", sans-serif;
 }
 
-.button {
-  display: inline-block;
-  font-size: 2rem;
-  padding: 1em;
-  border-radius: 1em;
-}
-
 .primary {
   background-color: var(--color-primary);
-  color: var(--color-tertiary);
+  color: var(--color-secondary);
 }
 
 html,
@@ -57,4 +50,12 @@ body,
 .secondary {
   background-color: var(--color-secondary);
   color: var(--color-tertiary);
+}
+
+h1,
+h2,
+h3,
+p {
+  margin: 0;
+  padding: 0;
 }

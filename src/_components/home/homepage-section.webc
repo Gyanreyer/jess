@@ -66,6 +66,37 @@
     z-index: 2;
     position: relative;
   }
+
+  h2 {
+    font-size: 3rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+    line-height: 1.2;
+  }
+
+  p {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin: 0 0 2rem 2rem;
+    line-height: 1.2;
+  }
+
+  .button {
+    display: inline-block;
+    font-size: 1.2rem;
+    font-weight: bold;
+    padding: 0.5rem 2rem;
+    border-radius: 2em;
+    text-decoration: none;
+    cursor: pointer;
+    transition: opacity 0.3s,
+      transform 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  }
+
+  .button:hover {
+    opacity: 0.9;
+    transform: scale(1.15);
+  }
 </style>
 <script>
   (() => {
