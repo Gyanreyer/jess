@@ -7,11 +7,11 @@ meta:
 
 <main>
   <homepage-nav></homepage-nav>
-  <homepage-section class="secondary">
+  <homepage-section class="secondary" id="general-mills">
     <div class="text">
       <h2>general mills</h2>
       <p>where social meets cinnamon rolls</p>
-      <a class="button primary" href="/work/generalmills">view work</a>
+      <a class="button primary" href="/work/general-mills">view work</a>
     </div>
     <div class="images">
       <eleventy-image
@@ -23,7 +23,7 @@ meta:
       ></eleventy-image>
     </div>
   </homepage-section>
-  <homepage-section class="primary">
+  <homepage-section class="primary" id="famd">
     <div class="text">
       <h2>famd</h2>
       <p>a shelter with more heart than fur</p>
@@ -39,7 +39,7 @@ meta:
       ></eleventy-image>
     </div>
   </homepage-section>
-  <homepage-section class="secondary mowers">
+  <homepage-section class="secondary" id="mowers">
     <div class="text">
       <h2>mowers</h2>
       <p>a new spin on direct mail</p>
@@ -64,7 +64,7 @@ meta:
       ></eleventy-image>
     </div>
   </homepage-section>
-  <homepage-section class="primary pampers">
+  <homepage-section class="primary" id="pampers">
     <div class="text">
       <h2>pampers</h2>
       <p>
@@ -99,7 +99,7 @@ meta:
       ></eleventy-image>
     </div>
   </homepage-section>
-  <homepage-section class="secondary">
+  <homepage-section class="secondary" id="more">
     <div class="text">
       <h2>and then some</h2>
       <p>
@@ -144,35 +144,57 @@ meta:
   </homepage-section>
 </main>
 <style>
-  .mowers .images,
-  .pampers .images {
-    display: flex;
+  #general-mills .images img {
+    height: 30rem;
+    width: auto;
   }
 
-  .mowers .images img.box {
-    max-height: 25rem;
+  #famd .images img {
+    width: 30rem;
+    height: auto;
+  }
+
+  #mowers .images img.box {
+    height: 25rem;
+    width: auto;
     transform: translateY(calc(10% * calc(var(--scroll-pct) + 0.25)));
   }
 
-  .mowers .images img.tube {
+  #mowers .images img.tube {
+    height: 30rem;
+    width: auto;
     margin-left: -3.5rem;
     transform: translateY(calc(25% * calc(var(--scroll-pct) - 0.5)));
   }
 
-  .pampers .images img:not(.center) {
-    max-height: 26rem;
+  #pampers .images img:not(.center) {
+    height: 26rem;
+    width: auto;
     transform: translateY(calc(10% * calc(var(--scroll-pct) - 0.5)));
   }
 
-  .pampers .images img.center {
+  #pampers .images img.center {
+    height: 30rem;
+    width: auto;
     margin: 0 -3rem;
     position: relative;
     z-index: 1;
     transform: translateY(calc(20% * calc(var(--scroll-pct) - 0.5)));
   }
 
+  #more .images img {
+    width: 30rem;
+    height: auto;
+  }
+
   #about p {
     font-size: 1.2rem;
+    font-weight: 400;
     margin: 1.5rem 0 2rem;
+  }
+
+  #about .images img {
+    width: 25rem;
+    height: auto;
   }
 </style>

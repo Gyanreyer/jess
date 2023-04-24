@@ -26,7 +26,7 @@
   }
 
   :host:first-of-type {
-    padding: 12rem 0;
+    padding-top: 8rem;
   }
 
   :host:last-child {
@@ -96,13 +96,15 @@
 
   p {
     font-size: 1.5rem;
-    margin: 0 0 1.1rem 3rem;
+    font-weight: 500;
+    margin: 0 0 1.2rem 2rem;
     line-height: 1.2;
   }
 
   .button {
+    position: relative;
     display: inline-block;
-    font-size: 1.2rem;
+    font-size: 1.7rem;
     font-weight: bold;
     padding: 0.5rem 2rem;
     border-radius: 2em;
@@ -112,9 +114,14 @@
       transform 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
   }
 
-  .button:hover {
+  .button:hover,
+  .button:focus-visible {
     opacity: 0.9;
-    transform: scale(1.15);
+    transform: scale(1.1);
+  }
+
+  .section-content .images {
+    display: flex;
   }
 
   .section-content .images img {
@@ -123,10 +130,6 @@
 
   .section-content .images img {
     display: block;
-    width: auto;
-    height: auto;
-    max-width: 30rem;
-    max-height: 30rem;
   }
 
   .section-content .text {

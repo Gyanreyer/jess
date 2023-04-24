@@ -17,7 +17,6 @@
       width="240, 320, 640"
       sizes="(min-width: 768px) 40vw, 20vw"
     ></eleventy-image>
-    <div class="hover-color"></div>
   </a>
   <div class="menu-btn"></div>
 </nav>
@@ -44,11 +43,13 @@
     width: auto;
   }
 
-  a[href="/#about"] {
+  a {
     position: relative;
+    overflow: hidden;
   }
 
-  a .hover-color {
+  a::after {
+    content: "";
     background: var(--color-primary);
     position: absolute;
     inset: 0;
@@ -61,7 +62,8 @@
     pointer-events: none;
   }
 
-  a:hover .hover-color {
+  a:hover::after,
+  a:focus-visible::after {
     opacity: 1;
     transform: translateY(0%);
   }
