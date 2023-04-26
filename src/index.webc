@@ -11,7 +11,6 @@ meta:
     <div class="text">
       <h2>general mills</h2>
       <p>where social meets cinnamon rolls</p>
-      <a class="button primary" href="/work/general-mills">view work</a>
     </div>
     <div class="images">
       <eleventy-image
@@ -22,12 +21,12 @@ meta:
         sizes="(min-width: 768px) 80vw, 30vw"
       ></eleventy-image>
     </div>
+    <a class="button primary" href="/work/general-mills">view work</a>
   </homepage-section>
   <homepage-section class="primary" id="famd">
     <div class="text">
       <h2>famd</h2>
       <p>a shelter with more heart than fur</p>
-      <a class="button secondary" href="/work/famd">view work</a>
     </div>
     <div class="images">
       <eleventy-image
@@ -38,12 +37,12 @@ meta:
         sizes="(min-width: 768px) 80vw, 30vw"
       ></eleventy-image>
     </div>
+    <a class="button secondary" href="/work/famd">view work</a>
   </homepage-section>
   <homepage-section class="secondary" id="mowers">
     <div class="text">
       <h2>mowers</h2>
       <p>a new spin on direct mail</p>
-      <a class="button primary" href="/work/mowers">view work</a>
     </div>
     <div class="images">
       <eleventy-image
@@ -63,6 +62,7 @@ meta:
         class="tube"
       ></eleventy-image>
     </div>
+    <a class="button primary" href="/work/mowers">view work</a>
   </homepage-section>
   <homepage-section class="primary" id="pampers">
     <div class="text">
@@ -72,7 +72,6 @@ meta:
         <br />
         but not without cool tech
       </p>
-      <a class="button secondary" href="/work/pampers">view work</a>
     </div>
     <div class="images">
       <eleventy-image
@@ -81,6 +80,7 @@ meta:
         alt=""
         width="240, 320, 640"
         sizes="(min-width: 768px) 80vw, 30vw"
+        class="left"
       ></eleventy-image>
       <eleventy-image
         src="src/assets/img/home/pampers-appscreen2.png"
@@ -96,8 +96,10 @@ meta:
         alt=""
         width="240, 320, 640"
         sizes="(min-width: 768px) 80vw, 30vw"
+        class="right"
       ></eleventy-image>
     </div>
+    <a class="button secondary" href="/work/pampers">view work</a>
   </homepage-section>
   <homepage-section class="secondary" id="more">
     <div class="text">
@@ -107,18 +109,17 @@ meta:
         <br />
         you deserve a little extra
       </p>
-      <a class="button primary" href="/work/more">view work</a>
     </div>
     <div class="images">
-      <eleventy-image
-        src="src/assets/img/home/more-cinemagraph.gif"
+      <img
+        src="/img/more-cinemagraph.gif"
         role="presentation"
         alt=""
-        formats="webp, auto"
-        width="240, 320, 640"
-        sizes="(min-width: 768px) 80vw, 30vw"
-      ></eleventy-image>
+        width="900"
+        height="727"
+      ></img>
     </div>
+    <a class="button primary" href="/work/more">view work</a>
   </homepage-section>
   <homepage-section class="primary" id="about">
     <div class="text">
@@ -129,7 +130,6 @@ meta:
         strategic edge to every project. When not designing, Jess can be found
         baking or snuggling up with their rescue dog Harrison.
       </p>
-      <a class="button secondary" href="/resume.pdf">view resume</a>
     </div>
     <div class="images">
       <eleventy-image
@@ -141,13 +141,14 @@ meta:
         sizes="(min-width: 768px) 80vw, 30vw"
       ></eleventy-image>
     </div>
+    <a class="button secondary" href="/resume.pdf">view resume</a>
   </homepage-section>
 </main>
 <style>
-  #general-mills .images img {
+  /* #general-mills .images img {
     height: 30rem;
     width: auto;
-  }
+  } */
 
   #famd .images img {
     width: 30rem;
@@ -157,35 +158,60 @@ meta:
   #mowers .images img.box {
     height: 25rem;
     width: auto;
-    transform: translateY(calc(10% * calc(var(--scroll-pct) + 0.25)));
+    --translate-y: calc(10% * calc(var(--scroll-pct) + 0.25));
   }
 
   #mowers .images img.tube {
     height: 30rem;
     width: auto;
-    margin-left: -3.5rem;
-    transform: translateY(calc(25% * calc(var(--scroll-pct) - 0.5)));
+    --translate-x: -50%;
+    --translate-y: calc(25% * calc(var(--scroll-pct) - 0.5));
   }
 
-  #pampers .images img:not(.center) {
+  @media only screen and (max-width: 768px) {
+    #mowers .images img.box {
+      height: 16rem;
+    }
+    #mowers .images img.tube {
+      height: 19rem;
+    }
+  }
+
+  #pampers .images img:is(.left, .right) {
     height: 26rem;
     width: auto;
-    transform: translateY(calc(10% * calc(var(--scroll-pct) - 0.5)));
+    --translate-y: calc(10% * calc(var(--scroll-pct) - 0.5));
+  }
+
+  #pampers .images img.left {
+    --translate-x: 20%;
+  }
+  #pampers .images img.right {
+    --translate-x: -20%;
   }
 
   #pampers .images img.center {
     height: 30rem;
     width: auto;
-    margin: 0 -3rem;
     position: relative;
     z-index: 1;
-    transform: translateY(calc(20% * calc(var(--scroll-pct) - 0.5)));
+    --translate-y: calc(20% * calc(var(--scroll-pct) - 0.5));
   }
 
-  #more .images img {
+  @media only screen and (max-width: 768px) {
+    #pampers .images img:not(.center) {
+      height: 15rem;
+    }
+    #pampers .images img.center {
+      height: 18rem;
+    }
+  }
+
+  /* #more .images img {
     width: 30rem;
     height: auto;
-  }
+    max-height: 30rem;
+  } */
 
   #about p {
     font-size: 1.2rem;
@@ -193,8 +219,12 @@ meta:
     margin: 1.5rem 0 2rem;
   }
 
-  #about .images img {
+  /* #about .images img {
     width: 25rem;
     height: auto;
+  } */
+
+  #about {
+    padding-bottom: clamp(6rem, 20%, 20vh);
   }
 </style>
