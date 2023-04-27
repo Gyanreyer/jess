@@ -18,7 +18,7 @@ meta:
         role="presentation"
         alt=""
         width="240, 320, 640"
-        sizes="(min-width: 768px) 80vw, 30vw"
+        sizes="30vw, (max-width: 768px) 30vw"
       ></eleventy-image>
     </div>
     <a class="button primary" href="/work/general-mills">view work</a>
@@ -34,7 +34,7 @@ meta:
         role="presentation"
         alt=""
         width="240, 320, 640"
-        sizes="(min-width: 768px) 80vw, 30vw"
+        sizes="30vw, (max-width: 768px) 30vw"
       ></eleventy-image>
     </div>
     <a class="button secondary" href="/work/famd">view work</a>
@@ -50,7 +50,7 @@ meta:
         role="presentation"
         alt=""
         width="240, 320, 640"
-        sizes="(min-width: 768px) 80vw, 30vw"
+        sizes="30vw, (max-width: 768px) 30vw"
         class="box"
       ></eleventy-image>
       <eleventy-image
@@ -58,7 +58,7 @@ meta:
         role="presentation"
         alt=""
         width="240, 320, 640"
-        sizes="(min-width: 768px) 80vw, 30vw"
+        sizes="30vw, (max-width: 768px) 30vw"
         class="tube"
       ></eleventy-image>
     </div>
@@ -79,7 +79,7 @@ meta:
         role="presentation"
         alt=""
         width="240, 320, 640"
-        sizes="(min-width: 768px) 80vw, 30vw"
+        sizes="30vw, (max-width: 768px) 30vw"
         class="left"
       ></eleventy-image>
       <eleventy-image
@@ -87,7 +87,7 @@ meta:
         role="presentation"
         alt=""
         width="240, 320, 640"
-        sizes="(min-width: 768px) 80vw, 30vw"
+        sizes="30vw, (max-width: 768px) 30vw"
         class="center"
       ></eleventy-image>
       <eleventy-image
@@ -95,7 +95,7 @@ meta:
         role="presentation"
         alt=""
         width="240, 320, 640"
-        sizes="(min-width: 768px) 80vw, 30vw"
+        sizes="30vw, (max-width: 768px) 30vw"
         class="right"
       ></eleventy-image>
     </div>
@@ -111,12 +111,13 @@ meta:
       </p>
     </div>
     <div class="images">
-      <img
-        src="/img/more-cinemagraph.gif"
+      <eleventy-image
+        src="src/assets/img/home/more-cinemagraph.gif"
         role="presentation"
         alt=""
-        width="900"
-        height="727"
+        formats="webp, auto"
+        width="240, 320, 640"
+        sizes="30vw, (max-width: 768px) 30vw"
       ></img>
     </div>
     <a class="button primary" href="/work/more">view work</a>
@@ -138,93 +139,54 @@ meta:
         alt=""
         formats="webp, auto"
         width="240, 320, 640"
-        sizes="(min-width: 768px) 80vw, 30vw"
+        sizes="30vw, (max-width: 768px) 30vw"
       ></eleventy-image>
     </div>
     <a class="button secondary" href="/resume.pdf">view resume</a>
   </homepage-section>
 </main>
 <style>
-  /* #general-mills .images img {
-    height: 30rem;
-    width: auto;
-  } */
-
-  #famd .images img {
-    width: 30rem;
-    height: auto;
+  #general-mills img {
+    width: clamp(12rem, 50%, 24rem);
+    margin: 0 auto;
   }
 
-  #mowers .images img.box {
-    height: 25rem;
-    width: auto;
-    --translate-y: calc(10% * calc(var(--scroll-pct) + 0.25));
+  #mowers img.box {
+    width: 85%;
   }
 
-  #mowers .images img.tube {
-    height: 30rem;
-    width: auto;
-    --translate-x: -50%;
-    --translate-y: calc(25% * calc(var(--scroll-pct) - 0.5));
+  #mowers img.tube {
+    position: absolute;
+    width: 20%;
+    top: 0;
+    left: 80%;
+    transform: translateY(calc(15% * calc(var(--scroll-pct) - 0.3)));
   }
 
-  @media only screen and (max-width: 768px) {
-    #mowers .images img.box {
-      height: 16rem;
-    }
-    #mowers .images img.tube {
-      height: 19rem;
-    }
+  #pampers img:is(.left, .right) {
+    position: absolute;
+    top: 0;
+    width: 32%;
   }
 
-  #pampers .images img:is(.left, .right) {
-    height: 26rem;
-    width: auto;
-    --translate-y: calc(10% * calc(var(--scroll-pct) - 0.5));
+  #pampers img.left {
+    left: 12%;
+  }
+  #pampers img.right {
+    left: 62%
   }
 
-  #pampers .images img.left {
-    --translate-x: 20%;
-  }
-  #pampers .images img.right {
-    --translate-x: -20%;
-  }
-
-  #pampers .images img.center {
-    height: 30rem;
-    width: auto;
+  #pampers img.center {
+    width: 35%;
+    margin: 0 auto;
     position: relative;
     z-index: 1;
-    --translate-y: calc(20% * calc(var(--scroll-pct) - 0.5));
+    transform: translateY(calc(20% * calc(var(--scroll-pct) - 0.5)));
   }
-
-  @media only screen and (max-width: 768px) {
-    #pampers .images img:not(.center) {
-      height: 15rem;
-    }
-    #pampers .images img.center {
-      height: 18rem;
-    }
-  }
-
-  /* #more .images img {
-    width: 30rem;
-    height: auto;
-    max-height: 30rem;
-  } */
 
   #about p {
     font-size: 1.2rem;
     font-weight: 400;
     margin: 1.5rem 0 2rem;
-  }
-
-  /* #about .images img {
-    width: 25rem;
-    height: auto;
-  } */
-
-  #about {
-    padding-bottom: clamp(6rem, 20%, 20vh);
   }
 </style>

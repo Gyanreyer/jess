@@ -1,33 +1,17 @@
 <section webc:root="override" class="homepage-section">
-  <div class="top-padding"></div>
+  <!-- <div class="top-padding"></div> -->
+  <div class="background"></div>
   <article class="section-content">
     <slot></slot>
   </article>
 </section>
 <style webc:scoped>
   :host {
-    /* Var to track how much the top padding should be tilted */
-    --top-tilt-pct: 1;
-
     --scroll-pct: 0;
-    --top-tilt-pct: clamp(0, calc((0.7 - var(--scroll-pct)) / 0.4), 1);
-
-    --max-tilt-angle: 6deg;
-
-    /* Calculate the amount of space we need to leave at the top of this section in order to be able to
-        tilt the angled top padding by 5 degrees without cutting it off */
-    --angled-top-padding-height: calc(100vw * sin(var(--max-tilt-angle)));
-
-    --base-vertical-padding: clamp(8rem, 25%, 25vh);
+    --base-vertical-padding: clamp(8rem, 25%, 15vh);
 
     padding: var(--base-vertical-padding) 0;
     position: relative;
-  }
-
-  :host:not(:last-of-type) {
-    padding-bottom: calc(
-      var(--base-vertical-padding) - var(--angled-top-padding-height)
-    );
   }
 
   :host:first-of-type {
@@ -35,44 +19,58 @@
     padding-top: clamp(4rem, 10%, 10vh);
   }
 
-  :host::after {
-    content: "";
+  :host.primary {
+    --bg: var(--color-primary);
+    background: none;
+  }
+
+  :host.secondary {
+    --bg: var(--color-secondary);
+    background: none;
+  }
+
+  .background {
     position: absolute;
-    top: var(--angled-top-padding-height);
-    left: 0;
-    right: 0;
-    bottom: calc(-1 * var(--angled-top-padding-height));
-    background-color: inherit;
-    z-index: 0;
+    inset: 0;
+
+    --max-tilt-angle: 6deg;
+    /* Calculate the amount of space we need to leave at the top of this section in order to be able to
+        tilt the angled top padding by 5 degrees without cutting it off */
+    --angled-top-height: calc(100vw * tan(var(--max-tilt-angle)));
   }
 
-  :host:last-of-type::after {
-    bottom: 0;
-  }
-
-  .top-padding {
-    position: absolute;
-    top: 0;
-    height: var(--angled-top-padding-height);
-    z-index: 1;
-    width: 100%;
-    overflow: hidden;
-  }
-
-  :host:nth-child(n + 1) .top-padding::before {
+  .background::before,
+  .background::after {
     content: "";
+    display: block;
     background-color: var(--bg);
-    position: absolute;
-    top: 50%;
-    left: -20%;
-    width: 140%;
-    height: 200%;
-    transform-origin: center;
-    transform: rotate(
-      calc(
-        (var(--top-tilt-pct) * var(--max-tilt-angle)) - var(--max-tilt-angle)
+  }
+
+  .background::before {
+    height: var(--angled-top-height);
+
+    transform-origin: top right;
+    transform: 
+    /* Scale up width to avoid an awkward gap on the edge when rotated */ scale(
+        1.2
       )
-    );
+      /* Rotate the top segment based on the scroll percent, where higher scroll pct = more rotated */
+      rotate(
+        calc(
+          (
+              clamp(0, calc((0.8 - var(--scroll-pct)) / 0.6), 1) *
+                var(--max-tilt-angle)
+            ) - var(--max-tilt-angle)
+        )
+      );
+  }
+
+  .background::after {
+    height: 100%;
+  }
+
+  :host:last-of-type .background::after {
+    height: calc(100% - var(--angled-top-height));
   }
 
   .section-content {
@@ -80,7 +78,7 @@
     z-index: 2;
     position: relative;
     display: grid;
-    grid-template-columns: 1fr auto;
+    grid-template-columns: 1fr 40%;
     gap: 0rem 6rem;
     justify-content: center;
     align-items: center;
@@ -123,20 +121,17 @@
   }
 
   .images {
+    position: relative;
     grid-column: 2 / 3;
     grid-row: 1 / 3;
-    display: flex;
-  }
-
-  .images {
-    transform: translatY(calc(20% * calc(var(--scroll-pct) - 0.25)));
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    justify-self: center;
+    transform: translateY(calc(15% * calc(var(--scroll-pct) - 0.25)));
   }
 
   img {
     display: block;
+    width: 100%;
+    height: auto;
   }
 
   .text {
@@ -163,6 +158,7 @@
     }
 
     .images {
+      width: 80%;
       grid-row: unset;
       grid-column: unset;
     }
