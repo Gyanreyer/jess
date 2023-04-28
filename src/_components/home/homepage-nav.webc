@@ -60,6 +60,15 @@
   a {
     position: relative;
     overflow: hidden;
+    background: black;
+    mix-blend-mode: lighten;
+    transition-property: opacity, transform;
+    transition-duration: 0.4s;
+  }
+
+  a:hover {
+    opacity: 0.9;
+    transform: scale(1.05);
   }
 
   a::after {
@@ -70,15 +79,14 @@
     z-index: 1;
     mix-blend-mode: darken;
     opacity: 0;
-    transform: translateY(100%);
-    transition-property: opacity, transform;
-    transition-duration: 0.6s;
+    transform-origin: bottom;
+    transform: scaleY(0);
+    transition: inherit;
     pointer-events: none;
   }
 
-  a:hover::after,
-  a:focus-visible::after {
+  a:is(:hover, :focus-visible)::after {
     opacity: 1;
-    transform: translateY(0%);
+    transform: scaleY(1);
   }
 </style>

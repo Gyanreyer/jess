@@ -22,5 +22,9 @@
   },
   "author": "Ryan Geyer, Jess Keoshian",
   "license": "ISC",
-  "homepage": "https://jessicakeoshian.com"
+  "homepage": "https://jessicakeoshian.com",
+  "dependencies": {
+    "@11ty/is-land": "^4.0.0",
+    "@shoelace-style/shoelace": "^2.4.0"
+  }
 }

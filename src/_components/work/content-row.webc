@@ -1,0 +1,30 @@
+<div webc:root="override">
+  <slot></slot>
+</div>
+<style webc:scoped>
+  :host {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    width: 80%;
+    max-height: 80vh;
+    margin: 0 auto;
+  }
+
+  img,
+  video {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  sl-carousel {
+    width: 100%;
+    max-width: 66%;
+  }
+
+  .tall {
+    height: 75vh;
+    width: auto;
+  }
+</style>

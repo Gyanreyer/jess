@@ -1,0 +1,62 @@
+---
+layout: "layouts/base.webc"
+theme: "light"
+---
+
+<navbar class="work-nav">
+  <h1 @text="title || meta?.title"></h1>
+</navbar>
+<main>
+  <template @raw="content" webc:nokeep></template>
+</main>
+
+<script
+  type="module"
+  src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.4.0/dist/translations/en.js"
+  webc:keep
+></script>
+<script
+  type="module"
+  src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.4.0/dist/shoelace-autoloader.js"
+  webc:keep
+></script>
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.4.0/dist/themes/light.css"
+  webc:keep
+/>
+
+<style>
+  .work-nav {
+    --angle: 4deg;
+    --angled-segment-height: calc(100vw * tan(var(--angle)));
+
+    position: relative;
+    background-color: var(--color-primary);
+    margin-bottom: calc(var(--angled-segment-height) + 2rem);
+    padding-bottom: 0;
+  }
+
+  .work-nav::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    height: var(--angled-segment-height);
+    background-color: inherit;
+    transform-origin: bottom left;
+    transform: rotate(calc(-1 * var(--angle)));
+    z-index: -1;
+  }
+
+  .work-nav a::after {
+    display: none;
+  }
+
+  .work-nav h1 {
+    text-align: center;
+    text-transform: lowercase;
+    font-size: 3rem;
+  }
+</style>

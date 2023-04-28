@@ -3,14 +3,6 @@ const pluginWebc = require("@11ty/eleventy-plugin-webc");
 const { eleventyImagePlugin } = require("@11ty/eleventy-img");
 const bundlerPlugin = require("@11ty/eleventy-plugin-bundle");
 
-const {
-  promises: { readFile },
-} = require("fs");
-
-// Libs to support toml data files
-const toml = require("@iarna/toml");
-const markdownIt = require("markdown-it")();
-
 // Minification/asset processing libs
 const esbuild = require("esbuild");
 const { minify: minifyCSS } = require("csso");
@@ -21,7 +13,11 @@ const IS_PRODUCTION = process.env.NODE_ENV === "prod";
 module.exports = function (eleventyConfig) {
   // Set up webc plugin to process all webc files
   eleventyConfig.addPlugin(pluginWebc, {
-    components: ["src/_components/**/*.webc", "npm:@11ty/eleventy-img/*.webc"],
+    components: [
+      "src/_components/**/*.webc",
+      "npm:@11ty/eleventy-img/*.webc",
+      "npm:@11ty/is-land/**/*.webc",
+    ],
   });
 
   // Trigger a hot reload when a JS/CSS file changes
@@ -29,7 +25,7 @@ module.exports = function (eleventyConfig) {
 
   eleventyConfig.addPassthroughCopy({
     "src/assets/fonts": "fonts",
-    "src/assets/img/**/*.gif": "img",
+    "src/assets/video/**/*": "video",
   });
 
   // Image plugin
@@ -56,6 +52,7 @@ module.exports = function (eleventyConfig) {
               return (
                 await esbuild.transform(content, {
                   minify: IS_PRODUCTION,
+                  target: "es2015",
                 })
               ).code;
             } catch (e) {

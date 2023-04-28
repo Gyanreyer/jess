@@ -35,6 +35,8 @@ html {
   line-height: 1.5;
   font-family: "Avenir Next", sans-serif;
   scroll-behavior: smooth;
+  overflow-x: hidden;
+  overflow-y: auto;
 }
 
 .primary {
@@ -42,8 +44,12 @@ html {
   color: var(--color-secondary);
 }
 
-html,
-body,
+html {
+  background-color: var(--color-tertiary);
+  color: var(--color-secondary);
+}
+
+html[data-theme="dark"],
 .secondary {
   background-color: var(--color-secondary);
   color: var(--color-tertiary);

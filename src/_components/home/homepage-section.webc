@@ -1,5 +1,4 @@
 <section webc:root="override" class="homepage-section">
-  <!-- <div class="top-padding"></div> -->
   <div class="background"></div>
   <article class="section-content">
     <slot></slot>
