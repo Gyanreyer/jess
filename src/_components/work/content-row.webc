@@ -5,10 +5,19 @@
   :host {
     display: flex;
     justify-content: center;
-    gap: 2rem;
-    width: 80%;
+    --cr-gap: 3rem;
+    gap: var(--cr-gap);
+    margin: var(--cr-gap) auto;
+    width: 90%;
+    max-width: 64rem;
     max-height: 80vh;
-    margin: 0 auto;
+  }
+
+  @media screen and (max-width: 768px) {
+    :host {
+      flex-direction: column;
+      max-height: unset;
+    }
   }
 
   img,
@@ -18,13 +27,8 @@
     height: auto;
   }
 
-  sl-carousel {
-    width: 100%;
-    max-width: 66%;
-  }
-
   .tall {
-    height: 75vh;
+    max-height: 75vh;
     width: auto;
   }
 </style>

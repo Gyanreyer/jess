@@ -1,0 +1,133 @@
+---
+layout: "layouts/work.webc"
+meta:
+  title: "FAMD"
+  description: "Friends for Animals of Metro Detroit was in need of content capture and a campaign that could not only raise money, but keep their brand cohesive."
+---
+
+<p>
+  Friends for Animals of Metro Detroit was in need of content capture and a
+  campaign that could not only raise money, but keep their brand cohesive.
+</p>
+<p>
+  For their annual gala event, we captured original content and told the stories
+  of featured animals and their most in need shelter.
+</p>
+
+<content-row>
+  <eleventy-image
+    src="src/assets/img/work/general-mills/enter-to-win.png"
+    alt=""
+    role="presentation"
+    width="320, 640, 960, 1280, 1920"
+    sizes="50vw"
+  ></eleventy-image>
+  <eleventy-image
+    src="src/assets/img/work/general-mills/groundhog-day.png"
+    alt=""
+    role="presentation"
+    width="320, 640, 960, 1280, 1920"
+    sizes="50vw"
+  ></eleventy-image>
+</content-row>
+
+<content-row>
+  <eleventy-image
+    src="src/assets/img/work/general-mills/charbooterie.jpg"
+    alt=""
+    role="presentation"
+    width="320, 640, 960, 1280, 1920"
+    sizes="50vw"
+  ></eleventy-image>
+  <eleventy-image
+    src="src/assets/img/work/general-mills/pumpkin-day.png"
+    alt=""
+    role="presentation"
+    width="320, 640, 960, 1280, 1920"
+    sizes="50vw"
+  ></eleventy-image>
+</content-row>
+
+<content-row>
+  <sl-carousel
+    navigation
+    pagination
+    mouse-dragging
+    autoplay
+    autoplay-interval="5000"
+    loop
+  >
+    <sl-carousel-item
+      webc:for="imageSrc of [
+      'src/assets/img/work/general-mills/cereal-bars.png',
+      'src/assets/img/work/general-mills/witches-fingers.png',
+      'src/assets/img/work/general-mills/mummy-dogs.png',
+    ]"
+    >
+      <eleventy-image
+        :src="imageSrc"
+        alt=""
+        role="presentation"
+        width="320, 640, 960, 1280, 1920"
+        sizes="50vw"
+      ></eleventy-image>
+    </sl-carousel-item>
+  </sl-carousel>
+</content-row>
+
+<content-row>
+  <video
+    src="/video/mummy-dogs.mp4"
+    class="tall"
+    loop
+    autoplay
+    muted
+    controls
+  ></video>
+  <video
+    src="/video/pumpkin-day.mp4"
+    class="tall"
+    loop
+    autoplay
+    muted
+    controls
+  ></video>
+</content-row>
+
+<content-row>
+  <eleventy-image
+    src="src/assets/img/work/general-mills/messfreehero.gif"
+    alt=""
+    role="presentation"
+    formats="webp, auto"
+    width="320, 640, 960, 1280, 1920"
+    sizes="50vw"
+  ></eleventy-image>
+</content-row>
+
+<content-row>
+  <sl-carousel
+    navigation
+    pagination
+    mouse-dragging
+    autoplay
+    autoplay-interval="5000"
+    loop
+  >
+    <sl-carousel-item
+      webc:for="imageSrc of [
+      'src/assets/img/work/general-mills/tortilla-pocket.png',
+      'src/assets/img/work/general-mills/spicy-costume.png',
+      'src/assets/img/work/general-mills/love-and-tacos.png',
+    ]"
+    >
+      <eleventy-image
+        :src="imageSrc"
+        alt=""
+        role="presentation"
+        width="320, 640, 960, 1280, 1920"
+        sizes="50vw"
+      ></eleventy-image>
+    </sl-carousel-item>
+  </sl-carousel>
+</content-row>

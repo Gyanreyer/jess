@@ -13,57 +13,42 @@ meta:
 </p>
 
 <content-row>
-  <eleventy-image
+  <content-img
     src="src/assets/img/work/general-mills/enter-to-win.png"
-    alt=""
-    role="presentation"
-    width="320, 640, 960, 1280, 1920"
-    sizes="50vw"
-  ></eleventy-image>
-  <eleventy-image
+    alt="The Pillsbury Doughboy wearing an ugly Christmas sweater, standing next to the words 'Enter to Win' for a contest to win a sweater"
+  ></content-img>
+  <content-img
     src="src/assets/img/work/general-mills/groundhog-day.png"
-    alt=""
-    role="presentation"
-    width="320, 640, 960, 1280, 1920"
-    sizes="50vw"
-  ></eleventy-image>
+    alt="The Pillsbury Doughboy wearing a scarf and earmuffs, popping out of a hole in the ground in celebration of Groundhog Day"
+  ></content-img>
 </content-row>
 
 <content-row>
-  <eleventy-image
+  <content-img
     src="src/assets/img/work/general-mills/charbooterie.jpg"
     alt=""
-    role="presentation"
-    width="320, 640, 960, 1280, 1920"
-    sizes="50vw"
-  ></eleventy-image>
-  <eleventy-image
+  ></content-img>
+  <content-img
     src="src/assets/img/work/general-mills/pumpkin-day.png"
     alt=""
-    role="presentation"
-    width="320, 640, 960, 1280, 1920"
-    sizes="50vw"
-  ></eleventy-image>
+  ></content-img>
 </content-row>
 
 <content-row>
-  <sl-carousel navigation pagination mouse-dragging autoplay loop>
-    <sl-carousel-item
-      webc:for="imageSrc of [
-      'src/assets/img/work/general-mills/cereal-bars.png',
-      'src/assets/img/work/general-mills/witches-fingers.png',
-      'src/assets/img/work/general-mills/mummy-dogs.png',
-    ]"
-    >
-      <eleventy-image
-        :src="imageSrc"
-        alt=""
-        role="presentation"
-        width="320, 640, 960, 1280, 1920"
-        sizes="50vw"
-      ></eleventy-image>
-    </sl-carousel-item>
-  </sl-carousel>
+  <content-carousel>
+    <content-carousel-img
+      src="src/assets/img/work/general-mills/cereal-bars.png"
+      alt="Halloween-themed orange cereal bar treats with cute eyes"
+    ></content-carousel-img>
+    <content-carousel-img
+      src="src/assets/img/work/general-mills/witches-fingers.png"
+      alt="Halloween-themed finger sandwiches made to look like witches' fingers with painted nails"
+    ></content-carousel-img>
+    <content-carousel-img
+      src="src/assets/img/work/general-mills/mummy-dogs.png"
+      alt="Halloween-themed hot dogs wrapped in dough to look like mummies"
+    ></content-carousel-img>
+  </content-carousel>
 </content-row>
 
 <content-row>
@@ -74,6 +59,7 @@ meta:
     autoplay
     muted
     controls
+    aria-label="A Halloween social media video showing two mummy dogs on sticks rising from the bottom of the frame and looking at each other"
   ></video>
   <video
     src="/video/pumpkin-day.mp4"
@@ -82,36 +68,39 @@ meta:
     autoplay
     muted
     controls
+    aria-label="A Halloween social media video showing how to carve the Pillsbury Doughboy's face into a pumpkin"
   ></video>
 </content-row>
 
 <content-row>
-  <eleventy-image
+  <content-img
     src="src/assets/img/work/general-mills/messfreehero.gif"
-    alt=""
-    role="presentation"
+    alt="An animated gif showing two hands holding Old El Paso tortilla pocket tacos with the hashtag #MessFreeHero"
     formats="webp, auto"
-    width="320, 640, 960, 1280, 1920"
-    sizes="50vw"
-  ></eleventy-image>
+    sizes="80vw"
+  ></content-image>
 </content-row>
 
 <content-row>
-  <sl-carousel navigation pagination mouse-dragging autoplay loop>
-    <sl-carousel-item
-      webc:for="imageSrc of [
-      'src/assets/img/work/general-mills/tortilla-pocket.png',
-      'src/assets/img/work/general-mills/spicy-costume.png',
-      'src/assets/img/work/general-mills/love-and-tacos.png',
-    ]"
-    >
-      <eleventy-image
-        :src="imageSrc"
-        alt=""
-        role="presentation"
-        width="320, 640, 960, 1280, 1920"
-        sizes="50vw"
-      ></eleventy-image>
-    </sl-carousel-item>
-  </sl-carousel>
+  <content-carousel class="square">
+    <content-carousel-img
+      src="src/assets/img/work/general-mills/tortilla-pocket.png"
+      alt=""
+    ></content-carousel-img>
+    <content-carousel-img
+      src="src/assets/img/work/general-mills/spicy-costume.png"
+      alt=""
+    ></content-carousel-img>
+    <content-carousel-img
+      src="src/assets/img/work/general-mills/love-and-tacos.png"
+      alt=""
+    ></content-carousel-img>
+  </content-carousel>
 </content-row>
+
+<p>
+  Team: Kris Layher, Jake Blankenship, Levi Robert, Pierce Wiselogle, Nina
+  Mendiola, Alicia Lyon
+</p>
+
+<p>Art Director, Photography, Videography: Jess Keoshian</p>

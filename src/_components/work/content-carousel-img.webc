@@ -1,0 +1,3 @@
+<sl-carousel-item>
+  <content-img @attributes sizes="80vw"></content-img>
+</sl-carousel-item>
