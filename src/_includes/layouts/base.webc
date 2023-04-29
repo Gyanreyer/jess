@@ -17,8 +17,22 @@
     <!-- Non-critical CSS/JS -->
     <link rel="stylesheet" :href="getBundleFileUrl('css')" webc:keep />
     <script :src="getBundleFileUrl('js')" type="module" webc:keep></script>
+
+    <link rel="stylesheet" href="../../css/page-transition.css" />
+    <script src="../../js/page-transition.mjs"></script>
   </head>
-  <body>
+  <body data-taxi>
     <template @raw="content" webc:nokeep></template>
+    <script
+      src="https://unpkg.com/@unseenco/e@2.2.2/dist/e.umd.js"
+      crossorigin
+      webc:keep
+    ></script>
+    <script
+      src="https://unpkg.com/@unseenco/taxi@1.0.3/dist/taxi.umd.js"
+      crossorigin
+      webc:keep
+    ></script>
+    <div id="pg-trns"></div>
   </body>
 </html>
