@@ -77,7 +77,11 @@ module.exports = function (eleventyConfig) {
 
   // Minify the HTML output
   eleventyConfig.addTransform("htmlmin", async function (content) {
-    if (this.page.outputPath && this.page.outputPath.endsWith(".html")) {
+    if (
+      IS_PRODUCTION &&
+      this.page.outputPath &&
+      this.page.outputPath.endsWith(".html")
+    ) {
       try {
         return await minifyHTML(content, {
           useShortDoctype: true,

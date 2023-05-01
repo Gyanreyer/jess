@@ -34,7 +34,6 @@ html {
   padding: 0;
   line-height: 1.5;
   font-family: "Avenir Next", sans-serif;
-  scroll-behavior: smooth;
   overflow-x: hidden;
   overflow-y: auto;
 }
@@ -45,6 +44,7 @@ html {
 }
 
 html {
+  scroll-behavior: smooth;
   background-color: var(--color-tertiary);
   color: var(--color-secondary);
 }

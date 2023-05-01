@@ -1,5 +1,7 @@
-body[data-pg-trns="start"] {
-  overflow-y: hidden;
+html[data-pg-trns] {
+  /* Disable smooth scrolling so we can jump to anchor links during transitions without
+      it animating smoothly */
+  scroll-behavior: auto;
 }
 
 #pg-trns {
@@ -10,7 +12,6 @@ body[data-pg-trns="start"] {
   height: 100%;
   visibility: hidden;
   background-color: var(--color-primary);
-  transition: transform 0.6s;
   transform: translateY(calc(100% + var(--angled-segment-height)));
   z-index: 100;
 
@@ -41,6 +42,7 @@ body[data-pg-trns="start"] {
 
 [data-pg-trns] #pg-trns {
   visibility: visible;
+  transition: transform 0.6s;
 }
 
 [data-pg-trns="start"] #pg-trns {

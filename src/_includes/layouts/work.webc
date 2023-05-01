@@ -11,22 +11,6 @@ theme: "light"
 </main>
 <footer></footer>
 
-<script
-  type="module"
-  src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.4.0/dist/translations/en.js"
-  webc:keep
-></script>
-<script
-  type="module"
-  src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.4.0/dist/shoelace-autoloader.js"
-  webc:keep
-></script>
-<link
-  rel="stylesheet"
-  href="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.4.0/dist/themes/light.css"
-  webc:keep
-/>
-
 <style>
   html {
     background-color: var(--color-primary);
@@ -48,6 +32,14 @@ theme: "light"
 
   .work-nav > * {
     z-index: 1;
+    transition-property: opacity, transform;
+    transition-duration: 0.4s;
+  }
+
+  [data-pg-trns="end"] .work-nav > * {
+    opacity: 0;
+    transform: translateY(0.5rem);
+    visibility: hidden;
   }
 
   .work-nav::after {
@@ -92,7 +84,7 @@ theme: "light"
     transform: rotate(calc(-1 * var(--angle)));
   }
 
-  p {
+  main p {
     text-align: center;
     max-width: 80ch;
     margin: 1rem auto;
