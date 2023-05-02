@@ -13,7 +13,7 @@ description: "Friends for Animals of Metro Detroit was in need of content captur
 </p>
 
 <content-row>
-  <video src="/video/FAMD_08_GREENFIELD_2_11.mp4" controls></video>
+  <content-video src="/video/FAMD_08_GREENFIELD_2_11.mp4"></content-video>
 </content-row>
 
 <content-row>
@@ -38,7 +38,7 @@ description: "Friends for Animals of Metro Detroit was in need of content captur
 </content-row>
 
 <content-row>
-  <video src="/video/FAMD_13_DOG_1_17.mp4" controls></video>
+  <content-video src="/video/FAMD_13_DOG_1_17.mp4"></content-video>
 </content-row>
 
 <p>
@@ -55,40 +55,28 @@ description: "Friends for Animals of Metro Detroit was in need of content captur
 </p>
 
 <content-row>
-  <video
+  <content-autoplay-video
     src="/video/FAMD_M1032_DAY_1.mp4"
+    title="The video for the first day of givemas, a Christmas donation drive for FAMD"
     class="tall"
-    loop
-    autoplay
-    muted
-    controls
-  ></video>
-  <video
+  ></content-autoplay-video>
+  <content-autoplay-video
     src="/video/FAMD_M1032_DAY_6.mp4"
+    title="The video for the sixth day of givemas, a Christmas donation drive for FAMD"
     class="tall"
-    loop
-    autoplay
-    muted
-    controls
-  ></video>
+  ></content-autoplay-video>
 </content-row>
 <content-row>
-  <video
+  <content-autoplay-video
     src="/video/FAMD_M1032_DAY_7.mp4"
+    title="The video for the seventh day of givemas, a Christmas donation drive for FAMD"
     class="tall"
-    loop
-    autoplay
-    muted
-    controls
-  ></video>
-  <video
+  ></content-autoplay-video>
+  <content-autoplay-video
     src="/video/FAMD_M1032_DAY_9.mp4"
+    title="The video for the ninth day of givemas, a Christmas donation drive for FAMD"
     class="tall"
-    loop
-    autoplay
-    muted
-    controls
-  ></video>
+  ></content-autoplay-video>
 </content-row>
 
 <p>Design Director: Alec Peterhans</p>

@@ -50,24 +50,18 @@ description: "Creating social media for the brands of Pillsbury and Old El Paso.
 </content-row>
 
 <content-row>
-  <video
+  <content-autoplay-video
     src="/video/mummy-dogs.mp4"
+    title="A Halloween social media video showing two mummy dogs on sticks rising from the bottom of the frame and looking at each other"
     class="tall"
-    loop
-    autoplay
-    muted
     controls
-    aria-label="A Halloween social media video showing two mummy dogs on sticks rising from the bottom of the frame and looking at each other"
-  ></video>
-  <video
+  ></content-autoplay-video>
+  <content-autoplay-video
     src="/video/pumpkin-day.mp4"
+    title="A Halloween social media video showing how to carve the Pillsbury Doughboy's face into a pumpkin"
     class="tall"
-    loop
-    autoplay
-    muted
     controls
-    aria-label="A Halloween social media video showing how to carve the Pillsbury Doughboy's face into a pumpkin"
-  ></video>
+  ></content-autoplay-video>
 </content-row>
 
 <content-row>

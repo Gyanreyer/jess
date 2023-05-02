@@ -1,4 +1,16 @@
 {
+  if (history.scrollRestoration) {
+    history.scrollRestoration = "manual";
+  }
+
+  let previousURL = new URL(window.location.href);
+  const previousScrollPositions = {};
+
+  const updatePreviousURL = (newURL) => {
+    previousScrollPositions[previousURL.pathname] = window.scrollY;
+    previousURL = newURL;
+  };
+
   const pageTransitionAttr = "data-pg-trns";
 
   const pageCache = {};
@@ -138,7 +150,9 @@
       if (newPageURL.hash) {
         document.getElementById(newPageURL.hash.substring(1)).scrollIntoView();
       } else {
-        window.scroll(0, 0);
+        // Restore the previous scroll position for this page if available, otherwise scroll to the top
+        window.scroll(0, previousScrollPositions[newPageURL.pathname] || 0);
+        delete previousScrollPositions[newPageURL.pathname];
       }
 
       document.dispatchEvent(new CustomEvent("transition:pageopened"));
@@ -171,8 +185,6 @@
     }
   };
 
-  let previousURL = new URL(window.location.href);
-
   const onClick = (e) => {
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
       // Don't play the page transition animation if the user prefers reduced motion
@@ -180,7 +192,7 @@
     }
 
     const targetURL = new URL(e.currentTarget.href);
-    previousURL = targetURL;
+    updatePreviousURL(targetURL);
 
     if (targetURL.pathname === window.location.pathname) {
       if (targetURL.hash) {
@@ -234,6 +246,6 @@
       transitionToPage(newURL);
     }
 
-    previousURL = newURL;
+    updatePreviousURL(newURL);
   });
 }

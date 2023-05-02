@@ -68,7 +68,7 @@ description: "Dads are finally being thought of in the space of parenting, and t
 </content-row>
 
 <content-row>
-  <video src="/video/PampersCaseStudy.mp4" controls></video>
+  <content-video src="/video/PampersCaseStudy.mp4"></content-video>
 </content-row>
 
 <p>D Show Student Award, 2018.</p>

@@ -157,12 +157,12 @@
   :host-context(main[data-transition="entering"]) :is(.text, .button, .images) {
     transition-property: transform, opacity;
     transition-duration: 0.7s;
-    transition-delay: 1.6s;
+    transition-delay: 1.2s;
     transition-timing-function: ease;
   }
 
   :host-context(main[data-transition="entering"]):first-of-type .text {
-    transition-delay: 0.1s;
+    transition-delay: 0s;
   }
 
   :host-context(main[data-transition="entering"]):first-of-type .button {
@@ -170,7 +170,7 @@
   }
 
   :host-context(main[data-transition="entering"]):first-of-type .images {
-    transition-delay: 1s;
+    transition-delay: 0.8s;
   }
 
   :host-context(main[data-transition="skip"]) :is(.text, .button, .images) {
