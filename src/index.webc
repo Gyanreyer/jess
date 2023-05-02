@@ -1,12 +1,12 @@
 ---
 layout: "layouts/base.webc"
-meta:
-  title: "Jess Keoshian"
-  description: "art director/they/them"
 theme: "dark"
+
+title: "Jess Keoshian"
+description: "art director/they/them"
 ---
 
-<main>
+<main data-transition="init">
   <navbar>
     <p>art director/they/them</p>
   </navbar>
@@ -140,7 +140,6 @@ theme: "dark"
         src="src/assets/img/home/jess-headshot.jpg"
         role="presentation"
         alt=""
-        formats="webp, auto"
         width="240, 320, 640"
         sizes="30vw, (max-width: 768px) 30vw"
       ></eleventy-image>

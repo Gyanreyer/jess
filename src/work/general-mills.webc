@@ -1,8 +1,6 @@
 ---
-layout: "layouts/work.webc"
-meta:
-  title: "General Mills"
-  description: "Creating social media for the brands of Pillsbury and Old El Paso."
+title: "General Mills"
+description: "Creating social media for the brands of Pillsbury and Old El Paso."
 ---
 
 <p>Creating social media for the brands of Pillsbury and Old El Paso.</p>
@@ -26,11 +24,11 @@ meta:
 <content-row>
   <content-img
     src="src/assets/img/work/general-mills/charbooterie.jpg"
-    alt=""
+    alt="A charcuterie board filled with Halloween-themed Pillsbury products, called a 'charbooterie' board as a pun"
   ></content-img>
   <content-img
     src="src/assets/img/work/general-mills/pumpkin-day.png"
-    alt=""
+    alt="The Pillsbury Doughboy carved into a pumpkin"
   ></content-img>
 </content-row>
 
@@ -76,7 +74,6 @@ meta:
   <content-img
     src="src/assets/img/work/general-mills/messfreehero.gif"
     alt="An animated gif showing two hands holding Old El Paso tortilla pocket tacos with the hashtag #MessFreeHero"
-    formats="webp, auto"
     sizes="80vw"
   ></content-image>
 </content-row>

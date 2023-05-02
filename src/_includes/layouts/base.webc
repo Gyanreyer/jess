@@ -3,13 +3,11 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" :content="meta?.description" />
+    <meta name="description" :content="description" />
     <meta name="generator" :content="eleventy.generator" />
-    <title @html="meta?.title"></title>
+    <title @html="title"></title>
   </head>
   <body>
-    <template @raw="content" webc:nokeep></template>
-
     <!-- Element which is animated for page transitions -->
     <div id="pg-trns">
       <!-- All contents of the transition element are persisted between pages -->
@@ -68,8 +66,12 @@
       />
     </div>
 
-    <!-- Page-specific JS and CSS which should not be persisted -->
+    <!-- Page-specific CSS which should not be persisted -->
     <style @raw="getBundle('css')" webc:keep></style>
+
+    <template @raw="content" webc:nokeep></template>
+
+    <!-- Page-specific JS -->
     <script :src="getBundleFileUrl('js')" type="module" webc:keep></script>
   </body>
 </html>

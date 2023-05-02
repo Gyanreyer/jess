@@ -44,7 +44,6 @@ html {
 }
 
 html {
-  scroll-behavior: smooth;
   background-color: var(--color-tertiary);
   color: var(--color-secondary);
 }

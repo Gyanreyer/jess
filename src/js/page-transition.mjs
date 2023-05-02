@@ -1,7 +1,7 @@
 {
   const pageTransitionAttr = "data-pg-trns";
 
-  const pageHTMLCache = {};
+  const pageCache = {};
 
   const dataThemeRegex = /data-theme="([^"]*)"/;
   const htmlHeadStartRegex = /<head[^>]*>/;
@@ -9,12 +9,12 @@
   const htmlBodyStartRegex = /<body[^>]*>/;
   const htmlBodyEndRegex = /<\/body>/;
 
-  const fetchPageHTML = async (pathname) => {
-    if (pageHTMLCache[pathname]) {
-      return pageHTMLCache[pathname].promise || pageHTMLCache[pathname];
+  const fetchPage = async (pathname) => {
+    if (pageCache[pathname]) {
+      return pageCache[pathname].promise || pageCache[pathname];
     }
 
-    const pageHTMLPromise = fetch(pathname)
+    const pagePromise = fetch(pathname)
       .then((res) => res.text())
       .then((rawFullPageHTML) => {
         const dataTheme = rawFullPageHTML.match(dataThemeRegex)[1];
@@ -34,126 +34,144 @@
           bodyEndMatch.index
         );
 
-        return (pageHTMLCache[pathname] = {
+        return (pageCache[pathname] = {
           dataTheme,
           head: headTagContents,
           body: bodyTagContents,
         });
       });
 
-    pageHTMLCache[pathname] = {
-      promise: pageHTMLPromise,
+    pageCache[pathname] = {
+      promise: pagePromise,
     };
 
-    return pageHTMLPromise;
+    return pagePromise;
   };
 
   const transitionURLQueue = [];
   let isTransitioning = false;
 
   const transitionToPage = async (newPageURL) => {
-    transitionURLQueue.push(newPageURL);
-    // Start fetching the new page so we can load it while the transition animation is playing
-    fetchPageHTML(newPageURL.pathname);
+    try {
+      const timeoutID = setTimeout(() => {
+        throw new Error("Page transition timed out");
+      }, 1500);
 
-    if (isTransitioning) {
-      // If a transition is already in progress, stop here; we have just queued up the new URL
-      // so it will get transitioned to after the current transition is finished
-      return;
-    }
+      transitionURLQueue.push(newPageURL);
+      // Start fetching the new page so we can load it while the transition animation is playing
+      fetchPage(newPageURL.pathname);
 
-    isTransitioning = true;
-
-    const pageTransitionElement = document.getElementById("pg-trns");
-
-    document.documentElement.setAttribute(pageTransitionAttr, "start");
-
-    await new Promise((resolve) => setTimeout(resolve, 600));
-
-    document.dispatchEvent(new CustomEvent("transition:pageclosed"));
-
-    const transitionPageURL = transitionURLQueue.pop();
-    transitionURLQueue.length = 0;
-
-    const {
-      dataTheme,
-      head: newHeadHTML,
-      body: newBodyHTML,
-    } = await fetchPageHTML(transitionPageURL.pathname);
-
-    document.documentElement.setAttribute("data-theme", dataTheme);
-
-    const template = document.createElement("template");
-    template.innerHTML = newHeadHTML;
-
-    const headTemplateContent = template.content;
-
-    document.head.replaceChildren(
-      ...Array.from(headTemplateContent.childNodes).map((el) =>
-        el.cloneNode(true)
-      )
-    );
-
-    template.innerHTML = newBodyHTML;
-    const bodyTemplateContent = template.content;
-
-    const bodyChildren = document.body.children;
-
-    // Remove all body children except the page transition element,
-    // starting from the end to avoid messing with indices as we remove elements
-    for (let i = bodyChildren.length - 1; i >= 0; --i) {
-      const bodyChild = bodyChildren[i];
-      if (bodyChild === pageTransitionElement) {
-        continue;
-      }
-      bodyChild.remove();
-    }
-
-    for (const newChild of bodyTemplateContent.children) {
-      if (newChild.id === "pg-trns") {
-        continue;
+      if (isTransitioning) {
+        // If a transition is already in progress, stop here; we have just queued up the new URL
+        // so it will get transitioned to after the current transition is finished
+        return;
       }
 
-      let newNode;
+      isTransitioning = true;
 
-      if (newChild.tagName === "SCRIPT") {
-        newNode = document.createElement("script");
-        if (newChild.src) {
-          newNode.setAttribute("src", newChild.src);
-        } else {
-          newNode.appendChild(document.createTextNode(newChild.textContent));
+      const pageTransitionElement = document.getElementById("pg-trns");
+
+      document.documentElement.setAttribute(pageTransitionAttr, "start");
+
+      await new Promise((resolve) => setTimeout(resolve, 600));
+
+      document.dispatchEvent(new CustomEvent("transition:pageclosed"));
+
+      const transitionPageURL = transitionURLQueue.pop();
+      transitionURLQueue.length = 0;
+
+      const {
+        dataTheme,
+        head: newHeadHTML,
+        body: newBodyHTML,
+      } = await fetchPage(transitionPageURL.pathname);
+
+      document.documentElement.setAttribute("data-theme", dataTheme);
+
+      const template = document.createElement("template");
+      template.innerHTML = newHeadHTML;
+
+      const headTemplateContent = template.content;
+
+      document.head.replaceChildren(
+        ...Array.from(headTemplateContent.childNodes).map((el) =>
+          el.cloneNode(true)
+        )
+      );
+
+      template.innerHTML = newBodyHTML;
+      const bodyTemplateContent = template.content;
+
+      const bodyChildren = document.body.children;
+
+      // Remove all body children except the page transition element,
+      // starting from the end to avoid messing with indices as we remove elements
+      for (let i = bodyChildren.length - 1; i >= 0; --i) {
+        const bodyChild = bodyChildren[i];
+        if (bodyChild === pageTransitionElement) {
+          continue;
         }
-      } else {
-        newNode = newChild.cloneNode(true);
+        bodyChild.remove();
       }
 
-      document.body.appendChild(newNode);
-    }
+      for (const newChild of bodyTemplateContent.children) {
+        if (newChild.id === "pg-trns") {
+          continue;
+        }
 
-    if (newPageURL.hash) {
-      document.getElementById(newPageURL.hash.substring(1)).scrollIntoView();
-    }
+        let newNode;
 
-    document.dispatchEvent(new CustomEvent("transition:pageopened"));
+        if (newChild.tagName === "SCRIPT") {
+          newNode = document.createElement("script");
+          if (newChild.src) {
+            newNode.setAttribute("src", newChild.src);
+          } else {
+            newNode.appendChild(document.createTextNode(newChild.textContent));
+          }
+        } else {
+          newNode = newChild.cloneNode(true);
+        }
 
-    document.documentElement.setAttribute(pageTransitionAttr, "end");
+        document.body.appendChild(newNode);
+      }
 
-    await new Promise((resolve) => setTimeout(resolve, 600));
+      if (newPageURL.hash) {
+        document.getElementById(newPageURL.hash.substring(1)).scrollIntoView();
+      } else {
+        window.scroll(0, 0);
+      }
 
-    document.documentElement.removeAttribute(pageTransitionAttr);
+      document.dispatchEvent(new CustomEvent("transition:pageopened"));
 
-    isTransitioning = false;
+      document.documentElement.setAttribute(pageTransitionAttr, "end");
 
-    if (transitionURLQueue.length > 0) {
-      requestIdleCallback(() => {
-        // If more URLs got added to the queue since the second half of the transition animation started,
-        // start transitioning again for the new target URL
-        const nextPageURL = transitionURLQueue.pop();
-        transitionURLQueue.length = 0;
-        transitionToPage(nextPageURL);
-      });
+      await new Promise((resolve) => setTimeout(resolve, 600));
+
+      clearTimeout(timeoutID);
+
+      document.documentElement.removeAttribute(pageTransitionAttr);
+
+      isTransitioning = false;
+
+      if (transitionURLQueue.length > 0) {
+        requestIdleCallback(() => {
+          // If more URLs got added to the queue since the second half of the transition animation started,
+          // start transitioning again for the new target URL
+          const nextPageURL = transitionURLQueue.pop();
+          transitionURLQueue.length = 0;
+          transitionToPage(nextPageURL);
+        });
+      }
+    } catch (err) {
+      console.error("Error during page transition: ", err);
+
+      const nextPageURL = transitionURLQueue.pop() || newPageURL;
+      transitionURLQueue.length = 0;
+      window.location.href = nextPageURL.href;
     }
   };
+
+  let previousURL = new URL(window.location.href);
 
   const onClick = (e) => {
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
@@ -162,8 +180,18 @@
     }
 
     const targetURL = new URL(e.currentTarget.href);
+    previousURL = targetURL;
+
     if (targetURL.pathname === window.location.pathname) {
-      // Don't do anything if the link is to the same page
+      if (targetURL.hash) {
+        // If the link is to an anchor on the same page, smoothly scroll to it
+        e.preventDefault();
+        document.getElementById(targetURL.hash.substring(1)).scrollIntoView({
+          behavior: "smooth",
+        });
+      }
+
+      // Don't do a transition if the link is to the same page
       return;
     }
 
@@ -191,6 +219,8 @@
   };
 
   addLinkTransitionListeners();
+
+  // When a new page is opened, add listeners to all links on the new page
   document.addEventListener(
     "transition:pageopened",
     addLinkTransitionListeners
@@ -198,6 +228,12 @@
 
   // Kick off transitions when the user navigates back via the browser's back button
   window.addEventListener("popstate", () => {
-    transitionToPage(new URL(window.location.href));
+    const newURL = new URL(window.location.href);
+
+    if (newURL.pathname !== previousURL.pathname) {
+      transitionToPage(newURL);
+    }
+
+    previousURL = newURL;
   });
 }

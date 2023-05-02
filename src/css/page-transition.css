@@ -1,9 +1,3 @@
-html[data-pg-trns] {
-  /* Disable smooth scrolling so we can jump to anchor links during transitions without
-      it animating smoothly */
-  scroll-behavior: auto;
-}
-
 #pg-trns {
   position: fixed;
   top: 0;

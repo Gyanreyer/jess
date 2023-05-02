@@ -4,7 +4,7 @@ theme: "light"
 ---
 
 <navbar class="work-nav">
-  <h1 @text="title || meta?.title"></h1>
+  <h1 @text="title"></h1>
 </navbar>
 <main>
   <template @raw="content" webc:nokeep></template>
@@ -32,14 +32,6 @@ theme: "light"
 
   .work-nav > * {
     z-index: 1;
-    transition-property: opacity, transform;
-    transition-duration: 0.4s;
-  }
-
-  [data-pg-trns="end"] .work-nav > * {
-    opacity: 0;
-    transform: translateY(0.5rem);
-    visibility: hidden;
   }
 
   .work-nav::after {

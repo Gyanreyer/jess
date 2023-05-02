@@ -1,8 +1,6 @@
 ---
-layout: "layouts/work.webc"
-meta:
-  title: "FAMD"
-  description: "Friends for Animals of Metro Detroit was in need of content capture and a campaign that could not only raise money, but keep their brand cohesive."
+title: "FAMD"
+description: "Friends for Animals of Metro Detroit was in need of content capture and a campaign that could not only raise money, but keep their brand cohesive."
 ---
 
 <p>
@@ -15,69 +13,50 @@ meta:
 </p>
 
 <content-row>
-  <eleventy-image
-    src="src/assets/img/work/general-mills/enter-to-win.png"
-    alt=""
-    role="presentation"
-    width="320, 640, 960, 1280, 1920"
-    sizes="50vw"
-  ></eleventy-image>
-  <eleventy-image
-    src="src/assets/img/work/general-mills/groundhog-day.png"
-    alt=""
-    role="presentation"
-    width="320, 640, 960, 1280, 1920"
-    sizes="50vw"
-  ></eleventy-image>
+  <video src="/video/FAMD_08_GREENFIELD_2_11.mp4" controls></video>
 </content-row>
 
 <content-row>
-  <eleventy-image
-    src="src/assets/img/work/general-mills/charbooterie.jpg"
-    alt=""
-    role="presentation"
-    width="320, 640, 960, 1280, 1920"
-    sizes="50vw"
-  ></eleventy-image>
-  <eleventy-image
-    src="src/assets/img/work/general-mills/pumpkin-day.png"
-    alt=""
-    role="presentation"
-    width="320, 640, 960, 1280, 1920"
-    sizes="50vw"
-  ></eleventy-image>
+  <content-carousel>
+    <content-carousel-img
+      src="src/assets/img/work/famd/FAMD_MG_2351.jpg"
+      alt="A pitbull getting their head pet"
+    ></content-carousel-img>
+    <content-carousel-img
+      src="src/assets/img/work/famd/FAMD_MG_2463.jpg"
+      alt="A person holding a kitten"
+    ></content-carousel-img>
+    <content-carousel-img
+      src="src/assets/img/work/famd/FAMD_MG_2549.jpg"
+      alt="A photo of the exterior of the FAMD Maryann Wright Animal Adoption & Education Center"
+    ></content-carousel-img>
+    <content-carousel-img
+      src="src/assets/img/work/famd/FAMD_MG_2517.jpg"
+      alt="A white cat"
+    ></content-carousel-img>
+  </content-carousel>
 </content-row>
 
 <content-row>
-  <sl-carousel
-    navigation
-    pagination
-    mouse-dragging
-    autoplay
-    autoplay-interval="5000"
-    loop
-  >
-    <sl-carousel-item
-      webc:for="imageSrc of [
-      'src/assets/img/work/general-mills/cereal-bars.png',
-      'src/assets/img/work/general-mills/witches-fingers.png',
-      'src/assets/img/work/general-mills/mummy-dogs.png',
-    ]"
-    >
-      <eleventy-image
-        :src="imageSrc"
-        alt=""
-        role="presentation"
-        width="320, 640, 960, 1280, 1920"
-        sizes="50vw"
-      ></eleventy-image>
-    </sl-carousel-item>
-  </sl-carousel>
+  <video src="/video/FAMD_13_DOG_1_17.mp4" controls></video>
 </content-row>
+
+<p>
+  For the holiday season, we leveraged social assets to create a 12 days of
+  Christmas campaign to share the love.
+</p>
+<p>
+  Each day highlights a part of the shelter in need of donations, and how that
+  money can be applied.
+</p>
+<p>
+  The campaign kicked off on giving Tuesday, and continued through the end of
+  the year.
+</p>
 
 <content-row>
   <video
-    src="/video/mummy-dogs.mp4"
+    src="/video/FAMD_M1032_DAY_1.mp4"
     class="tall"
     loop
     autoplay
@@ -85,7 +64,25 @@ meta:
     controls
   ></video>
   <video
-    src="/video/pumpkin-day.mp4"
+    src="/video/FAMD_M1032_DAY_6.mp4"
+    class="tall"
+    loop
+    autoplay
+    muted
+    controls
+  ></video>
+</content-row>
+<content-row>
+  <video
+    src="/video/FAMD_M1032_DAY_7.mp4"
+    class="tall"
+    loop
+    autoplay
+    muted
+    controls
+  ></video>
+  <video
+    src="/video/FAMD_M1032_DAY_9.mp4"
     class="tall"
     loop
     autoplay
@@ -94,40 +91,9 @@ meta:
   ></video>
 </content-row>
 
-<content-row>
-  <eleventy-image
-    src="src/assets/img/work/general-mills/messfreehero.gif"
-    alt=""
-    role="presentation"
-    formats="webp, auto"
-    width="320, 640, 960, 1280, 1920"
-    sizes="50vw"
-  ></eleventy-image>
-</content-row>
-
-<content-row>
-  <sl-carousel
-    navigation
-    pagination
-    mouse-dragging
-    autoplay
-    autoplay-interval="5000"
-    loop
-  >
-    <sl-carousel-item
-      webc:for="imageSrc of [
-      'src/assets/img/work/general-mills/tortilla-pocket.png',
-      'src/assets/img/work/general-mills/spicy-costume.png',
-      'src/assets/img/work/general-mills/love-and-tacos.png',
-    ]"
-    >
-      <eleventy-image
-        :src="imageSrc"
-        alt=""
-        role="presentation"
-        width="320, 640, 960, 1280, 1920"
-        sizes="50vw"
-      ></eleventy-image>
-    </sl-carousel-item>
-  </sl-carousel>
-</content-row>
+<p>Design Director: Alec Peterhans</p>
+<p>Copywriter: Jack Redmond Videographer and</p>
+<p>
+  Editor: Mark Preston Animator, Graphic Designer, Photographer, and Video Edit
+</p>
+<p>Assistance: Jessica Keoshian</p>

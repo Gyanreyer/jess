@@ -2,4 +2,5 @@
   @attributes
   width="320, 640, 960, 1280, 1920"
   sizes="40vw"
+  :formats="src.endsWith('.gif') ? 'webp, auto' : null"
 ></eleventy-image>

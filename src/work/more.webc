@@ -1,0 +1,74 @@
+---
+title: "The more the merrier"
+description: "If you've made it here, you deserve a little extra."
+---
+
+<p>If you've made it here, you deserve a little extra.</p>
+
+<p>
+  Harvey's vegan bags are made of seat belts, saving the lives of animals and
+  repurposing the life saving material. These animals are hand-crafted from seat
+  belts and photographed.
+</p>
+
+<content-row>
+  <content-img
+    src="src/assets/img/work/more/more-AnimaladsSeatbelts2.jpg"
+    alt="A pink seatbelt fashioned to look like a pig, with the copy 'Seat belts save lives' in the bottom right corner"
+  ></content-img>
+  <content-img
+    src="src/assets/img/work/more/more-AnimaladsSeatbelts.jpg"
+    alt="A gray seatbelt with black spots fashioned to look like a cow, with the copy 'Seat belts save lives' in the bottom right corner"
+  ></content-img>
+</content-row>
+
+<content-row>
+  <video
+    src="/video/more-AAM_END_CARD_3.mp4"
+    title="An animation of electrical circuitry animating in and then revealing the logo for AAM along with the copy, 'Bringing the future faster'"
+    loop
+    autoplay
+    muted
+  ></video>
+</content-row>
+
+<content-row>
+  <video
+    src="/video/more-Cinemagraph.mp4"
+    title="A looping cinemagraph of a woman posing with wind blowing her clothes"
+    loop
+    autoplay
+    muted
+  ></video>
+  <video
+    src="/video/more-GrillinV2_1.mp4"
+    title="An animation of a hotdog and a hamburger's ingredients falling into place"
+    loop
+    autoplay
+    muted
+  ></video>
+</content-row>
+
+<content-row>
+  <video
+    src="/video/date_anniesbunnyday_1x1_6.mp4"
+    title="Various bunny-shaped Annie's food products hopping into frame from the left and then hopping out of frame to the right"
+    loop
+    autoplay
+    muted
+  ></video>
+  <content-img
+    src="src/assets/img/work/more/more-CucinaMenu.jpg"
+    alt="A children's menu for the Cucina restaurant. The menu has games such as a maze, word search, and tic tac toe, and features cute cartoon characters."
+  ></content-img>
+</content-row>
+
+<content-row>
+  <video
+    src="/video/Kohler-BTS.mp4"
+    title="A series of behind-the-scenes shots from a Kohler photoshoot with a group of people posing around a bathtub holding wine, acting silly and doing a toast"
+    loop
+    autoplay
+    muted
+  ></video>
+</content-row>

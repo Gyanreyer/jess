@@ -5,6 +5,7 @@
   :host {
     display: flex;
     justify-content: center;
+    align-items: center;
     --cr-gap: 3rem;
     gap: var(--cr-gap);
     margin: var(--cr-gap) auto;
@@ -25,6 +26,11 @@
     display: block;
     width: 100%;
     height: auto;
+    min-width: 0;
+  }
+
+  :host > * {
+    flex: 1;
   }
 
   .tall {
