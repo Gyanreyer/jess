@@ -57,16 +57,16 @@ description: "Creating social media for the brands of Pillsbury and Old El Paso.
 <content-row>
   <content-carousel>
     <content-carousel-img
-      src="src/assets/img/work/general-mills/cereal-bars.png"
-      alt="Halloween-themed orange cereal bar treats with cute eyes"
-    ></content-carousel-img>
-    <content-carousel-img
-      src="src/assets/img/work/general-mills/witches-fingers.png"
+      src="src/assets/img/work/general-mills/witches-fingers.jpg"
       alt="Halloween-themed finger sandwiches made to look like witches' fingers with painted nails"
     ></content-carousel-img>
     <content-carousel-img
-      src="src/assets/img/work/general-mills/mummy-dogs.png"
+      src="src/assets/img/work/general-mills/mummy-dogs.jpg"
       alt="Halloween-themed hot dogs wrapped in dough to look like mummies"
+    ></content-carousel-img>
+    <content-carousel-img
+      src="src/assets/img/work/general-mills/cereal-bars.jpg"
+      alt="Halloween-themed orange cereal bar treats with cute eyes"
     ></content-carousel-img>
   </content-carousel>
 </content-row>

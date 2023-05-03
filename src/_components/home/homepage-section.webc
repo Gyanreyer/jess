@@ -196,24 +196,33 @@
 
   @media only screen and (max-width: 768px) {
     .section-content {
-      padding: 0 5%;
+      padding: 0 4rem;
       grid-template-columns: 1fr;
       gap: 2rem 0rem;
       text-align: center;
     }
 
     p {
-      margin-left: 0;
+      margin: 0;
     }
 
     .images {
-      width: 80%;
+      width: 100%;
       grid-row: unset;
       grid-column: unset;
     }
 
     .button {
       margin-left: auto;
+    }
+
+    /* Change the transition order on mobile since the layout is different */
+    :host-context(main[data-transition="entering"]):first-of-type .button {
+      transition-delay: 0.8s;
+    }
+
+    :host-context(main[data-transition="entering"]):first-of-type .images {
+      transition-delay: 0.4s;
     }
   }
 </style>

@@ -1,0 +1,73 @@
+<button
+  id="scroll-to-top"
+  class="shadow"
+  onclick="window.scrollTo({ top: 0, behavior: 'smooth' })"
+  aria-hidden
+  webc:root="override"
+>
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    height="48"
+    viewBox="0 96 960 960"
+    width="48"
+  >
+    <path d="m283 711-43-43 240-240 240 239-43 43-197-197-197 198Z" />
+  </svg>
+</button>
+<style>
+  #scroll-to-top {
+    border-radius: 50%;
+    background-color: var(--color-tertiary);
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    width: 3rem;
+    height: 3rem;
+    z-index: 2;
+    border: none;
+    padding: 0.25rem;
+    appearance: none;
+    cursor: pointer;
+    opacity: 0;
+    transform: translateY(20%);
+    transition-property: opacity, transform;
+    transition-duration: 0.3s;
+  }
+
+  #scroll-to-top.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  #scroll-to-top.visible:hover {
+    opacity: 0.9;
+    transform: scale(1.1);
+  }
+
+  #scroll-to-top svg {
+    width: 100%;
+    height: 100%;
+    transition: inherit;
+  }
+
+  #scroll-to-top:hover svg {
+    transform: translateY(-10%);
+  }
+</style>
+<script>
+  {
+    const scrollToTop = document.getElementById("scroll-to-top");
+
+    const navObserver = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting) {
+        // If the nav is visible, hide the scroll-to-top button
+        scrollToTop.classList.remove("visible");
+      } else {
+        // If the nav is not visible, show the scroll-to-top button
+        scrollToTop.classList.add("visible");
+      }
+    });
+
+    navObserver.observe(document.querySelector("nav"));
+  }
+</script>
