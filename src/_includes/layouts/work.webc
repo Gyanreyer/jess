@@ -54,6 +54,11 @@ theme: "light"
     text-align: center;
     text-transform: lowercase;
     font-size: 3rem;
+    line-height: 1;
+  }
+
+  main {
+    padding: 0 5vw;
   }
 
   footer {

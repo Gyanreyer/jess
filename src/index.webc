@@ -114,14 +114,10 @@ description: "art director/they/them"
       </p>
     </div>
     <div class="images">
-      <eleventy-image
-        src="src/assets/img/home/more-cinemagraph.gif"
-        role="presentation"
-        alt=""
-        formats="webp, auto"
-        width="240, 320, 640"
-        sizes="30vw, (max-width: 768px) 30vw"
-      ></img>
+      <autoplay-video
+        src="/video/more-Cinemagraph.mp4"
+        title="A looping cinemagraph of a woman posing with wind blowing her clothes"
+      ></autoplay-video>
     </div>
     <a class="button primary" href="/work/more">view work</a>
   </homepage-section>
@@ -144,7 +140,9 @@ description: "art director/they/them"
         sizes="30vw, (max-width: 768px) 30vw"
       ></eleventy-image>
     </div>
-    <a class="button secondary" href="/resume.pdf">view resume</a>
+    <a class="button secondary" download href="/Jess_Keoshian_Resume.pdf"
+      >view resume</a
+    >
   </homepage-section>
 </main>
 <style>
@@ -175,7 +173,7 @@ description: "art director/they/them"
     left: 12%;
   }
   #pampers img.right {
-    left: 62%
+    left: 62%;
   }
 
   #pampers img.center {

@@ -216,7 +216,7 @@
   };
 
   const addLinkTransitionListeners = () => {
-    document.querySelectorAll('a[href^="/"]').forEach((el) => {
+    document.querySelectorAll('a[href^="/"]:not([download])').forEach((el) => {
       el.addEventListener("click", onClick);
 
       // When the current page is closed, clean up listeners

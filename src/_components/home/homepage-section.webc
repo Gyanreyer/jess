@@ -86,11 +86,12 @@
     transform: translateY(calc(10% * calc(var(--scroll-pct) - 0.5)));
   }
 
+
   h2 {
     font-size: 4rem;
     font-weight: bold;
     margin-bottom: 0.7rem;
-    line-height: 1.2;
+    line-height: 1;
   }
 
   p {
@@ -128,7 +129,7 @@
     transform: translateY(var(--translate-y));
   }
 
-  img {
+  img, video {
     display: block;
     width: 100%;
     height: auto;
@@ -145,20 +146,40 @@
     margin-right: auto;
   }
 
-  :host-context(main[data-transition="init"]) :is(.text, .button, .images) {
+  :host-context(main[data-transition="init"]) .section-content > * {
+    visibility: hidden;
+    transition: none !important;
+  }
+
+  :host-context(main[data-transition="enter-start"]) .section-content > * {
+    visibility: hidden;
     opacity: 0;
+    transition: none !important;
+  }
+
+  :host-context(main[data-transition="enter-start"]) .section-content > :is(.text, .button) {
     transform: translateY(1.5rem);
   }
 
-  :host-context(main[data-transition="init"]) .images {
+  :host-context(main[data-transition="enter-start"]) .section-content > .images {
     --translate-y: calc(var(var(--translate-y)) + 1.5rem);
   }
 
-  :host-context(main[data-transition="entering"]) :is(.text, .button, .images) {
+  :host-context(main[data-transition="entering"]) .section-content > * {
+    opacity: 1;
+    visibility: visible;
     transition-property: transform, opacity;
     transition-duration: 0.7s;
     transition-delay: 1.2s;
     transition-timing-function: ease;
+  }
+
+  :host-context(main[data-transition="entering"]) .section-content > :is(.text, .button) {
+    transform: translateY(0);
+  }
+
+  :host-context(main[data-transition="entering"]) .section-content > .images {
+    --translate-y: var(--translate-y);
   }
 
   :host-context(main[data-transition="entering"]):first-of-type .text {
@@ -171,12 +192,6 @@
 
   :host-context(main[data-transition="entering"]):first-of-type .images {
     transition-delay: 0.8s;
-  }
-
-  :host-context(main[data-transition="skip"]) :is(.text, .button, .images) {
-    transition-duration: 0s !important;
-    opacity: 1;
-    transform: none;
   }
 
   @media only screen and (max-width: 768px) {
@@ -245,17 +260,15 @@
     const mainElement = document.querySelector("main");
 
     if (window.hasPlayedHomeAnimation) {
-      mainElement.setAttribute("data-transition", "skip");
-      requestAnimationFrame(() => {
-        mainElement.removeAttribute("data-transition");
-      });
+      mainElement.removeAttribute("data-transition");
     } else {
       window.hasPlayedHomeAnimation = true;
+      mainElement.setAttribute("data-transition", "enter-start");
       requestAnimationFrame(() => {
         mainElement.setAttribute("data-transition", "entering");
         setTimeout(() => {
           mainElement.removeAttribute("data-transition");
-        }, 2300);
+        }, 1900);
       });
     }
   }

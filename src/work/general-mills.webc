@@ -12,9 +12,13 @@ description: "Creating social media for the brands of Pillsbury and Old El Paso.
 
 <content-row>
   <content-img
-    src="src/assets/img/work/general-mills/enter-to-win.png"
-    alt="The Pillsbury Doughboy wearing an ugly Christmas sweater, standing next to the words 'Enter to Win' for a contest to win a sweater"
+    src="src/assets/img/work/general-mills/charbooterie.jpg"
+    alt="A charcuterie board filled with Halloween-themed Pillsbury products, called a 'charbooterie' board as a pun"
   ></content-img>
+</content-row>
+
+<content-row>
+  <autoplay-video src="/video/90s_Social_1.mp4" title="TODO"></autoplay-video>
   <content-img
     src="src/assets/img/work/general-mills/groundhog-day.png"
     alt="The Pillsbury Doughboy wearing a scarf and earmuffs, popping out of a hole in the ground in celebration of Groundhog Day"
@@ -23,13 +27,28 @@ description: "Creating social media for the brands of Pillsbury and Old El Paso.
 
 <content-row>
   <content-img
-    src="src/assets/img/work/general-mills/charbooterie.jpg"
-    alt="A charcuterie board filled with Halloween-themed Pillsbury products, called a 'charbooterie' board as a pun"
+    src="src/assets/img/work/general-mills/enter-to-win.png"
+    alt="The Pillsbury Doughboy wearing an ugly Christmas sweater, standing next to the words 'Enter to Win' for a contest to win a sweater"
   ></content-img>
+  <content-img
+    src="src/assets/img/work/general-mills/Grad-Party.png"
+    alt="A photo of a buffalo crescent ring with a report card that gives the recipe an A+. The Pillsbury Doughboy is jumping for joy in the bottom right corner."
+  ></content-img>
+</content-row>
+
+<content-row>
   <content-img
     src="src/assets/img/work/general-mills/pumpkin-day.png"
     alt="The Pillsbury Doughboy carved into a pumpkin"
   ></content-img>
+</content-row>
+
+<content-row>
+  <autoplay-video src="/video/90s_Social 2_1.mp4" title="TODO"></autoplay-video>
+  <autoplay-video
+    src="/video/Campfire Stories_2_1_2.mp4"
+    title="TODO"
+  ></autoplay-video>
 </content-row>
 
 <content-row>
@@ -50,43 +69,34 @@ description: "Creating social media for the brands of Pillsbury and Old El Paso.
 </content-row>
 
 <content-row>
-  <content-autoplay-video
+  <autoplay-video
     src="/video/mummy-dogs.mp4"
     title="A Halloween social media video showing two mummy dogs on sticks rising from the bottom of the frame and looking at each other"
-    class="tall"
     controls
-  ></content-autoplay-video>
-  <content-autoplay-video
+  ></autoplay-video>
+  <autoplay-video
     src="/video/pumpkin-day.mp4"
     title="A Halloween social media video showing how to carve the Pillsbury Doughboy's face into a pumpkin"
-    class="tall"
     controls
-  ></content-autoplay-video>
+  ></autoplay-video>
+</content-row>
+
+<content-row>
+  <autoplay-video
+    src="/video/messfreehero.mp4"
+    title="An animation of two hands doing a toast with Old El Paso tortilla pocket tacos above the hashtag #MessFreeHero"
+  ></autoplay-video>
 </content-row>
 
 <content-row>
   <content-img
-    src="src/assets/img/work/general-mills/messfreehero.gif"
-    alt="An animated gif showing two hands holding Old El Paso tortilla pocket tacos with the hashtag #MessFreeHero"
-    sizes="80vw"
-  ></content-image>
-</content-row>
-
-<content-row>
-  <content-carousel class="square">
-    <content-carousel-img
-      src="src/assets/img/work/general-mills/tortilla-pocket.png"
-      alt=""
-    ></content-carousel-img>
-    <content-carousel-img
-      src="src/assets/img/work/general-mills/spicy-costume.png"
-      alt=""
-    ></content-carousel-img>
-    <content-carousel-img
-      src="src/assets/img/work/general-mills/love-and-tacos.png"
-      alt=""
-    ></content-carousel-img>
-  </content-carousel>
+    src="src/assets/img/work/general-mills/tortilla-pocket.png"
+    alt=""
+  ></content-img>
+  <content-img
+    src="src/assets/img/work/general-mills/spicy-costume.png"
+    alt=""
+  ></content-img>
 </content-row>
 
 <p>

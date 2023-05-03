@@ -1,9 +1,0 @@
-<video
-  @attributes
-  :src="src || (()=>{ throw new Error('content-autoplay-video missing src'); })()"
-  :title="title || (()=>{ throw new Error(`content-autoplay-video '${src}' missing title`); })()"
-  loop
-  autoplay
-  muted
-  playsinline
-></video>

@@ -9,15 +9,13 @@
     --cr-gap: 3rem;
     gap: var(--cr-gap);
     margin: var(--cr-gap) auto;
-    width: 90%;
+    width: 100%;
     max-width: 64rem;
-    max-height: 80vh;
   }
 
   @media screen and (max-width: 768px) {
     :host {
       flex-direction: column;
-      max-height: unset;
     }
   }
 
@@ -31,11 +29,7 @@
 
   :host > * {
     flex: 1;
-  }
-
-  .tall {
-    max-height: 75vh;
-    width: auto;
+    width: 100%;
   }
 
   sl-carousel-item picture {

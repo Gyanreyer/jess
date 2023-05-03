@@ -26,12 +26,12 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy({
     "src/assets/fonts": "fonts",
     "src/assets/video/**/*": "video",
+    "src/assets/**/*.pdf": "/",
   });
 
   // Image plugin
   eleventyConfig.addPlugin(eleventyImagePlugin, {
     formats: ["avif", "webp", "auto"],
-    sharpOptions: { animated: true },
     widths: [320, 640, 960, 1280, 1600, 1920],
     urlPath: "/img/",
     outputDir: "./_site/img/",
