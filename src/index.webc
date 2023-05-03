@@ -33,7 +33,7 @@ description: "art director/they/them"
     </div>
     <div class="images">
       <eleventy-image
-        src="src/assets/img/home/famd.jpg"
+        src="src/assets/img/work/famd/FAMD_MG_2463.jpg"
         role="presentation"
         alt=""
         width="240, 320, 640"

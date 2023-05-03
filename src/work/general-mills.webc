@@ -14,6 +14,7 @@ description: "Creating social media for the brands of Pillsbury and Old El Paso.
   <content-img
     src="src/assets/img/work/general-mills/charbooterie.jpg"
     alt="A charcuterie board filled with Halloween-themed Pillsbury products, called a 'charbooterie' board as a pun"
+    sizes="90vw"
   ></content-img>
 </content-row>
 
@@ -22,6 +23,7 @@ description: "Creating social media for the brands of Pillsbury and Old El Paso.
   <content-img
     src="src/assets/img/work/general-mills/groundhog-day.png"
     alt="The Pillsbury Doughboy wearing a scarf and earmuffs, popping out of a hole in the ground in celebration of Groundhog Day"
+    sizes="90vw"
   ></content-img>
 </content-row>
 
@@ -40,6 +42,7 @@ description: "Creating social media for the brands of Pillsbury and Old El Paso.
   <content-img
     src="src/assets/img/work/general-mills/pumpkin-day.png"
     alt="The Pillsbury Doughboy carved into a pumpkin"
+    sizes="90vw"
   ></content-img>
 </content-row>
 
