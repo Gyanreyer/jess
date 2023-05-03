@@ -12,7 +12,7 @@ description: "Creating social media for the brands of Pillsbury and Old El Paso.
 
 <content-row>
   <content-img
-    src="src/assets/img/work/general-mills/charbooterie.jpg"
+    src="src/assets/img/work/general-mills/charbooterie.png"
     alt="A charcuterie board filled with Halloween-themed Pillsbury products, called a 'charbooterie' board as a pun"
     sizes="90vw"
   ></content-img>
