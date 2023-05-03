@@ -12,7 +12,7 @@ description: "Creating social media for the brands of Pillsbury and Old El Paso.
 
 <content-row>
   <content-img
-    src="src/assets/img/work/general-mills/charbooterie.png"
+    src="src/assets/img/work/general-mills/charbooterie.jpg"
     alt="A charcuterie board filled with Halloween-themed Pillsbury products, called a 'charbooterie' board as a pun"
     sizes="90vw"
   ></content-img>
@@ -21,7 +21,7 @@ description: "Creating social media for the brands of Pillsbury and Old El Paso.
 <content-row>
   <autoplay-video src="/video/90s_Social_1.mp4" title="TODO"></autoplay-video>
   <content-img
-    src="src/assets/img/work/general-mills/groundhog-day.png"
+    src="src/assets/img/work/general-mills/groundhog-day.jpg"
     alt="The Pillsbury Doughboy wearing a scarf and earmuffs, popping out of a hole in the ground in celebration of Groundhog Day"
     sizes="90vw"
   ></content-img>
@@ -29,18 +29,18 @@ description: "Creating social media for the brands of Pillsbury and Old El Paso.
 
 <content-row>
   <content-img
-    src="src/assets/img/work/general-mills/enter-to-win.png"
+    src="src/assets/img/work/general-mills/enter-to-win.jpg"
     alt="The Pillsbury Doughboy wearing an ugly Christmas sweater, standing next to the words 'Enter to Win' for a contest to win a sweater"
   ></content-img>
   <content-img
-    src="src/assets/img/work/general-mills/Grad-Party.png"
+    src="src/assets/img/work/general-mills/Grad-Party.jpg"
     alt="A photo of a buffalo crescent ring with a report card that gives the recipe an A+. The Pillsbury Doughboy is jumping for joy in the bottom right corner."
   ></content-img>
 </content-row>
 
 <content-row>
   <content-img
-    src="src/assets/img/work/general-mills/pumpkin-day.png"
+    src="src/assets/img/work/general-mills/pumpkin-day.jpg"
     alt="The Pillsbury Doughboy carved into a pumpkin"
     sizes="90vw"
   ></content-img>
@@ -93,11 +93,11 @@ description: "Creating social media for the brands of Pillsbury and Old El Paso.
 
 <content-row>
   <content-img
-    src="src/assets/img/work/general-mills/tortilla-pocket.png"
+    src="src/assets/img/work/general-mills/tortilla-pocket.jpg"
     alt=""
   ></content-img>
   <content-img
-    src="src/assets/img/work/general-mills/spicy-costume.png"
+    src="src/assets/img/work/general-mills/spicy-costume.jpg"
     alt=""
   ></content-img>
 </content-row>

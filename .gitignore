@@ -34,3 +34,5 @@ yarn-error.log*
 .netlify
 
 _site
+
+.DS_Store
