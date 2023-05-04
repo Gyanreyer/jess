@@ -54,10 +54,10 @@ description: "Creating social media for the brands of Pillsbury and Old El Paso.
     @src="/video/90s_Social_2_1.mp4"
     title="An animated video with the Pillsbury Doughboy standing next to a heading that says 'Flavors of the 90s' and 'Find a meal to match your memories'. Pairings of nostalgic items from the 90s with Pillsbury recipes are cycling below: butterfly clips and cinnamon roll butterflies, jelly shoes and easy strawberry pie, and an mp3 player and confetti cookie bars."
   ></autoplay-video>
-  <autoplay-video
+  <content-video
     @src="/video/Campfire_Stories_2_1_2.mp4"
     title="An animation of the Pillsbury Doughboy roasting a marshmallow over a campfire"
-  ></autoplay-video>
+  ></content-video>
 </content-row>
 
 <content-row>
@@ -82,10 +82,10 @@ description: "Creating social media for the brands of Pillsbury and Old El Paso.
     @src="/video/mummy-dogs.mp4"
     title="A Halloween social media video showing two mummy dogs on sticks rising from the bottom of the frame and looking at each other"
   ></autoplay-video>
-  <autoplay-video
+  <content-video
     @src="/video/pumpkin-day.mp4"
     title="A Halloween social media video showing how to carve the Pillsbury Doughboy's face into a pumpkin"
-  ></autoplay-video>
+  ></content-video>
 </content-row>
 
 <content-row>
