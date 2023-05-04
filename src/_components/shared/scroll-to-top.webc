@@ -2,7 +2,7 @@
   id="scroll-to-top"
   class="shadow"
   onclick="window.scrollTo({ top: 0, behavior: 'smooth' })"
-  aria-hidden
+  aria-hidden="true"
   webc:root="override"
 >
   <svg
@@ -51,7 +51,7 @@
   }
 
   #scroll-to-top:hover svg {
-    transform: translateY(-10%);
+    transform: translateY(-8%);
   }
 </style>
 <script>

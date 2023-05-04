@@ -18,10 +18,11 @@ description: "art director/they/them"
     <div class="images">
       <eleventy-image
         src="src/assets/img/home/generalmills-doughboy.png"
+        loading="eager"
         role="presentation"
         alt=""
         width="240, 320, 640"
-        sizes="30vw, (max-width: 768px) 80vw"
+        sizes="(max-width: 768px) 80vw, 30vw"
       ></eleventy-image>
     </div>
     <a class="button primary" href="/work/general-mills">view work</a>
@@ -37,7 +38,7 @@ description: "art director/they/them"
         role="presentation"
         alt=""
         width="240, 320, 640"
-        sizes="30vw, (max-width: 768px) 80vw"
+        sizes="(max-width: 768px) 80vw, 30vw"
       ></eleventy-image>
     </div>
     <a class="button secondary" href="/work/famd">view work</a>
@@ -53,15 +54,15 @@ description: "art director/they/them"
         role="presentation"
         alt=""
         width="240, 320, 640"
-        sizes="30vw, (max-width: 768px) 80vw"
+        sizes="(max-width: 768px) 80vw, 30vw"
         class="box"
       ></eleventy-image>
       <eleventy-image
         src="src/assets/img/home/mowers-ferristube.png"
         role="presentation"
         alt=""
-        width="240, 320, 640"
-        sizes="30vw, (max-width: 768px) 80vw"
+        width="72, 120, 240"
+        sizes="(max-width: 768px) 16vw, 10vw"
         class="tube"
       ></eleventy-image>
     </div>
@@ -81,24 +82,24 @@ description: "art director/they/them"
         src="src/assets/img/home/pampers-appscreen1.png"
         role="presentation"
         alt=""
-        width="240, 320, 640"
-        sizes="30vw, (max-width: 768px) 80vw"
+        width="120, 240, 320"
+        sizes="(max-width: 768px) 30vw, 12vw"
         class="left"
       ></eleventy-image>
       <eleventy-image
         src="src/assets/img/home/pampers-appscreen2.png"
         role="presentation"
         alt=""
-        width="240, 320, 640"
-        sizes="30vw, (max-width: 768px) 80vw"
+        width="120, 240, 320"
+        sizes="(max-width: 768px) 30vw, 12vw"
         class="center"
       ></eleventy-image>
       <eleventy-image
         src="src/assets/img/home/pampers-appscreen3.png"
         role="presentation"
         alt=""
-        width="240, 320, 640"
-        sizes="30vw, (max-width: 768px) 80vw"
+        width="120, 240, 320"
+        sizes="(max-width: 768px) 30vw, 12vw"
         class="right"
       ></eleventy-image>
     </div>
@@ -134,10 +135,9 @@ description: "art director/they/them"
     <div class="images">
       <eleventy-image
         src="src/assets/img/home/jess-headshot.jpg"
-        role="presentation"
-        alt=""
+        alt="A headshot photo of Jess"
         width="240, 320, 640"
-        sizes="30vw, (max-width: 768px) 80vw"
+        sizes="(max-width: 768px) 80vw, 30vw"
       ></eleventy-image>
     </div>
     <a class="button secondary" download href="/Jess_Keoshian_Resume.pdf"

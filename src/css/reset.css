@@ -4,6 +4,7 @@
   src: url("/fonts/AvenirNext-Medium.woff2");
   font-weight: 400;
   font-style: normal;
+  font-display: swap;
 }
 
 /* Semi-bold font weight */
@@ -12,6 +13,7 @@
   src: url("/fonts/AvenirNext-DemiBold.woff2");
   font-weight: 500;
   font-style: normal;
+  font-display: swap;
 }
 
 /* Bold font weight */
@@ -20,6 +22,7 @@
   src: url("/fonts/AvenirNext-Bold.woff2");
   font-weight: 700;
   font-style: normal;
+  font-display: swap;
 }
 
 :root {
