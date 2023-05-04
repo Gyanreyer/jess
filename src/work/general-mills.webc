@@ -19,7 +19,10 @@ description: "Creating social media for the brands of Pillsbury and Old El Paso.
 </content-row>
 
 <content-row>
-  <autoplay-video src="/video/90s_Social_1.mp4" title="TODO"></autoplay-video>
+  <autoplay-video
+    src="/video/90s_Social_1.mp4"
+    title="An animated video with the Pillsbury Doughboy standing next to a heading that says 'Flavors of the 90s'. Pairings of nostalgic items from the 90s with Pillsbury recipes are cycling below: butterfly clips and cinnamon roll butterflies, jelly shoes and easy strawberry pie, and an mp3 player and confetti cookie bars."
+  ></autoplay-video>
   <content-img
     src="src/assets/img/work/general-mills/groundhog-day.jpg"
     alt="The Pillsbury Doughboy wearing a scarf and earmuffs, popping out of a hole in the ground in celebration of Groundhog Day"
@@ -47,10 +50,13 @@ description: "Creating social media for the brands of Pillsbury and Old El Paso.
 </content-row>
 
 <content-row>
-  <autoplay-video src="/video/90s_Social 2_1.mp4" title="TODO"></autoplay-video>
   <autoplay-video
-    src="/video/Campfire Stories_2_1_2.mp4"
-    title="TODO"
+    src="/video/90s_Social_2_1.mp4"
+    title="An animated video with the Pillsbury Doughboy standing next to a heading that says 'Flavors of the 90s' and 'Find a meal to match your memories'. Pairings of nostalgic items from the 90s with Pillsbury recipes are cycling below: butterfly clips and cinnamon roll butterflies, jelly shoes and easy strawberry pie, and an mp3 player and confetti cookie bars."
+  ></autoplay-video>
+  <autoplay-video
+    src="/video/Campfire_Stories_2_1_2.mp4"
+    title="An animation of the Pillsbury Doughboy roasting a marshmallow over a campfire"
   ></autoplay-video>
 </content-row>
 
@@ -94,11 +100,11 @@ description: "Creating social media for the brands of Pillsbury and Old El Paso.
 <content-row>
   <content-img
     src="src/assets/img/work/general-mills/tortilla-pocket.jpg"
-    alt=""
+    alt="A person holding an empty Old El Paso tortilla pocket over a table full of taco ingredients, with the words 'How will you tortilla pocket?'"
   ></content-img>
   <content-img
     src="src/assets/img/work/general-mills/spicy-costume.jpg"
-    alt=""
+    alt="An Old El Paso tortilla pocket with cartoon bat wings for Halloween"
   ></content-img>
 </content-row>
 

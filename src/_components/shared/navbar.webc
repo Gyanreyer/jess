@@ -2,20 +2,18 @@
   <a href="/">
     <eleventy-image
       src="src/assets/img/nav/jess-logo.png"
-      role="presentation"
       alt="Jess"
       width="240, 320, 640"
-      sizes="(min-width: 768px) 40vw, 20vw"
+      sizes="30vw, (max-width: 768px) 60vw"
     ></eleventy-image>
   </a>
   <slot></slot>
   <a href="/#about">
     <eleventy-image
       src="src/assets/img/nav/about-icon.png"
-      role="presentation"
       alt="About"
       width="240, 320, 640"
-      sizes="(min-width: 768px) 40vw, 20vw"
+      sizes="30vw"
     ></eleventy-image>
   </a>
 </nav>
@@ -61,6 +59,8 @@
   a {
     position: relative;
     overflow: hidden;
+    /* Use translate3d to force hardward acceleration so the mix-blend-mode effect works */
+    transform: translate3d(0, 0, 0);
     background: black;
     mix-blend-mode: lighten;
     transition-property: opacity, transform;
@@ -69,7 +69,7 @@
 
   a:hover {
     opacity: 0.9;
-    transform: scale(1.05);
+    transform: translate3d(0, 0, 0) scale(1.05);
   }
 
   a::after {
