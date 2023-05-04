@@ -1,9 +1,8 @@
-<video
-  @attributes
-  :src="src || (()=>{ throw new Error('autoplay-video missing src'); })()"
-  :title="title || (()=>{ throw new Error(`autoplay-video '${src}' missing title`); })()"
+<lazy-video
+  :src="src"
+  :title="title"
   loop
   autoplay
   muted
   playsinline
-></video>
+></lazy-video>

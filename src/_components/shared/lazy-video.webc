@@ -1,0 +1,32 @@
+<video
+  webc:root="override"
+  :data-src="src"
+  :title="title"
+  preload="metadata"
+  class="lazy"
+></video>
+<script>
+  {
+    const lazyVideoObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const lazyVideo = entry.target;
+          lazyVideo.src = lazyVideo.getAttribute("data-src");
+          lazyVideo.removeAttribute("data-src");
+          lazyVideo.classList.remove("lazy");
+          lazyVideoObserver.unobserve(lazyVideo);
+        }
+      });
+    });
+
+    document
+      .querySelectorAll("video.lazy")
+      .forEach((video) => lazyVideoObserver.observe(video));
+  }
+</script>
+<style>
+  video.lazy {
+    background-color: var(--color-tertiary);
+    opacity: 0.2;
+  }
+</style>

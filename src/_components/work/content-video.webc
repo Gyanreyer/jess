@@ -1,5 +1,1 @@
-<video
-  @attributes
-  :src="src || (()=>{ throw new Error('content-video missing src'); })()"
-  controls
-></video>
+<lazy-video :src="src" :title="title" controls></lazy-video>

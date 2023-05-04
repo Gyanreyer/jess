@@ -24,25 +24,25 @@ description: "If you've made it here, you deserve a little extra."
 
 <content-row>
   <autoplay-video
-    src="/video/more-AAM_END_CARD_3.mp4"
+    @src="/video/more-AAM_END_CARD_3.mp4"
     title="An animation of electrical circuitry animating in and then revealing the logo for AAM along with the copy, 'Bringing the future faster'"
   ></autoplay-video>
 </content-row>
 
 <content-row>
   <autoplay-video
-    src="/video/more-Cinemagraph.mp4"
+    @src="/video/more-Cinemagraph.mp4"
     title="A looping cinemagraph of a woman posing with wind blowing her clothes"
   ></autoplay-video>
   <autoplay-video
-    src="/video/more-GrillinV2_1.mp4"
+    @src="/video/more-GrillinV2_1.mp4"
     title="An animation of a hotdog and a hamburger's ingredients falling into place"
   ></autoplay-video>
 </content-row>
 
 <content-row>
   <autoplay-video
-    src="/video/date_anniesbunnyday_1x1_6.mp4"
+    @src="/video/date_anniesbunnyday_1x1_6.mp4"
     title="Various bunny-shaped Annie's food products hopping into frame from the left and then hopping out of frame to the right"
   ></autoplay-video>
   <content-img
@@ -53,7 +53,7 @@ description: "If you've made it here, you deserve a little extra."
 
 <content-row>
   <autoplay-video
-    src="/video/Kohler-BTS.mp4"
+    @src="/video/Kohler-BTS.mp4"
     title="A series of behind-the-scenes shots from a Kohler photoshoot with a group of people posing around a bathtub holding wine, acting silly and doing a toast"
   ></autoplay-video>
 </content-row>

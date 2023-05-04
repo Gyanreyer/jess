@@ -115,7 +115,7 @@ description: "art director/they/them"
     </div>
     <div class="images">
       <autoplay-video
-        src="/video/more-Cinemagraph.mp4"
+        @src="/video/more-Cinemagraph.mp4"
         title="A looping cinemagraph of a woman posing with wind blowing her clothes"
       ></autoplay-video>
     </div>

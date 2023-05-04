@@ -45,7 +45,7 @@ description: "Dads are finally being thought of in the space of parenting, and t
 
 <content-row>
   <autoplay-video
-    src="/video/pampers-dadmoji.mp4"
+    @src="/video/pampers-dadmoji.mp4"
     title="An animated gif of a text message conversation with someone named Ryan. The person who owns this phone sends an animated emoji of a man with a beard and glasses throwing up."
   ></autoplay-video>
   <content-img
