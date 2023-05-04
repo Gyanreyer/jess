@@ -1,0 +1,208 @@
+---
+layout: "layouts/base.webc"
+theme: "dark"
+
+title: "Jess Keoshian"
+description: "art director/they/them"
+---
+
+<main data-transition="init">
+  <navbar>
+    <p>art director/they/them</p>
+  </navbar>
+  <homepage-section class="secondary" id="general-mills">
+    <div class="text">
+      <h2>general mills</h2>
+      <p>where social meets cinnamon rolls</p>
+    </div>
+    <div class="images">
+      <eleventy-image
+        src="src/assets/img/home/generalmills-doughboy.png"
+        role="presentation"
+        alt=""
+        width="240, 320, 640"
+        sizes="30vw, (max-width: 768px) 80vw"
+      ></eleventy-image>
+    </div>
+    <a class="button primary" href="/work/general-mills">view work</a>
+  </homepage-section>
+  <homepage-section class="primary" id="famd">
+    <div class="text">
+      <h2>famd</h2>
+      <p>a shelter with more heart than fur</p>
+    </div>
+    <div class="images">
+      <eleventy-image
+        src="src/assets/img/work/famd/FAMD_MG_2463.jpg"
+        role="presentation"
+        alt=""
+        width="240, 320, 640"
+        sizes="30vw, (max-width: 768px) 80vw"
+      ></eleventy-image>
+    </div>
+    <a class="button secondary" href="/work/famd">view work</a>
+  </homepage-section>
+  <homepage-section class="secondary" id="mowers">
+    <div class="text">
+      <h2>mowers</h2>
+      <p>a new spin on direct mail</p>
+    </div>
+    <div class="images">
+      <eleventy-image
+        src="src/assets/img/home/mowers-scagboxopen.png"
+        role="presentation"
+        alt=""
+        width="240, 320, 640"
+        sizes="30vw, (max-width: 768px) 80vw"
+        class="box"
+      ></eleventy-image>
+      <eleventy-image
+        src="src/assets/img/home/mowers-ferristube.png"
+        role="presentation"
+        alt=""
+        width="240, 320, 640"
+        sizes="30vw, (max-width: 768px) 80vw"
+        class="tube"
+      ></eleventy-image>
+    </div>
+    <a class="button primary" href="/work/mowers">view work</a>
+  </homepage-section>
+  <homepage-section class="primary" id="pampers">
+    <div class="text">
+      <h2>pampers</h2>
+      <p>
+        dads are finally recognized...
+        <br />
+        but not without cool tech
+      </p>
+    </div>
+    <div class="images">
+      <eleventy-image
+        src="src/assets/img/home/pampers-appscreen1.png"
+        role="presentation"
+        alt=""
+        width="240, 320, 640"
+        sizes="30vw, (max-width: 768px) 80vw"
+        class="left"
+      ></eleventy-image>
+      <eleventy-image
+        src="src/assets/img/home/pampers-appscreen2.png"
+        role="presentation"
+        alt=""
+        width="240, 320, 640"
+        sizes="30vw, (max-width: 768px) 80vw"
+        class="center"
+      ></eleventy-image>
+      <eleventy-image
+        src="src/assets/img/home/pampers-appscreen3.png"
+        role="presentation"
+        alt=""
+        width="240, 320, 640"
+        sizes="30vw, (max-width: 768px) 80vw"
+        class="right"
+      ></eleventy-image>
+    </div>
+    <a class="button secondary" href="/work/pampers">view work</a>
+  </homepage-section>
+  <homepage-section class="secondary" id="more">
+    <div class="text">
+      <h2>and then some</h2>
+      <p>
+        if you made it here,
+        <br />
+        you deserve a little extra
+      </p>
+    </div>
+    <div class="images">
+      <autoplay-video
+        src="/video/more-Cinemagraph.mp4"
+        title="A looping cinemagraph of a woman posing with wind blowing her clothes"
+      ></autoplay-video>
+    </div>
+    <a class="button primary" href="/work/more">view work</a>
+  </homepage-section>
+  <homepage-section class="primary" id="about">
+    <div class="text">
+      <h2>about</h2>
+      <p>
+        Jess Keoshian is a designer and art director located in the metro area
+        of Detroit. Specializing in design concepts and motion, Jess brings a
+        strategic edge to every project. When not designing, Jess can be found
+        baking or snuggling up with their rescue dog Harrison.
+      </p>
+    </div>
+    <div class="images">
+      <eleventy-image
+        src="src/assets/img/home/jess-headshot.jpg"
+        role="presentation"
+        alt=""
+        width="240, 320, 640"
+        sizes="30vw, (max-width: 768px) 80vw"
+      ></eleventy-image>
+    </div>
+    <a class="button secondary" download href="/Jess_Keoshian_Resume.pdf"
+      >view resume</a
+    >
+  </homepage-section>
+</main>
+<scroll-to-top></scroll-to-top>
+<style>
+  #general-mills img {
+    width: clamp(12rem, 50%, 24rem);
+    margin: 0 auto;
+  }
+
+  #mowers img.box {
+    width: 80%;
+  }
+
+  #mowers img.tube {
+    position: absolute;
+    width: 20%;
+    top: 0;
+    left: 80%;
+    transform: translateY(calc(15% * calc(var(--scroll-pct) - 0.3)));
+  }
+
+  #pampers img:is(.left, .right) {
+    position: absolute;
+    top: 0;
+    width: 32%;
+  }
+
+  #pampers img.left {
+    left: 12%;
+  }
+  #pampers img.right {
+    left: 62%;
+  }
+
+  #pampers img.center {
+    width: 35%;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+    transform: translateY(calc(20% * calc(var(--scroll-pct) - 0.5)));
+  }
+
+  #about p {
+    font-size: 1.2rem;
+    font-weight: 400;
+    margin: 1.5rem 0 2rem;
+    text-align: left;
+  }
+
+  @media only screen and (max-width: 768px) {
+    #mowers .images {
+      margin: 1.5rem 0;
+    }
+
+    #pampers .images {
+      margin-top: 1.5rem;
+    }
+
+    #about p {
+      margin-bottom: 0;
+    }
+  }
+</style>

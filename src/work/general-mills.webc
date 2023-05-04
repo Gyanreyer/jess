@@ -1,0 +1,116 @@
+---
+title: "General Mills"
+description: "Creating social media for the brands of Pillsbury and Old El Paso."
+---
+
+<p>Creating social media for the brands of Pillsbury and Old El Paso.</p>
+<p>
+  While responsible for creating the social graphics and campaign themes, I was
+  also able to capture content. This included the photography, videography, and
+  editing of the assets.
+</p>
+
+<content-row>
+  <content-img
+    src="src/assets/img/work/general-mills/charbooterie.jpg"
+    alt="A charcuterie board filled with Halloween-themed Pillsbury products, called a 'charbooterie' board as a pun"
+    sizes="90vw"
+  ></content-img>
+</content-row>
+
+<content-row>
+  <autoplay-video
+    src="/video/90s_Social_1.mp4"
+    title="An animated video with the Pillsbury Doughboy standing next to a heading that says 'Flavors of the 90s'. Pairings of nostalgic items from the 90s with Pillsbury recipes are cycling below: butterfly clips and cinnamon roll butterflies, jelly shoes and easy strawberry pie, and an mp3 player and confetti cookie bars."
+  ></autoplay-video>
+  <content-img
+    src="src/assets/img/work/general-mills/groundhog-day.jpg"
+    alt="The Pillsbury Doughboy wearing a scarf and earmuffs, popping out of a hole in the ground in celebration of Groundhog Day"
+    sizes="90vw"
+  ></content-img>
+</content-row>
+
+<content-row>
+  <content-img
+    src="src/assets/img/work/general-mills/enter-to-win.jpg"
+    alt="The Pillsbury Doughboy wearing an ugly Christmas sweater, standing next to the words 'Enter to Win' for a contest to win a sweater"
+  ></content-img>
+  <content-img
+    src="src/assets/img/work/general-mills/Grad-Party.jpg"
+    alt="A photo of a buffalo crescent ring with a report card that gives the recipe an A+. The Pillsbury Doughboy is jumping for joy in the bottom right corner."
+  ></content-img>
+</content-row>
+
+<content-row>
+  <content-img
+    src="src/assets/img/work/general-mills/pumpkin-day.jpg"
+    alt="The Pillsbury Doughboy carved into a pumpkin"
+    sizes="90vw"
+  ></content-img>
+</content-row>
+
+<content-row>
+  <autoplay-video
+    src="/video/90s_Social_2_1.mp4"
+    title="An animated video with the Pillsbury Doughboy standing next to a heading that says 'Flavors of the 90s' and 'Find a meal to match your memories'. Pairings of nostalgic items from the 90s with Pillsbury recipes are cycling below: butterfly clips and cinnamon roll butterflies, jelly shoes and easy strawberry pie, and an mp3 player and confetti cookie bars."
+  ></autoplay-video>
+  <autoplay-video
+    src="/video/Campfire_Stories_2_1_2.mp4"
+    title="An animation of the Pillsbury Doughboy roasting a marshmallow over a campfire"
+  ></autoplay-video>
+</content-row>
+
+<content-row>
+  <content-carousel>
+    <content-carousel-img
+      src="src/assets/img/work/general-mills/witches-fingers.jpg"
+      alt="Halloween-themed finger sandwiches made to look like witches' fingers with painted nails"
+    ></content-carousel-img>
+    <content-carousel-img
+      src="src/assets/img/work/general-mills/mummy-dogs.jpg"
+      alt="Halloween-themed hot dogs wrapped in dough to look like mummies"
+    ></content-carousel-img>
+    <content-carousel-img
+      src="src/assets/img/work/general-mills/cereal-bars.jpg"
+      alt="Halloween-themed orange cereal bar treats with cute eyes"
+    ></content-carousel-img>
+  </content-carousel>
+</content-row>
+
+<content-row>
+  <autoplay-video
+    src="/video/mummy-dogs.mp4"
+    title="A Halloween social media video showing two mummy dogs on sticks rising from the bottom of the frame and looking at each other"
+    controls
+  ></autoplay-video>
+  <autoplay-video
+    src="/video/pumpkin-day.mp4"
+    title="A Halloween social media video showing how to carve the Pillsbury Doughboy's face into a pumpkin"
+    controls
+  ></autoplay-video>
+</content-row>
+
+<content-row>
+  <autoplay-video
+    src="/video/messfreehero.mp4"
+    title="An animation of two hands doing a toast with Old El Paso tortilla pocket tacos above the hashtag #MessFreeHero"
+  ></autoplay-video>
+</content-row>
+
+<content-row>
+  <content-img
+    src="src/assets/img/work/general-mills/tortilla-pocket.jpg"
+    alt="A person holding an empty Old El Paso tortilla pocket over a table full of taco ingredients, with the words 'How will you tortilla pocket?'"
+  ></content-img>
+  <content-img
+    src="src/assets/img/work/general-mills/spicy-costume.jpg"
+    alt="An Old El Paso tortilla pocket with cartoon bat wings for Halloween"
+  ></content-img>
+</content-row>
+
+<p>
+  Team: Kris Layher, Jake Blankenship, Levi Robert, Pierce Wiselogle, Nina
+  Mendiola, Alicia Lyon
+</p>
+
+<p>Art Director, Photography, Videography: Jess Keoshian</p>

@@ -1,0 +1,284 @@
+<section webc:root="override" class="homepage-section">
+  <div class="background"></div>
+  <article class="section-content">
+    <slot></slot>
+  </article>
+</section>
+<style webc:scoped>
+  :host {
+    --scroll-pct: 1;
+    --base-vertical-padding: clamp(8rem, 25%, 15vh);
+
+    padding: var(--base-vertical-padding) 0;
+    position: relative;
+  }
+
+  :host:first-of-type {
+    padding-top: 8rem;
+    padding-top: clamp(4rem, 10%, 10vh);
+  }
+
+  :host.primary {
+    --bg: var(--color-primary);
+    background: none;
+  }
+
+  :host.secondary {
+    --bg: var(--color-secondary);
+    background: none;
+  }
+
+  .background {
+    position: absolute;
+    inset: 0;
+
+    --max-tilt-angle: 6deg;
+    /* Calculate the amount of space we need to leave at the top of this section in order to be able to
+        tilt the angled top padding by 5 degrees without cutting it off */
+    --angled-top-height: calc(100vw * tan(var(--max-tilt-angle)));
+  }
+
+  .background::before,
+  .background::after {
+    content: "";
+    display: block;
+    background-color: var(--bg);
+  }
+
+  .background::before {
+    height: var(--angled-top-height);
+
+    transform-origin: top right;
+    transform:
+    /* Scale up width to avoid an awkward gap on the edge when rotated */ scale(
+        1.2
+      )
+      /* Rotate the top segment based on the scroll percent, where higher scroll pct = more rotated */
+      rotate(
+        calc(
+          (
+              clamp(0, calc((0.8 - var(--scroll-pct)) / 0.6), 1) *
+                var(--max-tilt-angle)
+            ) - var(--max-tilt-angle)
+        )
+      );
+  }
+
+  .background::after {
+    height: 100%;
+  }
+
+  :host:last-of-type .background::after {
+    height: calc(100% - var(--angled-top-height));
+  }
+
+  .section-content {
+    padding: 0 10%;
+    z-index: 2;
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr 40%;
+    gap: 0rem 6rem;
+    justify-content: center;
+    align-items: center;
+    max-width: 55rem;
+    margin: 0 auto;
+    transform: translateY(calc(10% * calc(var(--scroll-pct) - 0.5)));
+  }
+
+
+  h2 {
+    font-size: 4rem;
+    font-weight: bold;
+    margin-bottom: 0.7rem;
+    line-height: 1;
+  }
+
+  p {
+    font-size: 1.5rem;
+    font-weight: 500;
+    margin: 0 0 1.2rem 2rem;
+    line-height: 1.2;
+  }
+
+  .button {
+    position: relative;
+    display: inline-block;
+    font-size: 1.7rem;
+    font-weight: bold;
+    padding: 0.5rem 2rem;
+    border-radius: 2em;
+    text-decoration: none;
+    cursor: pointer;
+    transition: opacity 0.3s,
+      transform 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  }
+
+  .button:hover,
+  .button:focus-visible {
+    opacity: 0.9;
+    transform: scale(1.1);
+  }
+
+  .images {
+    position: relative;
+    grid-column: 2 / 3;
+    grid-row: 1 / 3;
+    justify-self: center;
+    --translate-y: calc(15% * calc(var(--scroll-pct) - 0.25))
+    transform: translateY(var(--translate-y));
+  }
+
+  img, video {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  .text {
+    grid-row: 1 / 2;
+    grid-column: 1 / 2;
+    align-self: end;
+  }
+
+  .button {
+    align-self: start;
+    margin-right: auto;
+  }
+
+  :host-context(main[data-transition="init"]) .section-content > * {
+    visibility: hidden;
+    transition: none !important;
+  }
+
+  :host-context(main[data-transition="enter-start"]) .section-content > * {
+    visibility: hidden;
+    opacity: 0;
+    transition: none !important;
+  }
+
+  :host-context(main[data-transition="enter-start"]) .section-content > :is(.text, .button) {
+    transform: translateY(1.5rem);
+  }
+
+  :host-context(main[data-transition="enter-start"]) .section-content > .images {
+    --translate-y: calc(var(var(--translate-y)) + 1.5rem);
+  }
+
+  :host-context(main[data-transition="entering"]) .section-content > * {
+    opacity: 1;
+    visibility: visible;
+    transition-property: transform, opacity;
+    transition-duration: 0.7s;
+    transition-delay: 1.2s;
+    transition-timing-function: ease;
+  }
+
+  :host-context(main[data-transition="entering"]) .section-content > :is(.text, .button) {
+    transform: translateY(0);
+  }
+
+  :host-context(main[data-transition="entering"]) .section-content > .images {
+    --translate-y: var(--translate-y);
+  }
+
+  :host-context(main[data-transition="entering"]):first-of-type .text {
+    transition-delay: 0s;
+  }
+
+  :host-context(main[data-transition="entering"]):first-of-type .button {
+    transition-delay: 0.4s;
+  }
+
+  :host-context(main[data-transition="entering"]):first-of-type .images {
+    transition-delay: 0.8s;
+  }
+
+  @media only screen and (max-width: 768px) {
+    .section-content {
+      padding: 0 4rem;
+      grid-template-columns: 1fr;
+      gap: 2rem 0rem;
+      text-align: center;
+    }
+
+    p {
+      margin: 0;
+    }
+
+    .images {
+      width: 100%;
+      grid-row: unset;
+      grid-column: unset;
+    }
+
+    .button {
+      margin-left: auto;
+    }
+
+    /* Change the transition order on mobile since the layout is different */
+    :host-context(main[data-transition="entering"]):first-of-type .button {
+      transition-delay: 0.8s;
+    }
+
+    :host-context(main[data-transition="entering"]):first-of-type .images {
+      transition-delay: 0.4s;
+    }
+  }
+</style>
+<script>
+  {
+    const homePageSections = Array.from(
+      document.getElementsByClassName("homepage-section")
+    );
+    const homePageSectionCount = homePageSections.length;
+
+    homePageSections[0].dataset.visible = true;
+
+    const onScroll = () => {
+      for (let i = 0; i < homePageSectionCount; ++i) {
+        const element = homePageSections[i];
+        const boundingClientRect = element.getBoundingClientRect();
+
+        const scrollPercent = boundingClientRect.top / window.innerHeight;
+
+        element.style.setProperty("--scroll-pct", scrollPercent);
+
+        if (scrollPercent < 0.5) {
+          element.dataset.visible = true;
+        }
+      }
+    };
+
+    onScroll();
+
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll, { passive: true });
+
+    document.addEventListener("transition:pageclosed", function onPageClosed() {
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
+      document.removeEventListener("transition:pageclosed", onPageClosed);
+      // Clear the array of section elments so they can be garbage collected to avoid memory leaks
+      homePageSections.length = 0;
+    });
+  }
+</script>
+<script>
+  {
+    const mainElement = document.querySelector("main");
+
+    if (window.hasPlayedHomeAnimation) {
+      mainElement.removeAttribute("data-transition");
+    } else {
+      window.hasPlayedHomeAnimation = true;
+      mainElement.setAttribute("data-transition", "enter-start");
+      requestAnimationFrame(() => {
+        mainElement.setAttribute("data-transition", "entering");
+        setTimeout(() => {
+          mainElement.removeAttribute("data-transition");
+        }, 1900);
+      });
+    }
+  }
+</script>

@@ -1,0 +1,5 @@
+<video
+  @attributes
+  :src="src || (()=>{ throw new Error('content-video missing src'); })()"
+  controls
+></video>

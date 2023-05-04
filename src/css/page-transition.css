@@ -1,0 +1,48 @@
+#pg-trns {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  visibility: hidden;
+  background-color: var(--color-primary);
+  transform: translateY(calc(100% + var(--angled-segment-height)));
+  z-index: 100;
+
+  --angle: 4deg;
+  --angled-segment-height: calc(100vw * tan(var(--angle)));
+}
+
+#pg-trns::before,
+#pg-trns::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: var(--angled-segment-height);
+  background-color: inherit;
+  transform: rotate(calc(-1 * var(--angle)));
+}
+
+#pg-trns::before {
+  bottom: 100%;
+  transform-origin: top right;
+}
+
+#pg-trns::after {
+  top: 100%;
+  transform-origin: bottom left;
+}
+
+[data-pg-trns] #pg-trns {
+  visibility: visible;
+  transition: transform 0.6s;
+}
+
+[data-pg-trns="start"] #pg-trns {
+  transform: translateY(0%);
+}
+
+[data-pg-trns="end"] #pg-trns {
+  transform: translateY(calc(-100% - var(--angled-segment-height)));
+}

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en" :data-theme="theme">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" :content="description" />
+    <meta name="generator" :content="eleventy.generator" />
+    <title @html="title"></title>
+  </head>
+  <body>
+    <!-- Element which is animated for page transitions -->
+    <div id="pg-trns">
+      <!-- All contents of the transition element are persisted between pages -->
+
+      <!-- Critical CSS -->
+      <style
+        @raw="getBundle('css', 'critical')"
+        data-trns-persist="critical-css"
+        webc:keep
+      ></style>
+      <link
+        rel="stylesheet"
+        href="../../css/reset.css"
+        webc:bucket="critical"
+      />
+
+      <!-- CSS and JS which controls transitions -->
+      <link
+        rel="stylesheet"
+        :href="getBundleFileUrl('css', 'transition-persist')"
+        data-trns-persist="transition-css"
+        webc:keep
+      />
+      <script
+        :src="getBundleFileUrl('js', 'transition-persist')"
+        type="module"
+        data-trns-persist="transition-js"
+        webc:keep
+      ></script>
+
+      <link
+        rel="stylesheet"
+        href="../../css/page-transition.css"
+        webc:bucket="transition-persist"
+      />
+      <script
+        src="../../js/page-transition.mjs"
+        webc:bucket="transition-persist"
+      ></script>
+
+      <!-- Shoelace -->
+      <script
+        type="module"
+        src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.4.0/dist/translations/en.js"
+        webc:keep
+      ></script>
+      <script
+        type="module"
+        src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.4.0/dist/shoelace-autoloader.js"
+        webc:keep
+      ></script>
+      <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.4.0/dist/themes/light.css"
+        webc:keep
+      />
+    </div>
+
+    <!-- Page-specific CSS which should not be persisted -->
+    <style @raw="getBundle('css')" webc:keep></style>
+
+    <template @raw="content" webc:nokeep></template>
+
+    <!-- Page-specific JS -->
+    <script :src="getBundleFileUrl('js')" type="module" webc:keep></script>
+  </body>
+</html>

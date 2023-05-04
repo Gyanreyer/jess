@@ -1,0 +1,91 @@
+---
+layout: "layouts/base.webc"
+theme: "light"
+---
+
+<navbar class="work-nav">
+  <h1 @text="title"></h1>
+</navbar>
+<main>
+  <template @raw="content" webc:nokeep></template>
+</main>
+<footer></footer>
+<scroll-to-top></scroll-to-top>
+
+<style>
+  html {
+    background-color: var(--color-primary);
+  }
+
+  body {
+    background-color: var(--color-tertiary);
+  }
+
+  .work-nav {
+    --angle: 4deg;
+    --angled-segment-height: calc(100vw * tan(var(--angle)));
+
+    position: relative;
+    background-color: var(--color-primary);
+    margin-bottom: calc(var(--angled-segment-height) + 1rem);
+    padding-bottom: 0;
+  }
+
+  .work-nav > * {
+    z-index: 1;
+  }
+
+  .work-nav::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    height: var(--angled-segment-height);
+    background-color: inherit;
+    transform-origin: bottom left;
+    transform: rotate(calc(-1 * var(--angle)));
+  }
+
+  .work-nav a::after {
+    display: none;
+  }
+
+  .work-nav h1 {
+    text-align: center;
+    text-transform: lowercase;
+    font-size: 3rem;
+    line-height: 1;
+  }
+
+  main {
+    padding: 0 5vw;
+  }
+
+  footer {
+    --angle: 4deg;
+    --angled-segment-ht: calc(100vw * tan(var(--angle)));
+    margin-top: calc(var(--angled-segment-ht) + 2rem);
+    background-color: var(--color-primary);
+    position: relative;
+    height: var(--angled-segment-ht);
+  }
+
+  footer::before {
+    content: "";
+    background-color: inherit;
+    position: absolute;
+    bottom: 100%;
+    width: 100%;
+    height: var(--angled-segment-ht);
+    transform-origin: top right;
+    transform: rotate(calc(-1 * var(--angle)));
+  }
+
+  main p {
+    text-align: center;
+    max-width: 80ch;
+    margin: 1rem auto;
+    line-height: 1.3;
+  }
+</style>
