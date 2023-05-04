@@ -24,8 +24,9 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addWatchTarget("src/**/*.{js,mjs,css}");
 
   eleventyConfig.addPassthroughCopy({
-    "src/assets/fonts": "fonts",
-    "src/assets/video/**/*": "video",
+    "src/assets/fonts": "/fonts",
+    "src/assets/video/**/*": "/video",
+    "src/assets/img/favicon.png": "/img/favicon.png",
     "src/assets/**/*.pdf": "/",
   });
 
