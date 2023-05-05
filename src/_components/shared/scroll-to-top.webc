@@ -3,6 +3,7 @@
   class="shadow"
   onclick="window.scrollTo({ top: 0, behavior: 'smooth' })"
   aria-hidden="true"
+  z-index="-1"
   webc:root="override"
 >
   <svg

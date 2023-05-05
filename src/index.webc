@@ -54,7 +54,7 @@ description: "art director/they/them"
         role="presentation"
         alt=""
         width="240, 320, 640"
-        sizes="(max-width: 768px) 80vw, 30vw"
+        sizes="(max-width: 768px) 65vw, 25vw"
         class="box"
       ></eleventy-image>
       <eleventy-image
