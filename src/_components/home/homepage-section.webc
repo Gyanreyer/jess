@@ -255,13 +255,16 @@
     window.addEventListener("scroll", onScroll, { passive: true });
     window.addEventListener("resize", onScroll, { passive: true });
 
-    document.addEventListener("transition:pageclosed", function onPageClosed() {
-      window.removeEventListener("scroll", onScroll);
-      window.removeEventListener("resize", onScroll);
-      document.removeEventListener("transition:pageclosed", onPageClosed);
-      // Clear the array of section elments so they can be garbage collected to avoid memory leaks
-      homePageSections.length = 0;
-    });
+    document.addEventListener(
+      "transition:pageclosed",
+      () => {
+        window.removeEventListener("scroll", onScroll);
+        window.removeEventListener("resize", onScroll);
+        // Clear the array of section elments so they can be garbage collected to avoid memory leaks
+        homePageSections.length = 0;
+      },
+      { once: true }
+    );
   }
 </script>
 <script>

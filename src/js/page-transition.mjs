@@ -65,10 +65,6 @@
 
   const transitionToPage = async (newPageURL) => {
     try {
-      const timeoutID = setTimeout(() => {
-        throw new Error("Page transition timed out");
-      }, 1500);
-
       transitionURLQueue.push(newPageURL);
       // Start fetching the new page so we can load it while the transition animation is playing
       fetchPage(newPageURL.pathname);
@@ -160,8 +156,6 @@
       document.documentElement.setAttribute(pageTransitionAttr, "end");
 
       await new Promise((resolve) => setTimeout(resolve, 600));
-
-      clearTimeout(timeoutID);
 
       document.documentElement.removeAttribute(pageTransitionAttr);
 

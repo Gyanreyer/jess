@@ -14,11 +14,7 @@
       <!-- All contents of the transition element are persisted between pages -->
 
       <!-- Critical CSS -->
-      <style
-        @raw="getBundle('css', 'critical')"
-        data-trns-persist="critical-css"
-        webc:keep
-      ></style>
+      <style @raw="getBundle('css', 'critical')" webc:keep></style>
       <link
         rel="stylesheet"
         href="../../css/reset.css"
@@ -29,13 +25,11 @@
       <link
         rel="stylesheet"
         :href="getBundleFileUrl('css', 'transition-persist')"
-        data-trns-persist="transition-css"
         webc:keep
       />
       <script
         :src="getBundleFileUrl('js', 'transition-persist')"
         type="module"
-        data-trns-persist="transition-js"
         webc:keep
       ></script>
 
@@ -46,6 +40,11 @@
       />
       <script
         src="../../js/page-transition.mjs"
+        webc:bucket="transition-persist"
+      ></script>
+
+      <script
+        src="../../js/lazy-video.mjs"
         webc:bucket="transition-persist"
       ></script>
 
