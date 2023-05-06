@@ -1,16 +1,7 @@
-<video
-  webc:root="override"
-  :data-src="src"
+<eleventy-video
+  :src="src"
   :title="title"
-  preload="metadata"
+  preload="none"
   class="lazy"
-></video>
-<style>
-  video.lazy {
-    background-color: var(--color-tertiary);
-  }
-
-  video.lazy[data-src] {
-    opacity: 0.2;
-  }
-</style>
+  @attributes
+></eleventy-video>

@@ -25,7 +25,6 @@ module.exports = function (eleventyConfig) {
 
   eleventyConfig.addPassthroughCopy({
     "src/assets/fonts": "/fonts",
-    "src/assets/video/**/*": "/video",
     "src/assets/img/favicon.png": "/img/favicon.png",
     "src/assets/**/*.pdf": "/",
   });

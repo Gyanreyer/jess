@@ -1,0 +1,70 @@
+<script webc:type="js" webc:root="override">
+  const fs = require("fs");
+  const path = require("path");
+  const crypto = require("crypto");
+
+  const ALLOWED_ATTRIBUTES = {
+    src: true,
+    title: true,
+    class: true,
+    id: true,
+    style: true,
+    width: true,
+    height: true,
+    autoplay: true,
+    controls: true,
+    loop: true,
+    muted: true,
+    playsinline: true,
+    poster: true,
+    preload: true,
+  };
+
+  const videoAttributes = {};
+
+  for (const key in this.webc.attributes) {
+    if (ALLOWED_ATTRIBUTES[key]) {
+      videoAttributes[key] = this.webc.attributes[key];
+    }
+  }
+
+  const inputVideoSrc = this.src;
+  const videoFileBuffer = fs.readFileSync(inputVideoSrc);
+
+  const videoHash = crypto
+    .createHash("shake256", { outputLength: 12 })
+    .update(videoFileBuffer)
+    .digest("hex");
+
+  const videoFileExtension = path.extname(inputVideoSrc);
+
+  const fileName = `${videoHash}${videoFileExtension}`;
+  videoAttributes.src = `/video/${fileName}`;
+
+  const outputDir = "_site/video/";
+
+  // Ensure the output dir exists
+  fs.mkdirSync(outputDir, { recursive: true });
+
+  fs.writeFileSync(`${outputDir}${fileName}`, videoFileBuffer);
+
+  const ffprobe = require("ffprobe");
+
+  ffprobe(inputVideoSrc, {
+    path: require("ffprobe-static").path,
+  }).then((info) => {
+    const stream = info.streams[0];
+
+    videoAttributes.width = stream.width;
+    videoAttributes.height = stream.height;
+    videoAttributes.style = `aspect-ratio: ${videoAttributes.width}/${
+      videoAttributes.height
+    }; ${videoAttributes.style || ""}`;
+
+    return /* html */ `
+    <video ${Object.entries(videoAttributes)
+      .map(([key, value]) => `${key}="${value}"`)
+      .join(" ")}></video>
+    `;
+  });
+</script>

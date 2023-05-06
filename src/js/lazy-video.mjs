@@ -1,14 +1,29 @@
 {
-  const lazyVideoObserver = new IntersectionObserver((entries, observer) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        const lazyVideo = entry.target;
-        lazyVideo.src = lazyVideo.getAttribute("data-src");
-        lazyVideo.removeAttribute("data-src");
-        lazyVideoObserver.unobserve(lazyVideo);
-      }
-    });
-  });
+  const lazyVideoObserver = new IntersectionObserver(
+    (entries, observer) => {
+      entries.forEach(async (entry) => {
+        if (entry.isIntersecting) {
+          const lazyVideo = entry.target;
+          observer.unobserve(lazyVideo);
+
+          lazyVideo.classList.remove("lazy");
+          lazyVideo.setAttribute("preload", "metadata");
+
+          if (lazyVideo.classList.contains("autoplay")) {
+            try {
+              await lazyVideo.play();
+              lazyVideo.removeAttribute("controls");
+            } catch (err) {
+              console.warn("Failed to autoplay video", err);
+            }
+          }
+        }
+      });
+    },
+    {
+      rootMargin: "100px",
+    }
+  );
 
   const watchLazyVideos = () => {
     const lazyVideos = Array.from(document.querySelectorAll("video.lazy"));
