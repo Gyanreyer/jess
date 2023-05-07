@@ -3,10 +3,20 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" :content="description" />
-    <meta name="generator" :content="eleventy.generator" />
-    <link rel="icon" type="image/png" href="/img/favicon.png" />
+
     <title @html="title"></title>
+    <meta name="description" :content="description" />
+    <link rel="icon" type="image/png" href="/img/favicon.png" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:title" :content="title" />
+    <meta property="og:description" :content="description" />
+    <meta
+      property="og:image"
+      content="https://jessicakeoshian.com/img/og.png"
+    />
+
+    <meta name="generator" :content="eleventy.generator" />
   </head>
   <body>
     <!-- Element which is animated for page transitions -->
