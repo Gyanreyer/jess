@@ -109,6 +109,7 @@
     border-radius: 2em;
     text-decoration: none;
     cursor: pointer;
+    transform: translate3d(0, 0, 0);
     transition: opacity 0.3s,
       transform 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
   }
@@ -116,7 +117,7 @@
   .button:hover,
   .button:focus-visible {
     opacity: 0.9;
-    transform: scale(1.1);
+    transform: translate3d(0, 0, 0) scale(1.1);
   }
 
   .images {
@@ -126,7 +127,7 @@
     justify-self: center;
     width: 100%;
     --translate-y: calc(15% * calc(var(--scroll-pct) - 0.25))
-    transform: translateY(var(--translate-y));
+    transform: translate3d(0, var(--translate-y), 0);
   }
 
   img, video {
@@ -169,7 +170,7 @@
   }
 
   :host-context(main[data-transition="enter-start"]) .section-content > :is(.text, .button) {
-    transform: translateY(1.5rem);
+    transform: translate3d(0, 1.5rem, 0);
   }
 
   :host-context(main[data-transition="enter-start"]) .section-content > .images {
@@ -186,7 +187,7 @@
   }
 
   :host-context(main[data-transition="entering"]) .section-content > :is(.text, .button) {
-    transform: translateY(0);
+    transform: translate3d(0, 0, 0);
   }
 
   :host-context(main[data-transition="entering"]) .section-content > .images {
