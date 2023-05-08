@@ -13,7 +13,7 @@
     <meta property="og:description" :content="description" />
     <meta
       property="og:image"
-      content="https://jessicakeoshian.com/img/og.png"
+      content="https://jessicakeoshian.com/img/og.jpg"
     />
 
     <meta name="generator" :content="eleventy.generator" />
