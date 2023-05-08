@@ -146,9 +146,20 @@
     margin-right: auto;
   }
 
+  @keyframes appear {
+    from {
+      visibility: hidden;
+    }
+    to {
+      visibility: visible;
+    }
+  }
+
   :host-context(main[data-transition="init"]) .section-content > * {
     visibility: hidden;
     transition: none !important;
+    /* If the JS to play the transition animation fails, use a delayed animation as a failsafe to make the content visible */
+    animation: appear 0s 0.1s forwards;
   }
 
   :host-context(main[data-transition="enter-start"]) .section-content > * {

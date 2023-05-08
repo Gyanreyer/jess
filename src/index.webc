@@ -134,11 +134,27 @@ description: "art director/they/them"
     </div>
     <div class="images">
       <eleventy-image
+        src="src/assets/img/home/Harrison2.png"
+        alt="A photo of Jess' dog Harrison"
+        width="240, 320, 640"
+        sizes="(max-width: 768px) 80vw, 30vw"
+        class="harrison scroll-reveal-hidden"
+      ></eleventy-image>
+      <eleventy-image
         src="src/assets/img/home/jess-headshot.jpg"
         alt="A headshot photo of Jess"
         width="240, 320, 640"
         sizes="(max-width: 768px) 80vw, 30vw"
+        class="headshot"
       ></eleventy-image>
+      <eleventy-image
+        src="src/assets/img/home/Harrison.png"
+        alt="A photo of Jess' dog Harrison curled in a ball"
+        width="240, 320, 640"
+        sizes="(max-width: 768px) 80vw, 30vw"
+        class="harrison-ball scroll-reveal-hidden"
+      >
+      </eleventy-image>
     </div>
     <a class="button secondary" download href="/Jess_Keoshian_Resume.pdf"
       >view resume</a
@@ -147,6 +163,10 @@ description: "art director/they/them"
 </main>
 <scroll-to-top></scroll-to-top>
 <style>
+  main {
+    overflow: hidden;
+  }
+
   #general-mills img {
     width: clamp(12rem, 50%, 24rem);
     margin: 0 auto;
@@ -192,6 +212,49 @@ description: "art director/they/them"
     text-align: left;
   }
 
+  #about .images {
+    display: flex;
+    flex-direction: column;
+  }
+
+  #about img.scroll-reveal-hidden {
+    opacity: 0;
+    transform: translateY(20%);
+  }
+
+  #about img.scroll-reveal-appearing {
+    opacity: 1;
+    transform: translateY(0);
+    transition-property: opacity, transform;
+    transition-duration: 1.2s;
+  }
+
+  #about .images > * {
+    position: relative;
+  }
+
+  #about .images > :nth-child(1) {
+    z-index: 0;
+  }
+  #about .images > :nth-child(2) {
+    z-index: 1;
+  }
+  #about .images > :nth-child(3) {
+    z-index: 2;
+  }
+
+  #about .harrison {
+    margin-bottom: -22%;
+    margin-left: -10%;
+    width: 66%;
+  }
+
+  #about .harrison-ball {
+    margin-top: -25%;
+    margin-left: 45%;
+    width: 70%;
+  }
+
   @media only screen and (max-width: 768px) {
     #mowers .images {
       margin: 1.5rem 0;
@@ -206,3 +269,96 @@ description: "art director/they/them"
     }
   }
 </style>
+<script>
+  {
+    const scrollRevealObserver = new IntersectionObserver(
+      (entries, observer) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const targetElement = entry.target;
+            targetElement.classList.remove("scroll-reveal-hidden");
+            targetElement.classList.add("scroll-reveal-appearing");
+            setTimeout(() => {
+              targetElement.classList.remove("scroll-reveal-appearing");
+            }, 1200);
+            observer.unobserve(targetElement);
+          }
+        });
+      },
+      { threshold: 1 }
+    );
+
+    for (const el of document.getElementsByClassName("scroll-reveal-hidden")) {
+      scrollRevealObserver.observe(el);
+    }
+  }
+</script>
+<script>
+  {
+    const harrisonBallImage =
+      document.getElementsByClassName("harrison-ball")[0];
+
+    let rotationSpeed = 0;
+    let currentRotation = 0;
+    let frameID = null;
+    let isHovering = false;
+
+    let previousTime;
+
+    const rotateHarrisonBall = (timestamp) => {
+      frameID = requestAnimationFrame(rotateHarrisonBall);
+
+      if (!previousTime) {
+        previousTime = timestamp;
+        return;
+      }
+
+      const deltaTime = (timestamp - previousTime) / 1000;
+      previousTime = timestamp;
+
+      if (isHovering) {
+        rotationSpeed = Math.min(rotationSpeed + 1, 360);
+      } else {
+        rotationSpeed = Math.max(rotationSpeed - 3, 0);
+      }
+
+      if (rotationSpeed <= 0) {
+        const newTargetRotation = currentRotation > 180 ? 360 : 0;
+        harrisonBallImage.style.transition = `transform ${
+          Math.abs(newTargetRotation - currentRotation) / 60
+        }s`;
+        currentRotation = newTargetRotation;
+        harrisonBallImage.style.transform = `rotate(${currentRotation}deg)`;
+        cancelAnimationFrame(frameID);
+        return;
+      }
+
+      // Wrap rotation value between 0 and 360
+      // Using this funky double-modulo because branchless is cool
+      currentRotation =
+        (((currentRotation - rotationSpeed * deltaTime) % 360) + 360) % 360;
+
+      harrisonBallImage.style.transition = "none";
+      harrisonBallImage.style.transform = `rotate(${currentRotation}deg)`;
+    };
+
+    const onMouseEnter = () => {
+      isHovering = true;
+      cancelAnimationFrame(frameID);
+      rotateHarrisonBall(performance.now());
+    };
+
+    const onMouseLeave = () => {
+      isHovering = false;
+    };
+
+    harrisonBallImage.addEventListener("mouseenter", onMouseEnter);
+    harrisonBallImage.addEventListener("mouseleave", onMouseLeave);
+
+    document.addEventListener("transition:pageclosed", () => {
+      harrisonBallImage.removeEventListener("mouseenter", onMouseEnter);
+      harrisonBallImage.removeEventListener("mouseleave", onMouseLeave);
+      cancelAnimationFrame(frameID);
+    });
+  }
+</script>
