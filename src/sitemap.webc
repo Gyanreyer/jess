@@ -1,0 +1,15 @@
+---
+permalink: /sitemap.xml
+siteURL: https://jessicakeoshian.com
+---
+
+<template
+  @raw="`<?xml version='1.0' encoding='UTF-8'?>`"
+  webc:nokeep
+></template>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url webc:for="page of collections.all" webc:if="page.url !== permalink">
+    <loc @raw="siteURL + page.url"></loc>
+    <lastmod @raw="page.date.toISOString()"></lastmod>
+  </url>
+</urlset>
