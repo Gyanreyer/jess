@@ -1,3 +1,5 @@
+const fs = require("node:fs");
+
 // 11ty plugins
 const pluginWebc = require("@11ty/eleventy-plugin-webc");
 const { eleventyImagePlugin } = require("@11ty/eleventy-img");
@@ -96,6 +98,46 @@ module.exports = function (eleventyConfig) {
     }
 
     return content;
+  });
+
+  eleventyConfig.on("eleventy.after", async ({ results }) => {
+    const dataThemeRegex = /data-theme="([^"]*)"/;
+    const htmlHeadStartRegex = /<head[^>]*>/;
+    const htmlHeadEndRegex = /<\/head>/;
+    const htmlBodyStartRegex = /<body[^>]*>/;
+    const htmlBodyEndRegex = /<\/body>/;
+
+    results.forEach(({ outputPath, content }) => {
+      if (outputPath.endsWith(".html")) {
+        const dataTheme = content.match(dataThemeRegex)[1];
+
+        // Replace all double quotes with single quotes for cleaner serialization to JSON
+        const sanitizedHTML = content.replace(/"/g, `'`);
+
+        const headStartMatch = sanitizedHTML.match(htmlHeadStartRegex);
+        const headEndMatch = sanitizedHTML.match(htmlHeadEndRegex);
+
+        const bodyStartMatch = sanitizedHTML.match(htmlBodyStartRegex);
+        const bodyEndMatch = sanitizedHTML.match(htmlBodyEndRegex);
+
+        const headTagContents = sanitizedHTML.slice(
+          headStartMatch.index + headStartMatch[0].length,
+          headEndMatch.index
+        );
+        const bodyTagContents = sanitizedHTML.slice(
+          bodyStartMatch.index + bodyStartMatch[0].length,
+          bodyEndMatch.index
+        );
+
+        const pageContentJSON = {
+          theme: dataTheme,
+          head: headTagContents,
+          body: bodyTagContents,
+        };
+
+        fs.writeFileSync(`${outputPath}.json`, JSON.stringify(pageContentJSON));
+      }
+    });
   });
 
   return {

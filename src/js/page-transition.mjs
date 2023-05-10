@@ -15,42 +15,19 @@
 
   const pageCache = {};
 
-  const dataThemeRegex = /data-theme="([^"]*)"/;
-  const htmlHeadStartRegex = /<head[^>]*>/;
-  const htmlHeadEndRegex = /<\/head>/;
-  const htmlBodyStartRegex = /<body[^>]*>/;
-  const htmlBodyEndRegex = /<\/body>/;
-
   const fetchPage = async (pathname) => {
     if (pageCache[pathname]) {
       return pageCache[pathname].promise || pageCache[pathname];
     }
 
-    const pagePromise = fetch(pathname)
-      .then((res) => res.text())
-      .then((rawFullPageHTML) => {
-        const dataTheme = rawFullPageHTML.match(dataThemeRegex)[1];
+    const pageDataPath = `${pathname}${
+      pathname.at(-1) === "/" ? "" : "/"
+    }index.html.json`;
 
-        const headStartMatch = rawFullPageHTML.match(htmlHeadStartRegex);
-        const headEndMatch = rawFullPageHTML.match(htmlHeadEndRegex);
-
-        const bodyStartMatch = rawFullPageHTML.match(htmlBodyStartRegex);
-        const bodyEndMatch = rawFullPageHTML.match(htmlBodyEndRegex);
-
-        const headTagContents = rawFullPageHTML.slice(
-          headStartMatch.index + headStartMatch[0].length,
-          headEndMatch.index
-        );
-        const bodyTagContents = rawFullPageHTML.slice(
-          bodyStartMatch.index + bodyStartMatch[0].length,
-          bodyEndMatch.index
-        );
-
-        return (pageCache[pathname] = {
-          dataTheme,
-          head: headTagContents,
-          body: bodyTagContents,
-        });
+    const pagePromise = fetch(pageDataPath)
+      .then((res) => res.json())
+      .then((pageData) => {
+        return (pageCache[pathname] = pageData);
       });
 
     pageCache[pathname] = {
@@ -89,7 +66,7 @@
       transitionURLQueue.length = 0;
 
       const {
-        dataTheme,
+        theme: dataTheme,
         head: newHeadHTML,
         body: newBodyHTML,
       } = await fetchPage(transitionPageURL.pathname);
