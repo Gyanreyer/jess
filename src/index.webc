@@ -11,47 +11,44 @@ description: "art director/they/them"
     <p>art director/they/them</p>
   </navbar>
   <homepage-section class="secondary" id="general-mills">
-    <div class="text">
+    <header>
       <h2>general mills</h2>
       <p>where social meets cinnamon rolls</p>
-    </div>
-    <div class="images">
+    </header>
+    <aside>
       <eleventy-image
         src="src/assets/img/home/generalmills-doughboy.png"
         loading="eager"
-        role="presentation"
         alt=""
         width="240, 320, 640"
         sizes="(max-width: 768px) 80vw, 30vw"
       ></eleventy-image>
-    </div>
+    </aside>
     <a class="button primary" href="/work/general-mills">view work</a>
   </homepage-section>
   <homepage-section class="primary" id="famd">
-    <div class="text">
+    <header>
       <h2>famd</h2>
       <p>a shelter with more heart than fur</p>
-    </div>
-    <div class="images">
+    </header>
+    <aside>
       <eleventy-image
         src="src/assets/img/work/famd/FAMD_MG_2463.jpg"
-        role="presentation"
         alt=""
         width="240, 320, 640"
         sizes="(max-width: 768px) 80vw, 30vw"
       ></eleventy-image>
-    </div>
+    </aside>
     <a class="button secondary" href="/work/famd">view work</a>
   </homepage-section>
   <homepage-section class="secondary" id="mowers">
-    <div class="text">
+    <header>
       <h2>mowers</h2>
       <p>a new spin on direct mail</p>
-    </div>
-    <div class="images">
+    </header>
+    <aside>
       <eleventy-image
         src="src/assets/img/home/mowers-scagboxopen.png"
-        role="presentation"
         alt=""
         width="240, 320, 640"
         sizes="(max-width: 768px) 65vw, 25vw"
@@ -59,28 +56,26 @@ description: "art director/they/them"
       ></eleventy-image>
       <eleventy-image
         src="src/assets/img/home/mowers-ferristube.png"
-        role="presentation"
         alt=""
         width="72, 120, 240"
         sizes="(max-width: 768px) 16vw, 10vw"
         class="tube"
       ></eleventy-image>
-    </div>
+    </aside>
     <a class="button primary" href="/work/mowers">view work</a>
   </homepage-section>
   <homepage-section class="primary" id="pampers">
-    <div class="text">
+    <header>
       <h2>pampers</h2>
       <p>
         dads are finally recognized...
         <br />
         but not without cool tech
       </p>
-    </div>
-    <div class="images">
+    </header>
+    <aside>
       <eleventy-image
         src="src/assets/img/home/pampers-appscreen1.png"
-        role="presentation"
         alt=""
         width="120, 240, 320"
         sizes="(max-width: 768px) 30vw, 12vw"
@@ -88,7 +83,6 @@ description: "art director/they/them"
       ></eleventy-image>
       <eleventy-image
         src="src/assets/img/home/pampers-appscreen2.png"
-        role="presentation"
         alt=""
         width="120, 240, 320"
         sizes="(max-width: 768px) 30vw, 12vw"
@@ -96,34 +90,33 @@ description: "art director/they/them"
       ></eleventy-image>
       <eleventy-image
         src="src/assets/img/home/pampers-appscreen3.png"
-        role="presentation"
         alt=""
         width="120, 240, 320"
         sizes="(max-width: 768px) 30vw, 12vw"
         class="right"
       ></eleventy-image>
-    </div>
+    </aside>
     <a class="button secondary" href="/work/pampers">view work</a>
   </homepage-section>
   <homepage-section class="secondary" id="more">
-    <div class="text">
+    <header>
       <h2>and then some</h2>
       <p>
         if you made it here,
         <br />
         you deserve a little extra
       </p>
-    </div>
-    <div class="images">
+    </header>
+    <aside>
       <autoplay-video
         @src="src/assets/video/work/more/more-Cinemagraph.mp4"
         title="A looping cinemagraph of a woman posing with wind blowing her clothes"
       ></autoplay-video>
-    </div>
+    </aside>
     <a class="button primary" href="/work/more">view work</a>
   </homepage-section>
   <homepage-section class="primary" id="about">
-    <div class="text">
+    <header>
       <h2>about</h2>
       <p>
         Jess Keoshian is a designer and art director located in the metro area
@@ -131,8 +124,8 @@ description: "art director/they/them"
         strategic edge to every project. When not designing, Jess can be found
         baking or snuggling up with their rescue dog Harrison.
       </p>
-    </div>
-    <div class="images">
+    </header>
+    <aside>
       <eleventy-image
         src="src/assets/img/home/Harrison2.png"
         alt="A photo of Jess' dog Harrison"
@@ -155,7 +148,7 @@ description: "art director/they/them"
         class="harrison-ball scroll-reveal-hidden"
       >
       </eleventy-image>
-    </div>
+    </aside>
     <a class="button secondary" download href="/Jess_Keoshian_Resume.pdf"
       >view resume</a
     >
@@ -212,7 +205,7 @@ description: "art director/they/them"
     text-align: left;
   }
 
-  #about .images {
+  #about aside {
     display: flex;
     flex-direction: column;
   }
@@ -229,17 +222,17 @@ description: "art director/they/them"
     transition-duration: 1.2s;
   }
 
-  #about .images > * {
+  #about aside > * {
     position: relative;
   }
 
-  #about .images > :nth-child(1) {
+  #about aside > :nth-child(1) {
     z-index: 0;
   }
-  #about .images > :nth-child(2) {
+  #about aside > :nth-child(2) {
     z-index: 1;
   }
-  #about .images > :nth-child(3) {
+  #about aside > :nth-child(3) {
     z-index: 2;
   }
 
@@ -256,11 +249,11 @@ description: "art director/they/them"
   }
 
   @media only screen and (max-width: 768px) {
-    #mowers .images {
+    #mowers aside {
       margin: 1.5rem 0;
     }
 
-    #pampers .images {
+    #pampers aside {
       margin-top: 1.5rem;
     }
 

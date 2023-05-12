@@ -17,71 +17,51 @@
     />
 
     <meta name="generator" :content="eleventy.generator" />
+
+    <!-- Critical CSS -->
+    <style
+      @raw="getBundle('css', 'critical')"
+      data-pg-trns-id="css-crit"
+      webc:keep
+    ></style>
+    <link rel="stylesheet" href="../../css/reset.css" webc:bucket="critical" />
+
+    <!-- CSS and JS which controls transitions -->
+    <link
+      rel="stylesheet"
+      :href="getBundleFileUrl('css', 'transition-persist')"
+      data-pg-trns-id="css-trns-persist"
+      webc:keep
+    />
+    <script
+      :src="getBundleFileUrl('js', 'transition-persist')"
+      type="module"
+      data-pg-trns-id="js-trns-persist"
+      webc:keep
+    ></script>
+
+    <link
+      rel="stylesheet"
+      href="../../css/page-transition.css"
+      webc:bucket="transition-persist"
+    />
+    <script
+      src="../../js/page-transition.mjs"
+      webc:bucket="transition-persist"
+    ></script>
+
+    <script
+      src="../../js/lazy-video.mjs"
+      webc:bucket="transition-persist"
+    ></script>
+
+    <!-- Page-specific JS and CSS which should not be persisted -->
+    <style @raw="getBundle('css')" webc:keep></style>
+    <script :src="getBundleFileUrl('js')" type="module" webc:keep></script>
   </head>
   <body>
-    <!-- Element which is animated for page transitions -->
-    <div id="pg-trns">
-      <!-- All contents of the transition element are persisted between pages -->
-
-      <!-- Critical CSS -->
-      <style @raw="getBundle('css', 'critical')" webc:keep></style>
-      <link
-        rel="stylesheet"
-        href="../../css/reset.css"
-        webc:bucket="critical"
-      />
-
-      <!-- CSS and JS which controls transitions -->
-      <link
-        rel="stylesheet"
-        :href="getBundleFileUrl('css', 'transition-persist')"
-        webc:keep
-      />
-      <script
-        :src="getBundleFileUrl('js', 'transition-persist')"
-        type="module"
-        webc:keep
-      ></script>
-
-      <link
-        rel="stylesheet"
-        href="../../css/page-transition.css"
-        webc:bucket="transition-persist"
-      />
-      <script
-        src="../../js/page-transition.mjs"
-        webc:bucket="transition-persist"
-      ></script>
-
-      <script
-        src="../../js/lazy-video.mjs"
-        webc:bucket="transition-persist"
-      ></script>
-
-      <!-- Shoelace -->
-      <script
-        type="module"
-        src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.4.0/dist/translations/en.js"
-        webc:keep
-      ></script>
-      <script
-        type="module"
-        src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.4.0/dist/shoelace-autoloader.js"
-        webc:keep
-      ></script>
-      <link
-        rel="stylesheet"
-        href="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.4.0/dist/themes/light.css"
-        webc:keep
-      />
-    </div>
-
-    <!-- Page-specific CSS which should not be persisted -->
-    <style @raw="getBundle('css')" webc:keep></style>
-
     <template @raw="content" webc:nokeep></template>
-
-    <!-- Page-specific JS -->
-    <script :src="getBundleFileUrl('js')" type="module" webc:keep></script>
+    <!-- Element which is animated for page transitions -->
+    <div id="pg-trns"></div>
   </body>
 </html>

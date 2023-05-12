@@ -12,35 +12,40 @@
   };
 
   const pageTransitionAttr = "data-pg-trns";
+  const pageTransitionIDAttr = "data-pg-trns-id";
 
   const pageCache = {};
 
   const fetchPage = async (pathname) => {
     if (pageCache[pathname]) {
-      return pageCache[pathname].promise || pageCache[pathname];
+      return pageCache[pathname];
+    } else {
+      const cachedPageData = sessionStorage.getItem(pathname);
+      if (cachedPageData) {
+        return JSON.parse(cachedPageData);
+      }
     }
 
     const pageDataPath = `${pathname}${
       pathname.at(-1) === "/" ? "" : "/"
     }index.html.json`;
 
-    const pagePromise = fetch(pageDataPath)
-      .then((res) => res.json())
-      .then((pageData) => {
-        return (pageCache[pathname] = pageData);
-      });
+    const pagePromise = fetch(pageDataPath).then((res) => res.json());
 
-    pageCache[pathname] = {
-      promise: pagePromise,
-    };
+    pagePromise.then((pageData) => {
+      // Once the page is fetched, move it to sessionStorage
+      // so we can free up memory but still keep it cached if needed
+      delete pageData[pathname];
+      sessionStorage.setItem(pathname, JSON.stringify(pageData));
+    });
 
-    return pagePromise;
+    return (pageCache[pathname] = pagePromise);
   };
 
   const transitionURLQueue = [];
   let isTransitioning = false;
 
-  const transitionToPage = async (newPageURL) => {
+  const transitionToPage = async (newPageURL, isBackNavigation = false) => {
     try {
       transitionURLQueue.push(newPageURL);
       // Start fetching the new page so we can load it while the transition animation is playing
@@ -78,54 +83,65 @@
 
       const headTemplateContent = template.content;
 
-      document.head.replaceChildren(
-        ...Array.from(headTemplateContent.childNodes).map((el) =>
-          el.cloneNode(true)
-        )
-      );
+      // Remove all head contents which are not persisted between page transitions
+      for (const headChild of Array.from(document.head.childNodes)) {
+        if (!headChild.hasAttribute?.(pageTransitionIDAttr)) {
+          headChild.remove();
+        }
+      }
+
+      // Append all head contents from the new page (except for any duplicates of the persisted contents)
+      for (const child of headTemplateContent.childNodes) {
+        const pageTransitionID = child.getAttribute?.(pageTransitionIDAttr);
+
+        if (pageTransitionID) {
+          const existingPageTransitionElement = document.querySelector(
+            `[${pageTransitionIDAttr}="${pageTransitionID}"]`
+          );
+          if (existingPageTransitionElement) {
+            continue;
+          }
+        }
+
+        if (child.tagName === "SCRIPT") {
+          const scriptTag = document.createElement("script");
+          if (child.src) {
+            scriptTag.setAttribute("src", child.src);
+          } else {
+            scriptTag.appendChild(document.createTextNode(child.textContent));
+          }
+          document.head.appendChild(scriptTag);
+        } else {
+          document.head.appendChild(child.cloneNode(true));
+        }
+      }
 
       template.innerHTML = newBodyHTML;
       const bodyTemplateContent = template.content;
 
-      const bodyChildren = document.body.children;
-
       // Remove all body children except the page transition element,
       // starting from the end to avoid messing with indices as we remove elements
-      for (let i = bodyChildren.length - 1; i >= 0; --i) {
-        const bodyChild = bodyChildren[i];
+      for (const bodyChild of Array.from(document.body.childNodes)) {
         if (bodyChild === pageTransitionElement) {
           continue;
         }
         bodyChild.remove();
       }
 
-      for (const newChild of bodyTemplateContent.children) {
-        if (newChild.id === "pg-trns") {
+      for (const newChild of bodyTemplateContent.childNodes) {
+        if (newChild.id === pageTransitionElement.id) {
           continue;
         }
 
-        let newNode;
-
-        if (newChild.tagName === "SCRIPT") {
-          newNode = document.createElement("script");
-          if (newChild.src) {
-            newNode.setAttribute("src", newChild.src);
-          } else {
-            newNode.appendChild(document.createTextNode(newChild.textContent));
-          }
-        } else {
-          newNode = newChild.cloneNode(true);
-        }
-
-        document.body.appendChild(newNode);
+        document.body.appendChild(newChild.cloneNode(true));
       }
 
-      if (newPageURL.hash) {
-        document.getElementById(newPageURL.hash.substring(1)).scrollIntoView();
-      } else {
+      if (isBackNavigation) {
         // Restore the previous scroll position for this page if available, otherwise scroll to the top
         window.scroll(0, previousScrollPositions[newPageURL.pathname] || 0);
         delete previousScrollPositions[newPageURL.pathname];
+      } else if (newPageURL.hash) {
+        document.getElementById(newPageURL.hash.substring(1)).scrollIntoView();
       }
 
       document.dispatchEvent(new CustomEvent("transition:pageopened"));
@@ -214,7 +230,7 @@
     const newURL = new URL(window.location.href);
 
     if (newURL.pathname !== previousURL.pathname) {
-      transitionToPage(newURL);
+      transitionToPage(newURL, true);
     }
 
     updatePreviousURL(newURL);
