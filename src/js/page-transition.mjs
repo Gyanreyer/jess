@@ -11,41 +11,76 @@
     previousURL = newURL;
   };
 
-  const pageTransitionAttr = "data-pg-trns";
+  const pageTransitionStateAttr = "data-pg-trns-state";
   const pageTransitionIDAttr = "data-pg-trns-id";
 
   const pageCache = {};
 
+  const domParser = new DOMParser();
+
   const fetchPage = async (pathname) => {
     if (pageCache[pathname]) {
       return pageCache[pathname];
-    } else {
-      const cachedPageData = sessionStorage.getItem(pathname);
-      if (cachedPageData) {
-        return JSON.parse(cachedPageData);
+    }
+
+    const pagePromise = fetch(pathname)
+      .then((res) => res.text())
+      .then((htmlString) => {
+        const parsedDocument = domParser.parseFromString(
+          htmlString,
+          "text/html"
+        );
+
+        return {
+          theme: parsedDocument.documentElement.getAttribute("data-theme"),
+          headChildren: Array.from(parsedDocument.head.children),
+          bodyChildren: Array.from(parsedDocument.body.children),
+        };
+      });
+
+    return (pageCache[pathname] = pagePromise);
+  };
+
+  const applyNewPageContents = (targetElement, newChildren) => {
+    const initialChildCount = targetElement.childNodes.length;
+    for (let i = initialChildCount - 1; i >= 0; i--) {
+      const child = targetElement.childNodes[i];
+      if (!child.hasAttribute?.(pageTransitionIDAttr)) {
+        child.remove();
       }
     }
 
-    const pageDataPath = `${pathname}${
-      pathname.at(-1) === "/" ? "" : "/"
-    }index.html.json`;
+    // Append all new children to the target (except for any duplicates of the persisted contents)
+    for (const child of newChildren) {
+      const pageTransitionID = child.getAttribute(pageTransitionIDAttr);
 
-    const pagePromise = fetch(pageDataPath).then((res) => res.json());
+      if (pageTransitionID) {
+        const existingPageTransitionElement = targetElement.querySelector(
+          `[${pageTransitionIDAttr}="${pageTransitionID}"]`
+        );
+        if (existingPageTransitionElement) {
+          continue;
+        }
+      }
 
-    pagePromise.then((pageData) => {
-      // Once the page is fetched, move it to sessionStorage
-      // so we can free up memory but still keep it cached if needed
-      delete pageData[pathname];
-      sessionStorage.setItem(pathname, JSON.stringify(pageData));
-    });
-
-    return (pageCache[pathname] = pagePromise);
+      if (child.tagName === "SCRIPT") {
+        const scriptTag = document.createElement("script");
+        if (child.src) {
+          scriptTag.setAttribute("src", child.src);
+        } else {
+          scriptTag.appendChild(document.createTextNode(child.textContent));
+        }
+        targetElement.appendChild(scriptTag);
+      } else {
+        targetElement.appendChild(child.cloneNode(true));
+      }
+    }
   };
 
   const transitionURLQueue = [];
   let isTransitioning = false;
 
-  const transitionToPage = async (newPageURL, isBackNavigation = false) => {
+  const transitionToPage = async (newPageURL, isBackNavigation) => {
     try {
       transitionURLQueue.push(newPageURL);
       // Start fetching the new page so we can load it while the transition animation is playing
@@ -59,9 +94,7 @@
 
       isTransitioning = true;
 
-      const pageTransitionElement = document.getElementById("pg-trns");
-
-      document.documentElement.setAttribute(pageTransitionAttr, "start");
+      document.documentElement.setAttribute(pageTransitionStateAttr, "start");
 
       await new Promise((resolve) => setTimeout(resolve, 600));
 
@@ -70,87 +103,30 @@
       const transitionPageURL = transitionURLQueue.pop();
       transitionURLQueue.length = 0;
 
-      const {
-        theme: dataTheme,
-        head: newHeadHTML,
-        body: newBodyHTML,
-      } = await fetchPage(transitionPageURL.pathname);
+      const { theme, headChildren, bodyChildren } = await fetchPage(
+        transitionPageURL.pathname
+      );
 
-      document.documentElement.setAttribute("data-theme", dataTheme);
+      document.documentElement.setAttribute("data-theme", theme);
 
-      const template = document.createElement("template");
-      template.innerHTML = newHeadHTML;
+      applyNewPageContents(document.head, headChildren);
+      applyNewPageContents(document.body, bodyChildren);
 
-      const headTemplateContent = template.content;
-
-      // Remove all head contents which are not persisted between page transitions
-      for (const headChild of Array.from(document.head.childNodes)) {
-        if (!headChild.hasAttribute?.(pageTransitionIDAttr)) {
-          headChild.remove();
-        }
-      }
-
-      // Append all head contents from the new page (except for any duplicates of the persisted contents)
-      for (const child of headTemplateContent.childNodes) {
-        const pageTransitionID = child.getAttribute?.(pageTransitionIDAttr);
-
-        if (pageTransitionID) {
-          const existingPageTransitionElement = document.querySelector(
-            `[${pageTransitionIDAttr}="${pageTransitionID}"]`
-          );
-          if (existingPageTransitionElement) {
-            continue;
-          }
-        }
-
-        if (child.tagName === "SCRIPT") {
-          const scriptTag = document.createElement("script");
-          if (child.src) {
-            scriptTag.setAttribute("src", child.src);
-          } else {
-            scriptTag.appendChild(document.createTextNode(child.textContent));
-          }
-          document.head.appendChild(scriptTag);
-        } else {
-          document.head.appendChild(child.cloneNode(true));
-        }
-      }
-
-      template.innerHTML = newBodyHTML;
-      const bodyTemplateContent = template.content;
-
-      // Remove all body children except the page transition element,
-      // starting from the end to avoid messing with indices as we remove elements
-      for (const bodyChild of Array.from(document.body.childNodes)) {
-        if (bodyChild === pageTransitionElement) {
-          continue;
-        }
-        bodyChild.remove();
-      }
-
-      for (const newChild of bodyTemplateContent.childNodes) {
-        if (newChild.id === pageTransitionElement.id) {
-          continue;
-        }
-
-        document.body.appendChild(newChild.cloneNode(true));
-      }
-
-      if (isBackNavigation) {
+      if (!isBackNavigation && newPageURL.hash) {
+        document.getElementById(newPageURL.hash.substring(1)).scrollIntoView();
+      } else {
         // Restore the previous scroll position for this page if available, otherwise scroll to the top
         window.scroll(0, previousScrollPositions[newPageURL.pathname] || 0);
         delete previousScrollPositions[newPageURL.pathname];
-      } else if (newPageURL.hash) {
-        document.getElementById(newPageURL.hash.substring(1)).scrollIntoView();
       }
 
       document.dispatchEvent(new CustomEvent("transition:pageopened"));
 
-      document.documentElement.setAttribute(pageTransitionAttr, "end");
+      document.documentElement.setAttribute(pageTransitionStateAttr, "end");
 
       await new Promise((resolve) => setTimeout(resolve, 600));
 
-      document.documentElement.removeAttribute(pageTransitionAttr);
+      document.documentElement.removeAttribute(pageTransitionStateAttr);
 
       isTransitioning = false;
 

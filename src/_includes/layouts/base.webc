@@ -62,6 +62,6 @@
   <body>
     <template @raw="content" webc:nokeep></template>
     <!-- Element which is animated for page transitions -->
-    <div id="pg-trns"></div>
+    <div data-pg-trns-id="trns-anim-element"></div>
   </body>
 </html>
