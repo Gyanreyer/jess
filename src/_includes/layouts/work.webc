@@ -13,22 +13,18 @@ theme: "light"
 <scroll-to-top></scroll-to-top>
 
 <!-- Shoelace -->
-<script
-  type="module"
-  src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.4.0/dist/translations/en.js"
-  data-pg-trns-id="sl-en"
-  webc:keep
-></script>
-<script
-  type="module"
-  src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.4.0/dist/shoelace-autoloader.js"
-  data-pg-trns-id="sl-loader"
-  webc:keep
-></script>
+<script type="module" pgtrns:id="sl-components" webc:keep>
+  await import(
+    "https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.4.0/dist/translations/en.js"
+  );
+  import(
+    "https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.4.0/dist/components/carousel/carousel.js"
+  );
+</script>
 <link
   rel="stylesheet"
   href="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.4.0/dist/themes/light.css"
-  data-pg-trns-id="sl-theme"
+  pgtrns:id="sl-theme"
   webc:keep
 />
 

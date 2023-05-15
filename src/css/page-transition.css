@@ -1,4 +1,4 @@
-[data-pg-trns-id="trns-anim-element"] {
+[pgtrns\:id="trns-anim-element"] {
   position: fixed;
   top: 0;
   left: 0;
@@ -13,8 +13,8 @@
   --angled-segment-height: calc(100vw * tan(var(--angle)));
 }
 
-[data-pg-trns-id="trns-anim-element"]::before,
-[data-pg-trns-id="trns-anim-element"]::after {
+[pgtrns\:id="trns-anim-element"]::before,
+[pgtrns\:id="trns-anim-element"]::after {
   content: "";
   position: absolute;
   left: 0;
@@ -24,25 +24,25 @@
   transform: rotate(calc(-1 * var(--angle)));
 }
 
-[data-pg-trns-id="trns-anim-element"]::before {
+[pgtrns\:id="trns-anim-element"]::before {
   bottom: 100%;
   transform-origin: top right;
 }
 
-[data-pg-trns-id="trns-anim-element"]::after {
+[pgtrns\:id="trns-anim-element"]::after {
   top: 100%;
   transform-origin: bottom left;
 }
 
-[data-pg-trns-state] [data-pg-trns-id="trns-anim-element"] {
+[pgtrns\:state] [pgtrns\:id="trns-anim-element"] {
   visibility: visible;
   transition: transform 0.6s;
 }
 
-[data-pg-trns-state="start"] [data-pg-trns-id="trns-anim-element"] {
+[pgtrns\:state="start"] [pgtrns\:id="trns-anim-element"] {
   transform: translateY(0%);
 }
 
-[data-pg-trns-state="end"] [data-pg-trns-id="trns-anim-element"] {
+[pgtrns\:state="end"] [pgtrns\:id="trns-anim-element"] {
   transform: translateY(calc(-100% - var(--angled-segment-height)));
 }

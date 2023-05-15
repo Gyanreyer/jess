@@ -21,7 +21,7 @@
     <!-- Critical CSS -->
     <style
       @raw="getBundle('css', 'critical')"
-      data-pg-trns-id="css-crit"
+      pgtrns:id="css-crit"
       webc:keep
     ></style>
     <link rel="stylesheet" href="../../css/reset.css" webc:bucket="critical" />
@@ -30,13 +30,13 @@
     <link
       rel="stylesheet"
       :href="getBundleFileUrl('css', 'transition-persist')"
-      data-pg-trns-id="css-trns-persist"
+      pgtrns:id="css-trns-persist"
       webc:keep
     />
     <script
       :src="getBundleFileUrl('js', 'transition-persist')"
       type="module"
-      data-pg-trns-id="js-trns-persist"
+      pgtrns:id="js-trns-persist"
       webc:keep
     ></script>
 
@@ -62,6 +62,6 @@
   <body>
     <template @raw="content" webc:nokeep></template>
     <!-- Element which is animated for page transitions -->
-    <div data-pg-trns-id="trns-anim-element"></div>
+    <div pgtrns:id="trns-anim-element"></div>
   </body>
 </html>

@@ -176,7 +176,7 @@
   }
 
   :host-context(main[data-transition="enter-start"]) .section-content > aside {
-    --translate-y: calc(var(var(--translate-y)) + 1.5rem);
+    --translate-y: 1rem;
   }
 
   :host-context(main[data-transition="entering"]) .section-content > * {
@@ -192,10 +192,6 @@
     .section-content
     > :is(header, .button) {
     transform: translate3d(0, 0, 0);
-  }
-
-  :host-context(main[data-transition="entering"]) .section-content > aside {
-    --translate-y: var(--translate-y);
   }
 
   :host-context(main[data-transition="entering"]):first-of-type header {

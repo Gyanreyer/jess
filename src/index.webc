@@ -284,6 +284,14 @@ description: "art director/they/them"
     for (const el of document.getElementsByClassName("scroll-reveal-hidden")) {
       scrollRevealObserver.observe(el);
     }
+
+    document.addEventListener(
+      "transition:pageclosed",
+      () => {
+        scrollRevealObserver.disconnect();
+      },
+      { once: true }
+    );
   }
 </script>
 <script>

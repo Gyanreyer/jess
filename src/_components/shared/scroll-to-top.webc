@@ -70,5 +70,13 @@
     });
 
     navObserver.observe(document.querySelector("nav"));
+
+    document.addEventListener(
+      "transition:pageclosed",
+      () => {
+        navObserver.disconnect();
+      },
+      { once: true }
+    );
   }
 </script>

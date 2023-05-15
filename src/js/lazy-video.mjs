@@ -26,18 +26,14 @@
   );
 
   const watchLazyVideos = () => {
-    const lazyVideos = Array.from(document.querySelectorAll("video.lazy"));
-    for (const video of lazyVideos) {
+    document.querySelectorAll("video.lazy").forEach((video) => {
       lazyVideoObserver.observe(video);
-    }
+    });
 
     document.addEventListener(
       "transition:pageclosed",
       () => {
-        for (const video of lazyVideos) {
-          lazyVideoObserver.unobserve(video);
-        }
-        lazyVideos.length = 0;
+        lazyVideoObserver.disconnect();
       },
       { once: true }
     );
