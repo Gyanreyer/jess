@@ -190,9 +190,17 @@
     }
   };
 
-  const onClickLink = (e) => {
+  const onClickLink = (
+    /** @type {MouseEvent} */
+    e
+  ) => {
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
       // Don't play the page transition animation if the user prefers reduced motion
+      return;
+    }
+
+    if (e.ctrlKey || e.metaKey || e.shiftKey || e.altKey) {
+      // Don't do a transition if the user is holding down a modifier key
       return;
     }
 
@@ -220,18 +228,27 @@
   };
 
   const addLinkTransitionListeners = () => {
-    document.querySelectorAll('a[href^="/"]:not([download])').forEach((el) => {
-      el.addEventListener("click", onClickLink);
-
-      // When the current page is closed, clean up listeners
-      document.addEventListener(
-        "transition:pageclosed",
-        function onPageClosed() {
-          el.removeEventListener("click", onClickLink);
-          document.removeEventListener("transition:pageclosed", onPageClosed);
+    document.querySelectorAll('a[href^="/"]').forEach(
+      (
+        /** @type {HTMLAnchorElement} */
+        el
+      ) => {
+        if (el.download || el.target === "_blank") {
+          return;
         }
-      );
-    });
+
+        el.addEventListener("click", onClickLink);
+
+        // When the current page is closed, clean up listeners
+        document.addEventListener(
+          "transition:pageclosed",
+          function onPageClosed() {
+            el.removeEventListener("click", onClickLink);
+            document.removeEventListener("transition:pageclosed", onPageClosed);
+          }
+        );
+      }
+    );
   };
 
   addLinkTransitionListeners();
