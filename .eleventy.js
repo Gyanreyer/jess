@@ -34,8 +34,8 @@ module.exports = function (eleventyConfig) {
 
   // Image plugin
   eleventyConfig.addPlugin(eleventyImagePlugin, {
-    formats: ["webp", "auto"],
-    widths: [320, 640, 960, 1280, 1920],
+    formats: ["avif", "webp", "auto"],
+    widths: [320, 720, 1280, 1920],
     urlPath: "/img/",
     outputDir: "./_site/img/",
     defaultAttributes: {
