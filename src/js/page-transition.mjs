@@ -91,18 +91,24 @@
         }
       }
 
-      if (child.tagName === "SCRIPT") {
-        const scriptTag = document.createElement("script");
-        // Transfer over all attributes to the new script tag
-        for (const attr of child.attributes) {
-          scriptTag.setAttribute(attr.name, attr.value);
-        }
-        if (child.textContent) {
-          scriptTag.appendChild(document.createTextNode(child.textContent));
-        }
-        targetElement.appendChild(scriptTag);
-      } else {
-        targetElement.appendChild(child.cloneNode(true));
+      switch (child.tagName) {
+        case "SCRIPT":
+          {
+            const clonedTag = document.createElement(
+              child.tagName.toLowerCase()
+            );
+            // Transfer over all attributes to the new tag
+            for (const attr of child.attributes) {
+              clonedTag.setAttribute(attr.name, attr.value);
+            }
+            if (child.textContent) {
+              clonedTag.appendChild(document.createTextNode(child.textContent));
+            }
+            targetElement.appendChild(clonedTag);
+          }
+          break;
+        default:
+          targetElement.appendChild(child.cloneNode(true));
       }
     }
   };

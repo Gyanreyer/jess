@@ -87,7 +87,7 @@
 
   h2 {
     font-size: 4rem;
-    font-weight: bold;
+    font-weight: 700;
     margin-bottom: 0.7rem;
     line-height: 1;
   }
@@ -103,7 +103,7 @@
     position: relative;
     display: inline-block;
     font-size: 1.7rem;
-    font-weight: bold;
+    font-weight: 700;
     padding: 0.5rem 2rem;
     border-radius: 2em;
     text-decoration: none;

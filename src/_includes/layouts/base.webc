@@ -55,13 +55,15 @@
       webc:bucket="transition-persist"
     ></script>
 
-    <!-- Page-specific JS and CSS which should not be persisted -->
+    <!-- Page-specific CSS which should not be persisted -->
     <style @raw="getBundle('css')" webc:keep></style>
-    <script :src="getBundleFileUrl('js')" type="module" webc:keep></script>
   </head>
   <body>
     <template @raw="content" webc:nokeep></template>
     <!-- Element which is animated for page transitions -->
     <div pgtrns:id="trns-anim-element"></div>
+
+    <!-- Page-specific JS which should not be persisted -->
+    <script @raw="getBundle('js')" type="module" webc:keep></script>
   </body>
 </html>

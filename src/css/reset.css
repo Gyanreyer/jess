@@ -1,28 +1,31 @@
 /* Normal font weight */
 @font-face {
   font-family: "Avenir Next";
-  src: url("/fonts/AvenirNext-Medium.woff2");
+  src: url("/fonts/AvenirNext-Medium.woff2") format("woff2");
   font-weight: 400;
   font-style: normal;
   font-display: swap;
+  unicode-range: U+00-7F;
 }
 
 /* Semi-bold font weight */
 @font-face {
   font-family: "Avenir Next";
-  src: url("/fonts/AvenirNext-DemiBold.woff2");
+  src: url("/fonts/AvenirNext-DemiBold.woff2") format("woff2");
   font-weight: 500;
   font-style: normal;
   font-display: swap;
+  unicode-range: U+00-7F;
 }
 
 /* Bold font weight */
 @font-face {
   font-family: "Avenir Next";
-  src: url("/fonts/AvenirNext-Bold.woff2");
+  src: url("/fonts/AvenirNext-Bold.woff2") format("woff2");
   font-weight: 700;
   font-style: normal;
   font-display: swap;
+  unicode-range: U+00-7F;
 }
 
 :root {
