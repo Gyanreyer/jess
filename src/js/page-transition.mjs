@@ -239,7 +239,7 @@
         /** @type {HTMLAnchorElement} */
         el
       ) => {
-        if (el.download || el.target === "_blank") {
+        if (el.hasAttribute("download") || el.target === "_blank") {
           return;
         }
 
