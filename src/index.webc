@@ -149,7 +149,9 @@ description: "art director/they/them"
       >
       </eleventy-image>
     </aside>
-    <a class="button secondary" href="/Jess_Keoshian_Resume.pdf">view resume</a>
+    <a class="button secondary" href="/Jess_Keoshian_Resume.pdf" pgtrns:skip>
+      view resume
+    </a>
   </homepage-section>
 </main>
 <scroll-to-top></scroll-to-top>

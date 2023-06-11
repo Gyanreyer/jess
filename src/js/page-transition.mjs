@@ -239,7 +239,7 @@
         /** @type {HTMLAnchorElement} */
         el
       ) => {
-        if (el.hasAttribute("download") || el.target === "_blank") {
+        if (el.hasAttribute("pgtrns:skip") || el.target === "_blank") {
           return;
         }
 
