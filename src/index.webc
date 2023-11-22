@@ -3,12 +3,12 @@ layout: "layouts/base.webc"
 theme: "dark"
 
 title: "Jess Keoshian"
-description: "art director/they/them"
+description: "art director/designer"
 ---
 
 <main data-transition="init">
   <navbar>
-    <p>art director/they/them</p>
+    <p>art director/designer</p>
   </navbar>
   <homepage-section class="secondary" id="general-mills">
     <header>
