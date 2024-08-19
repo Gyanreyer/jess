@@ -35,6 +35,5 @@ yarn-error.log*
 
 # Built site html/JS files (we'll commit image assets for caching purposes)
 _site/*
-!_site/img
 
 .DS_Store
