@@ -1,18 +1,21 @@
-const fs = require("node:fs");
-
 // 11ty plugins
-const pluginWebc = require("@11ty/eleventy-plugin-webc");
-const { eleventyImagePlugin } = require("@11ty/eleventy-img");
-const bundlerPlugin = require("@11ty/eleventy-plugin-bundle");
+import pluginWebc from "@11ty/eleventy-plugin-webc";
+import { eleventyImagePlugin } from "@11ty/eleventy-img";
+import bundlerPlugin from "@11ty/eleventy-plugin-bundle";
 
 // Minification/asset processing libs
-const esbuild = require("esbuild");
-const { minify: minifyCSS } = require("csso");
-const { minify: minifyHTML } = require("html-minifier-terser");
+import esbuild from "esbuild";
+import { minify as minifyCSS } from "csso";
+import { minify as minifyHTML } from "html-minifier-terser";
 
 const IS_PRODUCTION = process.env.NODE_ENV === "prod";
 
-module.exports = function (eleventyConfig) {
+/**
+ * @import { UserConfig } from "@11ty/eleventy";
+ *
+ * @param {UserConfig} eleventyConfig
+ */
+export default function (eleventyConfig) {
   // Set up webc plugin to process all webc files
   eleventyConfig.addPlugin(pluginWebc, {
     components: [
@@ -30,6 +33,7 @@ module.exports = function (eleventyConfig) {
     "src/assets/img/favicon.png": "/img/favicon.png",
     "src/assets/img/og.jpg": "/img/og.jpg",
     "src/assets/**/*.pdf": "/",
+    "src/assets/video": "/video",
   });
 
   // Image plugin
@@ -55,7 +59,7 @@ module.exports = function (eleventyConfig) {
               return (
                 await esbuild.transform(content, {
                   minify: IS_PRODUCTION,
-                  target: "es2015",
+                  target: "es2020",
                 })
               ).code;
             } catch (e) {
@@ -105,4 +109,4 @@ module.exports = function (eleventyConfig) {
       input: "src",
     },
   };
-};
+}

@@ -1,7 +1,0 @@
-<eleventy-video
-  :src="src"
-  :title="title"
-  preload="none"
-  class="lazy"
-  @attributes
-></eleventy-video>

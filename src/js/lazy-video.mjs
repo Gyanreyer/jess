@@ -1,22 +1,13 @@
 {
+  const lazyVideoTemplate = document.createElement("template");
+  const videoSlot = document.createElement("slot");
+  lazyVideoTemplate.appendChild(videoSlot);
+
   const lazyVideoObserver = new IntersectionObserver(
-    (entries, observer) => {
+    (entries) => {
       entries.forEach(async (entry) => {
         if (entry.isIntersecting) {
-          const lazyVideo = entry.target;
-          observer.unobserve(lazyVideo);
-
-          lazyVideo.classList.remove("lazy");
-          lazyVideo.setAttribute("preload", "metadata");
-
-          if (lazyVideo.classList.contains("autoplay")) {
-            try {
-              await lazyVideo.play();
-              lazyVideo.removeAttribute("controls");
-            } catch (err) {
-              console.warn("Failed to autoplay video", err);
-            }
-          }
+          entry.target.dispatchEvent(new Event("l-visible"));
         }
       });
     },
@@ -25,20 +16,51 @@
     }
   );
 
-  const watchLazyVideos = () => {
-    document.querySelectorAll("video.lazy").forEach((video) => {
-      lazyVideoObserver.observe(video);
-    });
+  class LazyVideo extends HTMLElement {
+    connectedCallback() {
+      this.video = this.querySelector("video");
+      if (!this.video) {
+        console.error("No video element found in lazy-video");
+        return;
+      }
 
-    document.addEventListener(
-      "transition:pageclosed",
-      () => {
-        lazyVideoObserver.disconnect();
-      },
-      { once: true }
-    );
-  };
+      this.addEventListener("l-visible", this.onVisible.bind(this));
 
-  watchLazyVideos();
-  document.addEventListener("transition:pageopened", watchLazyVideos);
+      lazyVideoObserver.observe(this);
+    }
+
+    disconnectedCallback() {
+      lazyVideoObserver.unobserve(this);
+    }
+
+    onVisible() {
+      const video = this.video;
+      if (!video) return;
+
+      lazyVideoObserver.unobserve(this);
+
+      const dataSrc = this.dataset.src;
+      if (dataSrc) {
+        video.src = dataSrc;
+      } else {
+        const sources = this.querySelectorAll("source");
+        video.append(...sources);
+      }
+
+      video.setAttribute("preload", "metadata");
+
+      if (this.dataset.autoplay !== undefined) {
+        video.muted = true;
+        video.controls = false;
+        video.play().catch((e) => {
+          if (e instanceof DOMException && e.name === "NotAllowedError") {
+            // Show controls if autoplay is not allowed
+            video.controls = true;
+          }
+        });
+      }
+    }
+  }
+
+  customElements.define("lazy-video", LazyVideo);
 }

@@ -1,1 +1,3 @@
-<lazy-video :src="src" :title="title" controls></lazy-video>
+<lazy-video :data-src="src" :title="title" @attributes>
+  <video controls preload="none"></video>
+</lazy-video>

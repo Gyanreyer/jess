@@ -6,6 +6,9 @@
   /** @type {null | URL} */
   let previousURL = null;
   let currentURL = new URL(window.location.href);
+  /**
+   * @type {Record<string, number>}
+   */
   const previousScrollPositions = {};
 
   /**
@@ -24,11 +27,11 @@
   /**
    * @typedef {Object} PageCacheEntry
    * @property {string} theme
-   * @property {HTMLElement[]} headChildren
-   * @property {HTMLElement[]} bodyChildren
+   * @property {Node[]} headChildren
+   * @property {Node[]} bodyChildren
    */
 
-  /** @type {Object.<string, Promise<PageCacheEntry> | PageCacheEntry> }} */
+  /** @type {Record<string, Promise<PageCacheEntry> | PageCacheEntry> }} */
   const pageCache = {};
 
   const domParser = new DOMParser();
@@ -42,20 +45,33 @@
       return pageCache[pathname];
     }
 
+    /**
+     * @type {Promise<PageCacheEntry>}
+     */
     const pagePromise = fetch(pathname)
       .then((res) => res.text())
-      .then((htmlString) => {
-        const parsedDocument = domParser.parseFromString(
-          htmlString,
-          "text/html"
-        );
+      .then(
+        /**
+         * @param {string} htmlString
+         * @returns {PageCacheEntry}
+         */
+        (htmlString) => {
+          const parsedDocument = domParser.parseFromString(
+            htmlString,
+            "text/html"
+          );
 
-        return {
-          theme: parsedDocument.documentElement.getAttribute("data-theme"),
-          headChildren: Array.from(parsedDocument.head.children),
-          bodyChildren: Array.from(parsedDocument.body.children),
-        };
-      });
+          const theme =
+            parsedDocument.documentElement.getAttribute("data-theme") ??
+            "light";
+
+          return {
+            theme,
+            headChildren: Array.from(parsedDocument.head.childNodes),
+            bodyChildren: Array.from(parsedDocument.body.childNodes),
+          };
+        }
+      );
 
     pagePromise.then((pageData) => {
       // Unwrap the data returned from the promise into the cache
@@ -66,20 +82,27 @@
   };
 
   /**
-   * @param {HTMLElement} targetElement
-   * @param {HTMLElement[]} newChildren
+   * @param {Element} targetElement
+   * @param {Node[]} newChildren
    */
   const applyNewPageContents = (targetElement, newChildren) => {
     const initialChildCount = targetElement.childNodes.length;
     for (let i = initialChildCount - 1; i >= 0; i--) {
       const child = targetElement.childNodes[i];
-      if (!child.hasAttribute?.(pageTransitionIDAttr)) {
+      if (
+        !(child instanceof HTMLElement) ||
+        !child.hasAttribute(pageTransitionIDAttr)
+      ) {
         child.remove();
       }
     }
 
     // Append all new children to the target (except for any duplicates of the persisted contents)
     for (const child of newChildren) {
+      if (!(child instanceof HTMLElement)) {
+        continue;
+      }
+
       const pageTransitionID = child.getAttribute(pageTransitionIDAttr);
 
       if (pageTransitionID) {
@@ -149,6 +172,10 @@
       const transitionPageURL = transitionURLQueue.pop();
       transitionURLQueue.length = 0;
 
+      if (!transitionPageURL) {
+        throw new Error("No transition page URL found");
+      }
+
       const { theme, headChildren, bodyChildren } = await fetchPage(
         transitionPageURL.pathname
       );
@@ -163,7 +190,7 @@
         window.scroll(0, previousScrollPositions[newPageURL.pathname] || 0);
         delete previousScrollPositions[newPageURL.pathname];
       } else if (newPageURL.hash) {
-        document.getElementById(newPageURL.hash.substring(1)).scrollIntoView();
+        document.getElementById(newPageURL.hash.substring(1))?.scrollIntoView();
       } else {
         window.scroll(0, 0);
       }
@@ -183,6 +210,9 @@
           // If more URLs got added to the queue since the second half of the transition animation started,
           // start transitioning again for the new target URL
           const nextPageURL = transitionURLQueue.pop();
+          if (!nextPageURL) {
+            throw new Error("No next page URL found");
+          }
           transitionURLQueue.length = 0;
           transitionToPage(nextPageURL, isBackNavigation);
         });
@@ -210,13 +240,17 @@
       return;
     }
 
+    if (!(e.currentTarget instanceof HTMLAnchorElement)) {
+      return;
+    }
+
     const targetURL = new URL(e.currentTarget.href);
 
     if (targetURL.pathname === window.location.pathname) {
       if (targetURL.hash) {
         // If the link is to an anchor on the same page, smoothly scroll to it
         e.preventDefault();
-        document.getElementById(targetURL.hash.substring(1)).scrollIntoView({
+        document.getElementById(targetURL.hash.substring(1))?.scrollIntoView({
           behavior: "smooth",
         });
       }
@@ -234,27 +268,26 @@
   };
 
   const addLinkTransitionListeners = () => {
-    document.querySelectorAll('a[href^="/"]').forEach(
-      (
-        /** @type {HTMLAnchorElement} */
-        el
-      ) => {
-        if (el.hasAttribute("pgtrns:skip") || el.target === "_blank") {
-          return;
-        }
-
-        el.addEventListener("click", onClickLink);
-
-        // When the current page is closed, clean up listeners
-        document.addEventListener(
-          "transition:pageclosed",
-          function onPageClosed() {
-            el.removeEventListener("click", onClickLink);
-            document.removeEventListener("transition:pageclosed", onPageClosed);
-          }
-        );
+    document.querySelectorAll('a[href^="/"]').forEach((el) => {
+      if (
+        !(el instanceof HTMLAnchorElement) ||
+        el.hasAttribute("pgtrns:skip") ||
+        el.target === "_blank"
+      ) {
+        return;
       }
-    );
+
+      el.addEventListener("click", onClickLink);
+
+      // When the current page is closed, clean up listeners
+      document.addEventListener(
+        "transition:pageclosed",
+        function onPageClosed() {
+          el.removeEventListener("click", onClickLink);
+          document.removeEventListener("transition:pageclosed", onPageClosed);
+        }
+      );
+    });
   };
 
   addLinkTransitionListeners();

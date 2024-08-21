@@ -3,16 +3,19 @@
   "version": "1.0.0",
   "description": "Jess Keoshian's portfolio site",
   "main": "index.js",
+  "type": "module",
   "devDependencies": {
-    "@11ty/eleventy": "^2.0.1",
-    "@11ty/eleventy-img": "^3.1.0",
-    "@11ty/eleventy-plugin-bundle": "^1.0.4",
-    "@11ty/eleventy-plugin-webc": "^0.11.0",
+    "@11ty/eleventy": "^3.0.0-beta.1",
+    "@11ty/eleventy-img": "^5.0.0-beta.10",
+    "@11ty/eleventy-plugin-bundle": "^2.0.2",
+    "@11ty/eleventy-plugin-webc": "^0.11.2",
+    "@types/fluent-ffmpeg": "^2.1.25",
     "csso": "^5.0.5",
-    "esbuild": "^0.17.18",
+    "esbuild": "^0.23.0",
     "ffprobe": "^1.1.2",
     "ffprobe-static": "^3.1.0",
-    "html-minifier-terser": "^7.2.0"
+    "html-minifier-terser": "^7.2.0",
+    "typescript": "^5.5.4"
   },
   "scripts": {
     "dev": "npx @11ty/eleventy --serve",
@@ -24,5 +27,10 @@
   },
   "author": "Ryan Geyer, Jess Keoshian",
   "license": "ISC",
-  "homepage": "https://jessicakeoshian.com"
+  "homepage": "https://jessicakeoshian.com",
+  "dependencies": {
+    "@ffmpeg-installer/ffmpeg": "^1.1.0",
+    "@ffprobe-installer/ffprobe": "^2.1.2",
+    "fluent-ffmpeg": "^2.1.3"
+  }
 }

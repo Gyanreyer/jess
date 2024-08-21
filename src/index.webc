@@ -109,8 +109,8 @@ description: "art director/designer"
     </header>
     <aside>
       <autoplay-video
-        @src="src/assets/video/work/more/more-Cinemagraph.mp4"
-        title="A looping cinemagraph of a woman posing with wind blowing her clothes"
+        @src="/video/work/more/more-Cinemagraph.mp4"
+        @title="A looping cinemagraph of a woman posing with wind blowing her clothes"
       ></autoplay-video>
     </aside>
     <a class="button primary" href="/work/more">view work</a>

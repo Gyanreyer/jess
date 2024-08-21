@@ -1,11 +1,3 @@
-<eleventy-video
-  :src="src"
-  :title="title"
-  preload="none"
-  class="lazy autoplay"
-  loop
-  muted
-  playsinline
-  controls
-  @attributes
-></eleventy-video>
+<lazy-video :data-src="src" :title="title" data-autoplay @attributes>
+  <video controls loop muted playsinline preload="none"></video>
+</lazy-video>
