@@ -1,0 +1,22 @@
+<script webc:type="js">
+  this.getImageSequenceImages(this.dir).then(
+    (sequenceImageFileNames) =>
+      // Add a fallback img tag for the last image in the sequence;
+      // we'll show that if our JS fails
+      `<img src="${sequenceImageFileNames.at(-1)}" />
+${sequenceImageFileNames
+  .map((fileName) => `<source src="${fileName}" />`)
+  .join("")}`
+  );
+</script>
+<script src="./img-sequence.js"></script>
+<style>
+  img-sequence img {
+    display: block;
+    width: 100%;
+  }
+  img-sequence canvas {
+    display: block;
+    width: 100%;
+  }
+</style>
