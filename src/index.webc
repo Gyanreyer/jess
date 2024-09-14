@@ -10,7 +10,23 @@ description: "art director/designer"
   <navbar>
     <p>art director/designer</p>
   </navbar>
-  <homepage-section class="secondary" id="general-mills">
+  <homepage-section class="secondary" id="crate-and-barrel">
+    <header>
+      <h2>crate&amp;<wbr />barrel</h2>
+      <p>motion from the comfort of your home</p>
+    </header>
+    <aside>
+      <img-sequence
+        @dir="assets/img/work/crate-and-barrel/phone-img-sequence"
+        data-scroll-range-start="auto"
+        data-scroll-range-end="0.8"
+        data-img-width="720"
+        data-img-height="1280"
+      />
+    </aside>
+    <a class="button primary" href="/work/crate-and-barrel">view work</a>
+  </homepage-section>
+  <homepage-section class="primary" id="general-mills">
     <header>
       <h2>general mills</h2>
       <p>where social meets cinnamon rolls</p>
@@ -24,9 +40,9 @@ description: "art director/designer"
         sizes="(max-width: 768px) 80vw, 30vw"
       ></eleventy-image>
     </aside>
-    <a class="button primary" href="/work/general-mills">view work</a>
+    <a class="button secondary" href="/work/general-mills">view work</a>
   </homepage-section>
-  <homepage-section class="primary" id="famd">
+  <homepage-section class="secondary" id="famd">
     <header>
       <h2>famd</h2>
       <p>a shelter with more heart than fur</p>
@@ -39,30 +55,7 @@ description: "art director/designer"
         sizes="(max-width: 768px) 80vw, 30vw"
       ></eleventy-image>
     </aside>
-    <a class="button secondary" href="/work/famd">view work</a>
-  </homepage-section>
-  <homepage-section class="secondary" id="mowers">
-    <header>
-      <h2>mowers</h2>
-      <p>a new spin on direct mail</p>
-    </header>
-    <aside>
-      <eleventy-image
-        src="src/assets/img/home/mowers-scagboxopen.png"
-        alt=""
-        width="240, 320, 640"
-        sizes="(max-width: 768px) 65vw, 25vw"
-        class="box"
-      ></eleventy-image>
-      <eleventy-image
-        src="src/assets/img/home/mowers-ferristube.png"
-        alt=""
-        width="72, 120, 240"
-        sizes="(max-width: 768px) 16vw, 10vw"
-        class="tube"
-      ></eleventy-image>
-    </aside>
-    <a class="button primary" href="/work/mowers">view work</a>
+    <a class="button primary" href="/work/famd">view work</a>
   </homepage-section>
   <homepage-section class="primary" id="pampers">
     <header>
@@ -158,6 +151,22 @@ description: "art director/designer"
 <style>
   main {
     overflow: hidden;
+  }
+
+  #crate-and-barrel aside {
+    width: clamp(18rem, 80%, 20rem);
+    transform: none;
+    margin-top: 5%;
+  }
+
+  @media only screen and (max-width: 768px) {
+    #crate-and-barrel aside {
+      margin: -20% 0 -5%;
+    }
+  }
+
+  #crate-and-barrel aside img-sequence {
+    display: block;
   }
 
   #general-mills img {
