@@ -35,15 +35,19 @@ class ImgSequence extends HTMLElement {
 
     const dataScrollRangeStart = this.dataset.scrollRangeStart;
     let scrollRangeStart = 0.2;
+    /**
+     * @type {(() => void) | undefined}
+     */
+    let recalculateScrollRangeStart;
     if (dataScrollRangeStart === "auto") {
-      requestAnimationFrame(() => {
+      recalculateScrollRangeStart = () => {
         const boundingRect = this.getBoundingClientRect();
         const absoluteYPos =
           window.innerHeight -
           (boundingRect.top + boundingRect.height / 2 + window.scrollY);
 
         scrollRangeStart = Math.max(absoluteYPos / window.innerHeight, 0);
-      });
+      };
     } else if (dataScrollRangeStart) {
       scrollRangeStart = Number(dataScrollRangeStart);
     }
@@ -103,7 +107,13 @@ class ImgSequence extends HTMLElement {
       passive: true,
     });
 
-    requestAnimationFrame(updateImage);
+    const recalculateImageSequencePosition = () => {
+      recalculateScrollRangeStart?.();
+      updateImage();
+    };
+
+    requestAnimationFrame(recalculateImageSequencePosition);
+    window.addEventListener("resize", recalculateImageSequencePosition);
   }
 }
 
