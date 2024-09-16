@@ -1,0 +1,108 @@
+---
+title: "crate&barrel"
+description: "motion from the comfort of your home"
+---
+
+<p>
+  Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor
+  incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
+  nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+</p>
+
+<content-row>
+  <autoplay-video
+    @src="/video/work/crate-and-barrel/SP24_PerkSharedRegistry_Story.mp4"
+  ></autoplay-video>
+  <autoplay-video
+    @src="/video/work/crate-and-barrel/SP24_BrandandPerk_Story.mp4"
+  ></autoplay-video>
+</content-row>
+
+<content-row>
+  <autoplay-video
+    @src="/video/work/crate-and-barrel/WR_Icons.mp4"
+  ></autoplay-video>
+</content-row>
+
+<p>
+  Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor
+  incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
+  nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+</p>
+
+<content-row>
+  <autoplay-video
+    @src="/video/work/crate-and-barrel/TheWeddingRegistry_Animation.mp4"
+  ></autoplay-video>
+  <autoplay-video
+    @src="/video/work/crate-and-barrel/TheBabyRegistry_Animation_StackedBlack.mp4"
+  ></autoplay-video>
+</content-row>
+
+<p>
+  Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor
+  incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
+  nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+</p>
+
+<content-row>
+  <autoplay-video
+    @src="/video/work/crate-and-barrel/SP24_CrateAppSizzle_16x9.mp4"
+  ></autoplay-video>
+</content-row>
+
+<p>
+  Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor
+  incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
+  nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+</p>
+
+<content-row>
+  <content-img
+    src="src/assets/img/work/crate-and-barrel/AppStoryboardFrame-1.png"
+    alt=""
+  ></content-img>
+  <content-img
+    src="src/assets/img/work/crate-and-barrel/AppStoryboardFrame-2.jpg"
+    alt=""
+  ></content-img>
+  <content-img
+    src="src/assets/img/work/crate-and-barrel/AppStoryboardFrame-3.jpg"
+    alt=""
+  ></content-img>
+  <content-img
+    src="src/assets/img/work/crate-and-barrel/AppStoryboardFrame-4.jpg"
+    alt=""
+  ></content-img>
+  <content-img
+    src="src/assets/img/work/crate-and-barrel/AppStoryboardFrame-5.png"
+    alt=""
+  ></content-img>
+</content-row>
+
+<p>
+  Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor
+  incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
+  nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+</p>
+
+<content-row id="cbcc-content-row">
+  <content-video
+    @src="/video/work/crate-and-barrel/SP24_CrateAppCBCC_Feed.mp4"
+  ></content-video>
+  <content-video
+    @src="/video/work/crate-and-barrel/SP24_CrateAppCBCC_Story.mp4"
+  ></content-video>
+</content-row>
+
+<p>
+  Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor
+  incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
+  nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+</p>
+<style>
+  #cbcc-content-row {
+    /* The videos are different heights so we're aligning them to the bottom so the player controls look less weird */
+    align-items: flex-end;
+  }
+</style>
