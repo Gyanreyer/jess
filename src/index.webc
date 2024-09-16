@@ -20,8 +20,8 @@ description: "art director/designer"
         @dir="assets/img/work/crate-and-barrel/phone-img-sequence"
         data-scroll-range-start="auto"
         data-scroll-range-end="0.8"
-        data-img-width="720"
-        data-img-height="1280"
+        data-img-width="450"
+        data-img-height="800"
       />
     </aside>
     <a class="button primary" href="/work/crate-and-barrel">view work</a>

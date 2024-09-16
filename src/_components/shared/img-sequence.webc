@@ -3,7 +3,7 @@
     (sequenceImageFileNames) =>
       // Add a fallback img tag for the last image in the sequence;
       // we'll show that if our JS fails
-      `<img src="${sequenceImageFileNames.at(-1)}" />
+      `<img src="${sequenceImageFileNames.at(-1)}" loading="eager" />
 ${sequenceImageFileNames
   .map((fileName) => `<source src="${fileName}" />`)
   .join("")}`

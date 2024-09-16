@@ -1,6 +1,33 @@
 {
   class ImgSequence extends HTMLElement {
-    connectedCallback() {
+    async connectedCallback() {
+      if (window.matchMedia("(prefers-reduced-data: reduce)").matches) {
+        // If the user has enabled data saving mode, we'll bail out early
+        return;
+      }
+
+      const placeholderImage = this.querySelector("img");
+      if (!placeholderImage) {
+        return;
+      }
+
+      if (!placeholderImage.complete) {
+        // Wait for the placeholder image to load to get a sense
+        // for the connection speed we're working with.
+        // If the image doesn't load within 300ms, we're dealing with a slower
+        // connection which is going to struggle to deliver a good experience
+        // for the image sequence, so we'll bail out and just stick with the placeholder.
+        await new Promise((resolve, reject) => {
+          const tid = setTimeout(() => {
+            reject("Timeout");
+          }, 300);
+          placeholderImage.onload = () => {
+            clearTimeout(tid);
+            resolve(1);
+          };
+        });
+      }
+
       const sourceTags = this.getElementsByTagName("source");
 
       const sourceCount = sourceTags.length;
