@@ -6,17 +6,11 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    --cr-gap: 3rem;
-    gap: var(--cr-gap);
-    margin: var(--cr-gap) auto;
+    column-gap: clamp(1rem, 3vw, 3rem);
+    row-gap: 3rem;
+    margin: 3rem auto;
     width: 100%;
     max-width: 64rem;
-  }
-
-  :host[data-nobreak] {
-    /* Smoothly scale the column gap
-        for content rows which don't break */
-    --cr-gap: clamp(1rem, 3vw, 3rem);
   }
 
   @media screen and (max-width: 768px) {
