@@ -13,8 +13,14 @@
     max-width: 64rem;
   }
 
+  :host[data-nobreak] {
+    /* Smoothly scale the column gap
+        for content rows which don't break */
+    --cr-gap: clamp(1rem, 3vw, 3rem);
+  }
+
   @media screen and (max-width: 768px) {
-    :host {
+    :host:not([data-nobreak]) {
       flex-direction: column;
     }
   }

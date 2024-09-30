@@ -30,7 +30,7 @@ description: "motion from the comfort of your home"
   nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
 </p>
 
-<content-row>
+<content-row data-nobreak>
   <autoplay-video
     @src="/video/work/crate-and-barrel/TheWeddingRegistry_Animation.mp4"
   ></autoplay-video>
@@ -57,7 +57,7 @@ description: "motion from the comfort of your home"
   nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
 </p>
 
-<content-row>
+<content-row data-nobreak>
   <content-img
     src="src/assets/img/work/crate-and-barrel/AppStoryboardFrame-1.png"
     alt=""
