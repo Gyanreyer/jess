@@ -3,10 +3,12 @@ title: "crate&barrel"
 description: "motion from the comfort of your home"
 ---
 
+<p>Creating social media and branded campaigns for Crate and Barrel.</p>
+
 <p>
-  Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor
-  incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
-  nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+  While responsible for creating assets for paid social content, I was also able
+  to work cross functionally on larger campaigns. Campaign content ran across
+  channels such as Meta, Pinterest, OLV, and display banners.
 </p>
 
 <content-row>
@@ -25,9 +27,10 @@ description: "motion from the comfort of your home"
 </content-row>
 
 <p>
-  Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor
-  incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
-  nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+  Crate and Barrel's registry campaigns needed a refresh of assets while working
+  within the parameters of icons and existing brand photography. By establishing
+  a motion identity across the brand, I was able to add excitement to simple
+  assets in a nimble way.
 </p>
 
 <content-row data-nobreak>
@@ -40,21 +43,8 @@ description: "motion from the comfort of your home"
 </content-row>
 
 <p>
-  Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor
-  incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
-  nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-</p>
-
-<content-row>
-  <autoplay-video
-    @src="/video/work/crate-and-barrel/SP24_CrateAppSizzle_16x9.mp4"
-  ></autoplay-video>
-</content-row>
-
-<p>
-  Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor
-  incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
-  nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+  Our app's relaunch needed a way to introduce the customer to new and exciting
+  features.
 </p>
 
 <content-row data-nobreak>
@@ -81,28 +71,28 @@ description: "motion from the comfort of your home"
 </content-row>
 
 <p>
-  Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor
-  incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
-  nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+  By working through a storyboard that included adding a touch of 3D motion, I
+  was able to create multiple versions and formats of the campaign to be used on
+  the site, in email, and across paid social media placements.
 </p>
 
-<content-row id="cbcc-content-row">
-  <content-video
-    @src="/video/work/crate-and-barrel/SP24_CrateAppCBCC_Feed.mp4"
-  ></content-video>
-  <content-video
-    @src="/video/work/crate-and-barrel/SP24_CrateAppCBCC_Story.mp4"
-  ></content-video>
+<content-row>
+  <autoplay-video
+    @src="/video/work/crate-and-barrel/SP24_CrateAppSizzle_16x9.mp4"
+    class="cb-outlined-video"
+    controls
+  ></autoplay-video>
 </content-row>
 
-<p>
-  Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor
-  incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
-  nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-</p>
+<p>Overseeing Senior Art Director: Michele Lauri</p>
+<p>Senior Copywriter: Carrie Schedler</p>
 <style>
   #cbcc-content-row {
     /* The videos are different heights so we're aligning them to the bottom so the player controls look less weird */
     align-items: flex-end;
+  }
+
+  .cb-outlined-video {
+    border: 1px solid rgba(0, 0, 0, 0.2);
   }
 </style>
