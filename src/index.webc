@@ -177,23 +177,23 @@ description: "art director/designer"
     transform: translateY(calc(15% * calc(var(--scroll-pct) - 0.3)));
   }
 
-  #pampers img:is(.left, .right) {
-    position: absolute;
-    top: 0;
-    width: 32%;
+  #pampers aside {
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
-  #pampers img.left {
-    left: 12%;
+  #pampers aside picture {
+    display: contents;
   }
-  #pampers img.right {
-    left: 62%;
+
+  #pampers img:is(.left, .right) {
+    width: 31%;
   }
 
   #pampers img.center {
-    position: absolute;
     width: 35%;
-    left: 32.5%;
+    margin: 0 -9%;
     z-index: 1;
     transform: translateY(calc(20% * calc(var(--scroll-pct) - 0.5)));
   }
