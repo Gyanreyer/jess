@@ -165,25 +165,22 @@ description: "art director/designer"
     margin: 0 auto;
   }
 
-  #mowers img.box {
-    width: 80%;
-  }
-
-  #mowers img.tube {
-    position: absolute;
-    width: 20%;
-    top: 0;
-    left: 80%;
-    transform: translateY(calc(15% * calc(var(--scroll-pct) - 0.3)));
-  }
-
-  #pampers aside {
+  :is(#pampers, #mowers) aside {
     display: flex;
     align-items: center;
     justify-content: center;
   }
 
-  #pampers aside picture {
+  #mowers img.box {
+    width: 80%;
+  }
+
+  #mowers img.tube {
+    width: 20%;
+    transform: translateY(calc(15% * calc(var(--scroll-pct) - 0.3)));
+  }
+
+  :is(#pampers, #mowers) aside picture {
     display: contents;
   }
 
