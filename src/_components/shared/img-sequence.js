@@ -28,9 +28,13 @@
         });
       }
 
-      const sourceTags = this.getElementsByTagName("source");
+      const basePath = this.dataset.basePath;
 
-      const sourceCount = sourceTags.length;
+      const fileExtension = this.dataset.ext;
+      const endIndex = Number(this.dataset.idxEnd);
+      const sourceCount = endIndex + 1;
+
+      const indexPaddingLength = String(endIndex).length;
 
       /**
        * @type {Array<HTMLImageElement>}
@@ -40,7 +44,10 @@
       for (let i = 0; i < sourceCount; ++i) {
         const img = new Image();
         img.fetchPriority = "low";
-        img.src = sourceTags[i].src;
+        img.src = `${basePath}/${String(i).padStart(
+          indexPaddingLength,
+          "0"
+        )}.${fileExtension}`;
         images[i] = img;
       }
 
