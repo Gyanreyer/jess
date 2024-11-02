@@ -1,4 +1,4 @@
-{
+if (!customElements.get("scroll-progress-region")) {
   class ScrollProgressRegion extends HTMLElement {
     constructor() {
       super();
@@ -31,5 +31,5 @@
     }
   }
 
-  window.customElements.define("scroll-progress-region", ScrollProgressRegion);
+  customElements.define("scroll-progress-region", ScrollProgressRegion);
 }

@@ -1,4 +1,4 @@
-{
+if (!customElements.get("scroll-to-top")) {
   class ScrollToTop extends HTMLElement {
     /**
      * @type {IntersectionObserver | null}
@@ -35,5 +35,5 @@
     }
   }
 
-  window.customElements.define("scroll-to-top", ScrollToTop);
+  customElements.define("scroll-to-top", ScrollToTop);
 }

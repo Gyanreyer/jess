@@ -1,1 +1,6 @@
 <script src="./scroll-progress-region.js"></script>
+<style>
+  scroll-progress-region {
+    --scroll-pct: 1;
+  }
+</style>

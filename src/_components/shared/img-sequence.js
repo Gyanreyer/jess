@@ -1,4 +1,4 @@
-{
+if (!customElements.get("img-sequence")) {
   class ImgSequence extends HTMLElement {
     async connectedCallback() {
       if (window.matchMedia("(prefers-reduced-data: reduce)").matches) {
@@ -165,5 +165,5 @@
     }
   }
 
-  window.customElements.define("img-sequence", ImgSequence);
+  customElements.define("img-sequence", ImgSequence);
 }

@@ -5,11 +5,12 @@ description: "If you've made it here, you deserve a little extra."
 
 <p>If you've made it here, you deserve a little extra.</p>
 
-<p>
-  Harvey's vegan bags are made of seat belts, saving the lives of animals and
-  repurposing the life saving material. These animals are hand-crafted from seat
-  belts and photographed.
-</p>
+<content-row>
+  <autoplay-video
+    @src="/video/work/more/Bears_Boardsforsite.mp4"
+    title="Animations with the Crate and Barrel and Chicago Bears logos, used for Chicago Bears game scoreboards."
+  ></autoplay-video>
+</content-row>
 
 <content-row>
   <content-img
