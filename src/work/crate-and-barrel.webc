@@ -14,15 +14,18 @@ description: "motion from the comfort of your home"
 <content-row>
   <autoplay-video
     @src="/video/work/crate-and-barrel/SP24_PerkSharedRegistry_Story.mp4"
+    title="An ad for Crate and Barrel's wedding registry, looping over shots of products with copy and animated icons."
   ></autoplay-video>
   <autoplay-video
     @src="/video/work/crate-and-barrel/SP24_BrandandPerk_Story.mp4"
+    title="An ad for Crate and Barrel's wedding registry, starting with a shot of champagne glasses followed by various illustrated couples with subtle animations."
   ></autoplay-video>
 </content-row>
 
 <content-row>
   <autoplay-video
     @src="/video/work/crate-and-barrel/WR_Icons.mp4"
+    title="A looping video showcasing icon animations created for the Crate and Barrel wedding registry ads."
   ></autoplay-video>
 </content-row>
 
@@ -36,9 +39,11 @@ description: "motion from the comfort of your home"
 <content-row data-nobreak>
   <autoplay-video
     @src="/video/work/crate-and-barrel/TheWeddingRegistry_Animation.mp4"
+    title="Animation of Crate and Barrel's ampersand logo animating in with 'The Wedding Registry' underneath."
   ></autoplay-video>
   <autoplay-video
     @src="/video/work/crate-and-barrel/TheBabyRegistry_Animation_StackedBlack.mp4"
+    title="Animation of Crate and Barrel's ampersand logo animating in with 'The Baby Registry' underneath."
   ></autoplay-video>
 </content-row>
 
@@ -47,26 +52,29 @@ description: "motion from the comfort of your home"
   features.
 </p>
 
-<content-row data-nobreak>
+<content-row
+  data-nobreak
+  aria-label="Storyboard images for an add for Crate and Barrel's app relaunch."
+>
   <content-img
     src="src/assets/img/work/crate-and-barrel/AppStoryboardFrame-1.png"
-    alt=""
+    alt="Storyboard image for the ad's opening text that says 'new app lorem ipsum'."
   ></content-img>
   <content-img
     src="src/assets/img/work/crate-and-barrel/AppStoryboardFrame-2.jpg"
-    alt=""
+    alt="Storyboard image of a phone with the app open saying 'Hi Taylor, welcome back.'"
   ></content-img>
   <content-img
     src="src/assets/img/work/crate-and-barrel/AppStoryboardFrame-3.jpg"
-    alt=""
+    alt="Storyboard image of a phone with the app open to a gift registry screen. There is text under the phone that says 'Manage your registry'."
   ></content-img>
   <content-img
     src="src/assets/img/work/crate-and-barrel/AppStoryboardFrame-4.jpg"
-    alt=""
+    alt="Storyboard image of a phone with the app open on an alternate reality camera view showing what furniture would look like in a room. There is placeholder text under the phone that says 'ar lorem ipsum'."
   ></content-img>
   <content-img
     src="src/assets/img/work/crate-and-barrel/AppStoryboardFrame-5.png"
-    alt=""
+    alt="Storyboard image of the end card of the ad, showing the Crate and Barrel logo and text that says 'lorem ipsum CTA'"
   ></content-img>
 </content-row>
 
@@ -81,6 +89,7 @@ description: "motion from the comfort of your home"
     @src="/video/work/crate-and-barrel/SP24_CrateAppSizzle_16x9.mp4"
     class="cb-outlined-video"
     controls
+    title="The final released ad for Crate and Barrel's app relaunch."
   ></autoplay-video>
 </content-row>
 
