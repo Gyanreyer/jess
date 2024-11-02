@@ -6,15 +6,15 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    --cr-gap: 3rem;
-    gap: var(--cr-gap);
-    margin: var(--cr-gap) auto;
+    column-gap: clamp(1rem, 3vw, 3rem);
+    row-gap: 3rem;
+    margin: 3rem auto;
     width: 100%;
     max-width: 64rem;
   }
 
   @media screen and (max-width: 768px) {
-    :host {
+    :host:not([data-nobreak]) {
       flex-direction: column;
     }
   }

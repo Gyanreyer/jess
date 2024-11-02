@@ -1,0 +1,107 @@
+---
+title: "crate&barrel"
+description: "motion from the comfort of your home"
+---
+
+<p>Creating social media and branded campaigns for Crate and Barrel.</p>
+
+<p>
+  While responsible for creating assets for paid social content, I was also able
+  to work cross functionally on larger campaigns. Campaign content ran across
+  channels such as Meta, Pinterest, OLV, and display banners.
+</p>
+
+<content-row>
+  <autoplay-video
+    @src="/video/work/crate-and-barrel/SP24_PerkSharedRegistry_Story.mp4"
+    title="An ad for Crate and Barrel's wedding registry, looping over shots of products with copy and animated icons."
+  ></autoplay-video>
+  <autoplay-video
+    @src="/video/work/crate-and-barrel/SP24_BrandandPerk_Story.mp4"
+    title="An ad for Crate and Barrel's wedding registry, starting with a shot of champagne glasses followed by various illustrated couples with subtle animations."
+  ></autoplay-video>
+</content-row>
+
+<content-row>
+  <autoplay-video
+    @src="/video/work/crate-and-barrel/WR_Icons.mp4"
+    title="A looping video showcasing icon animations created for the Crate and Barrel wedding registry ads."
+  ></autoplay-video>
+</content-row>
+
+<p>
+  Crate and Barrel's registry campaigns needed a refresh of assets while working
+  within the parameters of icons and existing brand photography. By establishing
+  a motion identity across the brand, I was able to add excitement to simple
+  assets in a nimble way.
+</p>
+
+<content-row data-nobreak>
+  <autoplay-video
+    @src="/video/work/crate-and-barrel/TheWeddingRegistry_Animation.mp4"
+    title="Animation of Crate and Barrel's ampersand logo animating in with 'The Wedding Registry' underneath."
+  ></autoplay-video>
+  <autoplay-video
+    @src="/video/work/crate-and-barrel/TheBabyRegistry_Animation_StackedBlack.mp4"
+    title="Animation of Crate and Barrel's ampersand logo animating in with 'The Baby Registry' underneath."
+  ></autoplay-video>
+</content-row>
+
+<p>
+  Our app's relaunch needed a way to introduce the customer to new and exciting
+  features.
+</p>
+
+<content-row
+  data-nobreak
+  aria-label="Storyboard images for an add for Crate and Barrel's app relaunch."
+>
+  <content-img
+    src="src/assets/img/work/crate-and-barrel/AppStoryboardFrame-1.png"
+    alt="Storyboard image for the ad's opening text that says 'new app lorem ipsum'."
+  ></content-img>
+  <content-img
+    src="src/assets/img/work/crate-and-barrel/AppStoryboardFrame-2.jpg"
+    alt="Storyboard image of a phone with the app open saying 'Hi Taylor, welcome back.'"
+  ></content-img>
+  <content-img
+    src="src/assets/img/work/crate-and-barrel/AppStoryboardFrame-3.jpg"
+    alt="Storyboard image of a phone with the app open to a gift registry screen. There is text under the phone that says 'Manage your registry'."
+  ></content-img>
+  <content-img
+    src="src/assets/img/work/crate-and-barrel/AppStoryboardFrame-4.jpg"
+    alt="Storyboard image of a phone with the app open on an alternate reality camera view showing what furniture would look like in a room. There is placeholder text under the phone that says 'ar lorem ipsum'."
+  ></content-img>
+  <content-img
+    src="src/assets/img/work/crate-and-barrel/AppStoryboardFrame-5.png"
+    alt="Storyboard image of the end card of the ad, showing the Crate and Barrel logo and text that says 'lorem ipsum CTA'"
+  ></content-img>
+</content-row>
+
+<p>
+  By working through a storyboard that included adding a touch of 3D motion, I
+  was able to create multiple versions and formats of the campaign to be used on
+  the site, in email, and across paid social media placements.
+</p>
+
+<content-row>
+  <autoplay-video
+    @src="/video/work/crate-and-barrel/SP24_CrateAppSizzle_16x9.mp4"
+    class="cb-outlined-video"
+    controls
+    title="The final released ad for Crate and Barrel's app relaunch."
+  ></autoplay-video>
+</content-row>
+
+<p>Overseeing Senior Art Director: Michele Lauri</p>
+<p>Senior Copywriter: Carrie Schedler</p>
+<style>
+  #cbcc-content-row {
+    /* The videos are different heights so we're aligning them to the bottom so the player controls look less weird */
+    align-items: flex-end;
+  }
+
+  .cb-outlined-video {
+    border: 1px solid rgba(0, 0, 0, 0.2);
+  }
+</style>

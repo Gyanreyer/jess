@@ -1,0 +1,35 @@
+<script webc:type="js" webc:root="override">
+  const camelToKebabCase = (string) => {
+    return string
+      .replace(/([a-z0-9]|(?=[A-Z]))([A-Z])/g, "$1-$2")
+      .toLowerCase();
+  };
+
+  this.getImageSequenceImages(dir).then((sequenceImageFileNames) => {
+    // Add a fallback img tag for the last image in the sequence;
+    // we'll show that if our JS fails
+    const endIndexString = String(sequenceImageFileNames.length - 1);
+
+    const fileNameIndex = sequenceImageFileNames[0].lastIndexOf("/");
+    let baseFilePath = sequenceImageFileNames[0].slice(0, fileNameIndex);
+
+    return `<img-sequence data-base-path="${baseFilePath}" data-idx-end=${endIndexString} data-ext=${
+      sequenceImageFileNames[0].split(".")[1]
+    } ${Object.keys(webc.filterPublicAttributes(webc.attributes))
+      .map((key) => ` ${camelToKebabCase(key)}="${webc.attributes[key]}"`)
+      .join("")}>
+    <img src="${sequenceImageFileNames.at(-1)}" loading="eager" />
+  </img-sequence>`;
+  });
+</script>
+<script src="./img-sequence.js"></script>
+<style>
+  img-sequence img {
+    display: block;
+    width: 100%;
+  }
+  img-sequence canvas {
+    display: block;
+    width: 100%;
+  }
+</style>

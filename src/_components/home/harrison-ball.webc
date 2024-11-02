@@ -1,0 +1,12 @@
+<eleventy-image
+  src="src/assets/img/home/Harrison.png"
+  alt="A photo of Jess' dog Harrison curled in a ball"
+  width="240, 320, 640"
+  sizes="(max-width: 768px) 80vw, 30vw"
+></eleventy-image>
+<script src="./harrison-ball.js"></script>
+<style>
+  harrison-ball {
+    display: block;
+  }
+</style>

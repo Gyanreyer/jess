@@ -1,22 +1,18 @@
-{
-  const lazyVideoTemplate = document.createElement("template");
-  const videoSlot = document.createElement("slot");
-  lazyVideoTemplate.appendChild(videoSlot);
-
-  const lazyVideoObserver = new IntersectionObserver(
-    (entries) => {
-      entries.forEach(async (entry) => {
-        if (entry.isIntersecting) {
-          entry.target.dispatchEvent(new Event("l-visible"));
-        }
-      });
-    },
-    {
-      rootMargin: "100px",
-    }
-  );
-
+if (!customElements.get("lazy-video")) {
   class LazyVideo extends HTMLElement {
+    static observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach(async (entry) => {
+          if (entry.isIntersecting) {
+            entry.target.dispatchEvent(new Event("l-visible"));
+          }
+        });
+      },
+      {
+        rootMargin: "100px",
+      }
+    );
+
     connectedCallback() {
       this.video = this.querySelector("video");
       if (!this.video) {
@@ -26,18 +22,18 @@
 
       this.addEventListener("l-visible", this.onVisible.bind(this));
 
-      lazyVideoObserver.observe(this);
+      LazyVideo.observer.observe(this);
     }
 
     disconnectedCallback() {
-      lazyVideoObserver.unobserve(this);
+      LazyVideo.observer.unobserve(this);
     }
 
     onVisible() {
       const video = this.video;
       if (!video) return;
 
-      lazyVideoObserver.unobserve(this);
+      LazyVideo.observer.unobserve(this);
 
       const dataSrc = this.dataset.src;
       if (dataSrc) {
@@ -51,7 +47,11 @@
 
       if (this.dataset.autoplay !== undefined) {
         video.muted = true;
-        video.controls = false;
+        // If the lazy-video element has a controls attribute set,
+        // we should keep the controls even if autoplay is also set
+        if (!this.hasAttribute("controls")) {
+          video.controls = false;
+        }
         video.play().catch((e) => {
           if (e instanceof DOMException && e.name === "NotAllowedError") {
             // Show controls if autoplay is not allowed

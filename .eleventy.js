@@ -7,13 +7,12 @@ import bundlerPlugin from "@11ty/eleventy-plugin-bundle";
 import esbuild from "esbuild";
 import { minify as minifyCSS } from "csso";
 import { minify as minifyHTML } from "html-minifier-terser";
+import { readdir, mkdir, copyFile } from "node:fs/promises";
 
 const IS_PRODUCTION = process.env.NODE_ENV === "prod";
 
 /**
- * @import { UserConfig } from "@11ty/eleventy";
- *
- * @param {UserConfig} eleventyConfig
+ * @param {import("@11ty/eleventy").UserConfig} eleventyConfig
  */
 export default function (eleventyConfig) {
   // Set up webc plugin to process all webc files
@@ -47,6 +46,58 @@ export default function (eleventyConfig) {
       decoding: "async",
     },
   });
+
+  eleventyConfig.addJavaScriptFunction(
+    "getImageSequenceImages",
+    /**
+     * @param {string} imageDir
+     */
+    async (imageDir) => {
+      const inputDir = import.meta.resolve(
+        `./src${imageDir.startsWith("/") ? "" : "/"}${imageDir}${
+          imageDir.endsWith("/") ? "" : "/"
+        }`
+      );
+
+      const fileNames = await readdir(inputDir.slice(7));
+      // Make sure the file names are sorted in a consistent order;
+      // each file should just be a zero-padded number representing its place in the sequence
+      fileNames.sort();
+
+      const assetImgDirIndex = imageDir.indexOf("assets/img/");
+
+      let destinationDirPublicPath = `/img/${imageDir.slice(
+        assetImgDirIndex + "assets/img/".length
+      )}`;
+      if (!destinationDirPublicPath.endsWith("/")) {
+        destinationDirPublicPath += "/";
+      }
+
+      const destinationDir = import.meta.resolve(
+        `./_site/${destinationDirPublicPath}`
+      );
+
+      try {
+        await mkdir(destinationDir.slice(7), { recursive: true });
+      } catch {}
+
+      return Promise.all(
+        fileNames.map(async (fileName, i) => {
+          const destinationFilePath = new URL(
+            fileName,
+            destinationDir
+          ).href.slice(7);
+
+          await copyFile(
+            new URL(fileName, inputDir).href.slice(7),
+            destinationFilePath
+          );
+
+          return `${destinationDirPublicPath}${fileName}`;
+        })
+      );
+    }
+  );
 
   // Apply custom transforms to bundled JS and CSS
   eleventyConfig.addPlugin(bundlerPlugin, {

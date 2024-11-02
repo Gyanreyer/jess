@@ -1,12 +1,13 @@
 <section webc:root="override" class="homepage-section">
-  <div class="background"></div>
-  <article class="section-content">
-    <slot></slot>
-  </article>
+  <scroll-progress-region>
+    <div class="background"></div>
+    <article class="section-content">
+      <slot></slot>
+    </article>
+  </scroll-progress-region>
 </section>
 <style webc:scoped>
   :host {
-    --scroll-pct: 1;
     --base-vertical-padding: clamp(8rem, 25%, 15vh);
 
     padding: var(--base-vertical-padding) 0;
@@ -239,47 +240,6 @@
     }
   }
 </style>
-<script>
-  {
-    const homePageSections = Array.from(
-      document.getElementsByClassName("homepage-section")
-    );
-    const homePageSectionCount = homePageSections.length;
-
-    homePageSections[0].dataset.visible = true;
-
-    const onScroll = () => {
-      for (let i = 0; i < homePageSectionCount; ++i) {
-        const element = homePageSections[i];
-        const boundingClientRect = element.getBoundingClientRect();
-
-        const scrollPercent = boundingClientRect.top / window.innerHeight;
-
-        element.style.setProperty("--scroll-pct", scrollPercent);
-
-        if (scrollPercent < 0.5) {
-          element.dataset.visible = true;
-        }
-      }
-    };
-
-    onScroll();
-
-    window.addEventListener("scroll", onScroll, { passive: true });
-    window.addEventListener("resize", onScroll, { passive: true });
-
-    document.addEventListener(
-      "transition:pageclosed",
-      () => {
-        window.removeEventListener("scroll", onScroll);
-        window.removeEventListener("resize", onScroll);
-        // Clear the array of section elments so they can be garbage collected to avoid memory leaks
-        homePageSections.length = 0;
-      },
-      { once: true }
-    );
-  }
-</script>
 <script>
   {
     const mainElement = document.querySelector("main");
