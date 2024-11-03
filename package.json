@@ -4,26 +4,26 @@
   "description": "Jess Keoshian's portfolio site",
   "main": "index.js",
   "type": "module",
+  "author": "Ryan Geyer, Jess Keoshian",
+  "license": "ISC",
+  "homepage": "https://jesskeoshian.com",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Gyanreyer/jess.git"
+  },
+  "scripts": {
+    "dev": "npx @11ty/eleventy --serve",
+    "build": "NODE_ENV=prod npx @11ty/eleventy"
+  },
   "devDependencies": {
     "@11ty/eleventy": "^3.0.0",
-    "@11ty/eleventy-img": "^5.0.0-beta.10",
-    "@11ty/eleventy-plugin-bundle": "^2.0.2",
+    "@11ty/eleventy-img": "^5.0.0",
+    "@11ty/eleventy-plugin-bundle": "^3.0.0",
     "@11ty/eleventy-plugin-webc": "^0.11.2",
     "csso": "^5.0.5",
     "esbuild": "^0.23.0",
     "html-minifier-terser": "^7.2.0",
     "sharp": "^0.33.5",
     "typescript": "^5.5.4"
-  },
-  "scripts": {
-    "dev": "npx @11ty/eleventy --serve",
-    "build": "NODE_ENV=prod npx @11ty/eleventy"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Gyanreyer/jess.git"
-  },
-  "author": "Ryan Geyer, Jess Keoshian",
-  "license": "ISC",
-  "homepage": "https://jessicakeoshian.com"
+  }
 }

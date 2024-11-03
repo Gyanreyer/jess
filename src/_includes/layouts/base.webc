@@ -8,13 +8,33 @@
     <meta name="description" :content="description" />
     <link rel="icon" type="image/png" href="/img/favicon.png" />
 
+    <!-- Preload fonts -->
+    <link
+      rel="preload"
+      href="/fonts/AvenirNext-Medium.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      href="/fonts/AvenirNext-DemiBold.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      href="/fonts/AvenirNext-Bold.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+
     <meta property="og:type" content="website" />
     <meta property="og:title" :content="title" />
     <meta property="og:description" :content="description" />
-    <meta
-      property="og:image"
-      content="https://jessicakeoshian.com/img/og.jpg"
-    />
+    <meta property="og:image" content="https://jesskeoshian.com/img/og.jpg" />
 
     <meta name="generator" :content="eleventy.generator" />
 
