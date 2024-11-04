@@ -35,14 +35,6 @@ if (!customElements.get("lazy-video")) {
 
       LazyVideo.observer.unobserve(this);
 
-      const dataSrc = this.dataset.src;
-      if (dataSrc) {
-        video.src = dataSrc;
-      } else {
-        const sources = this.querySelectorAll("source");
-        video.append(...sources);
-      }
-
       video.setAttribute("preload", "metadata");
 
       if (this.dataset.autoplay !== undefined) {

@@ -1,3 +1,3 @@
-<lazy-video :data-src="src" :title="title" data-autoplay @attributes>
-  <video controls loop muted playsinline preload="none"></video>
+<lazy-video :data-src="src" data-autoplay :aria-label="ariaLabel" @attributes>
+  <video controls loop muted playsinline preload="none" :src="src"></video>
 </lazy-video>

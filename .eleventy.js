@@ -4,10 +4,11 @@ import { eleventyImagePlugin } from "@11ty/eleventy-img";
 import bundlerPlugin from "@11ty/eleventy-plugin-bundle";
 
 // Minification/asset processing libs
+import sharp from "sharp";
 import esbuild from "esbuild";
 import { minify as minifyCSS } from "csso";
 import { minify as minifyHTML } from "html-minifier-terser";
-import { readdir, mkdir, copyFile } from "node:fs/promises";
+import { readdir, mkdir } from "node:fs/promises";
 
 const IS_PRODUCTION = process.env.NODE_ENV === "prod";
 
@@ -47,12 +48,48 @@ export default function (eleventyConfig) {
     },
   });
 
+  const renderAttributeName = (name) => {
+    let result = "";
+    let prevChar;
+    for (let i = 0; i < name.length; ++i) {
+      const char = name[i];
+      if (
+        char === char.toUpperCase() &&
+        prevChar &&
+        prevChar === prevChar.toLowerCase()
+      ) {
+        result += `-${char.toLowerCase()}`;
+      } else {
+        result += char.toLowerCase();
+      }
+      prevChar = char;
+    }
+
+    return result;
+  };
+
   eleventyConfig.addJavaScriptFunction(
-    "getImageSequenceImages",
+    "renderAttributes",
+    /**
+     * @param {Record<string, unknown>} attributes
+     */
+    (attributes) => {
+      return Object.entries(attributes)
+        .map(([key, value]) => `${renderAttributeName(key)}="${value}"`)
+        .join(" ");
+    }
+  );
+
+  const MAX_SPRITESHEET_WIDTH = 16384;
+
+  eleventyConfig.addJavaScriptFunction(
+    "getImageSequenceSpritesheet",
     /**
      * @param {string} imageDir
+     * @param {number} spriteWidth
+     * @param {number} spriteHeight
      */
-    async (imageDir) => {
+    async (imageDir, spriteWidth, spriteHeight) => {
       const inputDir = import.meta.resolve(
         `./src${imageDir.startsWith("/") ? "" : "/"}${imageDir}${
           imageDir.endsWith("/") ? "" : "/"
@@ -77,25 +114,64 @@ export default function (eleventyConfig) {
         `./_site/${destinationDirPublicPath}`
       );
 
+      const spriteCount = fileNames.length;
+
+      const columnCount = Math.floor(MAX_SPRITESHEET_WIDTH / spriteWidth);
+      const rowCount = Math.ceil(spriteCount / columnCount);
+
+      const totalSpritesheetWidth = spriteWidth * columnCount;
+      const totalSpritesheetHeight = spriteHeight * rowCount;
+
       try {
         await mkdir(destinationDir.slice(7), { recursive: true });
       } catch {}
 
-      return Promise.all(
-        fileNames.map(async (fileName, i) => {
-          const destinationFilePath = new URL(
-            fileName,
-            destinationDir
-          ).href.slice(7);
+      const spritesheetFileName = "spritesheet.webp";
 
-          await copyFile(
-            new URL(fileName, inputDir).href.slice(7),
-            destinationFilePath
-          );
+      const spritesheetFilePath = new URL(
+        spritesheetFileName,
+        destinationDir
+      ).href.slice(7);
 
-          return `${destinationDirPublicPath}${fileName}`;
+      await sharp({
+        create: {
+          width: totalSpritesheetWidth,
+          height: totalSpritesheetHeight,
+          channels: 4,
+          background: { r: 0, g: 0, b: 0, alpha: 0 },
+        },
+      })
+        .composite(
+          await Promise.all(
+            fileNames.map(async (fileName, i) => {
+              const fileURL = new URL(fileName, inputDir).href.slice(7);
+              const column = i % columnCount;
+              const row = Math.floor(i / columnCount);
+              return {
+                input: await sharp(fileURL)
+                  .resize({
+                    width: spriteWidth,
+                    height: spriteHeight,
+                  })
+                  .toBuffer(),
+                left: spriteWidth * column,
+                top: spriteHeight * row,
+              };
+            })
+          )
+        )
+        .toFormat("webp", {
+          quality: 80,
+          progressive: true,
         })
-      );
+        .toFile(spritesheetFilePath);
+
+      return {
+        filePath: `${destinationDirPublicPath}${spritesheetFileName}`,
+        columnCount,
+        rowCount,
+        spriteCount,
+      };
     }
   );
 

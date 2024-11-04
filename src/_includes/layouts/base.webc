@@ -8,6 +8,15 @@
     <meta name="description" :content="description" />
     <link rel="icon" type="image/png" href="/img/favicon.png" />
 
+    <link
+      webc:for="preload of preloads ?? []"
+      rel="preload"
+      :href="preload.href"
+      :as="preload.as"
+      :type="preload.type"
+      crossorigin
+    />
+
     <!-- Preload fonts -->
     <link
       rel="preload"

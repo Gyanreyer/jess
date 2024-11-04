@@ -4,6 +4,14 @@ theme: "dark"
 
 title: "Jess Keoshian"
 description: "art director/designer"
+preloads:
+  [
+    {
+      href: "/img/work/crate-and-barrel/phone-img-sequence/spritesheet.webp",
+      as: "image",
+      type: "image/webp",
+    },
+  ]
 ---
 
 <main data-transition="init">
@@ -16,13 +24,13 @@ description: "art director/designer"
       <p>motion from the comfort of your home</p>
     </header>
     <aside>
-      <img-sequence
-        @dir="assets/img/work/crate-and-barrel/phone-img-sequence"
-        data-scroll-range-start="auto"
-        data-scroll-range-end="0.8"
-        data-img-width="450"
-        data-img-height="800"
-      />
+      <scroll-progress-region>
+        <img-sequence
+          @dir="assets/img/work/crate-and-barrel/phone-img-sequence"
+          data-img-width="360"
+          data-img-height="640"
+        />
+      </scroll-progress-region>
     </aside>
     <a class="button primary" href="/work/crate-and-barrel">view work</a>
   </homepage-section>
@@ -103,7 +111,7 @@ description: "art director/designer"
     <aside>
       <autoplay-video
         @src="/video/work/more/more-Cinemagraph.mp4"
-        @title="A looping cinemagraph of a woman posing with wind blowing her clothes"
+        aria-label="A looping cinemagraph of a woman posing with wind blowing her clothes"
       ></autoplay-video>
     </aside>
     <a class="button primary" href="/work/more">view work</a>
@@ -164,6 +172,15 @@ description: "art director/designer"
 
   #crate-and-barrel aside img-sequence {
     display: block;
+    /* On desktop play through animation from 0.45 -> 0.2 scroll pct */
+    --progress: clamp(0, var(--scroll-pct) * -4 + 1.8, 1);
+  }
+
+  @media only screen and (max-width: 768px) {
+    #crate-and-barrel aside img-sequence {
+      /* On mobile play through animation from 0.8 -> 0.2 scroll pct since we have more vertical space to work with */
+      --progress: clamp(0, var(--scroll-pct) * -1.65 + 1.325, 1);
+    }
   }
 
   #general-mills img {

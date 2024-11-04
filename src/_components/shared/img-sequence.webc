@@ -5,30 +5,62 @@
       .toLowerCase();
   };
 
-  this.getImageSequenceImages(dir).then((sequenceImageFileNames) => {
-    // Add a fallback img tag for the last image in the sequence;
-    // we'll show that if our JS fails
-    const endIndexString = String(sequenceImageFileNames.length - 1);
+  const {
+    dataImgWidth,
+    dataImgHeight,
+    style = "",
+    ...passThroughAttributes
+  } = webc.attributes;
 
-    const fileNameIndex = sequenceImageFileNames[0].lastIndexOf("/");
-    let baseFilePath = sequenceImageFileNames[0].slice(0, fileNameIndex);
+  const spriteWidth = Number(dataImgWidth);
+  const spriteHeight = Number(dataImgHeight);
 
-    return `<img-sequence data-base-path="${baseFilePath}" data-idx-end=${endIndexString} data-ext=${
-      sequenceImageFileNames[0].split(".")[1]
-    } ${Object.keys(webc.filterPublicAttributes(webc.attributes))
-      .map((key) => ` ${camelToKebabCase(key)}="${webc.attributes[key]}"`)
-      .join("")}>
-    <img src="${sequenceImageFileNames.at(-1)}" loading="eager" />
-  </img-sequence>`;
-  });
+  if (!spriteWidth || !spriteHeight) {
+    throw new Error(
+      "Please provide a data-img-width and data-img-height attributes."
+    );
+  }
+
+  const attributesToRender = {};
+  const filteredPublicAttributes = webc.filterPublicAttributes(webc.attributes);
+
+  for (const key in filteredPublicAttributes) {
+    if (key in passThroughAttributes) {
+      attributesToRender[key] = passThroughAttributes[key];
+    }
+  }
+
+  this.getImageSequenceSpritesheet(dir, spriteWidth, spriteHeight).then(
+    ({ filePath, columnCount, rowCount, spriteCount }) => {
+      return /* html */ `
+  <img-sequence
+    style="background-image: url(${filePath}); aspect-ratio: ${spriteWidth}/${spriteHeight}; --sprite-count: ${spriteCount}; --column-count: ${columnCount}; --row-count: ${rowCount};${style}"
+    ${renderAttributes(attributesToRender)}
+    ></img-sequence>`;
+    }
+  );
 </script>
 <script src="./img-sequence.js"></script>
 <style>
-  img-sequence img {
+  img-sequence {
     display: block;
     width: 100%;
+
+    background-repeat: no-repeat;
+    background-size: calc(100% * var(--column-count));
+
+    --cell: round(var(--progress, 0) * (var(--sprite-count) - 1) + 1);
+    --row: round(up, calc(var(--cell) / var(--column-count)));
+    --column: calc(var(--cell) - (var(--row) - 1) * var(--column-count));
+    background-position-x: calc(
+      (var(--column) - 1) * 100% / (var(--column-count) - 1)
+    );
+    background-position-y: calc(
+      (var(--row) - 1) * 100% / (var(--row-count) - 1)
+    );
   }
-  img-sequence canvas {
+
+  img-sequence img {
     display: block;
     width: 100%;
   }

@@ -25,7 +25,10 @@ if (!customElements.get("scroll-progress-region")) {
     _onScroll() {
       const boundingClientRect = this.getBoundingClientRect();
 
-      const scrollPercent = boundingClientRect.top / window.innerHeight;
+      // Calculate scroll percent as center point of the region's vertical position in the window
+      const scrollPercent =
+        (boundingClientRect.top + boundingClientRect.height / 2) /
+        window.innerHeight;
 
       this.style.setProperty("--scroll-pct", String(scrollPercent));
     }
