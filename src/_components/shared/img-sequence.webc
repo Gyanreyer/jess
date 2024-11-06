@@ -34,7 +34,7 @@
     ({ filePath, columnCount, rowCount, spriteCount }) => {
       return /* html */ `
   <img-sequence
-    style="background-image: url(${filePath}); aspect-ratio: ${spriteWidth}/${spriteHeight}; --sprite-count: ${spriteCount}; --column-count: ${columnCount}; --row-count: ${rowCount};${style}"
+    style="--spritesheet-url: url(${filePath}); aspect-ratio: ${spriteWidth}/${spriteHeight}; --sprite-count: ${spriteCount}; --column-count: ${columnCount}; --row-count: ${rowCount};${style}"
     ${renderAttributes(attributesToRender)}
     ></img-sequence>`;
     }
@@ -45,6 +45,8 @@
   img-sequence {
     display: block;
     width: 100%;
+
+    background-image: var(--spritesheet-url);
 
     background-repeat: no-repeat;
     background-size: calc(100% * var(--column-count));
@@ -58,10 +60,11 @@
     background-position-y: calc(
       (var(--row) - 1) * 100% / (var(--row-count) - 1)
     );
+
+    transition: opacity 0.3s;
   }
 
-  img-sequence img {
-    display: block;
-    width: 100%;
+  img-sequence[data-loading] {
+    opacity: 0;
   }
 </style>
