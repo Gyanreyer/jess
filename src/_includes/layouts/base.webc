@@ -14,7 +14,6 @@
       :href="preload.href"
       :as="preload.as"
       :type="preload.type"
-      crossorigin
     />
 
     <!-- Preload fonts -->
