@@ -111,7 +111,7 @@ preloads:
     <aside>
       <autoplay-video
         @src="/video/work/more/more-Cinemagraph.mp4"
-        aria-label="A looping cinemagraph of a woman posing with wind blowing her clothes"
+        @label="A looping cinemagraph of a woman posing with wind blowing her clothes"
       ></autoplay-video>
     </aside>
     <a class="button primary" href="/work/more">view work</a>

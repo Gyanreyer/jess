@@ -21,7 +21,7 @@ description: "Creating social media for the brands of Pillsbury and Old El Paso.
 <content-row>
   <autoplay-video
     @src="/video/work/general-mills/90s_Social_1.mp4"
-    aria-label"An animated video with the Pillsbury Doughboy standing next to a heading that says 'Flavors of the 90s'. Pairings of nostalgic items from the 90s with Pillsbury recipes are cycling below: butterfly clips and cinnamon roll butterflies, jelly shoes and easy strawberry pie, and an mp3 player and confetti cookie bars."
+    @label="An animated video with the Pillsbury Doughboy standing next to a heading that says 'Flavors of the 90s'. Pairings of nostalgic items from the 90s with Pillsbury recipes are cycling below: butterfly clips and cinnamon roll butterflies, jelly shoes and easy strawberry pie, and an mp3 player and confetti cookie bars."
   ></autoplay-video>
   <content-img
     src="src/assets/img/work/general-mills/groundhog-day.jpg"
@@ -52,11 +52,11 @@ description: "Creating social media for the brands of Pillsbury and Old El Paso.
 <content-row>
   <autoplay-video
     @src="/video/work/general-mills/90s_Social_2_1.mp4"
-    aria-label"An animated video with the Pillsbury Doughboy standing next to a heading that says 'Flavors of the 90s' and 'Find a meal to match your memories'. Pairings of nostalgic items from the 90s with Pillsbury recipes are cycling below: butterfly clips and cinnamon roll butterflies, jelly shoes and easy strawberry pie, and an mp3 player and confetti cookie bars."
+    @label="An animated video with the Pillsbury Doughboy standing next to a heading that says 'Flavors of the 90s' and 'Find a meal to match your memories'. Pairings of nostalgic items from the 90s with Pillsbury recipes are cycling below: butterfly clips and cinnamon roll butterflies, jelly shoes and easy strawberry pie, and an mp3 player and confetti cookie bars."
   ></autoplay-video>
   <content-video
     @src="/video/work/general-mills/Campfire_Stories_2_1_2.mp4"
-    aria-label"An animation of the Pillsbury Doughboy roasting a marshmallow over a campfire"
+    @label="An animation of the Pillsbury Doughboy roasting a marshmallow over a campfire"
   ></content-video>
 </content-row>
 
@@ -80,18 +80,18 @@ description: "Creating social media for the brands of Pillsbury and Old El Paso.
 <content-row>
   <autoplay-video
     @src="/video/work/general-mills/mummy-dogs.mp4"
-    aria-label"A Halloween social media video showing two mummy dogs on sticks rising from the bottom of the frame and looking at each other"
+    @label="A Halloween social media video showing two mummy dogs on sticks rising from the bottom of the frame and looking at each other"
   ></autoplay-video>
   <content-video
     @src="/video/work/general-mills/pumpkin-day.mp4"
-    aria-label"A Halloween social media video showing how to carve the Pillsbury Doughboy's face into a pumpkin"
+    @label="A Halloween social media video showing how to carve the Pillsbury Doughboy's face into a pumpkin"
   ></content-video>
 </content-row>
 
 <content-row>
   <autoplay-video
     @src="/video/work/general-mills/messfreehero.mp4"
-    aria-label"An animation of two hands doing a toast with Old El Paso tortilla pocket tacos above the hashtag #MessFreeHero"
+    @label="An animation of two hands doing a toast with Old El Paso tortilla pocket tacos above the hashtag #MessFreeHero"
   ></autoplay-video>
 </content-row>
 

@@ -14,18 +14,18 @@ description: "motion from the comfort of your home"
 <content-row>
   <autoplay-video
     @src="/video/work/crate-and-barrel/SP24_PerkSharedRegistry_Story.mp4"
-    aria-label"An ad for Crate and Barrel's wedding registry, looping over shots of products with copy and animated icons."
+    @label="An ad for Crate and Barrel's wedding registry, looping over shots of products with copy and animated icons."
   ></autoplay-video>
   <autoplay-video
     @src="/video/work/crate-and-barrel/SP24_BrandandPerk_Story.mp4"
-    aria-label"An ad for Crate and Barrel's wedding registry, starting with a shot of champagne glasses followed by various illustrated couples with subtle animations."
+    @label="An ad for Crate and Barrel's wedding registry, starting with a shot of champagne glasses followed by various illustrated couples with subtle animations."
   ></autoplay-video>
 </content-row>
 
 <content-row>
   <autoplay-video
     @src="/video/work/crate-and-barrel/WR_Icons.mp4"
-    aria-label"A looping video showcasing icon animations created for the Crate and Barrel wedding registry ads."
+    @label="A looping video showcasing icon animations created for the Crate and Barrel wedding registry ads."
   ></autoplay-video>
 </content-row>
 
@@ -39,11 +39,11 @@ description: "motion from the comfort of your home"
 <content-row data-nobreak>
   <autoplay-video
     @src="/video/work/crate-and-barrel/TheWeddingRegistry_Animation.mp4"
-    aria-label"Animation of Crate and Barrel's ampersand logo animating in with 'The Wedding Registry' underneath."
+    @label="Animation of Crate and Barrel's ampersand logo animating in with 'The Wedding Registry' underneath."
   ></autoplay-video>
   <autoplay-video
     @src="/video/work/crate-and-barrel/TheBabyRegistry_Animation_StackedBlack.mp4"
-    aria-label"Animation of Crate and Barrel's ampersand logo animating in with 'The Baby Registry' underneath."
+    @label="Animation of Crate and Barrel's ampersand logo animating in with 'The Baby Registry' underneath."
   ></autoplay-video>
 </content-row>
 
@@ -54,6 +54,7 @@ description: "motion from the comfort of your home"
 
 <content-row
   data-nobreak
+  role="figure"
   aria-label="Storyboard images for an add for Crate and Barrel's app relaunch."
 >
   <content-img
@@ -89,7 +90,7 @@ description: "motion from the comfort of your home"
     @src="/video/work/crate-and-barrel/SP24_CrateAppSizzle_16x9.mp4"
     class="cb-outlined-video"
     controls
-    aria-label"The final released ad for Crate and Barrel's app relaunch."
+    @label="The final released ad for Crate and Barrel's app relaunch."
   ></autoplay-video>
 </content-row>
 
