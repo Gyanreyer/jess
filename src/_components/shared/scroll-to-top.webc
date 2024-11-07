@@ -1,10 +1,4 @@
-<a
-  id="scroll-to-top"
-  href="#"
-  class="shadow"
-  aria-hidden="true"
-  tabindex="-1"
->
+<a href="#" class="shadow" aria-hidden="true" tabindex="-1">
   <svg
     xmlns="http://www.w3.org/2000/svg"
     height="48"
@@ -13,45 +7,50 @@
   >
     <path d="m283 711-43-43 240-240 240 239-43 43-197-197-197 198Z" />
   </svg>
-</button>
+</a>
 <script src="./scroll-to-top.js"></script>
 <style>
-  #scroll-to-top {
-    border-radius: 50%;
-    background-color: var(--color-tertiary);
+  scroll-to-top {
     position: fixed;
     bottom: 2rem;
     right: 2rem;
+    z-index: 2;
+    transition-property: opacity, transform, visibility;
+    --transition-duration: 0.3s;
+    transition-duration: var(--transition-duration);
+    --visibility-transition-delay: 0s;
+    transition-delay: 0s, 0s, var(--visibility-transition-delay);
+  }
+
+  scroll-to-top:not([data-visible]):not(:focus-within) {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20%);
+    --visibility-transition-delay: var(--transition-duration);
+  }
+
+  scroll-to-top a {
+    display: block;
     width: 3rem;
     height: 3rem;
-    z-index: 2;
-    border: none;
     padding: 0.25rem;
-    appearance: none;
+    border-radius: 50%;
+    background-color: var(--color-tertiary);
     cursor: pointer;
-    opacity: 0;
-    transform: translateY(20%);
-    transition-property: opacity, transform;
-    transition-duration: 0.3s;
   }
 
-  #scroll-to-top.visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
-
-  #scroll-to-top.visible:hover {
+  scroll-to-top a:hover {
     opacity: 0.9;
     transform: scale(1.1);
   }
 
-  #scroll-to-top svg {
+  scroll-to-top a svg {
     width: 100%;
     height: 100%;
     transition: inherit;
   }
 
-  #scroll-to-top:hover svg {
+  scroll-to-top a:hover svg {
     transform: translateY(-8%);
   }
 </style>

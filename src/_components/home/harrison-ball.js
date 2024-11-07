@@ -21,9 +21,6 @@ if (!customElements.get("harrison-ball")) {
       super();
       this._onHover = this._onHover.bind(this);
       this._rotate = this._rotate.bind(this);
-    }
-
-    connectedCallback() {
       this.addEventListener("pointerenter", this._onHover);
     }
 
@@ -31,7 +28,6 @@ if (!customElements.get("harrison-ball")) {
       if (this.frameID) {
         cancelAnimationFrame(this.frameID);
       }
-      this.removeEventListener("pointerenter", this._onHover);
     }
 
     _onHover() {

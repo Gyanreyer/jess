@@ -13,14 +13,17 @@ if (!customElements.get("lazy-video")) {
       }
     );
 
+    constructor() {
+      super();
+      this.addEventListener("l-visible", () => this._onVisible());
+    }
+
     connectedCallback() {
       this.video = this.querySelector("video");
       if (!this.video) {
         console.error("No video element found in lazy-video");
         return;
       }
-
-      this.addEventListener("l-visible", this.onVisible.bind(this));
 
       LazyVideo.observer.observe(this);
     }
@@ -29,7 +32,7 @@ if (!customElements.get("lazy-video")) {
       LazyVideo.observer.unobserve(this);
     }
 
-    onVisible() {
+    _onVisible() {
       const video = this.video;
       if (!video) return;
 
