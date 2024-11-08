@@ -4,7 +4,7 @@ if (!customElements.get("img-sequence")) {
       this.dataset.loading = "true";
       const backgroundImageURL = this.style
         .getPropertyValue("--spritesheet-url")
-        .slice(4, -1);
+        .slice(5, -2);
       const image = new Image();
       image.onload = () => {
         delete this.dataset.loading;

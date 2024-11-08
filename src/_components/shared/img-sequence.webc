@@ -34,7 +34,7 @@
     ({ filePath, columnCount, rowCount, spriteCount }) => {
       return /* html */ `
   <img-sequence
-    style="--spritesheet-url: url(${filePath}); aspect-ratio: ${spriteWidth}/${spriteHeight}; --sprite-count: ${spriteCount}; --column-count: ${columnCount}; --row-count: ${rowCount};${style}"
+    style="--spritesheet-url: url('${filePath}'); aspect-ratio: ${spriteWidth}/${spriteHeight}; --sprite-count: ${spriteCount}; --column-count: ${columnCount}; --row-count: ${rowCount};${style}"
     ${renderAttributes(attributesToRender)}
     ></img-sequence>`;
     }
@@ -51,14 +51,14 @@
     background-repeat: no-repeat;
     background-size: calc(100% * var(--column-count));
 
-    --cell: round(var(--progress, 0) * (var(--sprite-count) - 1) + 1);
-    --row: round(up, calc(var(--cell) / var(--column-count)));
+    --cell: round(var(--progress, 0) * (var(--sprite-count) - 1) + 1, 1);
+    --row: round(up, calc(var(--cell) / var(--column-count)), 1);
     --column: calc(var(--cell) - (var(--row) - 1) * var(--column-count));
     background-position-x: calc(
-      (var(--column) - 1) * 100% / (var(--column-count) - 1)
+      (var(--column, 1) - 1) * 100% / (var(--column-count, 1) - 1)
     );
     background-position-y: calc(
-      (var(--row) - 1) * 100% / (var(--row-count) - 1)
+      (var(--row, 1) - 1) * 100% / (var(--row-count, 1) - 1)
     );
 
     transition: opacity 0.3s;
