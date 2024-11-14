@@ -34,6 +34,7 @@ export default function (eleventyConfig) {
     "src/assets/img/og.jpg": "/img/og.jpg",
     "src/assets/**/*.pdf": "/",
     "src/assets/video": "/video",
+    "src/assets/js": "/js",
   });
 
   // Image plugin
@@ -96,10 +97,14 @@ export default function (eleventyConfig) {
         }`
       );
 
-      const fileNames = await readdir(inputDir.slice(7));
+      const fileNames = (await readdir(inputDir.slice(7))).filter(
+        (fileName) => {
+          return fileName.endsWith(".png") || fileName.endsWith(".webp");
+        }
+      );
       // Make sure the file names are sorted in a consistent order;
       // each file should just be a zero-padded number representing its place in the sequence
-      fileNames.sort();
+      fileNames.sort((a, b) => parseInt(a) - parseInt(b));
 
       const assetImgDirIndex = imageDir.indexOf("assets/img/");
 
@@ -153,7 +158,10 @@ export default function (eleventyConfig) {
                     width: spriteWidth,
                     height: spriteHeight,
                   })
-                  .toBuffer(),
+                  .toBuffer()
+                  .catch((e) => {
+                    console.error(`Error while resizing image ${fileURL}:`, e);
+                  }),
                 left: spriteWidth * column,
                 top: spriteHeight * row,
               };
