@@ -43,12 +43,6 @@
 </script>
 <script src="./img-sequence.js"></script>
 <style>
-  @property --progress {
-    syntax: "<number>";
-    inherits: true;
-    initial-value: 0;
-  }
-
   img-sequence {
     display: block;
     width: 100%;
@@ -68,7 +62,7 @@
       (var(--row, 1) - 1) * 100% / (var(--row-count, 1) - 1)
     );
 
-    transition: opacity 0.3s, --progress 0.1s;
+    transition: opacity 0.3s;
   }
 
   img-sequence[data-loading] {
