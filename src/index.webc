@@ -166,15 +166,7 @@ preloads:
 
   #crate-and-barrel aside img-sequence {
     display: block;
-    /* On desktop play through animation from 0.45 -> 0.2 scroll pct */
-    --progress: clamp(0, var(--scroll-pct) * -4 + 1.8, 1);
-  }
-
-  @media only screen and (max-width: 768px) {
-    #crate-and-barrel aside img-sequence {
-      /* On mobile play through animation from 0.8 -> 0.2 scroll pct since we have more vertical space to work with */
-      --progress: clamp(0, var(--scroll-pct) * -1.65 + 1.325, 1);
-    }
+    --progress: clamp(0, (var(--scroll-pct) * -1.05) + 1.05, 1);
   }
 
   #general-mills img {

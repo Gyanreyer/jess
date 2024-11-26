@@ -1,17 +1,18 @@
-<section webc:root="override" class="homepage-section">
-  <scroll-progress-region>
+<scroll-progress-region webc:root="override" data-scroll-margin="50%">
+  <section class="homepage-section">
     <div class="background"></div>
     <article class="section-content">
       <slot></slot>
     </article>
-  </scroll-progress-region>
-</section>
+  </section>
+</scroll-progress-region>
 <style webc:scoped>
   :host {
     --base-vertical-padding: clamp(8rem, 25%, 15vh);
 
     padding: var(--base-vertical-padding) 0;
     position: relative;
+    display: block;
   }
 
   :host:first-of-type {
