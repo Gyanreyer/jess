@@ -10,6 +10,8 @@
  *
  * @example
  * node scripts/make-spritesheet.mjs path/to/directory -w 256
+ *
+ * Outputs spritesheet.webp and spritesheet.json file in the directory.
  */
 import { readdir, access, rm, writeFile } from "node:fs/promises";
 import { resolve } from "node:path";
@@ -24,11 +26,11 @@ if (typeof rawDirName !== "string") {
   throw new Error("Please provide a directory name as an argument.");
 }
 
-const dirName = resolve(rawDirName);
+const spriteDirName = resolve(rawDirName);
 
-console.log("Generating spritesheet for", dirName);
+console.log("Generating spritesheet for", spriteDirName);
 
-const outputPath = resolve(dirName, "spritesheet.webp");
+const outputPath = resolve(spriteDirName, "spritesheet.webp");
 
 try {
   await access(outputPath);
@@ -36,11 +38,11 @@ try {
   await rm(outputPath);
 } catch (e) {}
 
-const filePaths = (await readdir(dirName))
+const filePaths = (await readdir(spriteDirName))
   // Filter out non-image files/sub-directories
   .filter((fileName) => fileName.endsWith(".webp") || fileName.endsWith(".png"))
   // Resolve the file names into full paths
-  .map((fileName) => resolve(dirName, fileName))
+  .map((fileName) => resolve(spriteDirName, fileName))
   // Sort by the number in the file name
   .sort((a, b) => parseInt(a) - parseInt(b));
 
@@ -139,7 +141,7 @@ await sharp({
 
 console.log(`Spritesheet generated at ${outputPath}`);
 
-const metadataPath = resolve(dirName, "spritesheet.json");
+const metadataPath = resolve(spriteDirName, "spritesheet.json");
 
 await writeFile(
   metadataPath,

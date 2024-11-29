@@ -1,17 +1,46 @@
+/**
+ * This script crops as much transparent space around a sequence of images in a directory
+ * as possible without cutting into any frame's non-transparent pixels.
+ * All images must be the same dimensions.
+ *
+ * Arguments:
+ * - The path to the directory containing the images
+ * - `--dry-run` to preview the dimensions the images will be cropped to without applying the crop
+ *
+ * @example
+ * node scripts/crop-img-sequence-files.mjs path/to/directory
+ *
+ * This script will skip spritesheet.webp files if it encounters them.
+ */
 import { readdir, writeFile } from "node:fs/promises";
+import { resolve } from "node:path";
 import sharp from "sharp";
 
-const path = import.meta
-  .resolve("../src/assets/img/work/crate-and-barrel/phone-img-sequence")
-  .slice("file://".length);
+const rawDirName = process.argv[2];
 
-const fileNames = await readdir(path);
+if (typeof rawDirName !== "string") {
+  throw new Error("Please provide a directory name as an argument.");
+}
 
-fileNames.sort((a, b) => {
-  const aNumber = parseInt(a);
-  const bNumber = parseInt(b);
-  return aNumber - bNumber;
-});
+const spriteDirName = resolve(rawDirName);
+
+console.log("Cropping images in", spriteDirName);
+
+const isDryRun = process.argv.includes("--dry-run");
+
+const filePaths = (await readdir(spriteDirName))
+  // Filter out non-image files/sub-directories
+  .filter((fileName) => {
+    if (fileName === "spritesheet.webp") {
+      console.log("Skipping spritesheet.webp");
+      return false;
+    }
+    return fileName.endsWith(".webp") || fileName.endsWith(".png");
+  })
+  // Resolve the file names into full paths
+  .map((fileName) => resolve(spriteDirName, fileName))
+  // Sort by the number in the file name
+  .sort((a, b) => parseInt(a) - parseInt(b));
 
 let trimmedLeft = Infinity;
 let trimmedRight = 0;
@@ -19,8 +48,8 @@ let trimmedTop = Infinity;
 let trimmedBottom = 0;
 
 // Gather the maximum bounds of the non-transparent pixels across all images
-for (let i = 0; i < fileNames.length; i++) {
-  const filePath = `${path}/${fileNames[i]}`;
+for (let i = 0; i < filePaths.length; i++) {
+  const filePath = filePaths[i];
   const imageData = await sharp(filePath)
     .raw()
     .toBuffer({ resolveWithObject: true });
@@ -50,8 +79,13 @@ console.dir({
   height: trimmedBottom - trimmedTop,
 });
 
-for (let i = 0; i < fileNames.length; i++) {
-  const filePath = `${path}/${fileNames[i]}`;
+if (isDryRun) {
+  console.log("Dry run complete. Exiting.");
+  process.exit(0);
+}
+
+for (let i = 0; i < filePaths.length; i++) {
+  const filePath = filePaths[i];
   sharp(filePath)
     .extract({
       left: trimmedLeft,
@@ -61,10 +95,5 @@ for (let i = 0; i < fileNames.length; i++) {
     })
     .webp()
     .toBuffer()
-    .then((data) => {
-      writeFile(
-        `${path}/../phone-img-sequence-new/${String(i).padStart(3, "0")}.webp`,
-        data
-      );
-    });
+    .then((data) => writeFile(filePath, data));
 }
