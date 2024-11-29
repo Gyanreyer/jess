@@ -1,45 +1,24 @@
 <script webc:type="js" webc:root="override">
-  const camelToKebabCase = (string) => {
-    return string
-      .replace(/([a-z0-9]|(?=[A-Z]))([A-Z])/g, "$1-$2")
-      .toLowerCase();
-  };
+  const { readFile } = require("node:fs/promises");
+  const path = require("node:path");
+  const eleventyImage = require("@11ty/eleventy-img");
 
-  const {
-    dataImgWidth,
-    dataImgHeight,
-    style = "",
-    ...passThroughAttributes
-  } = webc.attributes;
+  (async () => {
+    const spritesheetPath = path.resolve(spritesheet);
 
-  const spriteWidth = Number(dataImgWidth);
-  const spriteHeight = Number(dataImgHeight);
+    const imageStats = await eleventyImage(spritesheetPath, {
+      formats: ["webp"],
+      outputDir: "_site/img",
+    });
 
-  if (!spriteWidth || !spriteHeight) {
-    throw new Error(
-      "Please provide a data-img-width and data-img-height attributes."
-    );
-  }
+    const metadata = await readFile(spritesheetPath.replace(".webp", ".json"));
+    const { spriteWidth, spriteHeight, columnCount, rowCount, spriteCount } =
+      JSON.parse(metadata);
 
-  const attributesToRender = {};
-  const filteredPublicAttributes = webc.filterPublicAttributes(webc.attributes);
-
-  for (const key in filteredPublicAttributes) {
-    if (key in passThroughAttributes) {
-      attributesToRender[key] = passThroughAttributes[key];
-    }
-  }
-
-  this.getImageSequenceSpritesheet(dir, spriteWidth, spriteHeight).then(
-    ({ filePath, columnCount, rowCount, spriteCount }) => {
-      return /* html */ `
-  <img-sequence
-    role="presentation"
-    style="--spritesheet-url: url('${filePath}'); aspect-ratio: ${spriteWidth}/${spriteHeight}; --sprite-count: ${spriteCount}; --column-count: ${columnCount}; --row-count: ${rowCount};${style}"
-    ${renderAttributes(attributesToRender)}
+    return /* html */ `<img-sequence
+      style="--spritesheet-url: url('${imageStats.webp[0].url}'); --sprite-count: ${spriteCount}; --column-count: ${columnCount}; --row-count: ${rowCount}; aspect-ratio: ${spriteWidth}/${spriteHeight}"
     ></img-sequence>`;
-    }
-  );
+  })();
 </script>
 <script src="./img-sequence.js"></script>
 <style>
@@ -50,9 +29,13 @@
     background-image: var(--spritesheet-url);
 
     background-repeat: no-repeat;
-    background-size: calc(100% * var(--column-count));
+    background-size: calc(100% * var(--column-count))
+      calc(100% * var(--row-count));
 
-    --cell: round(var(--progress) * (var(--sprite-count) - 1) + 1, 1);
+    --cell: round(
+      clamp(0, var(--progress), 1) * (var(--sprite-count) - 1) + 1,
+      1
+    );
     --row: round(up, calc(var(--cell) / var(--column-count)), 1);
     --column: calc(var(--cell) - (var(--row) - 1) * var(--column-count));
     background-position-x: calc(

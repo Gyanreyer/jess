@@ -26,9 +26,7 @@ preloads:
     <aside>
       <scroll-progress-region>
         <img-sequence
-          @dir="assets/img/work/crate-and-barrel/phone-img-sequence"
-          data-img-width="254"
-          data-img-height="506"
+          @spritesheet="src/assets/img/work/crate-and-barrel/phone-img-sequence/spritesheet.webp"
         />
       </scroll-progress-region>
     </aside>
@@ -166,7 +164,7 @@ preloads:
 
   #crate-and-barrel aside img-sequence {
     display: block;
-    --progress: clamp(0, (var(--scroll-pct) * -1.05) + 1.05, 1);
+    --progress: calc((var(--scroll-pct) * -1.05) + 1.05);
   }
 
   #general-mills img {
