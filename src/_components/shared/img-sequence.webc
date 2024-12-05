@@ -58,9 +58,10 @@
     --column: calc(var(--cell) - (var(--row) - 1) * var(--column-count));
 
     /* Translate the image to the position of the current row and column */
-    transform: translate(
+    transform: translate3d(
       calc(-100% * (var(--column, 1) - 1) / var(--column-count, 1)),
-      calc((var(--row, 1) - 1) * -100% / var(--row-count, 1))
+      calc((var(--row, 1) - 1) * -100% / var(--row-count, 1)),
+      0
     );
   }
 
