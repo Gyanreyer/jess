@@ -4,14 +4,6 @@ theme: "dark"
 
 title: "Jess Keoshian"
 description: "art director/designer"
-preloads:
-  [
-    {
-      href: "/img/work/crate-and-barrel/phone-img-sequence/spritesheet.webp",
-      as: "image",
-      type: "image/webp",
-    },
-  ]
 ---
 
 <main data-transition="init">

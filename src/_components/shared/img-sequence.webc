@@ -16,8 +16,15 @@
       JSON.parse(metadata);
 
     return /* html */ `<img-sequence
-      style="--spritesheet-url: url('${imageStats.webp[0].url}'); --sprite-count: ${spriteCount}; --column-count: ${columnCount}; --row-count: ${rowCount}; aspect-ratio: ${spriteWidth}/${spriteHeight}"
-    ></img-sequence>`;
+      style="--sprite-count: ${spriteCount}; --column-count: ${columnCount}; --row-count: ${rowCount}; aspect-ratio: ${spriteWidth}/${spriteHeight}"
+    >
+      <img
+        src="${imageStats.webp[0].url}"
+        alt=""
+        fetchpriority="high"
+        class="spritesheet"
+      >
+    </img-sequence>`;
   })();
 </script>
 <script src="./img-sequence.js"></script>
@@ -25,27 +32,36 @@
   img-sequence {
     display: block;
     width: 100%;
+    position: relative;
+    overflow: clip;
 
-    background-image: var(--spritesheet-url);
+    transition: opacity 0.3s;
+  }
 
-    background-repeat: no-repeat;
-    background-size: calc(100% * var(--column-count))
-      calc(100% * var(--row-count));
+  img-sequence .spritesheet {
+    display: block;
 
+    position: absolute;
+    top: 0;
+    left: 0;
+    /* Size the spritesheet so a single cell fits in the dimensions of the parent element */
+    width: calc(100% * var(--column-count));
+    height: calc(100% * var(--row-count));
+
+    /* Index of the current cell in the spritesheet grid to display.
+       We can derive the row and column numbers from this */
     --cell: round(
       clamp(0, var(--progress), 1) * (var(--sprite-count) - 1) + 1,
       1
     );
     --row: round(up, calc(var(--cell) / var(--column-count)), 1);
     --column: calc(var(--cell) - (var(--row) - 1) * var(--column-count));
-    background-position-x: calc(
-      (var(--column, 1) - 1) * 100% / (var(--column-count, 1) - 1)
-    );
-    background-position-y: calc(
-      (var(--row, 1) - 1) * 100% / (var(--row-count, 1) - 1)
-    );
 
-    transition: opacity 0.3s;
+    /* Translate the image to the position of the current row and column */
+    transform: translate(
+      calc(-100% * (var(--column, 1) - 1) / var(--column-count, 1)),
+      calc((var(--row, 1) - 1) * -100% / var(--row-count, 1))
+    );
   }
 
   img-sequence[data-loading] {
