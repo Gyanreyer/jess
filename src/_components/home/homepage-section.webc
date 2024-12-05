@@ -132,8 +132,7 @@
     transform: translate3d(0, var(--translate-y), 0);
   }
 
-  img,
-  video {
+  :where(img, video) {
     display: block;
     width: 100%;
     height: auto;
