@@ -37,17 +37,20 @@
     border-radius: 50%;
     background-color: var(--color-tertiary);
     cursor: pointer;
+    transition-property: transform, opacity;
+    transition-duration: 0.25s;
   }
 
   scroll-to-top a:hover {
-    opacity: 0.9;
+    opacity: 0.95;
     transform: scale(1.1);
   }
 
   scroll-to-top a svg {
     width: 100%;
     height: 100%;
-    transition: inherit;
+    transition-property: transform;
+    transition-duration: inherit;
   }
 
   scroll-to-top a:hover svg {
