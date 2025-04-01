@@ -131,7 +131,7 @@ description: "art director/designer"
         alt="A headshot photo of Jess"
         width="240, 320, 640"
         sizes="(max-width: 768px) 80vw, 30vw"
-        class="headshot"
+        class="headshot shadow"
       ></eleventy-image>
       <scroll-reveal>
         <harrison-ball></harrison-ball>
@@ -242,6 +242,10 @@ description: "art director/designer"
     margin-top: -25%;
     margin-left: 45%;
     width: 70%;
+  }
+
+  #about .headshot {
+    border-radius: 12px;
   }
 
   @media only screen and (max-width: 768px) {
