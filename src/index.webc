@@ -42,7 +42,7 @@ description: "art director/designer"
   </homepage-section>
   <homepage-section class="secondary" id="famd">
     <header>
-      <h2>famd</h2>
+      <h2>f.a.m.d.</h2>
       <p>a shelter with more heart than fur</p>
     </header>
     <aside>
@@ -51,6 +51,7 @@ description: "art director/designer"
         alt=""
         width="240, 320, 640"
         sizes="(max-width: 768px) 80vw, 30vw"
+        class="rounded"
       ></eleventy-image>
     </aside>
     <a class="button primary" href="/work/famd">view work</a>
@@ -102,6 +103,7 @@ description: "art director/designer"
       <autoplay-video
         @src="/video/work/more/more-Cinemagraph.mp4"
         @label="A looping cinemagraph of a woman posing with wind blowing her clothes"
+        class="rounded"
       ></autoplay-video>
     </aside>
     <a class="button primary" href="/work/more">view work</a>
@@ -131,7 +133,7 @@ description: "art director/designer"
         alt="A headshot photo of Jess"
         width="240, 320, 640"
         sizes="(max-width: 768px) 80vw, 30vw"
-        class="headshot shadow"
+        class="rounded"
       ></eleventy-image>
       <scroll-reveal>
         <harrison-ball></harrison-ball>
@@ -145,6 +147,13 @@ description: "art director/designer"
 <scroll-to-top></scroll-to-top>
 <style>
   main {
+    overflow: hidden;
+  }
+
+  .homepage-section aside .rounded {
+    border-radius: 8px;
+    box-shadow: var(--drop-shadow);
+    display: block;
     overflow: hidden;
   }
 
@@ -164,19 +173,10 @@ description: "art director/designer"
     margin: 0 auto;
   }
 
-  :is(#pampers, #mowers) aside {
+  #pampers aside {
     display: flex;
     align-items: center;
     justify-content: center;
-  }
-
-  #mowers img.box {
-    width: 80%;
-  }
-
-  #mowers img.tube {
-    width: 20%;
-    transform: translateY(calc(15% * calc(var(--scroll-pct) - 0.3)));
   }
 
   :is(#pampers, #mowers) aside picture {
@@ -242,10 +242,6 @@ description: "art director/designer"
     margin-top: -25%;
     margin-left: 45%;
     width: 70%;
-  }
-
-  #about .headshot {
-    border-radius: 12px;
   }
 
   @media only screen and (max-width: 768px) {
