@@ -32,6 +32,7 @@
   --color-primary: #2afd73;
   --color-secondary: #323e48;
   --color-tertiary: #ffffff;
+  --drop-shadow: 0px 5px 15px -3px rgba(0, 0, 0, 0.2);
 }
 
 body,
@@ -69,7 +70,7 @@ p {
 }
 
 .shadow {
-  box-shadow: 0px 5px 15px -3px rgba(0, 0, 0, 0.2);
+  box-shadow: var(--drop-shadow);
 }
 
 scroll-progress-region {

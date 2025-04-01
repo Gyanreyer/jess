@@ -1,5 +1,5 @@
 ---
-title: "FAMD"
+title: "F.A.M.D."
 description: "Friends for Animals of Metro Detroit was in need of content capture and a campaign that could not only raise money, but keep their brand cohesive."
 ---
 
@@ -57,21 +57,21 @@ description: "Friends for Animals of Metro Detroit was in need of content captur
 <content-row>
   <autoplay-video
     @src="/video/work/famd/FAMD_M1032_DAY_1.mp4"
-    @label="The video for the first day of givemas, a Christmas donation drive for FAMD"
+    @label="A looping social video from FAMD's 12 days of Christmas campaign. It reads 'On the first day of #givemas your donation to FAMD... gives a pet their forever family!' and shows a cartoon cat and dog wagging their tails."
   ></autoplay-video>
   <autoplay-video
     @src="/video/work/famd/FAMD_M1032_DAY_6.mp4"
-    @label="The video for the sixth day of givemas, a Christmas donation drive for FAMD"
+    @label="A looping social video from FAMD's 12 days of Christmas campaign. It reads 'On the sixth day of #givemas your donation to FAMD... gives six checkups for our doggies!' and shows a cartoon dog wearing a stethoscope."
   ></autoplay-video>
 </content-row>
 <content-row>
   <autoplay-video
     @src="/video/work/famd/FAMD_M1032_DAY_7.mp4"
-    @label="The video for the seventh day of givemas, a Christmas donation drive for FAMD"
+    @label="A looping social video from FAMD's 12 days of Christmas campaign. It reads 'On the seventh day of #givemas your donation to FAMD... gives seven lucky toys that make our pets happy!' and shows a cartoon cat and dog with tennis balls and toy mice around them."
   ></autoplay-video>
   <autoplay-video
     @src="/video/work/famd/FAMD_M1032_DAY_9.mp4"
-    @label="The video for the ninth day of givemas, a Christmas donation drive for FAMD"
+    @label="A looping social video from FAMD's 12 days of Christmas campaign. It reads 'On the ninth day of #givemas your donation to FAMD... gives nine pounds of food for all of the kitties!' and shows a cartoon cat food bowl filling up with kibble."
   ></autoplay-video>
 </content-row>
 
