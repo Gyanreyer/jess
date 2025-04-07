@@ -44,7 +44,7 @@ if (!customElements.get("lazy-video")) {
         video.muted = true;
         // If the lazy-video element has a controls attribute set,
         // we should keep the controls even if autoplay is also set
-        if (!this.hasAttribute("controls")) {
+        if (this.dataset.controls === undefined) {
           video.controls = false;
         }
         video.play().catch((e) => {

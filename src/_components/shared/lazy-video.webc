@@ -1,0 +1,41 @@
+<script webc:type="js" webc:root="override">
+  const ffprobe = require("ffprobe");
+  const ffprobeStatic = require("ffprobe-static");
+  const path = require("node:path");
+
+  const srcAssetPath = path.resolve(path.join("src/assets", src));
+
+  if (!src) {
+    throw new Error("lazy-video: src attribute is required");
+  }
+
+  (async () => {
+    const result = await ffprobe(srcAssetPath, { path: ffprobeStatic.path });
+    const { width, height } = result.streams.find(
+      ({ codec_type }) => codec_type === "video"
+    );
+
+    const { controls, autoplay, ...passThroughAttributes } =
+      webc.filterPublicAttributes(webc.attributes);
+
+    const renderedAttributes = webc.renderAttributes({
+      src,
+      "aria-label": label,
+      width,
+      height,
+      controls,
+      preload: "none",
+      playsinline: "",
+      ...(autoplay !== undefined ? { loop: "", muted: "" } : {}),
+      ...passThroughAttributes,
+    });
+
+    return /* html */ `<lazy-video ${
+      autoplay !== undefined ? `data-autoplay` : ""
+    } ${controls !== undefined ? `data-controls` : ""}>
+      <video ${renderedAttributes}></video>
+    </lazy-video>
+      `;
+  })();
+</script>
+<script src="../../js/lazy-video.mjs"></script>

@@ -12,21 +12,24 @@ description: "motion from the comfort of your home"
 </p>
 
 <content-row>
-  <autoplay-video
+  <lazy-video
     @src="/video/work/crate-and-barrel/SP24_PerkSharedRegistry_Story.mp4"
     @label="An ad for Crate and Barrel's wedding registry, looping over shots of products with copy and animated icons."
-  ></autoplay-video>
-  <autoplay-video
+    autoplay
+  ></lazy-video>
+  <lazy-video
     @src="/video/work/crate-and-barrel/SP24_BrandandPerk_Story.mp4"
     @label="An ad for Crate and Barrel's wedding registry, starting with a shot of champagne glasses followed by various illustrated couples with subtle animations."
-  ></autoplay-video>
+    autoplay
+  ></lazy-video>
 </content-row>
 
 <content-row>
-  <autoplay-video
+  <lazy-video
     @src="/video/work/crate-and-barrel/WR_Icons.mp4"
     @label="A looping video showcasing icon animations created for the Crate and Barrel wedding registry ads."
-  ></autoplay-video>
+    autoplay
+  ></lazy-video>
 </content-row>
 
 <p>
@@ -37,14 +40,16 @@ description: "motion from the comfort of your home"
 </p>
 
 <content-row data-nobreak>
-  <autoplay-video
+  <lazy-video
     @src="/video/work/crate-and-barrel/TheWeddingRegistry_Animation.mp4"
     @label="Animation of Crate and Barrel's ampersand logo animating in with 'The Wedding Registry' underneath."
-  ></autoplay-video>
-  <autoplay-video
+    autoplay
+  ></lazy-video>
+  <lazy-video
     @src="/video/work/crate-and-barrel/TheBabyRegistry_Animation_StackedBlack.mp4"
     @label="Animation of Crate and Barrel's ampersand logo animating in with 'The Baby Registry' underneath."
-  ></autoplay-video>
+    autoplay
+  ></lazy-video>
 </content-row>
 
 <p>
@@ -86,11 +91,12 @@ description: "motion from the comfort of your home"
 </p>
 
 <content-row>
-  <autoplay-video
+  <lazy-video
     @src="/video/work/crate-and-barrel/SP24_CrateAppSizzle_16x9.mp4"
-    controls
     @label="The final released ad for Crate and Barrel's app relaunch."
-  ></autoplay-video>
+    autoplay
+    controls
+  ></lazy-video>
 </content-row>
 
 <p>Overseeing Senior Art Director: Michele Lauri</p>

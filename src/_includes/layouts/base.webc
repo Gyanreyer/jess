@@ -70,11 +70,6 @@
       webc:bucket="transition-persist"
     ></script>
 
-    <script
-      src="../../js/lazy-video.mjs"
-      webc:bucket="transition-persist"
-    ></script>
-
     <!-- Page-specific CSS which should not be persisted -->
     <style @raw="getBundle('css')" webc:keep></style>
   </head>

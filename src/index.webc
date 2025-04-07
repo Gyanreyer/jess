@@ -100,11 +100,12 @@ description: "art director/designer"
       </p>
     </header>
     <aside>
-      <autoplay-video
+      <lazy-video
         @src="/video/work/more/more-Cinemagraph.mp4"
         @label="A looping cinemagraph of a woman posing with wind blowing her clothes"
+        autoplay
         class="rounded"
-      ></autoplay-video>
+      ></lazy-video>
     </aside>
     <a class="button primary" href="/work/more">view work</a>
   </homepage-section>

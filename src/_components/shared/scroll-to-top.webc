@@ -1,4 +1,4 @@
-<a href="#" class="shadow">
+<a href="#">
   <svg
     xmlns="http://www.w3.org/2000/svg"
     height="48"
@@ -36,6 +36,7 @@
     padding: 0.25rem;
     border-radius: 50%;
     background-color: var(--color-tertiary);
+    box-shadow: var(--drop-shadow);
     cursor: pointer;
     transition-property: transform, opacity;
     transition-duration: 0.25s;

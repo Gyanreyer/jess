@@ -44,10 +44,11 @@ description: "Dads are finally being thought of in the space of parenting, and t
 </p>
 
 <content-row>
-  <autoplay-video
+  <lazy-video
     @src="/video/work/pampers/pampers-dadmoji.mp4"
     @label="An animated gif of a text message conversation with someone named Ryan. The person who owns this phone sends an animated emoji of a man with a beard and glasses throwing up."
-  ></autoplay-video>
+    autoplay
+  ></lazy-video>
   <content-img
     src="src/assets/img/work/pampers/dadmoji-keyboard.png"
     alt="A set of 10 'dadmojis' for various common reactions. Each emoji features a man with a beard and glasses making an expression including smiling, throwing up, crying, and looking angry."
@@ -68,10 +69,7 @@ description: "Dads are finally being thought of in the space of parenting, and t
 </content-row>
 
 <content-row>
-  <content-video
-    @src="/video/work/pampers/PampersCaseStudy.mp4"
-    class="shadow"
-  ></content-video>
+  <lazy-video @src="/video/work/pampers/PampersCaseStudy.mp4"></lazy-video>
 </content-row>
 
 <p>D Show Student Award, 2018.</p>
