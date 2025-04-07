@@ -15,6 +15,7 @@ description: "Creating social media for the brands of Pillsbury and Old El Paso.
     src="src/assets/img/work/general-mills/charbooterie.jpg"
     alt="A charcuterie board filled with Halloween-themed Pillsbury products, called a 'charbooterie' board as a pun"
     sizes="90vw"
+    class="rounded"
   ></content-img>
 </content-row>
 
@@ -23,11 +24,13 @@ description: "Creating social media for the brands of Pillsbury and Old El Paso.
     @src="/video/work/general-mills/90s_Social_1.mp4"
     @label="An animated video with the Pillsbury Doughboy standing next to a heading that says 'Flavors of the 90s'. Pairings of nostalgic items from the 90s with Pillsbury recipes are cycling below: butterfly clips and cinnamon roll butterflies, jelly shoes and easy strawberry pie, and an mp3 player and confetti cookie bars."
     autoplay
+    class="rounded"
   ></lazy-video>
   <content-img
     src="src/assets/img/work/general-mills/groundhog-day.jpg"
     alt="The Pillsbury Doughboy wearing a scarf and earmuffs, popping out of a hole in the ground in celebration of Groundhog Day"
     sizes="90vw"
+    class="rounded"
   ></content-img>
 </content-row>
 
@@ -35,10 +38,12 @@ description: "Creating social media for the brands of Pillsbury and Old El Paso.
   <content-img
     src="src/assets/img/work/general-mills/enter-to-win.jpg"
     alt="The Pillsbury Doughboy wearing an ugly Christmas sweater, standing next to the words 'Enter to Win' for a contest to win a sweater"
+    class="rounded"
   ></content-img>
   <content-img
     src="src/assets/img/work/general-mills/Grad-Party.jpg"
     alt="A photo of a buffalo crescent ring with a report card that gives the recipe an A+. The Pillsbury Doughboy is jumping for joy in the bottom right corner."
+    class="rounded"
   ></content-img>
 </content-row>
 
@@ -47,6 +52,7 @@ description: "Creating social media for the brands of Pillsbury and Old El Paso.
     src="src/assets/img/work/general-mills/pumpkin-day.jpg"
     alt="The Pillsbury Doughboy carved into a pumpkin"
     sizes="90vw"
+    class="rounded"
   ></content-img>
 </content-row>
 
@@ -55,16 +61,18 @@ description: "Creating social media for the brands of Pillsbury and Old El Paso.
     @src="/video/work/general-mills/90s_Social_2_1.mp4"
     @label="An animated video with the Pillsbury Doughboy standing next to a heading that says 'Flavors of the 90s' and 'Find a meal to match your memories'. Pairings of nostalgic items from the 90s with Pillsbury recipes are cycling below: butterfly clips and cinnamon roll butterflies, jelly shoes and easy strawberry pie, and an mp3 player and confetti cookie bars."
     autoplay
+    class="rounded"
   ></lazy-video>
   <lazy-video
     @src="/video/work/general-mills/Campfire_Stories_2_1_2.mp4"
     @label="An animation of the Pillsbury Doughboy roasting a marshmallow over a campfire"
     autoplay
+    class="rounded"
   ></lazy-video>
 </content-row>
 
 <content-row>
-  <content-carousel>
+  <content-carousel class="rounded">
     <content-carousel-img
       src="src/assets/img/work/general-mills/witches-fingers.jpg"
       alt="Halloween-themed finger sandwiches made to look like witches' fingers with painted nails"
@@ -85,11 +93,13 @@ description: "Creating social media for the brands of Pillsbury and Old El Paso.
     @src="/video/work/general-mills/mummy-dogs.mp4"
     @label="A Halloween social media video showing two mummy dogs on sticks rising from the bottom of the frame and looking at each other"
     autoplay
+    class="rounded"
   ></lazy-video>
   <lazy-video
     @src="/video/work/general-mills/pumpkin-day.mp4"
     @label="A Halloween social media video showing how to carve the Pillsbury Doughboy's face into a pumpkin"
     autoplay
+    class="rounded"
   ></lazy-video>
 </content-row>
 
@@ -98,6 +108,7 @@ description: "Creating social media for the brands of Pillsbury and Old El Paso.
     @src="/video/work/general-mills/messfreehero.mp4"
     @label="An animation of two hands doing a toast with Old El Paso tortilla pocket tacos above the hashtag #MessFreeHero"
     autoplay
+    class="rounded"
   ></lazy-video>
 </content-row>
 
@@ -105,10 +116,12 @@ description: "Creating social media for the brands of Pillsbury and Old El Paso.
   <content-img
     src="src/assets/img/work/general-mills/tortilla-pocket.jpg"
     alt="A person holding an empty Old El Paso tortilla pocket over a table full of taco ingredients, with the words 'How will you tortilla pocket?'"
+    class="rounded"
   ></content-img>
   <content-img
     src="src/assets/img/work/general-mills/spicy-costume.jpg"
     alt="An Old El Paso tortilla pocket with cartoon bat wings for Halloween"
+    class="rounded"
   ></content-img>
 </content-row>
 

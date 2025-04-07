@@ -11,11 +11,14 @@ description: "Friends for Animals of Metro Detroit was in need of content captur
 </p>
 
 <content-row>
-  <lazy-video @src="/video/work/famd/FAMD_08_GREENFIELD_2_11.mp4"></lazy-video>
+  <lazy-video
+    @src="/video/work/famd/FAMD_08_GREENFIELD_2_11.mp4"
+    class="rounded"
+  ></lazy-video>
 </content-row>
 
 <content-row>
-  <content-carousel>
+  <content-carousel class="rounded">
     <content-carousel-img
       src="src/assets/img/work/famd/FAMD_MG_2351.jpg"
       alt="A pitbull getting their head pet"
@@ -36,7 +39,10 @@ description: "Friends for Animals of Metro Detroit was in need of content captur
 </content-row>
 
 <content-row>
-  <lazy-video @src="/video/work/famd/FAMD_13_DOG_1_17.mp4"></lazy-video>
+  <lazy-video
+    @src="/video/work/famd/FAMD_13_DOG_1_17.mp4"
+    class="rounded"
+  ></lazy-video>
 </content-row>
 
 <p>
@@ -57,11 +63,13 @@ description: "Friends for Animals of Metro Detroit was in need of content captur
     @src="/video/work/famd/FAMD_M1032_DAY_1.mp4"
     @label="A looping social video from FAMD's 12 days of Christmas campaign. It reads 'On the first day of #givemas your donation to FAMD... gives a pet their forever family!' and shows a cartoon cat and dog wagging their tails."
     autoplay
+    class="rounded"
   ></lazy-video>
   <lazy-video
     @src="/video/work/famd/FAMD_M1032_DAY_6.mp4"
     @label="A looping social video from FAMD's 12 days of Christmas campaign. It reads 'On the sixth day of #givemas your donation to FAMD... gives six checkups for our doggies!' and shows a cartoon dog wearing a stethoscope."
     autoplay
+    class="rounded"
   ></lazy-video>
 </content-row>
 <content-row>
@@ -69,11 +77,13 @@ description: "Friends for Animals of Metro Detroit was in need of content captur
     @src="/video/work/famd/FAMD_M1032_DAY_7.mp4"
     @label="A looping social video from FAMD's 12 days of Christmas campaign. It reads 'On the seventh day of #givemas your donation to FAMD... gives seven lucky toys that make our pets happy!' and shows a cartoon cat and dog with tennis balls and toy mice around them."
     autoplay
+    class="rounded"
   ></lazy-video>
   <lazy-video
     @src="/video/work/famd/FAMD_M1032_DAY_9.mp4"
     @label="A looping social video from FAMD's 12 days of Christmas campaign. It reads 'On the ninth day of #givemas your donation to FAMD... gives nine pounds of food for all of the kitties!' and shows a cartoon cat food bowl filling up with kibble."
     autoplay
+    class="rounded"
   ></lazy-video>
 </content-row>
 

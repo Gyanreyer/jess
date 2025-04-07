@@ -10,6 +10,7 @@ description: "If you've made it here, you deserve a little extra."
     @src="/video/work/more/Bears_Boardsforsite.mp4"
     @label="Animations with the Crate and Barrel and Chicago Bears logos, used for Chicago Bears game scoreboards."
     autoplay
+    class="rounded"
   ></lazy-video>
 </content-row>
 
@@ -17,10 +18,12 @@ description: "If you've made it here, you deserve a little extra."
   <content-img
     src="src/assets/img/work/more/more-AnimaladsSeatbelts2.jpg"
     alt="A pink seatbelt fashioned to look like a pig, with the copy 'Seat belts save lives' in the bottom right corner"
+    class="rounded"
   ></content-img>
   <content-img
     src="src/assets/img/work/more/more-AnimaladsSeatbelts.jpg"
     alt="A gray seatbelt with black spots fashioned to look like a cow, with the copy 'Seat belts save lives' in the bottom right corner"
+    class="rounded"
   ></content-img>
 </content-row>
 
@@ -29,6 +32,7 @@ description: "If you've made it here, you deserve a little extra."
     @src="/video/work/more/more-AAM_END_CARD_3.mp4"
     @label="An animation of electrical circuitry animating in and then revealing the logo for AAM along with the copy, 'Bringing the future faster'"
     autoplay
+    class="rounded"
   ></lazy-video>
 </content-row>
 
@@ -37,11 +41,13 @@ description: "If you've made it here, you deserve a little extra."
     @src="/video/work/more/more-Cinemagraph.mp4"
     @label="A looping cinemagraph of a woman posing with wind blowing her clothes"
     autoplay
+    class="rounded"
   ></lazy-video>
   <lazy-video
     @src="/video/work/more/more-GrillinV2_1.mp4"
     @label="An animation of a hotdog and a hamburger's ingredients falling into place"
     autoplay
+    class="rounded"
   ></lazy-video>
 </content-row>
 
@@ -50,10 +56,12 @@ description: "If you've made it here, you deserve a little extra."
     @src="/video/work/more/date_anniesbunnyday_1x1_6.mp4"
     @label="Various bunny-shaped Annie's food products hopping into frame from the left and then hopping out of frame to the right"
     autoplay
+    class="rounded"
   ></lazy-video>
   <content-img
     src="src/assets/img/work/more/more-CucinaMenu.jpg"
     alt="A children's menu for the Cucina restaurant. The menu has games such as a maze, word search, and tic tac toe, and features cute cartoon characters."
+    class="rounded"
   ></content-img>
 </content-row>
 
@@ -62,5 +70,6 @@ description: "If you've made it here, you deserve a little extra."
     @src="/video/work/more/Kohler-BTS.mp4"
     @label="A series of behind-the-scenes shots from a Kohler photoshoot with a group of people posing around a bathtub holding wine, acting silly and doing a toast"
     autoplay
+    class="rounded"
   ></lazy-video>
 </content-row>

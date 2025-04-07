@@ -16,11 +16,13 @@ description: "motion from the comfort of your home"
     @src="/video/work/crate-and-barrel/SP24_PerkSharedRegistry_Story.mp4"
     @label="An ad for Crate and Barrel's wedding registry, looping over shots of products with copy and animated icons."
     autoplay
+    class="rounded"
   ></lazy-video>
   <lazy-video
     @src="/video/work/crate-and-barrel/SP24_BrandandPerk_Story.mp4"
     @label="An ad for Crate and Barrel's wedding registry, starting with a shot of champagne glasses followed by various illustrated couples with subtle animations."
     autoplay
+    class="rounded"
   ></lazy-video>
 </content-row>
 
@@ -65,22 +67,27 @@ description: "motion from the comfort of your home"
   <content-img
     src="src/assets/img/work/crate-and-barrel/AppStoryboardFrame-1.png"
     alt="Storyboard image for the ad's opening text that says 'new app lorem ipsum'."
+    class="rounded"
   ></content-img>
   <content-img
     src="src/assets/img/work/crate-and-barrel/AppStoryboardFrame-2.jpg"
     alt="Storyboard image of a phone with the app open saying 'Hi Taylor, welcome back.'"
+    class="rounded"
   ></content-img>
   <content-img
     src="src/assets/img/work/crate-and-barrel/AppStoryboardFrame-3.jpg"
     alt="Storyboard image of a phone with the app open to a gift registry screen. There is text under the phone that says 'Manage your registry'."
+    class="rounded"
   ></content-img>
   <content-img
     src="src/assets/img/work/crate-and-barrel/AppStoryboardFrame-4.jpg"
     alt="Storyboard image of a phone with the app open on an alternate reality camera view showing what furniture would look like in a room. There is placeholder text under the phone that says 'ar lorem ipsum'."
+    class="rounded"
   ></content-img>
   <content-img
     src="src/assets/img/work/crate-and-barrel/AppStoryboardFrame-5.png"
     alt="Storyboard image of the end card of the ad, showing the Crate and Barrel logo and text that says 'lorem ipsum CTA'"
+    class="rounded"
   ></content-img>
 </content-row>
 
@@ -96,6 +103,7 @@ description: "motion from the comfort of your home"
     @label="The final released ad for Crate and Barrel's app relaunch."
     autoplay
     controls
+    class="rounded"
   ></lazy-video>
 </content-row>
 

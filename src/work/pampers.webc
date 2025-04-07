@@ -13,10 +13,12 @@ description: "Dads are finally being thought of in the space of parenting, and t
   <content-img
     src="src/assets/img/work/pampers/dad365a_w18_keoshiannowelsobrien_pampers_table1.jpg"
     alt="A pampers-branded diaper changing station with the words 'Let dads change' written on the wall above it."
+    class="rounded"
   ></content-img>
   <content-img
     src="src/assets/img/work/pampers/dad365a_w18_keoshiannowelsobrien_pampers_table2.jpg"
     alt="A close-up shot of one half of the diaper changing station, showing an integrated touch screen with a keyboard and the words 'Find products'"
+    class="rounded"
   ></content-img>
 </content-row>
 
@@ -30,10 +32,12 @@ description: "Dads are finally being thought of in the space of parenting, and t
   <content-img
     src="src/assets/img/work/pampers/dadwelcomepage_incomputer.png"
     alt="A computer with a re-designed Pampers website open. The site shows a cartoon graphic of a father holding a baby next to various buttons and information, including a button that says 'Find a changing table in your area'"
+    class="rounded"
   ></content-img>
   <content-img
     src="src/assets/img/work/pampers/pampersphones.png"
     alt="A row of 3 phones with a re-designed Pampers app open on them. The first phone has a map which shows changing table locations. The second phone shows a search page for finding Pampers products. The third phone shows a loading screen."
+    class="rounded"
   ></content-img>
 </content-row>
 
@@ -48,6 +52,7 @@ description: "Dads are finally being thought of in the space of parenting, and t
     @src="/video/work/pampers/pampers-dadmoji.mp4"
     @label="An animated gif of a text message conversation with someone named Ryan. The person who owns this phone sends an animated emoji of a man with a beard and glasses throwing up."
     autoplay
+    class="rounded"
   ></lazy-video>
   <content-img
     src="src/assets/img/work/pampers/dadmoji-keyboard.png"
@@ -61,15 +66,21 @@ description: "Dads are finally being thought of in the space of parenting, and t
   <content-img
     src="src/assets/img/work/pampers/sb_pampers_1.png"
     alt="Some storyboard sketches for the Pampers case study video below"
+    class="rounded"
   ></content-img>
   <content-img
-    src="src/assets/img/work/pampers/dadmoji-keyboard.png"
+    src="src/assets/img/work/pampers/sb_pampers_2.png"
     alt="More storyboard sketches for the Pampers case study video below"
+    class="rounded"
   ></content-img>
 </content-row>
 
 <content-row>
-  <lazy-video @src="/video/work/pampers/PampersCaseStudy.mp4"></lazy-video>
+  <lazy-video
+    @src="/video/work/pampers/PampersCaseStudy.mp4"
+    controls
+    class="rounded"
+  ></lazy-video>
 </content-row>
 
 <p>D Show Student Award, 2018.</p>

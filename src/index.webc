@@ -151,13 +151,6 @@ description: "art director/designer"
     overflow: hidden;
   }
 
-  .homepage-section aside .rounded {
-    border-radius: 8px;
-    box-shadow: var(--drop-shadow);
-    display: block;
-    overflow: hidden;
-  }
-
   #crate-and-barrel aside {
     width: clamp(12rem, 60%, 16rem);
     transform: none;

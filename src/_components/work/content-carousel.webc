@@ -6,6 +6,7 @@
   autoplay
   autoplay-interval="5000"
   loop
+  @attributes
 >
   <slot></slot>
 </sl-carousel>
@@ -25,7 +26,12 @@
     box-shadow: unset;
   }
 
-  sl-carousel::part(scroll-container) {
+  sl-carousel.rounded {
+    box-shadow: none;
+    border-radius: none;
+  }
+
+  sl-carousel.rounded::part(scroll-container) {
     box-shadow: var(--drop-shadow);
     border-radius: 8px;
   }
