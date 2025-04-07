@@ -6,6 +6,7 @@
   autoplay
   autoplay-interval="5000"
   loop
+  @attributes
 >
   <slot></slot>
 </sl-carousel>
@@ -16,6 +17,23 @@
 
   sl-carousel-item::not(:defined) {
     display: none;
+  }
+
+  sl-carousel :is(img, video) {
+    /* Kill the default border radius and drop shadow applied to images and videos on work pages; this needs to be
+      applied to the scroll-container part instead */
+    border-radius: unset;
+    box-shadow: unset;
+  }
+
+  sl-carousel.rounded {
+    box-shadow: none;
+    border-radius: none;
+  }
+
+  sl-carousel.rounded::part(scroll-container) {
+    box-shadow: var(--drop-shadow);
+    border-radius: 8px;
   }
 
   sl-carousel.square {

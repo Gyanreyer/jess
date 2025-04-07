@@ -1,3 +1,0 @@
-<lazy-video role="figure" :aria-label="label" @attributes>
-  <video controls preload="none" :src="src"></video>
-</lazy-video>
