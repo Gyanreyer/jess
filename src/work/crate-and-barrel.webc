@@ -88,7 +88,6 @@ description: "motion from the comfort of your home"
 <content-row>
   <autoplay-video
     @src="/video/work/crate-and-barrel/SP24_CrateAppSizzle_16x9.mp4"
-    class="cb-outlined-video"
     controls
     @label="The final released ad for Crate and Barrel's app relaunch."
   ></autoplay-video>
@@ -100,9 +99,5 @@ description: "motion from the comfort of your home"
   #cbcc-content-row {
     /* The videos are different heights so we're aligning them to the bottom so the player controls look less weird */
     align-items: flex-end;
-  }
-
-  .cb-outlined-video {
-    border: 1px solid rgba(0, 0, 0, 0.2);
   }
 </style>

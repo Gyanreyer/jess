@@ -79,6 +79,12 @@ theme: "light"
     padding: 0 5vw;
   }
 
+  main :is(img, video) {
+    display: block;
+    border-radius: 8px;
+    box-shadow: var(--drop-shadow);
+  }
+
   footer {
     --angle: 4deg;
     --angled-segment-ht: calc(100vw * tan(var(--angle)));
