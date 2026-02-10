@@ -13,6 +13,40 @@ description: "motion from the comfort of your home"
 
 <content-row>
   <lazy-video
+    @src="/video/work/crate-and-barrel/F25_Falledit_Story.mp4"
+    @label="A vertical social media ad for Crate and Barrel's fall collection. The video has a white outline of a box framing the center with the Crate and Barrel logo and the words 'The Fall Color Edit' underneath. In the background, various fall-themed home decor items are displayed."
+    autoplay
+    class="rounded"
+    controls
+  ></lazy-video>
+  <lazy-video
+    @src="/video/work/crate-and-barrel/Salad_V2.mp4"
+    @label="A vertical social media video of a chef assembling an 'endive goddess salad', promoting Chef Daniel Humm's new collection."
+    autoplay
+    class="rounded"
+    controls
+  ></lazy-video>
+</content-row>
+
+<content-row>
+  <lazy-video
+    @src="/video/work/crate-and-barrel/Bike_Reel_V2.mp4"
+    @label="A vertical social media video of a bike with a basket on the front filled with ice. A person's hands place a bowl of chips, a small bowl of creme fraiche, a jar of caviar, and a glass of champagne into the basket."
+    autoplay
+    class="rounded"
+    controls
+  ></lazy-video>
+  <lazy-video
+    @src="/video/work/crate-and-barrel/F25_Kids_BTS_Story_F1.mp4"
+    @label="A vertical social media ad for Crate and Kids. The video features the Crate and Kids logo and the words 'get set for back-to-school', with videos of backpacks, water bottles, and lunch boxes playing underneath."
+    autoplay
+    class="rounded"
+    controls
+  ></lazy-video>
+</content-row>
+
+<content-row>
+  <lazy-video
     @src="/video/work/crate-and-barrel/SP24_PerkSharedRegistry_Story.mp4"
     @label="An ad for Crate and Barrel's wedding registry, looping over shots of products with copy and animated icons."
     autoplay
